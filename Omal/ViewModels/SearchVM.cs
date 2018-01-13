@@ -5,27 +5,56 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Omal.Common;
 
 namespace Omal.ViewModels
 {
     public class SearchVM: BaseVM
     {
 
-        public ICommand SearchWithCategoriesCommand
+        public RelayCommand SearchWithCategoriesCommand{get;set;}
+        public RelayCommand SearchWithProductNameCommand { get; set; }
+
+        string productNameFilter;
+        public string ProductNameFilter
         {
-            get;
-            set;
+            get
+            {
+                return productNameFilter;
+            }
+            set
+            {
+                productNameFilter = value;
+                OnPropertyChanged();
+                SearchWithProductNameCommand.ChangeCanExecute();
+            }
+
         }
 
         public SearchVM()
         {
             PropertyChanged += OnLocalPropertyChanged;
-            SearchWithCategoriesCommand = new Command(OnSearchWithCategoriesCommand);
+            SearchWithCategoriesCommand = new RelayCommand(OnSearchWithCategoriesCommand);
+            SearchWithProductNameCommand = new RelayCommand(OnSearchWithProductNameCommand, CanExecuteSearchWithProductNameCommand);
         }
 
-        private void OnSearchWithCategoriesCommand()
+        private bool CanExecuteSearchWithProductNameCommand(object arg)
         {
-            throw new NotImplementedException();
+             return !string.IsNullOrWhiteSpace(ProductNameFilter); 
+        }
+
+        private async void OnSearchWithProductNameCommand(object obj)
+        {
+            await Navigation.PushAsync(new Views.ProductsSearchResutlV(ProductNameFilter));
+        }
+
+        private async void OnSearchWithCategoriesCommand()
+        {
+            int curCategoria = 0;
+            if (SelectedPrimoLivello.Key != 0) curCategoria = SelectedPrimoLivello.Key;
+            if (SelectedSecondoLivello.Key != 0) curCategoria = SelectedSecondoLivello.Key;
+            if (SelectedTerzoLivello.Key != 0) curCategoria = SelectedTerzoLivello.Key;
+            await Navigation.PushAsync(new Views.ProductsSearchResutlV(curCategoria));
         }
 
         private void OnLocalPropertyChanged(object sender, PropertyChangedEventArgs e)

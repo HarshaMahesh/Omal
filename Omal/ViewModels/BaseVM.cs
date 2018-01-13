@@ -12,7 +12,7 @@ namespace Omal.ViewModels
         }
 
         public Services.IOmalDataStore DataStore => DependencyService.Get<Services.IOmalDataStore>() ?? new Services.MockOmalDataStore();
-
+        public INavigation Navigation { get; set; }
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")

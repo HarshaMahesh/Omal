@@ -17,14 +17,16 @@
         </Grid.RowDefinitions>
             <StackLayout Margin="0,0,0,0" Grid.Row="0" Orientation="Vertical">
                <Label Style="{StaticResource Titolo}">Prodotti</Label>
-               <Entry Placeholder="Cerca Prodotto"></Entry>
-                <Button  Text="Cerca" HorizontalOptions="End" />
+                <Label Style="{StaticResource Descrizione}">Cerca il prodotto inserendo una parte del nome</Label>
+               <Entry Placeholder="Cerca Prodotto" Text="{Binding ProductNameFilter, Mode=TwoWay}"></Entry>
+                <Button Command="{Binding SearchWithProductNameCommand, Mode=TwoWay}"  Text="Cerca" HorizontalOptions="End" />
             </StackLayout>
             <StackLayout Margin="0,0,0,0" Grid.Row="1" Orientation="Vertical">
+                <Label Style="{StaticResource Descrizione}">Cerca il prodotto dichiarando una o pià categorie di appartenenza</Label>
                 <Picker HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPrimoLivello}" ItemsSource="{Binding PrimoLivello}"  />
                 <Picker HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedSecondoLivello}" ItemsSource="{Binding SecondoLivello}" />
                 <Picker HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedTerzoLivello}" ItemsSource="{Binding TerzoLivello}" />
-                <Button Text="Cerca"/>
+                <Button Text="Cerca" Command="{Binding SearchWithCategoriesCommand }"/>
             </StackLayout>
             <StackLayout Margin="0,0,0,0" Grid.Row="2" Orientation="Vertical">
                 <Label Style="{StaticResource Titolo}">Ordini</Label>

@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.ProductsSearchResutlV">
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Omal.Views.ProductsSearchResutlV">
     <ContentPage.ToolbarItems>
-            <ToolbarItem Text="LogIn" Clicked="Login_Clicked" />
-            <ToolbarItem Text="LogOut" Clicked="Login_Clicked" />
-        </ContentPage.ToolbarItems>
+            <ToolbarItem Text="LogIn"  />
+            <ToolbarItem Text="LogOut"  />
+    </ContentPage.ToolbarItems>
 	<ContentPage.Content>
-        <ListView x:Name="ElencoProdotti" GroupShortNameBinding="Nome">
+        <StackLayout Padding="20">
+            <Label Margin="20" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroProdotti}"  />
+            <ListView x:Name="ElencoProdotti" ItemsSource="{Binding Prodotti}">
             <ListView.ItemTemplate>
-                <ImageCell ImageSource="{Binding Immagine_PlaceHolder}" Text="{Binding Nome}" Detail="{Binding Tipologia}" />
+                <DataTemplate>
+                    <ImageCell  Text="{Binding Nome}" Detail="{Binding Tipologia}" >
+                    <ImageCell.ImageSource>
+                        <UriImageSource Uri="{Binding ImmaginePlaceHolder}"
+                            CacheValidity="1"
+                            CachingEnabled="true"/>
+                        </ImageCell.ImageSource>       
+                    </ImageCell>
+                </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+            </ListView>
+        </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

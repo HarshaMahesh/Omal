@@ -69,6 +69,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockCategorieDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\OmalDataStore .cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SearchVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\RelayCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -103,5 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Common\" />
   </ItemGroup>
 </Project>

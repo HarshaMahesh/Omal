@@ -20,7 +20,8 @@ namespace Omal.Services
             items = new List<Models.Prodotto>();
             var mockItems = new List<Models.Prodotto>
             {
-                new Models.Prodotto(){  IdProdotto=1, Nome = "Primo", NomeEn= "First", Descrizione="Descrizione Primo",  DescrizioneEn="First Description", Codice = "Uno", IdCategoria=3, Ordine = 0, Tipologia="Valvola", ImmaginePlaceHolder = "https://picsum.photos/50/50?image=0" , VisibileApp = true }
+                new Models.Prodotto(){  IdProdotto=1, Nome = "Primo", NomeEn= "First", Descrizione="Descrizione Primo",  DescrizioneEn="First Description", Codice = "Uno", IdCategoria=3, Ordine = 0, Tipologia="Valvola", ImmaginePlaceHolder = "https://picsum.photos/50/50?image=0" , VisibileApp = true },
+                new Models.Prodotto(){  IdProdotto=2, Nome = "Secondo Prodotto", NomeEn= "Second Product", Descrizione="Descrizione Secondo",  DescrizioneEn="Second Description", Codice = "Uno", IdCategoria=3, Ordine = 0, Tipologia="Valvola", ImmaginePlaceHolder = "https://picsum.photos/50/50?image=2" , VisibileApp = true }
             };
 
             foreach (var item in mockItems)

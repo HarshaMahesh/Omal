@@ -9,7 +9,6 @@ namespace Omal.Views
     {
         async void  Login_Clicked(object sender, System.EventArgs e)
         {
-            
             await Navigation.PushModalAsync(new Views.LoginV());
         }
 
@@ -19,6 +18,7 @@ namespace Omal.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new ViewModels.SearchVM();
+            viewModel.Navigation = Navigation;
 
         }
     }
