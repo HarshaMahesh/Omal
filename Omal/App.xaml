@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.App">
+	<Application.Resources>
+		<ResourceDictionary>
+			<Color x:Key="Primary">#2196F3</Color>
+			<Color x:Key="PrimaryDark">#1976D2</Color>
+			<Color x:Key="Accent">#96d1ff</Color>
+			<Color x:Key="LightBackgroundColor">#FAFAFA</Color>
+			<Color x:Key="DarkBackgroundColor">#C0C0C0</Color>
+			<Color x:Key="MediumGrayTextColor">#4d4d4d</Color>
+			<Color x:Key="LightTextColor">#999999</Color>
+			<Style TargetType="NavigationPage">
+				<Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
+				<Setter Property="BarTextColor" Value="White" />
+			</Style>
+            <Style x:Key="Titolo" TargetType="Label">
+                <Setter Property="TextColor" Value="Blue" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="Descrizione" TargetType="Label">
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="FontAttributes" Value="Italic" />
+                <Setter Property="FontSize" Value="13" /> 
+            </Style>
+            <Style  TargetType="Button">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="BorderRadius" Value="6" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="BackgroundColor" Value="Blue" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="HorizontalOptions" Value="End" />
+            </Style>
+		</ResourceDictionary>
+	</Application.Resources>
+</Application>

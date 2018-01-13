@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.SearchV">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Login" Clicked="Login_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        
+    </ContentPage.Resources>
+    
+	   <ContentPage.Content>
+        <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+            <StackLayout Margin="0,0,0,0" Grid.Row="0" Orientation="Vertical">
+               <Label Style="{StaticResource Titolo}">Prodotti</Label>
+               <Entry Placeholder="Cerca Prodotto"></Entry>
+                <Button  Text="Cerca" HorizontalOptions="End" />
+            </StackLayout>
+            <StackLayout Margin="0,0,0,0" Grid.Row="1" Orientation="Vertical">
+                <Picker HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPrimoLivello}" ItemsSource="{Binding PrimoLivello}"  />
+                <Picker HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedSecondoLivello}" ItemsSource="{Binding SecondoLivello}" />
+                <Picker HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedTerzoLivello}" ItemsSource="{Binding TerzoLivello}" />
+                <Button Text="Cerca"/>
+            </StackLayout>
+            <StackLayout Margin="0,0,0,0" Grid.Row="2" Orientation="Vertical">
+                <Label Style="{StaticResource Titolo}">Ordini</Label>
+                <Label Style="{StaticResource Descrizione}">Visualizza il riepilogo dettagliato dei tuoi ultimi ordini</Label>
+                <Button Text="Dettagli"  />
+            </StackLayout>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

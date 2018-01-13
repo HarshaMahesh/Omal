@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title="{Binding Title}" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.LoginV">
+    <ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>
+	<ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="20">
+        <Label Style="{StaticResource Descrizione}" Text="Effettua il login per accedere ad ordini disegni 3D e prezzi di ogni articolo">
+        </Label>
+            <Entry  Placeholder="Indirizzo Email" />
+            <Entry  Placeholder="Password" IsPassword="true" />
+            <Button HorizontalOptions="EndAndExpand" Text="Login" Clicked="Handle_Clicked" />
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>
