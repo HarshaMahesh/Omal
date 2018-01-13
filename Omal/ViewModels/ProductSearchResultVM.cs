@@ -57,7 +57,13 @@ namespace Omal.ViewModels
                 {
                     _prodotti = new ObservableCollection<Models.Prodotto>(DataStore.Prodotti.GetItemsAsync().Result);
                     if (!string.IsNullOrWhiteSpace(ProductFilter))
-                        _prodotti = new ObservableCollection<Models.Prodotto>(_prodotti.Where(x => x.Nome.Contains(ProductFilter)));
+                    {
+                        if (App.CurLang == "IT")
+                            _prodotti = new ObservableCollection<Models.Prodotto>(_prodotti.Where(x => x.Nome.Contains(ProductFilter)));
+                        else
+                            _prodotti = new ObservableCollection<Models.Prodotto>(_prodotti.Where(x => x.NomeEn.Contains(ProductFilter)));
+
+                    }
                     else
                         if (IdCategoria.HasValue)
                     {

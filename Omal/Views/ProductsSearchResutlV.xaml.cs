@@ -14,6 +14,7 @@ namespace Omal.Views
             InitializeComponent();
             BindingContext = viewModel = new ViewModels.ProductSearchResultVM();
             viewModel.Navigation = Navigation;
+            viewModel.CurPage = this;
         }
 
         public ProductsSearchResutlV(int idCategoria):this()

@@ -7,14 +7,14 @@ namespace Omal.Views
 {
     public partial class LoginV : ContentPage
     {
-        void Handle_Clicked(object sender, System.EventArgs e)
-        {
-            Navigation.PopModalAsync();
-        }
+
+        ViewModels.LoginVM viewModel;
 
         public LoginV()
         {
             InitializeComponent();
+            BindingContext = viewModel = new ViewModels.LoginVM();
+            viewModel.Navigation = Navigation;
         }
     }
 }

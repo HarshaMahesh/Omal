@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-
-using Newtonsoft.Json;
 using Omal.Models;
-using Plugin.Connectivity;
 
 namespace Omal.Services
 {
-    public class MockUtentiDataStore : IDataStore<Models.Utente>
+    public class MockUtentiDataStore : IUtentiDataStore
     {
         List<Models.Utente> items;
 
@@ -64,6 +59,9 @@ namespace Omal.Services
             return await Task.FromResult(items);
         }
 
-
+        public Utente Login(string email, string password)
+        {
+            return GetItemsAsync().Result.FirstOrDefault(x => string.Equals(x.Email, email, StringComparison.InvariantCultureIgnoreCase) && string.Equals(x.Password, password));
+        }
     }
 }

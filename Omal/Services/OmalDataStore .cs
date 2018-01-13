@@ -15,6 +15,6 @@ namespace Omal.Services
         public IDataStore<ProdottoGruppiMetadati> ProdottoGruppiMetadati { get;  set; }
         public IDataStore<ProdottoMetadati> ProdottoMetadati { get;  set; }
         public IDataStore<Cliente> Clienti { get;  set; }
-        public IDataStore<Utente> Utenti { get; set; }
+        public IUtentiDataStore Utenti { get; set; }
     }
 }

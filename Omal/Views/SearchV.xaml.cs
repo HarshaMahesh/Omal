@@ -19,6 +19,7 @@ namespace Omal.Views
             InitializeComponent();
             BindingContext = viewModel = new ViewModels.SearchVM();
             viewModel.Navigation = Navigation;
+            viewModel.CurPage = this;
 
         }
     }

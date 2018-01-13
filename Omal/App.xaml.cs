@@ -9,6 +9,7 @@ namespace Omal
         public static bool UseMockDataStore = true;
         public static string BackendUrl = "https://localhost:5000";
         public static string CurLang = "";
+        public static Models.Utente CurUser = null;
 
         public App()
         {

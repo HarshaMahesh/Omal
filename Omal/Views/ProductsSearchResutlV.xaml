@@ -4,8 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="Omal.Views.ProductsSearchResutlV">
     <ContentPage.ToolbarItems>
-            <ToolbarItem Text="LogIn"  />
-            <ToolbarItem Text="LogOut"  />
+            <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
         <StackLayout Padding="20">

@@ -4,11 +4,15 @@
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
         <StackLayout Orientation="Vertical" Padding="20">
-        <Label Style="{StaticResource Descrizione}" Text="Effettua il login per accedere ad ordini disegni 3D e prezzi di ogni articolo">
+        <Label Style="{StaticResource Descrizione}"  Text="Effettua il login per accedere ad ordini disegni 3D e prezzi di ogni articolo">
         </Label>
-            <Entry  Placeholder="Indirizzo Email" />
-            <Entry  Placeholder="Password" IsPassword="true" />
-            <Button HorizontalOptions="EndAndExpand" Text="Login" Clicked="Handle_Clicked" />
+            <Entry  Placeholder="Indirizzo Email" Text="{Binding Email}" />
+            <Entry  Placeholder="Password" IsPassword="true" Text="{Binding Password}" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                <Button  Text="Login" Command="{Binding LoginCommand}" />
+                <Button  Text="Back" Command="{Binding CanceLoginCommand}" />
+            </StackLayout>
+
         </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

@@ -8,7 +8,7 @@ namespace Omal.Services
         Omal.IDataStore<Models.ProdottoGruppiMetadati> ProdottoGruppiMetadati { get; set; }
         Omal.IDataStore<Models.ProdottoMetadati> ProdottoMetadati { get; set; }
         Omal.IDataStore<Models.Cliente> Clienti { get; set; }
-        Omal.IDataStore<Models.Utente> Utenti { get; set; }
+        Omal.IUtentiDataStore Utenti { get; set; }
 
     }
 }
