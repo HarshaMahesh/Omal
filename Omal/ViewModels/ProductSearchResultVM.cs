@@ -7,6 +7,25 @@ namespace Omal.ViewModels
 {
     public class ProductSearchResultVM: BaseVM
     {
+        public string CurTitle { get { return "Prodotti"; } }
+
+
+        Models.Prodotto _SelectedProduct = null;
+        public Models.Prodotto SelectedProduct
+        {
+            get
+            {
+                return _SelectedProduct;
+            }
+            set
+            {
+                if (value != null)
+                { 
+                    CurPage.Navigation.PushAsync(new Views.SearchProductV(value));
+                }
+            }
+        }
+
         public ProductSearchResultVM()
         {
         }

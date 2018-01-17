@@ -10,6 +10,8 @@ namespace Omal.Services
             Prodotti = new MockProdottiDataStore();
             Categorie = new MockCategorieDataStore();
             Utenti = new MockUtentiDataStore();
+            ProdottoGruppiMetadati = new MockProdottoGruppiMetadatiDataStore();
+            ProdottoMetadati = new MockProdottoMetadatiDataStore();
         }
 
         public IDataStore<Prodotto> Prodotti{ get;  set; }

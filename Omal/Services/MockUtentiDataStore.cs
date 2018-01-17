@@ -15,7 +15,9 @@ namespace Omal.Services
             items = new List<Models.Utente>();
             var mockItems = new List<Models.Utente>
             {
-                new Models.Utente(){   Cognome= "Cavedaghi", Email="luca.cavedaghi@cualeva.com", IdUtente=1, Nome="Luca", Password="Luca" }
+                new Models.Utente(){   Cognome= "Cavedaghi", Email="luca.cavedaghi@cualeva.com", IdUtente=1, Nome="Luca", Password="Luca" },
+                new Models.Utente(){ Cognome="Cattozzo", Nome="Elio", Email="elio.cattozzo@docsmarshal.com", IdUtente=2, Password="elio" },
+
             };
 
             foreach (var item in mockItems)

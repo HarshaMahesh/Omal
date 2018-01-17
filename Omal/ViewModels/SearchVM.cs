@@ -3,8 +3,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows.Input;
-using Xamarin.Forms;
 using Omal.Common;
 
 namespace Omal.ViewModels
@@ -14,6 +12,8 @@ namespace Omal.ViewModels
 
         public RelayCommand SearchWithCategoriesCommand{get;set;}
         public RelayCommand SearchWithProductNameCommand { get; set; }
+
+        public string CurTitle { get { return "Search"; }}
 
         string productNameFilter;
         public string ProductNameFilter

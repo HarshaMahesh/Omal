@@ -73,6 +73,18 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IUtentiDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\LoginOrLogoutActionMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\BindableToolbarItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SearchProductV.xaml.cs">
+      <DependentUpon>SearchProductV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SearchProductVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\InfoProductVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\MockProdottoGruppiMetadatiDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\MockProdottoMetadatiDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\GruppoMetadatiProdottoDetailV.xaml.cs">
+      <DependentUpon>GruppoMetadatiProdottoDetailV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\GruppoMetadatiProdottoDetailVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -101,6 +113,14 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ProductsSearchResutlV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SearchProductV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\GruppoMetadatiProdottoDetailV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

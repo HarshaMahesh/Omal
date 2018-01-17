@@ -8,8 +8,16 @@ namespace Omal.ViewModels
 {
     public class BaseVM: INotifyPropertyChanged
     {
+        public virtual string LoggedUserName {
+            get
+            {
+                if (App.CurUser == null) return string.Empty;
+                return App.CurUser.Nome;
+            }
+        }
 
         public RelayCommand LoginOrLogoutCommand { get; set; }
+
         public Page CurPage { get; set; }
 
         public BaseVM()
@@ -19,6 +27,7 @@ namespace Omal.ViewModels
             {
                 LoginOrLogoutCommand.ChangeCanExecute();
                 OnPropertyChanged("LoginOrLogOutActionText");
+                OnPropertyChanged("LoggedUserName");
             });
         }
 
@@ -35,14 +44,13 @@ namespace Omal.ViewModels
                 await Navigation.PushModalAsync(new Views.LoginV());
             } else
             {
-                string action=""; 
+                bool action; 
                 if (CurPage != null) 
                 {
-                    action = await CurPage.DisplayActionSheet("Confermi il logout?", "No", "Si", "Login con altro utente");
-                    if (action == "No") return;
+                    action = await CurPage. DisplayAlert("LogOut","Confermi il logout?", "Si", "No");
+                    if (!action) return;
                 }
                 App.CurUser = null;
-                if (action == "Login con altro utente") OnLoginOrLogoutCommand(obj);
                 MessagingCenter.Send(new Models.Messages.LoginOrLogoutActionMessage(), "LoginOrLogout");
             }
                 

@@ -23,7 +23,7 @@ namespace Omal
             if (Device.RuntimePlatform == Device.iOS)
                 MainPage = new Views.WelcomeV();
             else
-                MainPage = new NavigationPage(new Views.WelcomeV());
+                MainPage = new Views.WelcomeV();
         }
     }
 }

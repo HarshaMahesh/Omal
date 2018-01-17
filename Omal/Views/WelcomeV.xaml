@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.WelcomeV">
 	<ContentPage.Content>
-        <Grid>
+        <Grid VerticalOptions="EndAndExpand">
         <Grid.RowDefinitions>
-            <RowDefinition Height="400" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-            <Image HorizontalOptions="Center" WidthRequest="90" HeightRequest="90" VerticalOptions="Center" BackgroundColor="Black" Source="" Grid.Row="0" />
+            <Image VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="90" HeightRequest="90" BackgroundColor="Black" Source="" Grid.Row="0" />
             <StackLayout Grid.Row="1" Orientation="Vertical">
             <Button  Text="Versione Italiana" HorizontalOptions="Fill" Clicked="Handle_Clicked_IT"></Button>
             <Button HorizontalOptions="Fill" Text="English version" Clicked="Handle_Clicked_EN">English Version</Button>

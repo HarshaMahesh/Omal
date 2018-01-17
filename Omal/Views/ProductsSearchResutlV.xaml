@@ -2,17 +2,17 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="Omal.Views.ProductsSearchResutlV">
+    x:Class="Omal.Views.ProductsSearchResutlV" Title="{Binding CurTitle}">
     <ContentPage.ToolbarItems>
             <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
         <StackLayout Padding="20">
             <Label Margin="20" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroProdotti}"  />
-            <ListView x:Name="ElencoProdotti" ItemsSource="{Binding Prodotti}">
-            <ListView.ItemTemplate>
+            <ListView SelectedItem="{Binding SelectedProduct}" x:Name="ElencoProdotti" ItemsSource="{Binding Prodotti}">
+           <ListView.ItemTemplate> 
                 <DataTemplate>
-                    <ImageCell  Text="{Binding Nome}" Detail="{Binding Tipologia}" >
+                    <ImageCell  Detail="{Binding Nome}" Text="{Binding Tipologia}" >
                     <ImageCell.ImageSource>
                         <UriImageSource Uri="{Binding ImmaginePlaceHolder}"
                             CacheValidity="1"

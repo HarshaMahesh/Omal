@@ -7,17 +7,29 @@ namespace Omal.Views
 {
     public partial class WelcomeV : ContentPage
     {
-        async void Handle_Clicked_EN(object sender, System.EventArgs e)
+        void Handle_Clicked_EN(object sender, System.EventArgs e)
         {
             App.CurLang = "EN";
-            await Navigation.PushModalAsync(new MainPage());
+            GoToMainPage();
         }
 
-        async void Handle_Clicked_IT(object sender, System.EventArgs e)
+        async void GoToMainPage()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                await Navigation.PushModalAsync(new MainPage());
+            }
+            else
+            {
+                await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
+            }
+
+        }
+
+        void Handle_Clicked_IT(object sender, System.EventArgs e)
         {
             App.CurLang = "IT";
-            await Navigation.PushModalAsync(new MainPage());
-
+            GoToMainPage();
         }
 
         public WelcomeV()
