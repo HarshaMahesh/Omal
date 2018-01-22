@@ -10,7 +10,16 @@
                     <Image Source="{Binding CurProdotto.ImmaginePlaceHolder}" />
                     <Button Text="Info" Command="{Binding GoToDetailCommand}" />                
             </StackLayout>
-            <Label HorizontalTextAlignment="Center" Style="{StaticResource Titolo}" Text="Trova Articolo" />
+            <Label Margin="0,40,0,0" HorizontalTextAlignment="Center" Style="{StaticResource Titolo}" Text="Trova Articolo" />
+            <Label Text="{Binding DescrizionePicker1}" Style="{StaticResource Descrizione}" />
+            <Picker HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPrimoPicker}" ItemsSource="{Binding Picker1}"  />
+            <Label Text="{Binding DescrizionePicker2}" Style="{StaticResource Descrizione}" />
+            <Picker HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedSecondoPicker}" ItemsSource="{Binding Picker2}"  />
+            <Label Text="{Binding DescrizionePicker3}" Style="{StaticResource Descrizione}" />
+            <Picker HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedTerzoPicker}" ItemsSource="{Binding Picker3}"  />
+            <Label IsVisible="{Binding ProdottoIsValvola}" Text="{Binding DescrizionePicker4}" Style="{StaticResource Descrizione}" />
+            <Picker IsVisible="{Binding ProdottoIsValvola}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedQuartoPicker}" ItemsSource="{Binding Picker4}"  />
+            <Button Text="Trova" Command="{Binding ConfirmProdottoArticoloCommand}" />                
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

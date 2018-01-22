@@ -13,6 +13,8 @@ namespace Omal.Services
             ProdottoGruppiMetadati = new MockProdottoGruppiMetadatiDataStore();
             ProdottoMetadati = new MockProdottoMetadatiDataStore();
             Clienti = new MockClientiDataStore();
+            Valvole = new MockValvoleDataStore();
+            Attuatori = new MockAttuatoriDataStore();
         }
 
         public IDataStore<Prodotto> Prodotti{ get;  set; }
@@ -20,6 +22,8 @@ namespace Omal.Services
         public IDataStore<ProdottoGruppiMetadati> ProdottoGruppiMetadati { get;  set; }
         public IDataStore<ProdottoMetadati> ProdottoMetadati { get;  set; }
         public IDataStore<Cliente> Clienti { get;  set; }
+        public IDataStore<Valvola> Valvole { get; set; }
+        public IDataStore<Attuatore> Attuatori { get; set; }
         public IUtentiDataStore Utenti { get; set; }
     }
 }
