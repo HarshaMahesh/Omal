@@ -8,7 +8,6 @@
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
         <StackLayout Padding="20">
-            <Label Margin="20" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroProdotti}"  />
             <ListView SelectedItem="{Binding SelectedProduct}" x:Name="ElencoProdotti" ItemsSource="{Binding Prodotti}">
            <ListView.ItemTemplate> 
                 <DataTemplate>
@@ -21,6 +20,9 @@
                     </ImageCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+                <ListView.Footer>
+                <Label Margin="20" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroProdotti}"  />
+                </ListView.Footer>
             </ListView>
         </StackLayout>
 	</ContentPage.Content>
