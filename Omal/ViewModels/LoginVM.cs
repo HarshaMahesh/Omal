@@ -12,6 +12,8 @@ namespace Omal.ViewModels
         public string Email { 
             get
             {
+                if (string.IsNullOrWhiteSpace(email) && Application.Current.Properties.ContainsKey("Email"))
+                    email = Application.Current.Properties["Email"].ToString();
                 return email;
             }
             set
@@ -64,6 +66,7 @@ namespace Omal.ViewModels
             else
             {
                 App.CurUser = utente;
+                Application.Current.Properties["Email"] = Email;
                 MessagingCenter.Send(new Models.Messages.LoginOrLogoutActionMessage(), "LoginOrLogout");
                 await Navigation.PopModalAsync();
             }

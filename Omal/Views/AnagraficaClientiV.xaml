@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:Common="clr-namespace:Omal.Common"
+    x:Class="Omal.Views.AnagraficaClientiV">
+    <ContentPage.ToolbarItems>
+        <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
+        <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn}" Text="+" Command="{Binding AddNewCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical"> 
+            <Label IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Margin="10" HorizontalTextAlignment="Center" Style="{StaticResource Descrizione}" Text="Per utilizzare questa funzionalità è necessario effettuare login." />
+            <SearchBar Placeholder="Cerca..." Text="{Binding SearchText}"  IsVisible="{Binding IsLoggedIn}" />
+            <ListView  SelectedItem="{Binding ClienteSelected}" IsVisible="{Binding IsLoggedIn}" IsGroupingEnabled="true" ItemsSource="{Binding Clienti}" GroupShortNameBinding="{Binding TitoloCorto}" GroupDisplayBinding="{Binding Titolo}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding RagioneSociale}" Detail="{Binding CittaProvinciaNazione}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <Label Margin="10" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroContatti}"  />
+                </ListView.Footer>
+            </ListView>
+
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>

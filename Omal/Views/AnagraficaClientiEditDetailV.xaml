@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title="{Binding CurTitle}" xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Common="clr-namespace:Omal.Common"
+    x:Class="Omal.Views.AnagraficaClientiEditDetailV">
+    <ContentPage.ToolbarItems>
+        <Common:BindableToolbarItem IsVisible="{Binding IsInsert}" Text="Inserisci" Command="{Binding InsertCommand}" />
+        <Common:BindableToolbarItem IsVisible="{Binding IsInsert, Converter={StaticResource InverseBooleanConverter}}}" Text="Aggiorna" Command="{Binding EditCommand}" />
+    </ContentPage.ToolbarItems>
+	<ContentPage.Content>
+        <TableView BindingContext="{Binding CurCliente}">
+            <TableView.Root>
+                <TableSection>
+                    <EntryCell Label="Ragione Sociale" Text="{Binding RagioneSociale}" Placeholder="es: Cualeva Srl"  />
+                    <EntryCell Label="P.Iva" Text="{Binding PIva}" Placeholder="es: 03793970983" />
+                    <EntryCell Label="C.Fiscale" Text="{Binding CFiscale}" Placeholder="es: 03793970983" />
+                </TableSection>
+                <TableSection Title="Posizione">
+                    <EntryCell Label="Indirizzo" Text="{Binding Indirizzo}" Placeholder="es: P.zza Vittorio Emanuele II"/>
+                    <EntryCell Label="Città" Text="{Binding Città}" Placeholder="es: Salò"/>
+                    <EntryCell Label="Cap" Text="{Binding Cap}" Placeholder="es: 2587"/>
+                    <EntryCell Label="Provincia" Text="{Binding Provincia}" Placeholder="es: Brescia"/>
+                    <EntryCell Label="Nazione" Text="{Binding Nazione}" Placeholder="es: Italia"/>
+                </TableSection>
+                <TableSection Title="Contatti">
+                    <EntryCell Label="Email" Text="{Binding Email}" Placeholder="es: info@cualeva.com"/>
+                    <EntryCell Label="Telefono" Text="{Binding Telefono}" Placeholder="es: +39 0365 189 6342"/>
+                    <EntryCell Label="Fax" Text="{Binding Fax}" Placeholder="es: +39 0365 189 634"/>
+                </TableSection>
+            </TableView.Root>
+        </TableView>
+	</ContentPage.Content>
+</ContentPage>

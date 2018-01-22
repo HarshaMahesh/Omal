@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.App">
+<Application
+    xmlns:Converters="clr-namespace:Omal.Converters"
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.App">
 	<Application.Resources>
 		<ResourceDictionary>
 			<Color x:Key="Primary">#2196F3</Color>
@@ -25,12 +27,13 @@
             <Style  TargetType="Button">
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="WidthRequest" Value="100" />
-                <Setter Property="BorderRadius" Value="6" />
+                <Setter Property="BorderRadius" Value="5" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="BackgroundColor" Value="Blue" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
                 <Setter Property="Margin" Value="5" />
                 <Setter Property="HorizontalOptions" Value="End" />
             </Style>
+            <Converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

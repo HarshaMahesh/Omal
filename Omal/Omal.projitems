@@ -85,6 +85,27 @@
       <DependentUpon>GruppoMetadatiProdottoDetailV.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\GruppoMetadatiProdottoDetailVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AnagraficheV.xaml.cs">
+      <DependentUpon>AnagraficheV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AnagraficheVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AnagraficaClientiV.xaml.cs">
+      <DependentUpon>AnagraficaClientiV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AnagraficaClientiVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\MockClientiDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GruppoClienti.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\InverseBooleanConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AnagraficaClientiDetailVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AnagraficaClientiDetailV.xaml.cs">
+      <DependentUpon>AnagraficaClientiDetailV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AnagraficaClientiEditDetailV.cs">
+      <DependentUpon>AnagraficaClientiEditDetailV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AnagraficaClientiEditDetailVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\ClienteInsertedOrUpdatedMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Base.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -124,10 +145,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AnagraficheV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AnagraficaClientiV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AnagraficaClientiDetailV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AnagraficaClientiEditDetailV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
     <Folder Include="$(MSBuildThisFileDirectory)Common\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\Messages\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
   </ItemGroup>
 </Project>

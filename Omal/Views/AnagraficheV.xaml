@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title="{Binding CurTitle}" 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Common="clr-namespace:Omal.Common"
+    x:Class="Omal.Views.AnagraficheV"
+    >
+    <ContentPage.ToolbarItems>
+      <Common:BindableToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Button HorizontalOptions="Fill" Text="Clienti" Command="{Binding GoToAnagraficaClientiCommand}" />
+            <Button HorizontalOptions="Fill" Text="Ordini" Command="{Binding GoToAnagraficaOrdiniCommand}" />
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>

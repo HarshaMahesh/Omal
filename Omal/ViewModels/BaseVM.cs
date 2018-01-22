@@ -16,6 +16,14 @@ namespace Omal.ViewModels
             }
         }
 
+        public bool IsLoggedIn
+        {
+            get
+            {
+                return App.CurUser != null;
+            }
+        }
+
         public RelayCommand LoginOrLogoutCommand { get; set; }
 
         public Page CurPage { get; set; }
@@ -28,6 +36,7 @@ namespace Omal.ViewModels
                 LoginOrLogoutCommand.ChangeCanExecute();
                 OnPropertyChanged("LoginOrLogOutActionText");
                 OnPropertyChanged("LoggedUserName");
+                OnPropertyChanged("IsLoggedIn");
             });
         }
 

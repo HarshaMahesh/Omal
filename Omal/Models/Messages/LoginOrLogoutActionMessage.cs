@@ -1,10 +1,12 @@
 ﻿using System;
 namespace Omal.Models.Messages
 {
-    public class LoginOrLogoutActionMessage
+    public class ClienteInsertedOrUpdatedMessage
     {
-        public LoginOrLogoutActionMessage()
+        public ClienteInsertedOrUpdatedMessage()
         {
         }
+
+        public Models.Cliente Cliente { get; set; }
     }
 }
