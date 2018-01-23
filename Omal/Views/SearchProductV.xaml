@@ -4,6 +4,7 @@
         <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Orientation="Vertical">
             <Label Style="{StaticResource Titolo}" Text="{Binding CurProdotto.Nome}" />
             <StackLayout HorizontalOptions="Center" Orientation="Horizontal" VerticalOptions="Center" >
@@ -22,9 +23,10 @@
             <Picker IsVisible="{Binding Picker4IsVisible}"  HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPicker4}" ItemsSource="{Binding Picker4}"  />
             <StackLayout HorizontalOptions="EndAndExpand"  Orientation="Horizontal">
                 <Button IsVisible="{Binding Picker2IsVisible}" Text="Pulisci" Command="{Binding PulisciCommand}" />                
-                    <Button Text="Trova" Command="{Binding ConfirmProdottoArticoloCommand}" />                
+                    <Button Text="Trova" Command="{Binding CercaArticoliCommand}" />                
             </StackLayout>
             </StackLayout> 
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

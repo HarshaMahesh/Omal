@@ -26,7 +26,7 @@ namespace Omal
                 default:
                     SearchPage = new NavigationPage(new Views.SearchV()) { Title = "Cerca" };
                     AnagrafichePage = new NavigationPage(new Views.AnagraficheV()) { Title = "Anagrafiche" };
-                    BasketPage = new Views.BasketV() { Title = "Carrello" };
+                    BasketPage = new NavigationPage(new Views.BasketV()) { Title = "Carrello" };
               //    InfoProductPage = new Views.InfoProductV() { Title = "Informazioni Prodotto" };
                     break;
             }

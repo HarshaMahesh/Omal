@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.BasketV">
-	<ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ListView RowHeight="100"  IsVisible="{Binding IsLoggedIn}" ItemsSource="{Binding Items}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                 <ViewCell>
+                    <StackLayout Margin="10" Orientation="Vertical" >
+                        <Label Grid.Row="0" Text="{Binding DescrizioneCarrello_It}" Style="{StaticResource Descrizione}" />
+                        <StackLayout HorizontalOptions="Fill" Grid.Row="1" Orientation="Horizontal">
+                            <Label  VerticalOptions="Center" Text="{Binding PrezzoUnitario, StringFormat='€ {0:F}'}" FontAttributes="Bold" />
+                            <Entry VerticalOptions="Center" Placeholder="%" Text="{Binding Sconto}" MinimumWidthRequest="100" />
+                            <Entry VerticalOptions="Center" Text="{Binding Qta}" MinimumWidthRequest="100" />
+                            <Button HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text="X" Command="{Binding RemoveFromBasketCommand}" CommandParameter="{Binding IdArticolo}" />
+                        </StackLayout>
+                    </StackLayout>
+            </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        <ListView.Footer>
+            <Label Margin="10" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroCarrelli}"  />
+        </ListView.Footer>
+            </ListView>
 	</ContentPage.Content>
 </ContentPage>

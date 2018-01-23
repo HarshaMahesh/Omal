@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Omal.Models
 {
-    public class Carrello
+    public class Carrello: Base
     {
         public int IdOrdine {   get;set;    }
         public int IdCarrello { get; set; }
@@ -10,7 +10,19 @@ namespace Omal.Models
         public string CodiceArticolo { get; set; }
         public string DescrizioneCarrello_It { get; set; }
         public string DescrizioneCarrello_En { get; set; }
-        public decimal PrezzoUnitario { get; set; }
-        public int Qta { get; set; }
+        public double PrezzoUnitario { get; set; }
+        int qta;
+        public int Qta {
+            get
+            { return qta; }
+            set
+            {
+                if (qta != value)
+                {
+                    qta = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
     }
 }

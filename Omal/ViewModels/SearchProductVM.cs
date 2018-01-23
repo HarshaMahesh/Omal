@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -11,7 +12,9 @@ namespace Omal.ViewModels
     public class SearchProductVM:ViewModels.BaseVM
     {
         public ICommand GoToDetailCommand { get; set; }
+        public ICommand CercaArticoliCommand { get; set; }
         public ICommand PulisciCommand { get; set; }
+
 
 
         public string CurTitle
@@ -128,7 +131,18 @@ namespace Omal.ViewModels
         {
             GoToDetailCommand = new Command(OnGoToDetailCommand);
             PulisciCommand = new Command(OnPulisciCommand);
+            CercaArticoliCommand = new Command(OnCercaArticoliCommand);
             PropertyChanged += MyPropertyChanged;
+        }
+
+        private void OnCercaArticoliCommand(object obj)
+        {
+            IEnumerable<Models.Base> vettore;
+            if (ProdottoIsValvola)
+                vettore = ApplicaFiltroValvole(0);
+            else
+                vettore = ApplicaFiltroAttuatori();
+            CurPage.Navigation.PushAsync(new Views.ArticoliSearchResultV(CurProdotto, ProdottoIsValvola, vettore));
         }
 
         private void OnPulisciCommand(object obj)

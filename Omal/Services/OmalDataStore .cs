@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Omal.Models;
 
 namespace Omal.Services
@@ -18,5 +19,7 @@ namespace Omal.Services
         public IUtentiDataStore Utenti { get; set; }
         public IDataStore<Valvola> Valvole { get; set; }
         public IDataStore<Attuatore> Attuatori { get; set; }
+        public IDataStore<Ordine> Ordini { get; set; }
+        public List<Carrello> Carrello { get; set; }
     }
 }

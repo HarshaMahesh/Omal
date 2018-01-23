@@ -110,6 +110,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Attuatore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockValvoleDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockAttuatoriDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ArticoliSearchResultV.xaml.cs">
+      <DependentUpon>ArticoliSearchResultV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ArticoliSearchResultVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\OrdersEditV.xaml.cs">
+      <DependentUpon>OrdersEditV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\OrdersEditVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\MockOrdiniDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BasketVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\BasketEditedMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -162,6 +173,14 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AnagraficaClientiEditDetailV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ArticoliSearchResultV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\OrdersEditV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

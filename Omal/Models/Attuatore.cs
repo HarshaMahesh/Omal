@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Omal.Models
 {
-    public class Attuatore
+    public class Attuatore:Base
     {
         public Attuatore()
         {

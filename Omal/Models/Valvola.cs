@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Omal.Models
 {
-    public class Valvola
+    public class Valvola:Base
     {
         public Valvola()
         {

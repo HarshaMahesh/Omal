@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Omal.Models;
 
 namespace Omal.Services
@@ -15,6 +16,8 @@ namespace Omal.Services
             Clienti = new MockClientiDataStore();
             Valvole = new MockValvoleDataStore();
             Attuatori = new MockAttuatoriDataStore();
+            Ordini = new MockOrdiniDataStore();
+            Carrello = new List<Models.Carrello>();
         }
 
         public IDataStore<Prodotto> Prodotti{ get;  set; }
@@ -25,5 +28,7 @@ namespace Omal.Services
         public IDataStore<Valvola> Valvole { get; set; }
         public IDataStore<Attuatore> Attuatori { get; set; }
         public IUtentiDataStore Utenti { get; set; }
+        public IDataStore<Ordine> Ordini { get; set; }
+        public List<Carrello> Carrello { get; set; }
     }
 }
