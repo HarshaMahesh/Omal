@@ -10,7 +10,7 @@ namespace Omal
         public static string BackendUrl = "https://localhost:5000";
         public static string CurLang = "";
         public static Models.Utente CurUser = null;
-        public static Models.Ordine CurOrdine = null;
+        public static Models.Ordine CurOrdine = new Models.Ordine();
 
         public App()
         {

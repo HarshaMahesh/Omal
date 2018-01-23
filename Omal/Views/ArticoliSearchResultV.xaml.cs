@@ -10,7 +10,10 @@ namespace Omal.Views
         void Handle_Navigating(object sender, Xamarin.Forms.WebNavigatingEventArgs e)
         {
             viewModel.Navigating(e.Url);
-            e.Cancel = true;
+            if (Device.RuntimePlatform != Device.iOS)
+            {
+                e.Cancel = true;
+            }
         }
 
 

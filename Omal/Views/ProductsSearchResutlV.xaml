@@ -7,8 +7,8 @@
             <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
-        <StackLayout Padding="20">
-            <ListView SelectedItem="{Binding SelectedProduct}" x:Name="ElencoProdotti" ItemsSource="{Binding Prodotti}">
+        <StackLayout Padding="10">
+           <ListView SelectedItem="{Binding SelectedProduct}" x:Name="ElencoProdotti" ItemsSource="{Binding Prodotti}">
            <ListView.ItemTemplate> 
                 <DataTemplate>
                     <ImageCell  Detail="{Binding Nome}" Text="{Binding Tipologia}" >

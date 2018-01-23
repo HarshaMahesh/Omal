@@ -4,25 +4,57 @@
         <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ListView RowHeight="100"  IsVisible="{Binding IsLoggedIn}" ItemsSource="{Binding Items}">
+        <ScrollView>
+        <StackLayout Orientation="Vertical" Margin="10">
+        <Label Style="{StaticResource Titolo}" Text="Ordine" />    
+        <Label Style="{StaticResource Descrizione}" Text="Cliente" />    
+        <Picker HorizontalOptions="Fill" ItemDisplayBinding="{Binding RagioneSociale}" SelectedItem="{Binding SelecedCliente}" ItemsSource="{Binding Clienti}"  />
+                <Label Style="{StaticResource Descrizione}" Text="Note" />    
+        <Entry Text="{Binding NoteOrdine}" />
+         <StackLayout Orientation="Horizontal" >
+            <Label VerticalOptions="Center" Style="{StaticResource Descrizione}" Text="Totale Ordine" />    
+            <Label VerticalOptions="Center" Text="{Binding TotaleOrdine, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" FontAttributes="Bold" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button  Text="Salva" Command="{Binding SalvaCommand}" /> <Button Text="Invia" Command="{Binding InviaCommand}" /><Button  Text="Annulla" Command="{Binding AnnullaCommand}" />
+        </StackLayout>
+        <Label Style="{StaticResource Titolo}" Text="Dettaglio" />    
+                    
+        <ListView RowHeight="140"  IsVisible="{Binding IsLoggedIn}" ItemsSource="{Binding Items}">
         <ListView.ItemTemplate>
             <DataTemplate>
                  <ViewCell>
-                    <StackLayout Margin="10" Orientation="Vertical" >
-                        <Label Grid.Row="0" Text="{Binding DescrizioneCarrello_It}" Style="{StaticResource Descrizione}" />
-                        <StackLayout HorizontalOptions="Fill" Grid.Row="1" Orientation="Horizontal">
-                            <Label  VerticalOptions="Center" Text="{Binding PrezzoUnitario, StringFormat='€ {0:F}'}" FontAttributes="Bold" />
-                            <Entry VerticalOptions="Center" Placeholder="%" Text="{Binding Sconto}" MinimumWidthRequest="100" />
-                            <Entry VerticalOptions="Center" Text="{Binding Qta}" MinimumWidthRequest="100" />
-                            <Button HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text="X" Command="{Binding RemoveFromBasketCommand}" CommandParameter="{Binding IdArticolo}" />
-                        </StackLayout>
-                    </StackLayout>
-            </ViewCell>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />    
+                            <ColumnDefinition />    
+                            <ColumnDefinition />    
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding DescrizioneCarrello_It}" Style="{StaticResource Descrizione}" />
+                        <Label Grid.Row="1" Grid.Column="0"  VerticalOptions="Center" HorizontalOptions="Center" Text="Prezzo" FontAttributes="Bold" />
+                        <Label Grid.Row="2" Grid.Column="0"  VerticalOptions="Center" Text="{Binding PrezzoUnitario, StringFormat='€ {0:F}'}" FontAttributes="Bold" />
+                        <Label Grid.Row="1" Grid.Column="1"  VerticalOptions="Center" HorizontalOptions="Center" Text="Sconto" FontAttributes="Bold" />
+                        <Entry Keyboard="Numeric" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" Placeholder="%" Text="{Binding Sconto}" MinimumWidthRequest="100" />
+                        <Label  Grid.Row="1" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" Text="Qta" FontAttributes="Bold" />
+                        <Entry Keyboard="Numeric"  Grid.Row="2" Grid.Column="2" VerticalOptions="Center" Text="{Binding Qta}" MinimumWidthRequest="100" />
+                        <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text="{Binding PrezzoTotale, StringFormat='Totale € {0:F}'}" FontAttributes="Bold" />
+                    </Grid>
+                </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
         <ListView.Footer>
             <Label Margin="10" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroCarrelli}"  />
         </ListView.Footer>
             </ListView>
+         
+
+        </StackLayout>
+            </ScrollView>
 	</ContentPage.Content>
 </ContentPage>

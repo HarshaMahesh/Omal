@@ -31,7 +31,11 @@ namespace Omal.ViewModels
                     var idcodicevalvola = parametri["idcodicevalvola"].ToString();
                     var valvola = ((IEnumerable<Models.Valvola>)Articoli).FirstOrDefault(x=>x.IdCodiceValvola == Convert.ToInt32(idcodicevalvola));
                     if (valvola == null) throw new KeyNotFoundException("IdCodiceValvola non trovato");
-                    DataStore.Carrello.Add(new Models.Carrello() { CodiceArticolo = valvola.Codice_Articolo, DescrizioneCarrello_En = curProdotto.DescrizioneEn, DescrizioneCarrello_It = curProdotto.Descrizione, IdArticolo = valvola.IdCodiceValvola, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = valvola.Prezzo, Qta = Convert.ToInt32(qta), Tipologia = curProdotto.Tipologia });
+                    var elementoCarrello = DataStore.Carrello.FirstOrDefault(x => x.IdArticolo == valvola.IdCodiceValvola && x.Tipologia == CurProdotto.Tipologia && x.IdProdotto == CurProdotto.IdProdotto);
+                    if (elementoCarrello == null)
+                        DataStore.Carrello.Add(new Models.Carrello() { CodiceArticolo = valvola.Codice_Articolo, DescrizioneCarrello_En = curProdotto.DescrizioneEn, DescrizioneCarrello_It = curProdotto.Descrizione, IdArticolo = valvola.IdCodiceValvola, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = valvola.Prezzo, Qta = Convert.ToInt32(qta), Tipologia = curProdotto.Tipologia, IdProdotto = CurProdotto.IdProdotto });
+                    else
+                        elementoCarrello.Qta += Convert.ToInt32(qta);                                                                              
                 }
                 else
                 {
@@ -39,7 +43,11 @@ namespace Omal.ViewModels
                     var idcodiceattuatore = parametri["idcodiceattuatore"].ToString();
                     var attuatore = ((IEnumerable<Models.Attuatore>)Articoli).FirstOrDefault(x => x.IdCodiceAttuatore == Convert.ToInt32(idcodiceattuatore));
                     if (attuatore == null) throw new KeyNotFoundException("IdCodiceAttuatore non trovato");
-                    DataStore.Carrello.Add(new Models.Carrello() { CodiceArticolo = attuatore.Codice_Articolo, DescrizioneCarrello_En = curProdotto.DescrizioneEn, DescrizioneCarrello_It = curProdotto.Descrizione, IdArticolo = attuatore.IdCodiceAttuatore, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = attuatore.Prezzo, Qta = Convert.ToInt32(qta), Tipologia = curProdotto.Tipologia });
+                    var elementoCarrello = DataStore.Carrello.FirstOrDefault(x => x.IdArticolo == attuatore.IdCodiceAttuatore && x.Tipologia == CurProdotto.Tipologia && x.IdProdotto == CurProdotto.IdProdotto);
+                    if (elementoCarrello == null)
+                        DataStore.Carrello.Add(new Models.Carrello() { CodiceArticolo = attuatore.Codice_Articolo, DescrizioneCarrello_En = curProdotto.DescrizioneEn, DescrizioneCarrello_It = curProdotto.Descrizione, IdArticolo = attuatore.IdCodiceAttuatore, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = attuatore.Prezzo, Qta = Convert.ToInt32(qta), Tipologia = curProdotto.Tipologia, IdProdotto = CurProdotto.IdProdotto });
+                    else
+                        elementoCarrello.Qta += Convert.ToInt32(qta);                                                                              
                 }
                 MessagingCenter.Send<Models.Messages.BasketEditedMessage>(new Models.Messages.BasketEditedMessage(){ },"");
                 CurPage.DisplayAlert("Carrello", "Articoli aggiunti al carrello", "OK");
@@ -115,7 +123,7 @@ namespace Omal.ViewModels
                 }
                 if (IsLoggedIn)
                 {
-                    curAttuatore.Add(string.Format("<br /><p>{0}</p><p>€ {1}</p>", "Prezzo", attuatore.Prezzo.ToString("c2")));
+                    curAttuatore.Add(string.Format("<br /><p>{0}</p><p>€ {1}</p>", "Prezzo", attuatore.Prezzo.ToString("F")));
                     curAttuatore.Add(
                         string.Format(
                             "<form method='GET'>" +
@@ -165,7 +173,7 @@ namespace Omal.ViewModels
                 }   
                 if (IsLoggedIn)
                 {
-                    curValvola.Add(string.Format("<br /><p>{0}</p><p>€ {1}</p>", "Prezzo", valvola.Prezzo.ToString("c2")));
+                    curValvola.Add(string.Format("<br /><p>{0}</p><p>€ {1}</p>", "Prezzo", valvola.Prezzo.ToString("F")));
                     curValvola.Add(
                         string.Format(
                             "<form method='GET'>" +
