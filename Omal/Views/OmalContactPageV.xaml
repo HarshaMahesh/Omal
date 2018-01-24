@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+    x:Class="Omal.Views.OmalContactPageV">
+	<ContentPage.Content>
+        <ScrollView>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="StartAndExpand" Padding="30">
+        <Label Style="{StaticResource Titolo}" HorizontalTextAlignment="Center" Text="Contatti Omal" /> 
+        <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center">
+          <Label.FormattedText>
+            <FormattedString>
+              <Span Text="T. 030.8900145" FontAttributes="Bold"/>
+              <Span Text="&#10;@. info@omal.it"  />
+              <Span Text="&#10;W. www.omal.it" ForegroundColor="Blue" />
+            </FormattedString>
+          </Label.FormattedText>
+        </Label>
+
+          <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center">
+          <Label.FormattedText>
+            <FormattedString>
+              <Span Text="&#10;HEADQUARTERS" FontAttributes="Bold"/>
+              <Span Text="&#10;Via Ponte Nuovo 11"  />
+              <Span Text="&#10;Rodengo Saiano" />
+                <Span Text="&#10;Brescia, Italia"  />
+            </FormattedString>
+          </Label.FormattedText>
+        </Label>
+        <maps:Map WidthRequest="320" HeightRequest="200"
+            x:Name="MyMap"
+            IsShowingUser="true"
+            MapType="Hybrid"
+        />
+            <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center">
+          <Label.FormattedText>
+            <FormattedString>
+              <Span Text="&#10;SEDE PRODUTTIVA" FontAttributes="Bold"/>
+              <Span Text="&#10;Via Brognolo 12"  />
+              <Span Text="&#10;Passirano" />
+                <Span Text="&#10;Brescia, Italia"  />
+            </FormattedString>
+          </Label.FormattedText>
+        </Label>
+            <maps:Map HorizontalOptions="Fill" HeightRequest="200"
+            x:Name="MyMap2"
+            IsShowingUser="true"
+            MapType="Hybrid"
+        />
+    </StackLayout>
+            </ScrollView>
+	</ContentPage.Content>
+</ContentPage>

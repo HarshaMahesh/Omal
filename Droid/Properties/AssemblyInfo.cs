@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using Android.App;
 
@@ -13,6 +14,8 @@ using Android.App;
 [assembly: AssemblyCopyright("(c) Luca Cavedaghi")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+
+
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,

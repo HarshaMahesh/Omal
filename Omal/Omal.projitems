@@ -121,6 +121,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockOrdiniDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BasketVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\BasketEditedMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\OmalContactPageV.xaml.cs">
+      <DependentUpon>OmalContactPageV.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -181,6 +184,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\OrdersEditV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\OmalContactPageV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

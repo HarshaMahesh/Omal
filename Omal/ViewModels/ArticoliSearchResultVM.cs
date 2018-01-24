@@ -86,7 +86,7 @@ namespace Omal.ViewModels
             {
                 if (curProdotto == null) return string.Empty;
                 string ritorno = string.Empty;
-                ritorno += string.Format("<p><b>{0}</b></p>", App.CurLang == "IT"? curProdotto.Nome:curProdotto.NomeEn);
+                ritorno += string.Format("<b>{0}</b>", App.CurLang == "IT"? curProdotto.Nome:curProdotto.NomeEn);
                 ritorno += string.Format("<p ALIGN='CENTER'>Trovati {0} articoli</p>", Articoli.Count());
                 if (prodottoIsValvola)
                     ritorno += HtmlPerValvole();
@@ -105,11 +105,11 @@ namespace Omal.ViewModels
         {
             var attuatori = (IEnumerable<Models.Attuatore>)Articoli;
             string ritorno = string.Empty;
-            string elemento = "<b>{0}</b><br />{1}";
+            string elemento = "{0}<br /><b>{1}</b><br />";
             foreach (var attuatore in attuatori)
             {                
                 List<string> curAttuatore = new List<string>();
-                if (!string.IsNullOrWhiteSpace(attuatore.immagine_placeholder)) curAttuatore.Add(string.Format("<p ALIGN='CENTER'><img src='{0}' /></p>", attuatore.immagine_placeholder));
+                if (!string.IsNullOrWhiteSpace(attuatore.immagine_placeholder)) curAttuatore.Add(string.Format("<center><img src='{0}' /></center>", attuatore.immagine_placeholder));
                 if (!string.IsNullOrWhiteSpace(attuatore.Valore_iso)) curAttuatore.Add(string.Format(elemento, "Valore_iso", attuatore.Valore_iso));
                 if (!string.IsNullOrWhiteSpace(attuatore.Valore_coppia)) curAttuatore.Add(string.Format(elemento, "Valore_coppia", attuatore.Valore_coppia));
                 if (App.CurLang == "IT")
@@ -123,20 +123,20 @@ namespace Omal.ViewModels
                 }
                 if (IsLoggedIn)
                 {
-                    curAttuatore.Add(string.Format("<br /><p>{0}</p><p>€ {1}</p>", "Prezzo", attuatore.Prezzo.ToString("F")));
                     curAttuatore.Add(
                         string.Format(
                             "<form method='GET'>" +
-                            "<input type='number' name='qta' />" +
+                            "{2}&emsp;€ {3}&emsp;" +
+                            "<input placeholder='Qta' type='number' name='qta' />" +
                                 "<input type='hidden' name='idprodotto' value='{0}' />" +
                                 "<input type='hidden' name='isvalvola' value='0' />" +
                                 "<input type='hidden' name='idcodiceattuatore' value='{1}' />" +
                                 "<input type='submit' value='Ordina' />" +
-                            "</form>", curProdotto.IdProdotto, attuatore.IdCodiceAttuatore));
+                            "</form>", curProdotto.IdProdotto, attuatore.IdCodiceAttuatore,"Prezzo",attuatore.Prezzo.ToString("F")));
                 }
-                curAttuatore.Add("<p><a href=''>Mostra 3D</a>&emsp;<a href=''>Invia 3D</a></p>");
+                curAttuatore.Add("<a href=''>Mostra 3D</a>&emsp;<a href=''>Invia 3D</a>");
                 curAttuatore.Add("<hr/>");
-                ritorno += string.Join("<br />", curAttuatore);
+                ritorno += string.Join("", curAttuatore);
             }
             return ritorno;
         }
@@ -145,12 +145,12 @@ namespace Omal.ViewModels
         {
             var valvole = (IEnumerable<Models.Valvola>) Articoli;
             string ritorno = string.Empty;
-            string elemento = "<b>{0}</b><br />{1}";
+            string elemento = "{0}<br /><b>{1}</b><br />";
             foreach (var valvola in valvole)
             {
                 
                 List<string> curValvola = new List<string>();
-                if (!string.IsNullOrWhiteSpace(valvola.immagine_placeholder)) curValvola.Add(string.Format("<p ALIGN='CENTER'><img src='{0}' /></p>", valvola.immagine_placeholder));
+                if (!string.IsNullOrWhiteSpace(valvola.immagine_placeholder)) curValvola.Add(string.Format("<center><img src='{0}' /></center>", valvola.immagine_placeholder));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_azionamento)) curValvola.Add(string.Format(elemento, "valore_azionamento", valvola.valore_azionamento));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_materiale)) curValvola.Add(string.Format(elemento, "valore_materiale", valvola.valore_materiale));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_dn)) curValvola.Add(string.Format(elemento,"valore_dn", valvola.valore_dn));
@@ -173,20 +173,20 @@ namespace Omal.ViewModels
                 }   
                 if (IsLoggedIn)
                 {
-                    curValvola.Add(string.Format("<br /><p>{0}</p><p>€ {1}</p>", "Prezzo", valvola.Prezzo.ToString("F")));
                     curValvola.Add(
                         string.Format(
                             "<form method='GET'>" +
+                            "{2}&emsp;€ {3}&emsp;" +
                                 "<input type='number' name='qta' />"+
                                 "<input type='hidden' name='idprodotto' value='{0}' />" +
                                 "<input type='hidden' name='isvalvola' value='1' />" +
                                 "<input type='hidden' name='idcodicevalvola' value='{1}' />" +
                                 "<input type='submit' value='Ordina' />" +
-                                "</form>",curProdotto.IdProdotto,  valvola.IdCodiceValvola));
+                            "</form>",curProdotto.IdProdotto,  valvola.IdCodiceValvola, "Prezzo",valvola.Prezzo.ToString("F") ));
                 }
-                curValvola.Add("<p><a href=''>Mostra 3D</a>&emsp;<a href=''>Invia 3D</a></p>");
+                curValvola.Add("<a href=''>Mostra 3D</a>&emsp;<a href=''>Invia 3D</a>");
                 curValvola.Add("<hr/>");
-                ritorno += string.Join("<br />", curValvola);
+                ritorno += string.Join("", curValvola);
             }
             return ritorno;
 

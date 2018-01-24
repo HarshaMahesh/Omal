@@ -4,23 +4,31 @@
         <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ScrollView>
         <StackLayout Orientation="Vertical" Margin="10">
-        <Label Style="{StaticResource Titolo}" Text="Ordine" />    
-        <Label Style="{StaticResource Descrizione}" Text="Cliente" />    
-        <Picker HorizontalOptions="Fill" ItemDisplayBinding="{Binding RagioneSociale}" SelectedItem="{Binding SelecedCliente}" ItemsSource="{Binding Clienti}"  />
-                <Label Style="{StaticResource Descrizione}" Text="Note" />    
-        <Entry Text="{Binding NoteOrdine}" />
-         <StackLayout Orientation="Horizontal" >
-            <Label VerticalOptions="Center" Style="{StaticResource Descrizione}" Text="Totale Ordine" />    
-            <Label VerticalOptions="Center" Text="{Binding TotaleOrdine, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" FontAttributes="Bold" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-            <Button  Text="Salva" Command="{Binding SalvaCommand}" /> <Button Text="Invia" Command="{Binding InviaCommand}" /><Button  Text="Annulla" Command="{Binding AnnullaCommand}" />
-        </StackLayout>
-        <Label Style="{StaticResource Titolo}" Text="Dettaglio" />    
-                    
-        <ListView RowHeight="140"  IsVisible="{Binding IsLoggedIn}" ItemsSource="{Binding Items}">
+        <ListView VerticalOptions="FillAndExpand" IsVisible="{Binding IsLoggedIn}" ItemsSource="{Binding Items}">
+        <ListView.RowHeight>
+                <OnPlatform x:TypeArguments="x:Int32">
+                    <On Platform="iOS">150</On>
+                    <On Platform="Android">170</On>
+                </OnPlatform>
+        </ListView.RowHeight>
+                <ListView.Header>
+                    <StackLayout>
+                <Label Style="{StaticResource Titolo}" Text="Ordine" />    
+            <Label Style="{StaticResource Descrizione}" Text="Cliente" />    
+            <Picker HorizontalOptions="Fill" ItemDisplayBinding="{Binding RagioneSociale}" SelectedItem="{Binding SelectedCliente}" ItemsSource="{Binding Clienti}"  />
+                    <Label Style="{StaticResource Descrizione}" Text="Note" />    
+            <Entry Text="{Binding NoteOrdine}" />
+             <StackLayout Orientation="Horizontal" >
+                <Label VerticalOptions="Center" Style="{StaticResource Descrizione}" Text="Totale Ordine" />    
+                <Label VerticalOptions="Center" Text="{Binding TotaleOrdine, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" FontAttributes="Bold" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button  Text="Salva" Command="{Binding SalvaCommand}" /> <Button Text="Invia" Command="{Binding InviaCommand}" /><Button  Text="Annulla" Command="{Binding AnnullaCommand}" />
+            </StackLayout>
+            <Label Style="{StaticResource Titolo}" Text="Dettaglio" />    
+            </StackLayout>
+                </ListView.Header>
         <ListView.ItemTemplate>
             <DataTemplate>
                  <ViewCell>
@@ -34,7 +42,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding DescrizioneCarrello_It}" Style="{StaticResource Descrizione}" />
                         <Label Grid.Row="1" Grid.Column="0"  VerticalOptions="Center" HorizontalOptions="Center" Text="Prezzo" FontAttributes="Bold" />
@@ -52,9 +60,7 @@
             <Label Margin="10" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroCarrelli}"  />
         </ListView.Footer>
             </ListView>
-         
-
         </StackLayout>
-            </ScrollView>
+          
 	</ContentPage.Content>
 </ContentPage>
