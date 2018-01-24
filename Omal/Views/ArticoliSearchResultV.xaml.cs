@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Plugin.Share;
 using Xamarin.Forms;
 
 namespace Omal.Views
@@ -9,6 +9,14 @@ namespace Omal.Views
     {
         void Handle_Navigating(object sender, Xamarin.Forms.WebNavigatingEventArgs e)
         {
+            if (e.Url.Contains("partcommunity"))
+            {
+                if (!CrossShare.IsSupported)
+                    return;
+                CrossShare.Current.OpenBrowser(e.Url);
+                e.Cancel = true;
+            }
+                
             viewModel.Navigating(e.Url);
             if (Device.RuntimePlatform != Device.iOS)
             {
