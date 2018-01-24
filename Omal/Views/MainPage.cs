@@ -27,14 +27,14 @@ namespace Omal
                     SearchPage = new NavigationPage(new Views.SearchV()) { Title = "Cerca" };
                     AnagrafichePage = new NavigationPage(new Views.AnagraficheV()) { Title = "Anagrafiche" };
                     BasketPage = new NavigationPage(new Views.BasketV()) { Title = "Carrello" };
-                    //ContactOmalPage = new NavigationPage(new Views.OmalContactPageV()) { Title = "Contatti Omalo" };
+                    ContactOmalPage = new NavigationPage(new Views.OmalContactPageV()) { Title = "Contatti Omalo" };
                     break;
             }
 
             Children.Add(SearchPage);
             Children.Add(AnagrafichePage);
             Children.Add(BasketPage);
-            if (Device.RuntimePlatform == Device.iOS)
+            //if (Device.RuntimePlatform == Device.iOS)
                 Children.Add(ContactOmalPage);
        
             NavigationPage.SetHasNavigationBar(this, false);

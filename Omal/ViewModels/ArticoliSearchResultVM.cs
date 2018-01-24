@@ -86,16 +86,17 @@ namespace Omal.ViewModels
             {
                 if (curProdotto == null) return string.Empty;
                 string ritorno = string.Empty;
+                if (!IsLoggedIn)
+                {
+                    ritorno += "<br><b>Per vedere i prezzi è necessario effettuare il login</b>";
+                }
                 ritorno += string.Format("<b>{0}</b>", App.CurLang == "IT"? curProdotto.Nome:curProdotto.NomeEn);
                 ritorno += string.Format("<p ALIGN='CENTER'>Trovati {0} articoli</p>", Articoli.Count());
                 if (prodottoIsValvola)
                     ritorno += HtmlPerValvole();
                 else
                     ritorno += HtmlPerAttuatori();
-                if (!IsLoggedIn)
-                {
-                    ritorno += "<br><b>Per vedere i prezzi è necessario effettuare il login</b>";
-                }
+               
                 return ritorno;
             }
         }
@@ -134,7 +135,7 @@ namespace Omal.ViewModels
                                 "<input type='submit' value='Ordina' />" +
                             "</form>", curProdotto.IdProdotto, attuatore.IdCodiceAttuatore,"Prezzo",attuatore.Prezzo.ToString("F")));
                 }
-                curAttuatore.Add("<a href=''>Mostra 3D</a>&emsp;<a href=''>Invia 3D</a>");
+                curAttuatore.Add(string.Format("<a href='{0}'>Mostra 3D</a>&emsp;<a href=''>Invia 3D</a>",attuatore.url3d));
                 curAttuatore.Add("<hr/>");
                 ritorno += string.Join("", curAttuatore);
             }
@@ -184,7 +185,7 @@ namespace Omal.ViewModels
                                 "<input type='submit' value='Ordina' />" +
                             "</form>",curProdotto.IdProdotto,  valvola.IdCodiceValvola, "Prezzo",valvola.Prezzo.ToString("F") ));
                 }
-                curValvola.Add("<a href=''>Mostra 3D</a>&emsp;<a href=''>Invia 3D</a>");
+                curValvola.Add(string.Format("<a href='{0}'>Mostra 3D</a>&emsp;<a href=''>Invia 3D</a>", valvola.url3d));
                 curValvola.Add("<hr/>");
                 ritorno += string.Join("", curValvola);
             }
