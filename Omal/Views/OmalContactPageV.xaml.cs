@@ -26,22 +26,8 @@ namespace Omal.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            if (Device.RuntimePlatform == Device.Android)
-            {
-                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
-                if (status != PermissionStatus.Granted)
-                {
-                    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
-                    {
-                        await DisplayAlert("Need location", "Gunna need that location", "OK");
-                    }
+          
 
-                    var results = CrossPermissions.Current.RequestPermissionsAsync(Permission.Location).Result;
-
-                    if (results.ContainsKey(Permission.Location))
-                        status = results[Permission.Location];
-                }
-            }
             geoCoder = new Geocoder();
             var address = "Italia, Rodengo Saiano, Via Ponte Nuovo, 11";
             var approximateLocations = await geoCoder.GetPositionsForAddressAsync(address);
@@ -57,6 +43,7 @@ namespace Omal.Views
                 MyMap2.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200)));
                 MyMap2.Pins.Add(new Pin() { Type = PinType.Place, Address = address, Position = position, Label = "Omal Spa" });
             }
+
         }
     }
 }
