@@ -130,6 +130,33 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_20.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_29.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_76.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_167.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_60.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_87.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_320x480.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_640x960.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_640x1136.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_750x1334.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_1242x2208.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_1920x1080.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_2208x1242.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_2048x2732.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_768x1024.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_1536x2048.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_1024x768.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_2048x1536.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_768x1004.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_1536x2008.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_2048x1496.png" />
+    <ImageAsset Include="Assets.xcassets\Prova.launchimage\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\tab_about.png" />
@@ -145,15 +172,25 @@
     <BundleResource Include="Resources\OrdersPage.png" />
     <BundleResource Include="Resources\Search.png" />
     <BundleResource Include="Resources\Info.png" />
+    <BundleResource Include="Resources\fonts\Montserrat-Bold.ttf" />
+    <BundleResource Include="Resources\fonts\Montserrat-Medium.ttf" />
+    <BundleResource Include="Resources\fonts\Montserrat-Regular.ttf" />
+    <BundleResource Include="Resources\LogoOmal.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="CustomControls\CualevaRoundedEntryRenderIOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\fonts\" />
+    <Folder Include="CustomControls\" />
+    <Folder Include="Assets.xcassets\Prova.launchimage\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />

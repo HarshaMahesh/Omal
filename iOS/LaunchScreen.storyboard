@@ -1,27 +1,63 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
-	<dependencies>
-		<deployment identifier="iOS" />
-		<plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530" />
-	</dependencies>
-	<scenes>
-		<!--View Controller-->
-		<scene sceneID="EHf-IW-A2E">
-			<objects>
-				<viewController id="01J-lp-oVM" sceneMemberID="viewController">
-					<layoutGuides>
-						<viewControllerLayoutGuide type="top" id="Llm-lL-Icb" />
-						<viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok" />
-					</layoutGuides>
-					<view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-						<rect key="frame" x="0.0" y="0.0" width="600" height="600" />
-						<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" />
-						<color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite" />
-					</view>
-				</viewController>
-				<placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder" />
-			</objects>
-			<point key="canvasLocation" x="53" y="375" />
-		</scene>
-	</scenes>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" customColorSpace="sRGB" cocoaTouchSystemColor="lightTextColor"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="198" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="LaunchImage">
+                                <rect key="frame" x="0.0" y="-1" width="768" height="1025"/>
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES" widthSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="tintColor" colorSpace="calibratedRGB" red="0.16078431372549021" green="0.44313725490196076" blue="0.996078431372549" alpha="1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tab_about.png" width="32" height="30"/>
+        <image name="tab_feed.png" width="32" height="30"/>
+        <image name="xamarin_logo.png" width="220" height="51"/>
+        <image name="BasketPage.png" width="48" height="48"/>
+        <image name="OrdersPage.png" width="48" height="48"/>
+        <image name="Search.png" width="48" height="48"/>
+        <image name="Info.png" width="48" height="48"/>
+        <image name="LaunchScreenImages/Home_320x480.png" width="320" height="480"/>
+        <image name="LaunchScreenImages/Home_640x960.png" width="640" height="960"/>
+        <image name="LaunchScreenImages/Home_640x1136.png" width="640" height="1136"/>
+        <image name="LaunchScreenImages/Home_750x1334.png" width="750" height="1334"/>
+        <image name="LaunchScreenImages/Home_768x1004.png" width="768" height="1004"/>
+        <image name="LaunchScreenImages/Home_768x1024.png" width="768" height="1024"/>
+        <image name="LaunchScreenImages/Home_1024x768.png" width="1024" height="768"/>
+        <image name="LaunchScreenImages/Home_1242x2208.png" width="1242" height="2208"/>
+        <image name="LaunchScreenImages/Home_1536x2008.png" width="1536" height="2008"/>
+        <image name="LaunchScreenImages/Home_1536x2048.png" width="1536" height="2048"/>
+        <image name="LaunchScreenImages/Home_1920x1080.png" width="1920" height="1080"/>
+        <image name="LaunchScreenImages/Home_2048x1496.png" width="2048" height="1496"/>
+        <image name="LaunchScreenImages/Home_2048x1536.png" width="2048" height="1536"/>
+        <image name="LaunchScreenImages/Home_2048x2732.png" width="2048" height="2732"/>
+        <image name="LaunchScreenImages/Home_2208x1242.png" width="2208" height="1242"/>
+        <image name="LogoOmal.png" width="1028" height="689"/>
+    </resources>
+    <color key="tintColor" colorSpace="calibratedRGB" red="0.16078431372549021" green="0.44313725490196076" blue="0.996078431372549" alpha="1"/>
 </document>

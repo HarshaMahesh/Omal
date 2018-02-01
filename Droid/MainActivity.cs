@@ -8,6 +8,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Plugin.Permissions;
+using Android.Graphics;
 
 namespace Omal.Droid
 {
@@ -16,6 +17,12 @@ namespace Omal.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            // Nascondo la status bar this.Window.AddFlags(WindowManagerFlags.Fullscreen);
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
+            {
+                Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
+                Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#004899"));
+            }
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
@@ -23,8 +30,9 @@ namespace Omal.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.FormsMaps.Init(this, bundle);
-
+            var font = Typeface.CreateFromAsset(Assets, "fonts/Montserrat-Bold.ttf");
             LoadApplication(new App());
+
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)

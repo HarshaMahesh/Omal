@@ -165,6 +165,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
+    <Compile Include="CustomControls\CualevaRoundedEntryRenderAndroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -175,6 +176,18 @@
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
     <AndroidResource Include="Resources\layout\Toolbar.axml" />
     <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\drawable\ICONA_76.png" />
+    <AndroidResource Include="Resources\drawable\LogoOmal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CustomControls\" />
+
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\fonts\Montserrat-Bold.ttf" />
+    <AndroidAsset Include="Assets\fonts\Montserrat-Medium.ttf" />
+    <AndroidAsset Include="Assets\fonts\Montserrat-Regular.ttf" />
+
   </ItemGroup>
   <Import Project="..\Omal\Omal.projitems" Label="Shared" Condition="Exists('..\Omal\Omal.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

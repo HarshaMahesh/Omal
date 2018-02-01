@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.WelcomeV">
+<ContentPage BackgroundColor="#60A5D1" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.WelcomeV">
 	<ContentPage.Content>
         <Grid VerticalOptions="EndAndExpand">
         <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
-            <Image VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="90" HeightRequest="90" BackgroundColor="Black" Source="" Grid.Row="0" />
-            <StackLayout Grid.Row="1" Orientation="Vertical">
+        <Image VerticalOptions="StartAndExpand" HorizontalOptions="Center"  HeightRequest="90" BackgroundColor="#60A5D1" Source="LogoOmal" Margin="10"  />
+
+            <StackLayout Grid.Row="2" VerticalOptions="Start" Orientation="Vertical">
             <Button  Text="Versione Italiana" HorizontalOptions="Fill" Clicked="Handle_Clicked_IT"></Button>
             <Button HorizontalOptions="Fill" Text="English version" Clicked="Handle_Clicked_EN">English Version</Button>
         </StackLayout>
+            <Label Grid.Row="2" VerticalOptions="End" FontFamily="Montserrat-Regular" FontSize="10" TextColor="White" HorizontalOptions="Center" Text="2018 Omal" />
         </Grid>
 
 	</ContentPage.Content>

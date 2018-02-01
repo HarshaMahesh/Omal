@@ -124,6 +124,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\OmalContactPageV.xaml.cs">
       <DependentUpon>OmalContactPageV.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CustomControls\CualevaRoundedEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -197,5 +198,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Common\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\Messages\" />
     <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
+    <Folder Include="$(MSBuildThisFileDirectory)CustomControls\" />
   </ItemGroup>
 </Project>
