@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
+
 namespace Omal.ViewModels
 {
     public class ProductSearchResultVM: BaseVM
@@ -72,29 +73,45 @@ namespace Omal.ViewModels
         {
             get
             {
-                if (_prodotti == null)
-                {
-                    _prodotti = new ObservableCollection<Models.Prodotto>(DataStore.Prodotti.GetItemsAsync().Result);
-                    if (!string.IsNullOrWhiteSpace(ProductFilter))
-                    {
-                        if (App.CurLang == "IT")
-                            _prodotti = new ObservableCollection<Models.Prodotto>(_prodotti.Where(x => x.Nome.Contains(ProductFilter)));
-                        else
-                            _prodotti = new ObservableCollection<Models.Prodotto>(_prodotti.Where(x => x.NomeEn.Contains(ProductFilter)));
-
-                    }
-                    else
-                        if (IdCategoria.HasValue)
-                    {
-                        var categorieFiglie = GetCategorieFiglie(IdCategoria.Value);
-                        _prodotti =new ObservableCollection<Models.Prodotto>( _prodotti.Where(x => categorieFiglie.Contains(x.IdCategoria)));
-                    }
-                    else
-                        _prodotti = new  ObservableCollection<Models.Prodotto>();
-                    OnPropertyChanged();
-                    OnPropertyChanged("NumeroProdotti");
-                }
+                if (_prodotti == null && !prodottiLoading)
+                    LoadProdotti();
                 return _prodotti;
+            }
+            set
+            {
+                _prodotti = value;
+                OnPropertyChanged();
+            }
+        }
+
+        bool prodottiLoading = false;
+        async void LoadProdotti()
+        {
+            if (_prodotti == null && !prodottiLoading)
+            {
+                prodottiLoading = true;
+                var tmpProdotti = await DataStore.Prodotti.GetItemsAsync();
+                if (!string.IsNullOrWhiteSpace(ProductFilter))
+                {
+                    if (App.CurLang == "IT")
+                        tmpProdotti = tmpProdotti.Where(x => x.nome.Contains(ProductFilter));
+                    else
+                        tmpProdotti = tmpProdotti.Where(x => x.nome_en.Contains(ProductFilter));
+                }
+                else
+                if (IdCategoria.HasValue)
+                {
+                    var categorieFiglie = GetCategorieFiglie(IdCategoria.Value);
+                    tmpProdotti =tmpProdotti.Where(x => categorieFiglie.Contains(x.idcategoria));
+                }
+                else
+                    tmpProdotti = new ObservableCollection<Models.Prodotto>();
+                foreach (var prodotto in tmpProdotti)
+                {
+                    if (!Uri.IsWellFormedUriString(prodotto.immagine_placeholder, UriKind.Absolute)) prodotto.immagine_placeholder = "http://wordpress.docsmarshal.it/wp-content/uploads/2018/02/Logo_DM_Docsmarshal.png"; 
+                }
+                Prodotti = new ObservableCollection<Models.Prodotto>(tmpProdotti);
+                prodottiLoading = false;
             }
         }
 
@@ -113,10 +130,10 @@ namespace Omal.ViewModels
         {
             List<int> ritorno = new List<int>();
             ritorno.Add(categoria);
-            var figlie= DataStore.Categorie.GetItemsAsync().Result.Where(x => x.IdPadre == categoria);
+            var figlie= DataStore.Categorie.GetItemsAsync().Result.Where(x => x.idPadre == categoria);
             foreach (var figlia in figlie)
             {
-                var locRit = GetCategorieFiglie(figlia.IdCategoria);
+                var locRit = GetCategorieFiglie(figlia.idCategoria);
                 ritorno.AddRange(locRit);
             }
             return ritorno.Distinct().ToList();

@@ -23,6 +23,7 @@
             <Style TargetType="TabbedPage" ApplyToDerivedTypes="true">
                 <Setter Property="BarBackgroundColor" Value="#5E5B5B" />
                 <Setter Property="BackgroundColor" Value="#5E5B5B" />
+                <Setter Property="BarTextColor" Value="#FFFFFF" />
             </Style>
             <Style TargetType="Picker" ApplyToDerivedTypes="true">
                 <Setter Property="BackgroundColor" Value="#FFFFFF" />

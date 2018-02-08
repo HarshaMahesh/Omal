@@ -126,6 +126,24 @@
     <Reference Include="Plugin.Share">
       <HintPath>..\packages\Plugin.Share.7.1.1\lib\Xamarin.iOS10\Plugin.Share.dll</HintPath>
     </Reference>
+    <Reference Include="Naxam.BottomTabbedPage.Forms">
+      <HintPath>..\packages\Naxam.BottomTabbedPage.0.1.0.1\lib\portable-net45+wp80+win8+wpa81\Naxam.BottomTabbedPage.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core">
+      <HintPath>..\packages\SQLitePCLRaw.core.1.1.5\lib\Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.sqlite3">
+      <HintPath>..\packages\SQLitePCLRaw.provider.sqlite3.ios_unified.1.1.5\lib\Xamarin.iOS10\SQLitePCLRaw.provider.sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_green">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.5\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_green.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.5\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite-net">
+      <HintPath>..\packages\sqlite-net-pcl.1.4.118\lib\netstandard1.1\SQLite-net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -159,23 +177,17 @@
     <ImageAsset Include="Assets.xcassets\Prova.launchimage\Contents.json" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\tab_about.png" />
-    <BundleResource Include="Resources\tab_about%402x.png" />
-    <BundleResource Include="Resources\tab_about%403x.png" />
-    <BundleResource Include="Resources\tab_feed.png" />
-    <BundleResource Include="Resources\tab_feed%402x.png" />
-    <BundleResource Include="Resources\tab_feed%403x.png" />
-    <BundleResource Include="Resources\xamarin_logo.png" />
-    <BundleResource Include="Resources\xamarin_logo%402x.png" />
-    <BundleResource Include="Resources\xamarin_logo%403x.png" />
-    <BundleResource Include="Resources\BasketPage.png" />
-    <BundleResource Include="Resources\OrdersPage.png" />
-    <BundleResource Include="Resources\Search.png" />
-    <BundleResource Include="Resources\Info.png" />
     <BundleResource Include="Resources\fonts\Montserrat-Bold.ttf" />
     <BundleResource Include="Resources\fonts\Montserrat-Medium.ttf" />
     <BundleResource Include="Resources\fonts\Montserrat-Regular.ttf" />
     <BundleResource Include="Resources\LogoOmal.png" />
+    <BundleResource Include="Resources\fonts\fontawesome.ttf" />
+    <BundleResource Include="Resources\fonts\materialicons.ttf" />
+    <BundleResource Include="Resources\Archivio.png" />
+    <BundleResource Include="Resources\Cerca.png" />
+    <BundleResource Include="Resources\Impostazioni.png" />
+    <BundleResource Include="Resources\Omal.png" />
+    <BundleResource Include="Resources\Ordini.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />

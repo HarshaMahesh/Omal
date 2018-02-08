@@ -9,11 +9,12 @@ namespace Omal
 {
     public partial class App : Application
     {
-        public static bool UseMockDataStore = true;
-        public static string BackendUrl = "https://localhost:5000";
+        public static bool UseMockDataStore = false;
+        public static string BackendUrl = "http://demo.timmagine.com/omal/http/Admin/exe/";
         public static string CurLang = "";
         public static Models.Utente CurUser = null;
         public static Models.Ordine CurOrdine = new Models.Ordine();
+        public static string CurToken = "";
 
         public App()
         {
@@ -23,13 +24,11 @@ namespace Omal
                 DependencyService.Register<Services.MockOmalDataStore>();
             else
                 DependencyService.Register<Services.OmalDataStore>();
-
             if (Device.RuntimePlatform == Device.iOS)
                 MainPage = new Views.WelcomeV();
             else
             {
                 MainPage = new Views.WelcomeV();
-
             }
         }
     }

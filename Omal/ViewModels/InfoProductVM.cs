@@ -60,14 +60,30 @@ namespace Omal.ViewModels
         {
             get
             {
-                if (_GruppoMetadati == null && CurPage != null)
-                {
-                    var content = ((ContentPage)CurPage).Content;
-                    var stack = new StackLayout { Orientation = StackOrientation.Vertical };
-                    stack.Children.Add(new Label { Text = CurProdotto.Nome });
-                    _GruppoMetadati = new ObservableCollection<Models.ProdottoGruppiMetadati>(DataStore.ProdottoGruppiMetadati.GetItemsAsync().Result.Where(x => x.IdProdotto == CurProdotto.IdProdotto).OrderBy(x => x.Ordine));
-                }
+                if (_GruppoMetadati == null && CurPage != null && !loadGruppoMetadati)
+                    LoadGruppoMetadati();
                 return _GruppoMetadati;
+            }
+            set
+            {
+                _GruppoMetadati = value;
+                OnPropertyChanged();
+            }
+        }
+
+        bool loadGruppoMetadati = false;
+        async void LoadGruppoMetadati()
+        {
+            if (!loadGruppoMetadati)
+            {
+                loadGruppoMetadati = true;
+                var content = ((ContentPage)CurPage).Content;
+                var stack = new StackLayout { Orientation = StackOrientation.Vertical };
+                stack.Children.Add(new Label { Text = CurProdotto.nome });
+                var tmpG = await DataStore.ProdottoGruppiMetadati.GetItemsAsync();
+                tmpG = tmpG.Where(x => x.idprodotto == CurProdotto.idprodotto).OrderBy(x => x.ordine);
+                GruppoMetadati = new ObservableCollection<Models.ProdottoGruppiMetadati>(tmpG);
+                loadGruppoMetadati = false;
             }
         }
 

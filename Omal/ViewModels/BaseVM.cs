@@ -26,8 +26,6 @@ namespace Omal.ViewModels
 
         public RelayCommand LoginOrLogoutCommand { get; set; }
 
-        public Page CurPage { get; set; }
-
         public BaseVM()
         {
             LoginOrLogoutCommand = new RelayCommand(OnLoginOrLogoutCommand);
@@ -78,5 +76,7 @@ namespace Omal.ViewModels
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        public Page CurPage { get; set; }
     }
 }

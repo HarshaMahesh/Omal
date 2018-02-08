@@ -3,10 +3,21 @@ namespace Omal.Models
 {
     public class ProdottoGruppiMetadati
     {
-        public int IdGruppoMetadato {   get;set;    }
-        public int IdProdotto { get; set; }
-        public string GruppoMetadatiIt { get; set; }
-        public string GruppoMetadatiEn { get; set; }
-        public int Ordine { get; set; }
+        public int idgruppometadato {   get;set;    }
+        public int idprodotto { get; set; }
+        public string gruppo_metadati_it { get; set; }
+        public string gruppo_metadati_en { get; set; }
+        public int? ordine { get; set; }
+        public DateTime dataora_modifica { get; set; }
+    }
+
+    public class FkProdottoGruppiMetadati
+    {
+        public int? idgruppometadato { get; set; }
+        public int? idprodotto { get; set; }
+        public string gruppo_metadati_it { get; set; }
+        public string gruppo_metadati_en { get; set; }
+        public int? ordine { get; set; }
+        public DateTime dataora_modifica { get; set; }
     }
 }

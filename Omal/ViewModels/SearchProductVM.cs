@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -28,7 +29,7 @@ namespace Omal.ViewModels
             get
             {
                 if (CurProdotto == null) return false;
-                return string.Equals(CurProdotto.Tipologia, "VALVOLA", StringComparison.InvariantCultureIgnoreCase);
+                return string.Equals(CurProdotto.tipologia, "VALVOLA", StringComparison.InvariantCultureIgnoreCase);
             }
         }
 
@@ -135,14 +136,17 @@ namespace Omal.ViewModels
             PropertyChanged += MyPropertyChanged;
         }
 
-        private void OnCercaArticoliCommand(object obj)
+        private async void OnCercaArticoliCommand(object obj)
         {
             IEnumerable<Models.Base> vettore;
             if (ProdottoIsValvola)
-                vettore = ApplicaFiltroValvole(0);
+            {
+                throw new NotImplementedException();
+                //vettore = await ApplicaFiltroValvole(0);
+            }
             else
                 vettore = ApplicaFiltroAttuatori();
-            CurPage.Navigation.PushAsync(new Views.ArticoliSearchResultV(CurProdotto, ProdottoIsValvola, vettore));
+            await CurPage.Navigation.PushAsync(new Views.ArticoliSearchResultV(CurProdotto, ProdottoIsValvola, vettore));
         }
 
         private void OnPulisciCommand(object obj)
@@ -277,84 +281,134 @@ namespace Omal.ViewModels
         }
 
 
-        ObservableCollection<KeyValuePair<string, string>> picker1 = null;
+        ObservableCollection<KeyValuePair<string, string>> picker1 = new ObservableCollection<KeyValuePair<string, string>>();
         public ObservableCollection<KeyValuePair<string, string>> Picker1
         {
             get
             {
                 if (CurProdotto == null) return new ObservableCollection<KeyValuePair<string, string>>();
                 if (ProdottoIsValvola)
-                    picker1 = new ObservableCollection<KeyValuePair<string, string>>(ApplicaFiltroValvole(1).OrderBy(x => x.Ordine).Select(x => new KeyValuePair<string, string>(x.valore_azionamento, x.valore_azionamento)).Distinct());
+                    LoadValvole(1);
                 else
                     picker1 = new ObservableCollection<KeyValuePair<string, string>>(ApplicaFiltroAttuatori().OrderBy(x => x.Ordine).Select(x => new KeyValuePair<string, string>(x.Valore_misura, x.Valore_misura)).Distinct());
                 if (picker1.Count() == 1) SelectedPicker1 = picker1.First();
                 return picker1;
             }
+            set
+            {
+                picker1 = value;
+                OnPropertyChanged();
+            }
         }
 
-        ObservableCollection<KeyValuePair<string, string>> picker2 = null;
+        ObservableCollection<KeyValuePair<string, string>> picker2 = new ObservableCollection<KeyValuePair<string, string>>();
         public ObservableCollection<KeyValuePair<string, string>> Picker2
         {
             get
             {
                 if (CurProdotto == null) return new ObservableCollection<KeyValuePair<string, string>>();
                 if (ProdottoIsValvola)
-                    picker2 = new ObservableCollection<KeyValuePair<string, string>>(ApplicaFiltroValvole(2).OrderBy(x=>x.Ordine).Select(x => new KeyValuePair<string, string>(x.valore_dn, x.valore_dn)).Distinct());
+                    LoadValvole(2);
                 else
                     picker2 = new ObservableCollection<KeyValuePair<string, string>>(ApplicaFiltroAttuatori().OrderBy(x => x.Ordine).Select(x => new KeyValuePair<string, string>(x.Valore_iso, x.Valore_iso)).Distinct());
-                if (picker2.Count() == 1)  SelectedPicker2 = picker2.First();
+                
                 return picker2;
+            }
+            set
+            {
+                picker2 = value;
+                OnPropertyChanged();
             }
         }
 
+        bool[] loadValvole = new bool[] { false, false, false, false };
+        bool loadvalvola = false;
+        async void LoadValvole(int indice)
+        {
+            if (!loadvalvola && !loadValvole[indice-1])
+            {
+                loadvalvola = true;
+                loadValvole[indice - 1] = true;
+                if (elencoCompletoValvole == null)
+                {
+                    elencoCompletoValvole = await DataStore.Valvole.GetItemsAsync(false);
+                    elencoCompletoValvole = elencoCompletoValvole.Where(x => x.idprodotto == CurProdotto.idprodotto);
+                }
+                var elenco = elencoCompletoValvole;
+                if (!String.IsNullOrWhiteSpace(selectedPicker1.Value)) elenco = elenco.Where(x => string.Equals(x.valore_azionamento, selectedPicker1.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                if (!String.IsNullOrWhiteSpace(selectedPicker2.Value)) elenco = elenco.Where(x => string.Equals(x.valore_dn, selectedPicker2.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                if (!String.IsNullOrWhiteSpace(selectedPicker3.Value)) elenco = elenco.Where(x => string.Equals(x.valore_pnansi, selectedPicker3.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                if (!String.IsNullOrWhiteSpace(selectedPicker4.Value)) elenco = elenco.Where(x => string.Equals(x.valore_materiale, selectedPicker4.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                switch (indice)
+                {
+                    case 1:
+                        Picker1 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_azionamento, x.valore_azionamento)).Distinct());
+                        break;
+                    case 2:
+                        Picker2 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_dn, x.valore_dn)).Distinct());
+                        if (Picker2.Count() == 1) SelectedPicker2 = Picker2.First();
+                        break;
+                    case 3:
+                        Picker3 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_pnansi, x.valore_pnansi)).Distinct());
+                        break;
+                    case 4:
+                        Picker4 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_materiale, x.valore_materiale)).Distinct());
+                        break;
+                    default:
+                        break;
+                }
+                loadvalvola = false;
+                loadValvole[indice -1] = false;
+            }
+        }
 
         IEnumerable<Models.Valvola> elencoCompletoValvole = null;
 
-        private IEnumerable<Models.Valvola> ApplicaFiltroValvole(int escludiIndice)
-        {
-            if (elencoCompletoValvole == null) elencoCompletoValvole = DataStore.Valvole.GetItemsAsync(false).Result.Where(x => x.IdProdotto == CurProdotto.IdProdotto);
-            var elenco = elencoCompletoValvole;
-            if (!String.IsNullOrWhiteSpace(selectedPicker1.Value)) elenco = elenco.Where(x => string.Equals(x.valore_azionamento, selectedPicker1.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
-            if (!String.IsNullOrWhiteSpace(selectedPicker2.Value)) elenco = elenco.Where(x => string.Equals(x.valore_dn, selectedPicker2.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
-            if (!String.IsNullOrWhiteSpace(selectedPicker3.Value)) elenco = elenco.Where(x => string.Equals(x.valore_pnansi, selectedPicker3.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
-            if (!String.IsNullOrWhiteSpace(selectedPicker4.Value)) elenco = elenco.Where(x => string.Equals(x.valore_materiale, selectedPicker4.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
-            return elenco;
-        }
+
 
         private IEnumerable<Models.Attuatore> ApplicaFiltroAttuatori()
         {
-            var elenco = DataStore.Attuatori.GetItemsAsync(false).Result.Where(x => x.IdProdotto == CurProdotto.IdProdotto);
+            var elenco = DataStore.Attuatori.GetItemsAsync(false).Result.Where(x => x.IdProdotto == CurProdotto.idprodotto);
             if (!String.IsNullOrWhiteSpace(selectedPicker1.Value)) elenco = elenco.Where(x => string.Equals(x.Valore_misura, selectedPicker1.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
             if (!String.IsNullOrWhiteSpace(selectedPicker2.Value)) elenco = elenco.Where(x => string.Equals(x.Valore_iso, selectedPicker2.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
             if (!String.IsNullOrWhiteSpace(selectedPicker3.Value)) elenco = elenco.Where(x => string.Equals(x.Valore_coppia, selectedPicker3.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
             return elenco;
         }
 
-        ObservableCollection<KeyValuePair<string, string>> picker3 = null;
+        ObservableCollection<KeyValuePair<string, string>> picker3 = new ObservableCollection<KeyValuePair<string, string>>();
         public ObservableCollection<KeyValuePair<string, string>> Picker3
         {
             get
             {
                 if (CurProdotto == null) return new ObservableCollection<KeyValuePair<string, string>>();
                 if (ProdottoIsValvola)
-                    picker3 = new ObservableCollection<KeyValuePair<string, string>>(ApplicaFiltroValvole(3).OrderBy(x => x.Ordine).Select(x => new KeyValuePair<string, string>(x.valore_pnansi, x.valore_pnansi)).Distinct());
+                    LoadValvole(3);
                 else
                     picker3= new ObservableCollection<KeyValuePair<string, string>>(ApplicaFiltroAttuatori().OrderBy(x => x.Ordine).Select(x => new KeyValuePair<string, string>(x.Valore_coppia, x.Valore_coppia)).Distinct());
                 
                 if (picker3.Count() == 1) SelectedPicker3 = picker3.First();
                 return picker3;
             }
+            set
+            {
+                picker3 = value;
+                OnPropertyChanged();
+            }
         }
 
-        ObservableCollection<KeyValuePair<string, string>> picker4 = null;
+        ObservableCollection<KeyValuePair<string, string>> picker4 = new ObservableCollection<KeyValuePair<string, string>>();
         public ObservableCollection<KeyValuePair<string, string>> Picker4
         {
             get
             {
                 if (CurProdotto == null || !ProdottoIsValvola) return new ObservableCollection<KeyValuePair<string, string>>();
-                picker4 = new ObservableCollection<KeyValuePair<string, string>>(ApplicaFiltroValvole(4).OrderBy(x => x.Ordine).Select(x => new KeyValuePair<string, string>(x.valore_materiale, x.valore_materiale)).Distinct());
-                if (picker4.Count() == 1) SelectedPicker4 = picker4.First();
+                LoadValvole(4);
                 return picker4;
+            }
+            set
+            {
+                picker4 = value;
+                OnPropertyChanged();
             }
         }
 

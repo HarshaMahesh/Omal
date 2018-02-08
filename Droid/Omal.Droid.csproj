@@ -153,6 +153,33 @@
     <Reference Include="Plugin.Share">
       <HintPath>..\packages\Plugin.Share.7.1.1\lib\MonoAndroid10\Plugin.Share.dll</HintPath>
     </Reference>
+    <Reference Include="Naxam.Ittianyu.BottomNavExtension">
+      <HintPath>..\packages\Naxam.Ittianyu.BottomNavExtension.1.2.2\lib\MonoAndroid10\Naxam.Ittianyu.BottomNavExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.BottomTabbedPage.Forms">
+      <HintPath>..\packages\Naxam.BottomTabbedPage.0.1.0.1\lib\MonoAndroid10\Naxam.BottomTabbedPage.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.BottomTabbedPage.Platform.Droid">
+      <HintPath>..\packages\Naxam.BottomTabbedPage.0.1.0.1\lib\MonoAndroid10\Naxam.BottomTabbedPage.Platform.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core">
+      <HintPath>..\packages\SQLitePCLRaw.core.1.1.5\lib\MonoAndroid\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.lib.e_sqlite3">
+      <HintPath>..\packages\SQLitePCLRaw.lib.e_sqlite3.android.1.1.5\lib\MonoAndroid\SQLitePCLRaw.lib.e_sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.e_sqlite3">
+      <HintPath>..\packages\SQLitePCLRaw.provider.e_sqlite3.android.1.1.5\lib\MonoAndroid\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_green">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.5\lib\MonoAndroid\SQLitePCLRaw.batteries_green.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.5\lib\MonoAndroid\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite-net">
+      <HintPath>..\packages\sqlite-net-pcl.1.4.118\lib\netstandard1.1\SQLite-net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -165,11 +192,10 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
-    <Compile Include="CustomControls\CualevaRoundedEntryRenderAndroid.cs" />
+    <Compile Include="CustomControls\CustomButtonCompatRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
-    <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
@@ -178,6 +204,13 @@
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\drawable\ICONA_76.png" />
     <AndroidResource Include="Resources\drawable\LogoOmal.png" />
+    <AndroidResource Include="Resources\drawable\Archivio.png" />
+    <AndroidResource Include="Resources\drawable\Cerca.png" />
+    <AndroidResource Include="Resources\drawable\Impostazioni.png" />
+    <AndroidResource Include="Resources\drawable\Omal.png" />
+    <AndroidResource Include="Resources\drawable\Ordini.png" />
+    <AndroidResource Include="Resources\drawable\home.png" />
+    <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomControls\" />
@@ -188,6 +221,8 @@
     <AndroidAsset Include="Assets\fonts\Montserrat-Medium.ttf" />
     <AndroidAsset Include="Assets\fonts\Montserrat-Regular.ttf" />
 
+    <AndroidAsset Include="Assets\fonts\fontawesome.ttf" />
+    <AndroidAsset Include="Assets\fonts\materialicons.ttf" />
   </ItemGroup>
   <Import Project="..\Omal\Omal.projitems" Label="Shared" Condition="Exists('..\Omal\Omal.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

@@ -8,7 +8,16 @@ namespace Omal.Services
     {
         public OmalDataStore()
         {
-            
+            Prodotti = new OmalProdottiDataStore();
+            Categorie = new OmalCategorieDataStore();
+            Utenti = new MockUtentiDataStore();
+            ProdottoGruppiMetadati = new OmalProdottoGruppiMetadatiDataStore();
+            ProdottoMetadati = new OmalProdottoMetadatiDataStore();
+            Clienti = new MockClientiDataStore();
+            Valvole = new OmalValvoleDataStore();
+            Attuatori = new MockAttuatoriDataStore();
+            Ordini = new MockOrdiniDataStore();
+            Carrello = new List<Models.Carrello>();
         }
 
         public IDataStore<Prodotto> Prodotti{ get;  set; }

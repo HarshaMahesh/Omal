@@ -5,11 +5,11 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <Label Style="{StaticResource Titolo}" Text="{Binding CurProdotto.Nome}" />
+            <Label Style="{StaticResource Titolo}" Text="{Binding CurProdotto.nome}" />
             <ListView SelectedItem="{Binding CurGruppoProdotto}" ItemsSource="{Binding GruppoMetadati}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding GruppoMetadatiIt}" />
+                        <TextCell Text="{Binding gruppo_metadati_it}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

@@ -13,7 +13,7 @@ namespace Omal.ViewModels
                     return "Dettaglio";
                 else
                 {
-                    return App.CurLang=="IT"?CurGruppoProdottoMetadati.GruppoMetadatiIt : CurGruppoProdottoMetadati.GruppoMetadatiEn;
+                    return App.CurLang=="IT"?CurGruppoProdottoMetadati.gruppo_metadati_it : CurGruppoProdottoMetadati.gruppo_metadati_en;
                 }
             }        
         }
@@ -41,37 +41,53 @@ namespace Omal.ViewModels
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(_ContentHtml))
-                {
-                    if (_CurGruppoProdottoMetadati != null)
-                    {
-                        List<string> Elementi = new List<String>();
-                        _ContentHtml = string.Empty;
-                        // recupero l'elenco dei metadati
-                        var elementi =DataStore.ProdottoMetadati.GetItemsAsync().Result.Where(x => x.IdGruppoMetadato == CurGruppoProdottoMetadati.IdGruppoMetadato).OrderBy(x => x.Ordine).ToList();
-                        foreach (var elemento in elementi)
-                        {
-                            string immagine = App.CurLang == "IT" ? elemento.ImmagineMetadatiIt : elemento.ImmagineMetadatiEn;
-                            string testo = App.CurLang == "IT" ? elemento.TestoEstesoMetadatiIt : elemento.TestoEstesoMetadatiEn;
-                            string curElemento = string.Empty;
-                            if (!string.IsNullOrWhiteSpace(immagine)) curElemento = string.Format("<P ALIGN='CENTER'><img src='{0}' /></P>", immagine);
-                            if (!string.IsNullOrWhiteSpace(testo)) curElemento += testo;
-                            if (!string.IsNullOrWhiteSpace(curElemento)) Elementi.Add(curElemento.Trim());
-                        }
-                        _ContentHtml = string.Join("<hr />", Elementi);
-                        // recupero il prodotto di riferimento (sarà il titolo)
-                        var prodotto = DataStore.Prodotti.GetItemAsync(CurGruppoProdottoMetadati.IdProdotto);
-                        string titolo = string.Empty;
-                        if (App.CurLang == "IT")
-                            titolo = prodotto.Result.Nome;
-                        else
-                            titolo = prodotto.Result.NomeEn;
-                        _ContentHtml = string.Format("<P ALIGN='CENTER'>{0}</P>{1}", titolo, _ContentHtml);
-                    }
-                }
+                if (string.IsNullOrWhiteSpace(_ContentHtml) && !loadContentHtml)
+                    LoadContent();
                 return _ContentHtml;
+                    
             }
+            set
+            {
+                _ContentHtml = value;
+                OnPropertyChanged();
+            }
+        }
+        bool loadContentHtml = false;
 
+        async void LoadContent()
+        {
+            if (!loadContentHtml)
+            {
+                loadContentHtml = true;
+                if (_CurGruppoProdottoMetadati != null)
+                {
+                    List<string> Elementi = new List<String>();
+                    string _ContentHtmlTmp = string.Empty;
+                    // recupero l'elenco dei metadati
+                    var elementi = await DataStore.ProdottoMetadati.GetItemsAsync();
+                    elementi = elementi.Where(x => x.idgruppometadato == CurGruppoProdottoMetadati.idgruppometadato).OrderBy(x => x.ordine).ToList();
+                    foreach (var elemento in elementi)
+                    {
+                        string immagine = App.CurLang == "IT" ? elemento.immagine_metadati_it : elemento.immagine_metadati_en;
+                        string testo = App.CurLang == "IT" ? elemento.testo_esteso_metadati_it : elemento.testo_esteso_metadati_en;
+                        string curElemento = string.Empty;
+                        if (!string.IsNullOrWhiteSpace(immagine)) curElemento = string.Format("<P ALIGN='CENTER'><img src='{0}' /></P>", immagine);
+                        if (!string.IsNullOrWhiteSpace(testo)) curElemento += testo;
+                        if (!string.IsNullOrWhiteSpace(curElemento)) Elementi.Add(curElemento.Trim());
+                    }
+                    _ContentHtmlTmp = string.Join("<hr />", Elementi);
+                    // recupero il prodotto di riferimento (sarà il titolo)
+                    var prodotto = await DataStore.Prodotti.GetItemAsync(CurGruppoProdottoMetadati.idprodotto);
+                    string titolo = string.Empty;
+                    if (App.CurLang == "IT")
+                        titolo = prodotto.nome;
+                    else
+                        titolo = prodotto.nome_en;
+                    _ContentHtmlTmp = string.Format("<P ALIGN='CENTER'>{0}</P>{1}", titolo, _ContentHtmlTmp);
+                    ContentHtml = _ContentHtmlTmp;
+                }
+                loadContentHtml = false;
+            }
         }
 
         public GruppoMetadatiProdottoDetailVM()

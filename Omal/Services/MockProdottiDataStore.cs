@@ -20,14 +20,12 @@ namespace Omal.Services
             items = new List<Models.Prodotto>();
             var mockItems = new List<Models.Prodotto>
             {
-                new Models.Prodotto(){  IdProdotto=1, Nome = "MAGNUM Wafer in Acciaio Carbonio - PN 16-40 ANSI 150-300 in acciaio al carbonio", NomeEn= "Inglese MAGNUM Wafer in Acciaio Carbonio - PN 16-40 ANSI 150-300 in acciaio al carbonio", Descrizione="Descrizione MAGNUM Wafer in Acciaio Carbonio - PN 16-40 ANSI 150-300 in acciaio al carbonio",  DescrizioneEn="Inglese Descrizione MAGNUM Wafer in Acciaio Carbonio - PN 16-40 ANSI 150-300 in acciaio al carbonio", Codice = "Codice01", IdCategoria=7, Ordine = 1, Tipologia="valvola", ImmaginePlaceHolder = "https://picsum.photos/50/50?image=0" , VisibileApp = true },
-new Models.Prodotto(){  IdProdotto=2, Nome = "MAGNUM Wafer in Acciaio Inox - PN 16-40 ANSI 150-300 in acciaio inox", NomeEn= "Inglese MAGNUM Wafer in Acciaio Inox - PN 16-40 ANSI 150-300 in acciaio inox", Descrizione="Descrizione MAGNUM Wafer in Acciaio Inox - PN 16-40 ANSI 150-300 in acciaio inox",  DescrizioneEn="Inglese Descrizione MAGNUM Wafer in Acciaio Inox - PN 16-40 ANSI 150-300 in acciaio inox", Codice = "Codice02", IdCategoria=7, Ordine = 2, Tipologia= "valvola", ImmaginePlaceHolder = "https://picsum.photos/50/50?image=3" , VisibileApp = true },
-new Models.Prodotto(){  IdProdotto=3, Nome = "accessorio bbp - bobina per iso solenoide valvola", NomeEn= "bbp - coils for iso solenoid valv", Descrizione="descrizione accessorio bbp - bobina per iso solenoide valvola",  DescrizioneEn="Inglese descrizione accessorio bbp - bobina per iso solenoide valvola", Codice = "Codice03", IdCategoria=13, Ordine = 1, Tipologia="attuatore", ImmaginePlaceHolder = "https://picsum.photos/50/50?image=5" , VisibileApp = true },
-new Models.Prodotto(){  IdProdotto=4, Nome = "accessorio mc30 - bobina mc30 plug and socket ita", NomeEn= "mc30 - coil mc30 plug and socket", Descrizione="descrizione accessorio mc30 - bobina mc30 plug and socket ita",  DescrizioneEn="Inglese descrizione accessorio mc30 - bobina mc30 plug and socket ita", Codice = "Codice04", IdCategoria=13, Ordine = 2, Tipologia="attuatore", ImmaginePlaceHolder = "https://picsum.photos/50/50?image=8" , VisibileApp = true },
-new Models.Prodotto(){  IdProdotto=5, Nome = "accessorio mc30 - cnomo bobina mc30 plug and socket ita", NomeEn= "mc30 - cnomo coil mc30 plug and socket", Descrizione="descrizione accessorio mc30 - cnomo bobina mc30 plug and socket ita",  DescrizioneEn="Inglese descrizione accessorio mc30 - cnomo bobina mc30 plug and socket ita", Codice = "Codice05", IdCategoria=13, Ordine = 3, Tipologia="attuatore", ImmaginePlaceHolder = "https://picsum.photos/50/50?image=10" , VisibileApp = true },
-new Models.Prodotto(){  IdProdotto=6, Nome = "dac - attuatore pneumatico doppio effetto da in a105", 
-                    NomeEn= "dac - double acting pneumatic actuator da a105", Descrizione="descrizione dac - attuatore pneumatico doppio effetto da in a105",  DescrizioneEn="Inglese descrizione dac - attuatore pneumatico doppio effetto da in a105", Codice = "Codice06", IdCategoria=12, Ordine = 10, Tipologia="attuatore", ImmaginePlaceHolder = "https://picsum.photos/50/50?image=15" , VisibileApp = true },
-new Models.Prodotto(){  IdProdotto=7, Nome = "da - attuatore pneumatico doppio effetto da inox cf8m microfuso", NomeEn= "da - double acting pneumatic actuator da type inox precision casting", Descrizione="descrizioneda - attuatore pneumatico doppio effetto da inox cf8m microfuso",  DescrizioneEn="Inglese descrizioneda - attuatore pneumatico doppio effetto da inox cf8m microfuso", Codice = "Codice07", IdCategoria=12, Ordine = 2, Tipologia="attuatore", ImmaginePlaceHolder = "https://picsum.photos/50/50?image=20" , VisibileApp = true },
+                new Models.Prodotto(){  idprodotto=1, nome = "MAGNUM Wafer in Acciaio Carbonio - PN 16-40 ANSI 150-300 in acciaio al carbonio", nome_en= "Inglese MAGNUM Wafer in Acciaio Carbonio - PN 16-40 ANSI 150-300 in acciaio al carbonio", descrizione="Descrizione MAGNUM Wafer in Acciaio Carbonio - PN 16-40 ANSI 150-300 in acciaio al carbonio",  descrizione_en="Inglese Descrizione MAGNUM Wafer in Acciaio Carbonio - PN 16-40 ANSI 150-300 in acciaio al carbonio", codice = "Codice01", idcategoria=7, ordine = 1, tipologia="valvola", immagine_placeholder = "https://picsum.photos/50/50?image=0" , visibile_app = 1 },
+                new Models.Prodotto(){  idprodotto=2, nome = "MAGNUM Wafer in Acciaio Inox - PN 16-40 ANSI 150-300 in acciaio inox", nome_en= "Inglese MAGNUM Wafer in Acciaio Inox - PN 16-40 ANSI 150-300 in acciaio inox", descrizione="Descrizione MAGNUM Wafer in Acciaio Inox - PN 16-40 ANSI 150-300 in acciaio inox",  descrizione_en="Inglese Descrizione MAGNUM Wafer in Acciaio Inox - PN 16-40 ANSI 150-300 in acciaio inox", codice = "Codice02", idcategoria=7, ordine = 2, tipologia= "valvola", immagine_placeholder = "https://picsum.photos/50/50?image=3" , visibile_app = 1 },
+                new Models.Prodotto(){  idprodotto=3, nome = "accessorio bbp - bobina per iso solenoide valvola", nome_en= "bbp - coils for iso solenoid valv", descrizione="descrizione accessorio bbp - bobina per iso solenoide valvola",  descrizione_en="Inglese descrizione accessorio bbp - bobina per iso solenoide valvola", codice = "Codice03", idcategoria=13, ordine = 1, tipologia="attuatore", immagine_placeholder = "https://picsum.photos/50/50?image=5" , visibile_app = 1 },
+                new Models.Prodotto(){  idprodotto=4, nome = "accessorio mc30 - bobina mc30 plug and socket ita", nome_en= "mc30 - coil mc30 plug and socket", descrizione="descrizione accessorio mc30 - bobina mc30 plug and socket ita",  descrizione_en="Inglese descrizione accessorio mc30 - bobina mc30 plug and socket ita", codice = "Codice04", idcategoria=13, ordine = 2, tipologia="attuatore", immagine_placeholder = "https://picsum.photos/50/50?image=8" , visibile_app = 1 },
+                new Models.Prodotto(){  idprodotto=6, nome = "dac - attuatore pneumatico doppio effetto da in a105",  nome_en= "dac - double acting pneumatic actuator da a105", descrizione="descrizione dac - attuatore pneumatico doppio effetto da in a105",  descrizione_en="Inglese descrizione dac - attuatore pneumatico doppio effetto da in a105", codice = "Codice06", idcategoria=12, ordine = 10, tipologia="attuatore", immagine_placeholder = "https://picsum.photos/50/50?image=15" , visibile_app = 1 },
+                new Models.Prodotto(){  idprodotto=7, nome = "da - attuatore pneumatico doppio effetto da inox cf8m microfuso", nome_en= "da - double acting pneumatic actuator da type inox precision casting", descrizione="descrizioneda - attuatore pneumatico doppio effetto da inox cf8m microfuso",  descrizione_en="Inglese descrizioneda - attuatore pneumatico doppio effetto da inox cf8m microfuso", codice = "Codice07", idcategoria=12, ordine = 2, tipologia="attuatore", immagine_placeholder = "https://picsum.photos/50/50?image=20" , visibile_app = 1 },
 
             };
 
@@ -47,7 +45,7 @@ new Models.Prodotto(){  IdProdotto=7, Nome = "da - attuatore pneumatico doppio e
 
         public async Task<bool> UpdateItemAsync(Models.Prodotto item)
         {
-            var _item = items.Where((Models.Prodotto arg) => arg.IdProdotto == item.IdProdotto).FirstOrDefault();
+            var _item = items.Where((Models.Prodotto arg) => arg.idprodotto == item.idprodotto).FirstOrDefault();
             items.Remove(_item);
             items.Add(item);
 
@@ -56,7 +54,7 @@ new Models.Prodotto(){  IdProdotto=7, Nome = "da - attuatore pneumatico doppio e
 
         public async Task<bool> DeleteItemAsync(int id)
         {
-            var _item = items.Where((Models.Prodotto arg) => arg.IdProdotto == id).FirstOrDefault();
+            var _item = items.Where((Models.Prodotto arg) => arg.idprodotto == id).FirstOrDefault();
             items.Remove(_item);
 
             return await Task.FromResult(true);
@@ -64,7 +62,7 @@ new Models.Prodotto(){  IdProdotto=7, Nome = "da - attuatore pneumatico doppio e
 
         public async Task<Models.Prodotto> GetItemAsync(int id)
         {
-            return await Task.FromResult(items.FirstOrDefault(s => s.IdProdotto == id));
+            return await Task.FromResult(items.FirstOrDefault(s => s.idprodotto == id));
         }
 
         public async Task<IEnumerable<Models.Prodotto>> GetItemsAsync(bool forceRefresh = false)

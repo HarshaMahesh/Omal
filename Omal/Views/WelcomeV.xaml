@@ -9,7 +9,6 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
         <Image VerticalOptions="StartAndExpand" HorizontalOptions="Center"  HeightRequest="90" BackgroundColor="#60A5D1" Source="LogoOmal" Margin="10"  />
-
             <StackLayout Grid.Row="2" VerticalOptions="Start" Orientation="Vertical">
             <Button  Text="Versione Italiana" HorizontalOptions="Fill" Clicked="Handle_Clicked_IT"></Button>
             <Button HorizontalOptions="Fill" Text="English version" Clicked="Handle_Clicked_EN">English Version</Button>

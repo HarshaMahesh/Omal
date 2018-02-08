@@ -11,9 +11,9 @@
            <ListView SelectedItem="{Binding SelectedProduct}" x:Name="ElencoProdotti" ItemsSource="{Binding Prodotti}">
            <ListView.ItemTemplate> 
                 <DataTemplate>
-                    <ImageCell  Detail="{Binding Nome}" Text="{Binding Tipologia}" >
+                    <ImageCell  Detail="{Binding nome}" Text="{Binding tipologia}" >
                     <ImageCell.ImageSource>
-                        <UriImageSource Uri="{Binding ImmaginePlaceHolder}"
+                        <UriImageSource Uri="{Binding immagine_placeholder}"
                             CacheValidity="1"
                             CachingEnabled="true"/>
                         </ImageCell.ImageSource>       

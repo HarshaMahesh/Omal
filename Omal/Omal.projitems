@@ -79,7 +79,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SearchProductVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\InfoProductVM.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\MockProdottoGruppiMetadatiDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\OmalProdottoGruppiMetadatiDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockProdottoMetadatiDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\GruppoMetadatiProdottoDetailV.xaml.cs">
       <DependentUpon>GruppoMetadatiProdottoDetailV.xaml</DependentUpon>
@@ -108,7 +108,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Base.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Valvola.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Attuatore.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\MockValvoleDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\OmalValvoleDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockAttuatoriDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ArticoliSearchResultV.xaml.cs">
       <DependentUpon>ArticoliSearchResultV.xaml</DependentUpon>
@@ -125,6 +125,10 @@
       <DependentUpon>OmalContactPageV.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)CustomControls\CualevaRoundedEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\OmalCategorieDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\OmalProdottiDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\OmalProdottoMetadatiDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\MockValvoleDataStore %28copia%29.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />

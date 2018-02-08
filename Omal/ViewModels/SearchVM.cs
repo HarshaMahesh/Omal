@@ -77,16 +77,35 @@ namespace Omal.ViewModels
         {
             get
             {
-                if (primoLivello == null)
+                if (primoLivello == null && !loadPrimoLivello)
                 {
-                    if (App.CurLang == "IT")
-                        primoLivello = new ObservableCollection<KeyValuePair<int, string>>(DataStore.Categorie.GetItemsAsync(false).Result.Where(x => x.IdPadre == 0).OrderBy(x => x.Ordine).Select(x => new KeyValuePair<int, string>(x.IdCategoria, x.Nome)));
-                    else
-                        primoLivello = new ObservableCollection<KeyValuePair<int, string>>(DataStore.Categorie.GetItemsAsync(false).Result.Where(x => x.IdPadre == 0).OrderBy(x => x.Ordine).Select(x => new KeyValuePair<int, string>(x.IdCategoria, x.NomeEn)));
-                //    if (primoLivello != null) SelectedPrimoLivello = primoLivello.FirstOrDefault();
+                    LoadPrimoLivello();
                 }
                 return primoLivello;
             }
+            set
+            {
+                primoLivello = value;
+                OnPropertyChanged();
+            }
+        }
+
+        bool loadPrimoLivello = false;
+        public  async void LoadPrimoLivello()
+        {
+            //    if (primoLivello != null) SelectedPrimoLivello = primoLivello.FirstOrDefault();
+            if (!loadPrimoLivello)
+            {
+                loadPrimoLivello = true;
+                IEnumerable<Models.Categoria> categorieTmp = await DataStore.Categorie.GetItemsAsync(false);
+                if (App.CurLang == "IT")
+                    PrimoLivello  = new ObservableCollection<KeyValuePair<int, string>>(categorieTmp.Where(x => x.idPadre == 0).OrderBy(x => x.ordine).Select(x => new KeyValuePair<int, string>(x.idCategoria, x.nome)));
+                else
+                    PrimoLivello = new ObservableCollection<KeyValuePair<int, string>>(categorieTmp.Where(x => x.idPadre == 0).OrderBy(x => x.ordine).Select(x => new KeyValuePair<int, string>(x.idCategoria, x.nome_en)));
+                loadPrimoLivello = false;
+            }
+                
+            
         }
 
         KeyValuePair<int, string> selectedPrimoLivello;
@@ -113,25 +132,40 @@ namespace Omal.ViewModels
         {
             get
             {
-                if (secondoLivello == null)
-                {
-                    if (SelectedPrimoLivello.Key == 0)
-                        secondoLivello = new ObservableCollection<KeyValuePair<int, string>>();
-                    else
-                    {
-                        var ritorno = DataStore.Categorie.GetItemsAsync(false).Result.Where(x => x.IdPadre == SelectedPrimoLivello.Key).OrderBy(x => x.Ordine);
-                        IEnumerable<KeyValuePair<int, string>> elementi;
-                        if (App.CurLang == "IT")
-                            elementi = ritorno.Select(x => new KeyValuePair<int, string>(x.IdCategoria, x.Nome));
-                        else
-                            elementi = ritorno.Select(x => new KeyValuePair<int, string>(x.IdCategoria, x.NomeEn));
-                        secondoLivello = new ObservableCollection<KeyValuePair<int, string>>(elementi);
-                    }
-               //     if (secondoLivello != null) SelectedPrimoLivello = secondoLivello.FirstOrDefault();
-                }
-
+                if (secondoLivello == null && !loadSecondoLivello)
+                    LoadSecondoLivello();
                 return secondoLivello;
             }
+            set
+            {
+                secondoLivello = value;
+                OnPropertyChanged();
+            }
+        }
+
+        bool loadSecondoLivello = false;
+        public async void LoadSecondoLivello()
+        {
+            if (!loadSecondoLivello)
+            {
+                loadSecondoLivello = true;
+                if (SelectedPrimoLivello.Key == 0)
+                    SecondoLivello = new ObservableCollection<KeyValuePair<int, string>>();
+                else
+                {
+                    IEnumerable<Models.Categoria> categorieTmp = await DataStore.Categorie.GetItemsAsync(false);
+                    var ritorno = await DataStore.Categorie.GetItemsAsync(false);
+                    ritorno = ritorno.Where(x => x.idPadre == SelectedPrimoLivello.Key).OrderBy(x => x.ordine);
+                    IEnumerable<KeyValuePair<int, string>> elementi;
+                    if (App.CurLang == "IT")
+                        elementi = ritorno.Select(x => new KeyValuePair<int, string>(x.idCategoria, x.nome));
+                    else
+                        elementi = ritorno.Select(x => new KeyValuePair<int, string>(x.idCategoria, x.nome_en));
+                    SecondoLivello = new ObservableCollection<KeyValuePair<int, string>>(elementi);
+                }
+                loadSecondoLivello = false;
+            }
+
         }
 
         KeyValuePair<int, string> selectedSecondoLivello;
@@ -156,25 +190,39 @@ namespace Omal.ViewModels
         {
             get
             {
-                if (terzoLivello == null)
-                {
-                    if (SelectedSecondoLivello.Key == 0)
-                        terzoLivello = new ObservableCollection<KeyValuePair<int, string>>();
-                    else
-                    {
-                        var ritorno = DataStore.Categorie.GetItemsAsync(false).Result.Where(x => x.IdPadre == selectedSecondoLivello.Key).OrderBy(x => x.Ordine);
-                        IEnumerable<KeyValuePair<int, string>> elementi;
-                        if (App.CurLang == "IT")
-                            elementi = ritorno.Select(x => new KeyValuePair<int, string>(x.IdCategoria, x.Nome));
-                        else
-                            elementi = ritorno.Select(x => new KeyValuePair<int, string>(x.IdCategoria, x.NomeEn));
-                        terzoLivello = new ObservableCollection<KeyValuePair<int, string>>(elementi);
-                    }
-                    //     if (secondoLivello != null) SelectedPrimoLivello = secondoLivello.FirstOrDefault();
-                }
-
+                if (terzoLivello == null && !loadTerzoLivello)
+                    LoadTerzoLivello();
                 return terzoLivello;
             }
+            set
+            {
+                terzoLivello = value;
+                OnPropertyChanged();
+            }
+        }
+
+        bool loadTerzoLivello = false;
+        private async void LoadTerzoLivello()
+        {
+            if (!loadTerzoLivello)
+            {
+                loadTerzoLivello = true;
+                if (SelectedSecondoLivello.Key == 0)
+                    TerzoLivello = new ObservableCollection<KeyValuePair<int, string>>();
+                else
+                {
+                    var ritorno = await DataStore.Categorie.GetItemsAsync(false);
+                    ritorno = ritorno.Where(x => x.idPadre == selectedSecondoLivello.Key).OrderBy(x => x.ordine);
+                    IEnumerable<KeyValuePair<int, string>> elementi;
+                    if (App.CurLang == "IT")
+                        elementi = ritorno.Select(x => new KeyValuePair<int, string>(x.idCategoria, x.nome));
+                    else
+                        elementi = ritorno.Select(x => new KeyValuePair<int, string>(x.idCategoria, x.nome_en));
+                    TerzoLivello = new ObservableCollection<KeyValuePair<int, string>>(elementi);
+                }
+                loadTerzoLivello = false;
+            }
+
         }
 
         KeyValuePair<int, string> selectedTerzoLivello;

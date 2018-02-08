@@ -29,11 +29,11 @@ namespace Omal.ViewModels
                 {
                     // Sto ordinando una valvola
                     var idcodicevalvola = parametri["idcodicevalvola"].ToString();
-                    var valvola = ((IEnumerable<Models.Valvola>)Articoli).FirstOrDefault(x=>x.IdCodiceValvola == Convert.ToInt32(idcodicevalvola));
+                    var valvola = ((IEnumerable<Models.Valvola>)Articoli).FirstOrDefault(x=>x.idcodicevalvola == Convert.ToInt32(idcodicevalvola));
                     if (valvola == null) throw new KeyNotFoundException("IdCodiceValvola non trovato");
-                    var elementoCarrello = DataStore.Carrello.FirstOrDefault(x => x.IdArticolo == valvola.IdCodiceValvola && x.Tipologia == CurProdotto.Tipologia && x.IdProdotto == CurProdotto.IdProdotto);
+                    var elementoCarrello = DataStore.Carrello.FirstOrDefault(x => x.IdArticolo == valvola.idcodicevalvola && x.Tipologia == CurProdotto.tipologia && x.IdProdotto == CurProdotto.idprodotto);
                     if (elementoCarrello == null)
-                        DataStore.Carrello.Add(new Models.Carrello() { CodiceArticolo = valvola.Codice_Articolo, DescrizioneCarrello_En = curProdotto.DescrizioneEn, DescrizioneCarrello_It = curProdotto.Descrizione, IdArticolo = valvola.IdCodiceValvola, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = valvola.Prezzo, Qta = Convert.ToInt32(qta), Tipologia = curProdotto.Tipologia, IdProdotto = CurProdotto.IdProdotto });
+                        DataStore.Carrello.Add(new Models.Carrello() { CodiceArticolo = valvola.codice_articolo, DescrizioneCarrello_En = curProdotto.descrizione_en, DescrizioneCarrello_It = curProdotto.descrizione, IdArticolo = valvola.idcodicevalvola, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = valvola.Prezzo, Qta = Convert.ToInt32(qta), Tipologia = curProdotto.tipologia, IdProdotto = CurProdotto.idprodotto });
                     else
                         elementoCarrello.Qta += Convert.ToInt32(qta);                                                                              
                 }
@@ -43,9 +43,9 @@ namespace Omal.ViewModels
                     var idcodiceattuatore = parametri["idcodiceattuatore"].ToString();
                     var attuatore = ((IEnumerable<Models.Attuatore>)Articoli).FirstOrDefault(x => x.IdCodiceAttuatore == Convert.ToInt32(idcodiceattuatore));
                     if (attuatore == null) throw new KeyNotFoundException("IdCodiceAttuatore non trovato");
-                    var elementoCarrello = DataStore.Carrello.FirstOrDefault(x => x.IdArticolo == attuatore.IdCodiceAttuatore && x.Tipologia == CurProdotto.Tipologia && x.IdProdotto == CurProdotto.IdProdotto);
+                    var elementoCarrello = DataStore.Carrello.FirstOrDefault(x => x.IdArticolo == attuatore.IdCodiceAttuatore && x.Tipologia == CurProdotto.tipologia && x.IdProdotto == CurProdotto.idprodotto);
                     if (elementoCarrello == null)
-                        DataStore.Carrello.Add(new Models.Carrello() { CodiceArticolo = attuatore.Codice_Articolo, DescrizioneCarrello_En = curProdotto.DescrizioneEn, DescrizioneCarrello_It = curProdotto.Descrizione, IdArticolo = attuatore.IdCodiceAttuatore, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = attuatore.Prezzo, Qta = Convert.ToInt32(qta), Tipologia = curProdotto.Tipologia, IdProdotto = CurProdotto.IdProdotto });
+                        DataStore.Carrello.Add(new Models.Carrello() { CodiceArticolo = attuatore.Codice_Articolo, DescrizioneCarrello_En = curProdotto.descrizione_en, DescrizioneCarrello_It = curProdotto.descrizione, IdArticolo = attuatore.IdCodiceAttuatore, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = attuatore.Prezzo, Qta = Convert.ToInt32(qta), Tipologia = curProdotto.tipologia, IdProdotto = CurProdotto.idprodotto });
                     else
                         elementoCarrello.Qta += Convert.ToInt32(qta);                                                                              
                 }
@@ -90,7 +90,7 @@ namespace Omal.ViewModels
                 {
                     ritorno += "<br><b>Per vedere i prezzi è necessario effettuare il login</b>";
                 }
-                ritorno += string.Format("<b>{0}</b>", App.CurLang == "IT"? curProdotto.Nome:curProdotto.NomeEn);
+                ritorno += string.Format("<b>{0}</b>", App.CurLang == "IT"? curProdotto.nome:curProdotto.nome_en);
                 ritorno += string.Format("<p ALIGN='CENTER'>Trovati {0} articoli</p>", Articoli.Count());
                 if (prodottoIsValvola)
                     ritorno += HtmlPerValvole();
@@ -133,7 +133,7 @@ namespace Omal.ViewModels
                                 "<input type='hidden' name='isvalvola' value='0' />" +
                                 "<input type='hidden' name='idcodiceattuatore' value='{1}' />" +
                                 "<input type='submit' value='Ordina' />" +
-                            "</form>", curProdotto.IdProdotto, attuatore.IdCodiceAttuatore,"Prezzo",attuatore.Prezzo.ToString("F")));
+                            "</form>", curProdotto.idprodotto, attuatore.IdCodiceAttuatore,"Prezzo",attuatore.Prezzo.ToString("F")));
                 }
                 curAttuatore.Add(string.Format("<a href='{0}'>Mostra 3D</a>&emsp;<a href=''>Invia 3D</a>",attuatore.url3d));
                 curAttuatore.Add("<hr/>");
@@ -157,13 +157,13 @@ namespace Omal.ViewModels
                 if (!string.IsNullOrWhiteSpace(valvola.valore_dn)) curValvola.Add(string.Format(elemento,"valore_dn", valvola.valore_dn));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_inch)) curValvola.Add(string.Format(elemento, "valore_inch", valvola.valore_inch));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_pnansi)) curValvola.Add(string.Format(elemento, "valore_pnansi", valvola.valore_pnansi));
-                 if (!string.IsNullOrWhiteSpace(valvola.Codice_Articolo)) curValvola.Add(string.Format(elemento, "codice_articolo", valvola.Codice_Articolo));
-                 if (!string.IsNullOrWhiteSpace(valvola.Codice_Attuatore)) curValvola.Add(string.Format(elemento, "Codice_Attuatore", valvola.Codice_Attuatore));
-                 if (!string.IsNullOrWhiteSpace(valvola.Codice_Kit)) curValvola.Add(string.Format(elemento, "codice_kit", valvola.Codice_Kit));
-                 if (!string.IsNullOrWhiteSpace(valvola.Codice_Valvola)) curValvola.Add(string.Format(elemento, "Codice_Valvola", valvola.Codice_Valvola));
-                 if (!string.IsNullOrWhiteSpace(valvola.Valore_nmm)) curValvola.Add(string.Format(elemento, "valore_nmm", valvola.Valore_nmm));
-                 if (!string.IsNullOrWhiteSpace(valvola.Valore_hmm)) curValvola.Add(string.Format(elemento, "valore_hmm", valvola.Valore_hmm));
-                 if (!string.IsNullOrWhiteSpace(valvola.Valore_pesokg)) curValvola.Add(string.Format(elemento, "valore_pesokg", valvola.Valore_pesokg));
+                 if (!string.IsNullOrWhiteSpace(valvola.codice_articolo)) curValvola.Add(string.Format(elemento, "codice_articolo", valvola.codice_articolo));
+                 if (!string.IsNullOrWhiteSpace(valvola.codice_attuatore)) curValvola.Add(string.Format(elemento, "Codice_Attuatore", valvola.codice_attuatore));
+                 if (!string.IsNullOrWhiteSpace(valvola.codice_kit)) curValvola.Add(string.Format(elemento, "codice_kit", valvola.codice_kit));
+                 if (!string.IsNullOrWhiteSpace(valvola.codice_valvola)) curValvola.Add(string.Format(elemento, "Codice_Valvola", valvola.codice_valvola));
+                 if (!string.IsNullOrWhiteSpace(valvola.valore_nmm)) curValvola.Add(string.Format(elemento, "valore_nmm", valvola.valore_nmm));
+                 if (!string.IsNullOrWhiteSpace(valvola.valore_hmm)) curValvola.Add(string.Format(elemento, "valore_hmm", valvola.valore_hmm));
+                 if (!string.IsNullOrWhiteSpace(valvola.valore_pesokg)) curValvola.Add(string.Format(elemento, "valore_pesokg", valvola.valore_pesokg));
                 if (App.CurLang == "IT")
                 {
                     if (!string.IsNullOrWhiteSpace(valvola.note_footer)) curValvola.Add(string.Format(elemento, "note_footer", valvola.note_footer));
@@ -183,9 +183,9 @@ namespace Omal.ViewModels
                                 "<input type='hidden' name='isvalvola' value='1' />" +
                                 "<input type='hidden' name='idcodicevalvola' value='{1}' />" +
                                 "<input type='submit' value='Ordina' />" +
-                            "</form>",curProdotto.IdProdotto,  valvola.IdCodiceValvola, "Prezzo",valvola.Prezzo.ToString("F") ));
+                            "</form>",curProdotto.idprodotto,  valvola.idcodicevalvola, "Prezzo",valvola.Prezzo.ToString("F") ));
                 }
-                curValvola.Add(string.Format("<a href='{0}'>Mostra 3D</a>&emsp;<a href=''>Invia 3D</a>", valvola.url3d));
+                curValvola.Add(string.Format("<a href='{0}'>Mostra 3D</a>&emsp;<a href=''>Invia 3D</a>", valvola.url_3d));
                 curValvola.Add("<hr/>");
                 ritorno += string.Join("", curValvola);
             }

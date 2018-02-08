@@ -1,43 +1,31 @@
 ﻿using System;
-
+using Naxam.Controls.Forms;
 using Xamarin.Forms;
 
 namespace Omal
 {
-    public class MainPage : TabbedPage
+    public class MainPage : BottomTabbedPage
     {
         public MainPage()
         {
-            Page SearchPage, AnagrafichePage, BasketPage, ContactOmalPage = null;
-
+            Page SearchPage, AnagrafichePage, BasketPage, ContactOmalPage = null, ImpostazioniPage = null;
+            SearchPage = new NavigationPage(new Views.SearchV()) { Title = "Cerca", Icon="Cerca.png" };
+            AnagrafichePage = new NavigationPage(new Views.AnagraficheV()) { Title = "Anagrafiche", Icon = "Archivio.png"  };
+            BasketPage = new NavigationPage(new Views.BasketV()) { Title = "Carrello", Icon ="Ordini.png" };
+            ContactOmalPage = new NavigationPage(new Views.OmalContactPageV()) { Title = "Contatti Omal", Icon="Omal.png" };
+            ImpostazioniPage = new NavigationPage(new Views.OmalContactPageV()) { Title = "Impostazioni", Icon = "Impostazioni.png" };
             switch (Device.RuntimePlatform)
             {
-                case Device.iOS:
-                    
-                    SearchPage = new NavigationPage(new Views.SearchV()){Title = "Cerca"};
-                    AnagrafichePage = new NavigationPage(new Views.AnagraficheV()) { Title = "Anagrafiche" };
-                    BasketPage = new NavigationPage(new Views.BasketV()) { Title = "Carrello" };
-                    ContactOmalPage = new NavigationPage(new Views.OmalContactPageV()) { Title = "Contatti Omal" };
-                    SearchPage.Icon = "Search.png";
-                    AnagrafichePage.Icon = "OrdersPage.png";
-                    BasketPage.Icon = "BasketPage.png";
-  //                  InfoProductPage.Icon = "Info.png";
-                    break;
-                default:
-                    SearchPage = new NavigationPage(new Views.SearchV()) { Title = "Cerca" };
-                    AnagrafichePage = new NavigationPage(new Views.AnagraficheV()) { Title = "Anagrafiche" };
-                    BasketPage = new NavigationPage(new Views.BasketV()) { Title = "Carrello" };
-                    ContactOmalPage = new NavigationPage(new Views.OmalContactPageV()) { Title = "Contatti Omalo" };
+                case Device.Android:
+                    NavigationPage.SetHasNavigationBar(this, false);
                     break;
             }
 
             Children.Add(SearchPage);
             Children.Add(AnagrafichePage);
             Children.Add(BasketPage);
-            //if (Device.RuntimePlatform == Device.iOS)
-                Children.Add(ContactOmalPage);
-       
-            NavigationPage.SetHasNavigationBar(this, false);
+            Children.Add(ContactOmalPage);
+            Children.Add(ImpostazioniPage);
             Title = Children[0].Title;
         }
 

@@ -21,7 +21,7 @@
             <StackLayout Margin="0,0,0,0" Grid.Row="0" Orientation="Vertical">
                <Label Style="{StaticResource Titolo}">Prodotti</Label>
                 <Label Style="{StaticResource Descrizione}">Cerca il prodotto inserendo una parte del nome</Label>
-                <Entry Placeholder="Cerca Prodotto" Text="{Binding ProductNameFilter, Mode=TwoWay}"></Entry>
+                    <SearchBar  Placeholder="Cerca Prodotto" Text="{Binding ProductNameFilter, Mode=TwoWay}" />
 
                 <Button Command="{Binding SearchWithProductNameCommand, Mode=TwoWay}" Text="Cerca" HorizontalOptions="End" />
             </StackLayout>

@@ -20,19 +20,19 @@ namespace Omal.Services
             items = new List<Models.Categoria>();
             var mockItems = new List<Models.Categoria>
             {
-                new Models.Categoria () { Codice="Codice03", Descrizione ="Descrizione valvola a sfera", DescrizioneEn="Ball valves description", IdCategoria=3, IdPadre = 0, Nome ="Valvole a sfera", NomeEn="Ball valves", Ordine=1, Tipologia="valvola", VisibileApp=true},
-new Models.Categoria () { Codice="Codice04", Descrizione ="Descrizione valvola a farfalla", DescrizioneEn="Butterfly valves description", IdCategoria=4, IdPadre = 0, Nome ="Valvole a farfalla", NomeEn="Butterfly valves", Ordine=2, Tipologia="valvola", VisibileApp=true},
-new Models.Categoria () { Codice="Codice05", Descrizione ="Descrizione valvole magnum", DescrizioneEn="Magnum valves description", IdCategoria=5, IdPadre = 0, Nome ="Valvole Magnum", NomeEn="Magnum valves", Ordine=3, Tipologia="valvola", VisibileApp=true},
-new Models.Categoria () { Codice="Codice06", Descrizione ="Descrizione valvole a sfera in PVC", DescrizioneEn="PVC ball valves description", IdCategoria=6, IdPadre = 3, Nome ="Valvole a sfera in PVC", NomeEn="PVC ball valves", Ordine=1, Tipologia="valvola", VisibileApp=true},
-new Models.Categoria () { Codice="Codice07", Descrizione ="Descrizione Magnum wafer", DescrizioneEn="Magnum wafer description", IdCategoria=7, IdPadre = 5, Nome ="Magnum Wafer", NomeEn="Magnum Wafer", Ordine=1, Tipologia="valvola", VisibileApp=true},
-new Models.Categoria () { Codice="Codice08", Descrizione ="Descrizione Magnum split wafer", DescrizioneEn="Magnum split wafer description", IdCategoria=8, IdPadre = 5, Nome ="Magnum split wafer", NomeEn="Magnum split wafer", Ordine=2, Tipologia="valvola", VisibileApp=true},
-new Models.Categoria () { Codice="Codice09", Descrizione ="Descrizione Magnum split wafer 3 vie 4 guarnizioni", DescrizioneEn="Magnum split wafer 3 wey 4 seals description", IdCategoria=9, IdPadre = 8, Nome ="Magnum split wafer 3 vie 4 guarnizioni", NomeEn="Magnum split wafer 3 wey 4 seals", Ordine=3, Tipologia="valvola", VisibileApp=true},
-new Models.Categoria () { Codice="Codice10", Descrizione ="Descrizione accessori attuatori", DescrizioneEn="Actuators Accessories description", IdCategoria=10, IdPadre = 0, Nome ="Attuatori Accessori", NomeEn="Accessories", Ordine=4, Tipologia="attuatore", VisibileApp=true},
-new Models.Categoria () { Codice="Codice11", Descrizione ="Descrizione attuatori elettrici", DescrizioneEn="Electrical Actuators description", IdCategoria=11, IdPadre = 0, Nome ="Attuatori Elettrici", NomeEn="Electrical", Ordine=5, Tipologia="attuatore", VisibileApp=true},
-new Models.Categoria () { Codice="Codice12", Descrizione ="Descrizione attuatori pneumatici", DescrizioneEn="Pneumatic actuators description", IdCategoria=12, IdPadre = 0, Nome ="Attuatori pneumatici", NomeEn="Pneumatic", Ordine=6, Tipologia="attuatore", VisibileApp=true},
-new Models.Categoria () { Codice="Codice13", Descrizione ="Descrizione Elettrovalvole e bobine", DescrizioneEn="Solenoid and coils description", IdCategoria=13, IdPadre = 10, Nome ="Elettrovalvole e bobine", NomeEn="Solenoid and coils", Ordine=1, Tipologia="attuatore", VisibileApp=true},
-new Models.Categoria () { Codice="Codice20", Descrizione ="Descrizione attuatori pneumatici in acciaio carbonio", DescrizioneEn="Carbon steel description", IdCategoria=20, IdPadre = 12, Nome ="attuatori pneumatici in acciaio carbonio", NomeEn="Carbon steel", Ordine=1, Tipologia="attuatore", VisibileApp=true},
-new Models.Categoria () { Codice="Codice21", Descrizione ="Descrizione attuatori pneumatici in acciaio inox", DescrizioneEn="Sailess steel description", IdCategoria=21, IdPadre = 12, Nome ="attuatori pneumatici in acciaio inox", NomeEn="Sailess steel", Ordine=2, Tipologia="attuatore", VisibileApp=true},
+                new Models.Categoria () { codice="Codice03", descrizione ="Descrizione valvola a sfera", descrizione_en="Ball valves description", idCategoria=3, idPadre = 0, nome ="Valvole a sfera", nome_en="Ball valves", ordine=1, tipologia="valvola", visibile_app=1},
+                new Models.Categoria () { codice="Codice04", descrizione ="Descrizione valvola a farfalla", descrizione_en="Butterfly valves description", idCategoria=4, idPadre = 0, nome ="Valvole a farfalla", nome_en="Butterfly valves", ordine=2, tipologia="valvola", visibile_app=1},
+                new Models.Categoria () { codice="Codice05", descrizione ="Descrizione valvole magnum", descrizione_en="Magnum valves description", idCategoria=5, idPadre = 0, nome ="Valvole Magnum", nome_en="Magnum valves", ordine=3, tipologia="valvola", visibile_app=1},
+                new Models.Categoria () { codice="Codice06", descrizione ="Descrizione valvole a sfera in PVC", descrizione_en="PVC ball valves description", idCategoria=6, idPadre = 3, nome ="Valvole a sfera in PVC", nome_en="PVC ball valves", ordine=1, tipologia="valvola", visibile_app=1},
+                new Models.Categoria () { codice="Codice07", descrizione ="Descrizione Magnum wafer", descrizione_en="Magnum wafer description", idCategoria=7, idPadre = 5, nome ="Magnum Wafer", nome_en="Magnum Wafer", ordine=1, tipologia="valvola", visibile_app=1},
+                new Models.Categoria () { codice="Codice08", descrizione ="Descrizione Magnum split wafer", descrizione_en="Magnum split wafer description", idCategoria=8, idPadre = 5, nome ="Magnum split wafer", nome_en="Magnum split wafer", ordine=2, tipologia="valvola", visibile_app=1},
+                new Models.Categoria () { codice="Codice09", descrizione ="Descrizione Magnum split wafer 3 vie 4 guarnizioni", descrizione_en="Magnum split wafer 3 wey 4 seals description", idCategoria=9, idPadre = 8, nome ="Magnum split wafer 3 vie 4 guarnizioni", nome_en="Magnum split wafer 3 wey 4 seals", ordine=3, tipologia="valvola", visibile_app=1},
+                new Models.Categoria () { codice="Codice10", descrizione ="Descrizione accessori attuatori", descrizione_en="Actuators Accessories description", idCategoria=10, idPadre = 0, nome ="Attuatori Accessori", nome_en="Accessories", ordine=4, tipologia="attuatore", visibile_app=1},
+new Models.Categoria () { codice="Codice11", descrizione ="Descrizione attuatori elettrici", descrizione_en="Electrical Actuators description", idCategoria=11, idPadre = 0, nome ="Attuatori Elettrici", nome_en="Electrical", ordine=5, tipologia="attuatore", visibile_app=1},
+new Models.Categoria () { codice="Codice12", descrizione ="Descrizione attuatori pneumatici", descrizione_en="Pneumatic actuators description", idCategoria=12, idPadre = 0, nome ="Attuatori pneumatici", nome_en="Pneumatic", ordine=6, tipologia="attuatore", visibile_app=1},
+new Models.Categoria () { codice="Codice13", descrizione ="Descrizione Elettrovalvole e bobine", descrizione_en="Solenoid and coils description", idCategoria=13, idPadre = 10, nome ="Elettrovalvole e bobine", nome_en="Solenoid and coils", ordine=1, tipologia="attuatore", visibile_app=1},
+new Models.Categoria () { codice="Codice20", descrizione ="Descrizione attuatori pneumatici in acciaio carbonio", descrizione_en="Carbon steel description", idCategoria=20, idPadre = 12, nome ="attuatori pneumatici in acciaio carbonio", nome_en="Carbon steel", ordine=1, tipologia="attuatore", visibile_app=1},
+new Models.Categoria () { codice="Codice21", descrizione ="Descrizione attuatori pneumatici in acciaio inox", descrizione_en="Sailess steel description", idCategoria=21, idPadre = 12, nome ="attuatori pneumatici in acciaio inox", nome_en="Sailess steel", ordine=2, tipologia="attuatore", visibile_app=1},
             };
 
             foreach (var item in mockItems)
@@ -50,7 +50,7 @@ new Models.Categoria () { Codice="Codice21", Descrizione ="Descrizione attuatori
 
         public async Task<bool> UpdateItemAsync(Models.Categoria item)
         {
-            var _item = items.Where((Models.Categoria arg) => arg.IdCategoria == item.IdCategoria).FirstOrDefault();
+            var _item = items.Where((Models.Categoria arg) => arg.idCategoria == item.idCategoria).FirstOrDefault();
             items.Remove(_item);
             items.Add(item);
 
@@ -59,7 +59,7 @@ new Models.Categoria () { Codice="Codice21", Descrizione ="Descrizione attuatori
 
         public async Task<bool> DeleteItemAsync(int id)
         {
-            var _item = items.Where((Models.Categoria arg) => arg.IdCategoria == id).FirstOrDefault();
+            var _item = items.Where((Models.Categoria arg) => arg.idCategoria == id).FirstOrDefault();
             items.Remove(_item);
 
             return await Task.FromResult(true);
@@ -67,7 +67,7 @@ new Models.Categoria () { Codice="Codice21", Descrizione ="Descrizione attuatori
 
         public async Task<Models.Categoria> GetItemAsync(int id)
         {
-            return await Task.FromResult(items.FirstOrDefault(s => s.IdCategoria == id));
+            return await Task.FromResult(items.FirstOrDefault(s => s.idCategoria == id));
         }
 
         public async Task<IEnumerable<Models.Categoria>> GetItemsAsync(bool forceRefresh = false)

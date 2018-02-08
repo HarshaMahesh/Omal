@@ -3,18 +3,19 @@ namespace Omal.Models
 {
     public class Prodotto
     {
-        public int IdProdotto {   get;set;    }
-        public int IdCategoria { get; set; }
-        public string Codice { get; set; }
-        public string Nome { get; set; }
-        public string NomeEn { get; set; }
-        public string Descrizione { get; set; }
-        public string DescrizioneEn { get; set; }
-        public string Tipologia { get; set; }
-        public int Ordine { get; set; }
-        public string UrlSeo { get; set; }
-        public string UrlSepEn { get; set; }
-        public bool VisibileApp { get; set; }
-        public string ImmaginePlaceHolder { get; set; }
+        public int idprodotto {   get;set;    }
+        public int idcategoria { get; set; }
+        public string codice { get; set; }
+        public string nome { get; set; }
+        public string nome_en { get; set; }
+        public string descrizione { get; set; }
+        public string descrizione_en { get; set; }
+        public string tipologia { get; set; }
+        public int ordine { get; set; }
+        public int visibile_app { get; set; }
+        public string immagine_placeholder { get; set; }
+        public DateTime dataora_modifica { get; set; }
+        public int annullato { get; set; }
     }
 }
+

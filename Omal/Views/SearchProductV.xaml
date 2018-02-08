@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.SearchProductV" Title="{Binding CurTitle}">
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.SearchProductV" Title="{Binding CurTitle}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
         <StackLayout Orientation="Vertical">
-            <Label Style="{StaticResource Titolo}" Text="{Binding CurProdotto.Nome}" />
-            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" VerticalOptions="Center" >
-                    <Image Source="{Binding CurProdotto.ImmaginePlaceHolder}" />
-                    <Button Text="Info" Command="{Binding GoToDetailCommand}" />                
+            <Label Style="{StaticResource Titolo}" Text="{Binding CurProdotto.nome}" />
+            <StackLayout HorizontalOptions="Center" Orientation="Vertical" VerticalOptions="Center" >
+                    <Image Margin="5" Source="{Binding CurProdotto.immagine_placeholder}" />
+                    <Button Margin="5" Text="Info" Command="{Binding GoToDetailCommand}" />                
             </StackLayout>
             <StackLayout Orientation="Vertical" Margin="10">
             <Label Margin="0,40,0,0" HorizontalTextAlignment="Center" Style="{StaticResource Titolo}" Text="Trova Articolo" />
