@@ -1,8 +1,11 @@
 ﻿using System;
+using SQLite;
+
 namespace Omal.Models
 {
     public class Categoria
     {
+        [PrimaryKey]
         public int idCategoria {   get;set;    }
         public int idPadre { get; set; }
         public string codice { get; set; }

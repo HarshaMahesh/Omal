@@ -1,4 +1,6 @@
 ﻿using System;
+using SQLite;
+
 namespace Omal.Models
 {
     public class Valvola:Base
@@ -6,7 +8,7 @@ namespace Omal.Models
         public Valvola()
         {
         }
-
+        [PrimaryKey]
         public int idcodicevalvola { get; set; }
         public int idprodotto { get; set; }
         public string valore_dn { get; set; }

@@ -1,8 +1,11 @@
 ﻿using System;
+using SQLite;
+
 namespace Omal.Models
 {
     public class ProdottoGruppiMetadati
     {
+        [PrimaryKey]
         public int idgruppometadato {   get;set;    }
         public int idprodotto { get; set; }
         public string gruppo_metadati_it { get; set; }

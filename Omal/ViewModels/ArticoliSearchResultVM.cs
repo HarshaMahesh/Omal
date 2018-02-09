@@ -144,14 +144,14 @@ namespace Omal.ViewModels
 
         private string HtmlPerValvole()
         {
-            var valvole = (IEnumerable<Models.Valvola>) Articoli;
+            //var valvole = (IEnumerable<Models.Valvola>) Articoli;
             string ritorno = string.Empty;
             string elemento = "{0}<br /><b>{1}</b><br />";
-            foreach (var valvola in valvole)
+            foreach (Models.Valvola valvola in Articoli)
             {
                 
                 List<string> curValvola = new List<string>();
-                if (!string.IsNullOrWhiteSpace(valvola.immagine_placeholder)) curValvola.Add(string.Format("<center><img src='{0}' /></center>", valvola.immagine_placeholder));
+                if (!string.IsNullOrWhiteSpace(valvola.immagine_placeholder)) curValvola.Add(string.Format(@"<center><img src=""{0}"" /></center>", valvola.immagine_placeholder));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_azionamento)) curValvola.Add(string.Format(elemento, "valore_azionamento", valvola.valore_azionamento));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_materiale)) curValvola.Add(string.Format(elemento, "valore_materiale", valvola.valore_materiale));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_dn)) curValvola.Add(string.Format(elemento,"valore_dn", valvola.valore_dn));
@@ -185,7 +185,8 @@ namespace Omal.ViewModels
                                 "<input type='submit' value='Ordina' />" +
                             "</form>",curProdotto.idprodotto,  valvola.idcodicevalvola, "Prezzo",valvola.Prezzo.ToString("F") ));
                 }
-                curValvola.Add(string.Format("<a href='{0}'>Mostra 3D</a>&emsp;<a href=''>Invia 3D</a>", valvola.url_3d));
+                if (!string.IsNullOrWhiteSpace(valvola.url_3d)) curValvola.Add(string.Format("<a href='{0}'>Mostra 3D</a>", valvola.url_3d));
+                if (!string.IsNullOrWhiteSpace(valvola.url_download)) curValvola.Add(string.Format("<a href='{0}'>Download</a>", valvola.url_download));
                 curValvola.Add("<hr/>");
                 ritorno += string.Join("", curValvola);
             }

@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 using Omal.Models;
+using Omal.Persistence;
 using Plugin.Connectivity;
+using Xamarin.Forms;
 
 namespace Omal.Services
 {
@@ -15,6 +17,7 @@ namespace Omal.Services
     {
         List<Models.ProdottoMetadati> items;
         HttpClient client = new HttpClient();
+        public SQLite.SQLiteAsyncConnection Connection => DependencyService.Get<ISQLiteDb>().GetConnection();
         public OmalProdottoMetadatiDataStore()
         {
             items = new List<Models.ProdottoMetadati>();
@@ -52,6 +55,10 @@ namespace Omal.Services
 
         public async Task<IEnumerable<Models.ProdottoMetadati>> GetItemsAsync(bool forceRefresh = false)
         {
+            if (items == null || items.Count == 0)
+            {
+                items = await Connection.Table<Models.ProdottoMetadati>().OrderBy(x => x.ordine).ToListAsync();
+            }
             if ((items.Count == 0 || forceRefresh) && CrossConnectivity.Current.IsConnected)
             {
                 var url = string.Format("{0}{1}?tabella=metadati", App.BackendUrl, "webservice.php");
@@ -69,6 +76,9 @@ namespace Omal.Services
                     testo_esteso_metadati_it = x.testo_esteso_metadati_it,
                     ordine = x.ordine
                 }).ToList();
+                foreach (var item in items)
+                    Connection.InsertOrReplaceAsync(item);
+                return items;
             }
             return items;
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Omal.Persistence;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,11 +16,34 @@ namespace Omal
         public static Models.Utente CurUser = null;
         public static Models.Ordine CurOrdine = new Models.Ordine();
         public static string CurToken = "";
+        public static DateTime? LastUpdate 
+        {
+            get
+            {
+                if (Application.Current.Properties.ContainsKey("LASTDBUPDATE"))
+                    return new DateTime(
+                        Convert.ToInt32(Application.Current.Properties["LASTDBUPDATE"].ToString().Substring(0,4)),
+                        Convert.ToInt32(Application.Current.Properties["LASTDBUPDATE"].ToString().Substring(4, 2)),
+                        Convert.ToInt32(Application.Current.Properties["LASTDBUPDATE"].ToString().Substring(6, 2)));
+                return null;
+            }
+
+            set
+            {
+                if (value.HasValue)
+                    Application.Current.Properties["LASTDBUPDATE"] = value.Value.ToString("yyyyMMdd");
+                else
+                    Application.Current.Properties["LASTUPDATE"] = string.Empty;
+                Application.Current.SavePropertiesAsync();
+            }
+
+        }
+
 
         public App()
         {
             InitializeComponent();
-
+            ConnectAndCreateSqlDb();
             if (UseMockDataStore)
                 DependencyService.Register<Services.MockOmalDataStore>();
             else
@@ -30,6 +54,16 @@ namespace Omal
             {
                 MainPage = new Views.WelcomeV();
             }
+        }
+
+        private void ConnectAndCreateSqlDb()
+        {
+            var _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+            _connection.CreateTableAsync<Models.Categoria>();
+            _connection.CreateTableAsync<Models.Prodotto>();
+            _connection.CreateTableAsync<Models.Valvola>();
+            _connection.CreateTableAsync<Models.ProdottoMetadati>();
+            _connection.CreateTableAsync<Models.ProdottoGruppiMetadati>();
         }
     }
 }

@@ -13,28 +13,29 @@ using Xamarin.Forms;
 
 namespace Omal.Services
 {
-    public class OmalValvoleDataStore : IDataStore<Models.Valvola>
+    public class OmalAttuatoriDataStore : IDataStore<Models.Attuatore>
     {
-        List<Models.Valvola> items;
-        HttpClient client;
+        List<Models.Attuatore> items;
         public SQLite.SQLiteAsyncConnection Connection => DependencyService.Get<ISQLiteDb>().GetConnection();
+        HttpClient client;
 
-        public OmalValvoleDataStore()
+        public OmalAttuatoriDataStore()
         {
-            items = new List<Models.Valvola>();
+            items = new List<Models.Attuatore>();
             client = new HttpClient();
+
         }
 
-        public async Task<bool> AddItemAsync(Models.Valvola item)
+        public async Task<bool> AddItemAsync(Models.Attuatore item)
         {
             items.Add(item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> UpdateItemAsync(Models.Valvola item)
+        public async Task<bool> UpdateItemAsync(Models.Attuatore item)
         {
-            var _item = items.Where((Models.Valvola arg) => arg.idcodicevalvola == item.idcodicevalvola).FirstOrDefault();
+            var _item = items.Where((Models.Attuatore arg) => arg.IdCodiceAttuatore == item.IdCodiceAttuatore).FirstOrDefault();
             items.Remove(_item);
             items.Add(item);
 
@@ -43,32 +44,31 @@ namespace Omal.Services
 
         public async Task<bool> DeleteItemAsync(int id)
         {
-            var _item = items.Where((Models.Valvola arg) => arg.idcodicevalvola == id).FirstOrDefault();
+            var _item = items.Where((Models.Attuatore arg) => arg.IdCodiceAttuatore == id).FirstOrDefault();
             items.Remove(_item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<Models.Valvola> GetItemAsync(int id)
+        public async Task<Models.Attuatore> GetItemAsync(int id)
         {
-            return await Task.FromResult(items.FirstOrDefault(s => s.idcodicevalvola == id));
+            return await Task.FromResult(items.FirstOrDefault(s => s.IdCodiceAttuatore == id));
         }
 
-        public async Task<IEnumerable<Models.Valvola>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Models.Attuatore>> GetItemsAsync(bool forceRefresh = false)
         {
             if (items == null || items.Count == 0)
             {
-                items = await Connection.Table<Models.Valvola>().OrderBy(x => x.ordine).ToListAsync();
+                items = await Connection.Table<Models.Attuatore>().OrderBy(x => x.Ordine).ToListAsync();
             }
             if ((items.Count == 0 || forceRefresh) && CrossConnectivity.Current.IsConnected)
             {
-                var url = string.Format("{0}{1}?tabella=valvole", App.BackendUrl, "webservice.php");
+                var url = string.Format("{0}{1}?tabella=attuatori", App.BackendUrl, "webservice.php");
                 if (!string.IsNullOrWhiteSpace(App.CurToken)) url += string.Format("&token={0}", App.CurToken);
                 var json = await client.GetStringAsync(url);
-                items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { Data = new List<Models.Valvola>() }).Data);
+                items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { Data = new List<Models.Attuatore>() }).Data);
                 foreach (var item in items)
                     Connection.InsertOrReplaceAsync(item);
-                return items;
             }
             return items;
         }

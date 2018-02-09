@@ -138,16 +138,21 @@ namespace Omal.ViewModels
 
         private async void OnCercaArticoliCommand(object obj)
         {
-            IEnumerable<Models.Base> vettore;
+            List<Models.Base> vettore;
             if (ProdottoIsValvola)
             {
-                throw new NotImplementedException();
-                //vettore = await ApplicaFiltroValvole(0);
+                var elenco = elencoCompletoValvole;
+                if (!String.IsNullOrWhiteSpace(selectedPicker1.Value)) elenco = elenco.Where(x => string.Equals(x.valore_azionamento, selectedPicker1.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                if (!String.IsNullOrWhiteSpace(selectedPicker2.Value)) elenco = elenco.Where(x => string.Equals(x.valore_dn, selectedPicker2.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                if (!String.IsNullOrWhiteSpace(selectedPicker3.Value)) elenco = elenco.Where(x => string.Equals(x.valore_pnansi, selectedPicker3.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                if (!String.IsNullOrWhiteSpace(selectedPicker4.Value)) elenco = elenco.Where(x => string.Equals(x.valore_materiale, selectedPicker4.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                vettore = new List<Models.Base>(elenco);
             }
             else
-                vettore = ApplicaFiltroAttuatori();
+                vettore = new List<Models.Base>(ApplicaFiltroAttuatori());
             await CurPage.Navigation.PushAsync(new Views.ArticoliSearchResultV(CurProdotto, ProdottoIsValvola, vettore));
         }
+
 
         private void OnPulisciCommand(object obj)
         {
@@ -155,6 +160,10 @@ namespace Omal.ViewModels
             selectedPicker2 = new KeyValuePair<string, string>(string.Empty, string.Empty);
             selectedPicker3 = new KeyValuePair<string, string>(string.Empty, string.Empty);
             selectedPicker4 = new KeyValuePair<string, string>(string.Empty, string.Empty);
+            isFirstTry[0] = true;
+            isFirstTry[1] = true;
+            isFirstTry[2] = true;
+            isFirstTry[3] = true;
             OnPropertyChanged("SelectedPicker1");
         }
 
@@ -180,8 +189,6 @@ namespace Omal.ViewModels
                 selectedPicker3 = new KeyValuePair<string, string>("", "");
                 selectedPicker4 = new KeyValuePair<string, string>("", "");
                 OnPropertyChanged("Picker2");
-                OnPropertyChanged("Picker3");
-                OnPropertyChanged("Picker4");
                 OnPropertyChanged("Picker2IsVisible");
                 OnPropertyChanged("Picker3IsVisible");
                 OnPropertyChanged("Picker4IsVisible");
@@ -191,7 +198,6 @@ namespace Omal.ViewModels
                 selectedPicker3 = new KeyValuePair<string, string>("", "");
                 selectedPicker4 = new KeyValuePair<string, string>("", "");
                 OnPropertyChanged("Picker3");
-                OnPropertyChanged("Picker4");
                 OnPropertyChanged("Picker3IsVisible");
                 OnPropertyChanged("Picker4IsVisible");
             }
@@ -217,6 +223,7 @@ namespace Omal.ViewModels
                 if (!string.Equals(selectedPicker3.Key, value.Key))
                 {
                     selectedPicker3 = value;
+                    isFirstTry[3] = true;
                     OnPropertyChanged();
                 }
             }
@@ -236,6 +243,8 @@ namespace Omal.ViewModels
                 if (!string.Equals(selectedPicker2.Key, value.Key, StringComparison.InvariantCultureIgnoreCase))
                 {
                     selectedPicker2 = value;
+                    isFirstTry[2] = true;
+                    isFirstTry[3] = true;
                     OnPropertyChanged();
                 }
             }
@@ -255,6 +264,9 @@ namespace Omal.ViewModels
                 if (!string.Equals(selectedPicker1.Key, value.Key, StringComparison.InvariantCultureIgnoreCase))
                 {
                     selectedPicker1 = value;
+                    isFirstTry[1] = true;
+                    isFirstTry[2] = true;
+                    isFirstTry[3] = true;
                     OnPropertyChanged();
                 }
             }
@@ -277,7 +289,6 @@ namespace Omal.ViewModels
                     OnPropertyChanged();
                 }
             }
-
         }
 
 
@@ -288,7 +299,10 @@ namespace Omal.ViewModels
             {
                 if (CurProdotto == null) return new ObservableCollection<KeyValuePair<string, string>>();
                 if (ProdottoIsValvola)
-                    LoadValvole(1);
+                {
+                    if (picker1.Count()  == 0 && !loadValvole[0] && isFirstTry[0]) 
+                        LoadValvole(1);
+                }
                 else
                     picker1 = new ObservableCollection<KeyValuePair<string, string>>(ApplicaFiltroAttuatori().OrderBy(x => x.Ordine).Select(x => new KeyValuePair<string, string>(x.Valore_misura, x.Valore_misura)).Distinct());
                 if (picker1.Count() == 1) SelectedPicker1 = picker1.First();
@@ -308,7 +322,10 @@ namespace Omal.ViewModels
             {
                 if (CurProdotto == null) return new ObservableCollection<KeyValuePair<string, string>>();
                 if (ProdottoIsValvola)
-                    LoadValvole(2);
+                    {
+                    if (picker2.Count() == 0 && !loadValvole[1] && isFirstTry[1] && !string.IsNullOrWhiteSpace(SelectedPicker1.Value)) 
+                        LoadValvole(2);
+                    }
                 else
                     picker2 = new ObservableCollection<KeyValuePair<string, string>>(ApplicaFiltroAttuatori().OrderBy(x => x.Ordine).Select(x => new KeyValuePair<string, string>(x.Valore_iso, x.Valore_iso)).Distinct());
                 
@@ -322,11 +339,13 @@ namespace Omal.ViewModels
         }
 
         bool[] loadValvole = new bool[] { false, false, false, false };
+        bool[] isFirstTry = new bool[] { true, true, true, true };
         bool loadvalvola = false;
         async void LoadValvole(int indice)
         {
             if (!loadvalvola && !loadValvole[indice-1])
             {
+                isFirstTry[indice - 1] = false;
                 loadvalvola = true;
                 loadValvole[indice - 1] = true;
                 if (elencoCompletoValvole == null)
@@ -382,7 +401,10 @@ namespace Omal.ViewModels
             {
                 if (CurProdotto == null) return new ObservableCollection<KeyValuePair<string, string>>();
                 if (ProdottoIsValvola)
-                    LoadValvole(3);
+                {
+                    if (picker3.Count() == 0 && !loadValvole[2] && isFirstTry[2]  && !string.IsNullOrWhiteSpace(SelectedPicker2.Value))
+                        LoadValvole(3);
+                }
                 else
                     picker3= new ObservableCollection<KeyValuePair<string, string>>(ApplicaFiltroAttuatori().OrderBy(x => x.Ordine).Select(x => new KeyValuePair<string, string>(x.Valore_coppia, x.Valore_coppia)).Distinct());
                 
@@ -402,7 +424,11 @@ namespace Omal.ViewModels
             get
             {
                 if (CurProdotto == null || !ProdottoIsValvola) return new ObservableCollection<KeyValuePair<string, string>>();
-                LoadValvole(4);
+                if (ProdottoIsValvola)
+                {
+                    if (picker4.Count() == 0 && !loadValvole[3] && isFirstTry[3] && !string.IsNullOrWhiteSpace(SelectedPicker3.Value)) 
+                        LoadValvole(4);
+                }
                 return picker4;
             }
             set

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:Converters ="clr-namespace:Omal.Converters"
+    xmlns:CustomControls = "clr-namespace:Omal.CustomControls"
+    x:Class="Omal.Views.ConfigurationV">
+	<ContentPage.Content>
+    <StackLayout>
+            <ActivityIndicator IsRunning="{Binding IsRunning}" />
+            <CustomControls:HtmlFormattedLabel BackgroundColor="Black" FontSize="8" TextColor="Yellow"  VerticalOptions="StartAndExpand" IsVisible="{Binding IsRunning}" Text="{Binding UpdateDbText}"  Margin="5" />
+            <TableView Margin="5" IsVisible="{Binding IsRunning, {Converter InverseBooleanConverter}" Intent="Settings"  >
+           <TableView.Root>
+                <TableSection Title="Database">
+                    <ViewCell>
+                            <StackLayout Orientation="Horizontal" Margin="5">
+                                <Label Text="Last Update" VerticalOptions="Center" />
+                                <Label Text="{Binding LastUpdate}" VerticalOptions="Center"  HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                    </ViewCell>
+                        <ViewCell>
+                            <Button Command="{Binding UpdateDbCommand}" Text="Update" HorizontalOptions="EndAndExpand" />
+                        </ViewCell>
+                </TableSection>
+            </TableView.Root>
+        </TableView>
+            
+        </StackLayout>
+
+	</ContentPage.Content>
+</ContentPage>

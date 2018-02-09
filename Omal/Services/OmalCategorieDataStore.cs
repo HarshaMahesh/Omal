@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 using Omal.Models;
+using Omal.Persistence;
 using Plugin.Connectivity;
+using Xamarin.Forms;
 
 namespace Omal.Services
 {
@@ -16,6 +18,7 @@ namespace Omal.Services
 
         List<Models.Categoria> items = null;
         HttpClient client;
+        public SQLite.SQLiteAsyncConnection Connection => DependencyService.Get<ISQLiteDb>().GetConnection();
         public OmalCategorieDataStore()
         {
             client = new HttpClient();
@@ -53,12 +56,18 @@ namespace Omal.Services
 
         public async Task<IEnumerable<Models.Categoria>> GetItemsAsync(bool forceRefresh = false)
         {
+            if (items == null || items.Count == 0)
+            {
+               items =  await Connection.Table<Models.Categoria>().OrderBy(x => x.ordine).ToListAsync();
+            }
             if ((items.Count == 0 || forceRefresh) && CrossConnectivity.Current.IsConnected)
             {
                 var url = string.Format("{0}{1}?tabella=categorie", App.BackendUrl, "webservice.php");
                 if (!string.IsNullOrWhiteSpace(App.CurToken)) url += string.Format("&token={0}", App.CurToken);
                 var json = await client.GetStringAsync( url);
                 items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json,new {Data = new List<Models.Categoria>()}).Data);
+                foreach (var item in items)
+                    Connection.InsertOrReplaceAsync(item);
             }
             return items;
         }

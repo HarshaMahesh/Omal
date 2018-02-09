@@ -8,9 +8,9 @@
         <ScrollView>
         <StackLayout Orientation="Vertical">
             <Label Style="{StaticResource Titolo}" Text="{Binding CurProdotto.nome}" />
-            <StackLayout HorizontalOptions="Center" Orientation="Vertical" VerticalOptions="Center" >
+            <StackLayout BackgroundColor="White" HorizontalOptions="Center" Orientation="Vertical" VerticalOptions="Center" >
                     <Image Margin="5" Source="{Binding CurProdotto.immagine_placeholder}" />
-                    <Button Margin="5" Text="Info" Command="{Binding GoToDetailCommand}" />                
+                    <Button Margin="5" Text="Info" HorizontalOptions="Center" Command="{Binding GoToDetailCommand}" />                
             </StackLayout>
             <StackLayout Orientation="Vertical" Margin="10">
             <Label Margin="0,40,0,0" HorizontalTextAlignment="Center" Style="{StaticResource Titolo}" Text="Trova Articolo" />

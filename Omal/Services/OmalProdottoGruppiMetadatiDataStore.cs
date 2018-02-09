@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 using Omal.Models;
+using Omal.Persistence;
 using Plugin.Connectivity;
+using Xamarin.Forms;
 
 namespace Omal.Services
 {
@@ -15,6 +17,7 @@ namespace Omal.Services
     {
         List<Models.ProdottoGruppiMetadati> items;
         HttpClient client;
+        public SQLite.SQLiteAsyncConnection Connection => DependencyService.Get<ISQLiteDb>().GetConnection();
 
         public OmalProdottoGruppiMetadatiDataStore()
         {
@@ -53,14 +56,21 @@ namespace Omal.Services
 
         public async Task<IEnumerable<Models.ProdottoGruppiMetadati>> GetItemsAsync(bool forceRefresh = false)
         {
+            if (items == null || items.Count == 0)
+            {
+                items = await Connection.Table<Models.ProdottoGruppiMetadati>().OrderBy(x => x.ordine).ToListAsync();
+            }
             if ((items.Count == 0 || forceRefresh) && CrossConnectivity.Current.IsConnected)
             {
                 var url = string.Format("{0}{1}?tabella=gruppi_metadati", App.BackendUrl, "webservice.php");
                 if (!string.IsNullOrWhiteSpace(App.CurToken)) url += string.Format("&token={0}", App.CurToken);
                 var json = await client.GetStringAsync(url);
                 var tmp = await Task.Run(() => JsonConvert.DeserializeObject<List<Models.FkProdottoGruppiMetadati>>(json));
-                return tmp.Where(x => x.idgruppometadato.HasValue).Select(x => new ProdottoGruppiMetadati
+                items = tmp.Where(x => x.idgruppometadato.HasValue).Select(x => new ProdottoGruppiMetadati
                 { dataora_modifica = x.dataora_modifica, gruppo_metadati_en = x.gruppo_metadati_en, gruppo_metadati_it = x.gruppo_metadati_it, idgruppometadato = x.idgruppometadato.Value, idprodotto = x.idprodotto.Value, ordine =x.ordine }).ToList();
+                foreach (var item in items)
+                    Connection.InsertOrReplaceAsync(item);
+                return items;
             }
             return items;
         }
