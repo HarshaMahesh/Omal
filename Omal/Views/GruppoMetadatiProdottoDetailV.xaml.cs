@@ -13,7 +13,6 @@ namespace Omal.Views
 
         public GruppoMetadatiProdottoDetailV()
         {
-            InitializeComponent();
             BindingContext = viewModel = new ViewModels.GruppoMetadatiProdottoDetailVM();
             viewModel.CurPage = this;
             viewModel.Navigation = Navigation;
@@ -22,6 +21,7 @@ namespace Omal.Views
         public GruppoMetadatiProdottoDetailV(Models.ProdottoGruppiMetadati curProdottoGruppoMetadati):this()
         {
             viewModel.CurGruppoProdottoMetadati = curProdottoGruppoMetadati;
+            InitializeComponent();
         }
 
 

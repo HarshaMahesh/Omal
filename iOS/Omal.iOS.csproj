@@ -193,6 +193,8 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="CustomControls\CualevaRoundedEntryRenderIOS.cs" />
+    <Compile Include="Persistence\SqLiteDb.cs" />
+    <Compile Include="CustomControls\HtmlFormattedLabelRender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -203,6 +205,7 @@
     <Folder Include="Resources\fonts\" />
     <Folder Include="CustomControls\" />
     <Folder Include="Assets.xcassets\Prova.launchimage\" />
+    <Folder Include="Persistence\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />

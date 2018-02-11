@@ -6,6 +6,7 @@ namespace Omal.Models
     public class ProdottoGruppiMetadati
     {
         [PrimaryKey]
+        public string IdPk { get { return string.Format("{0}_{1}", idgruppometadato, idprodotto); } }
         public int idgruppometadato {   get;set;    }
         public int idprodotto { get; set; }
         public string gruppo_metadati_it { get; set; }

@@ -8,6 +8,7 @@ namespace Omal.Models
         public Valvola()
         {
         }
+
         [PrimaryKey]
         public int idcodicevalvola { get; set; }
         public int idprodotto { get; set; }

@@ -193,10 +193,11 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="CustomControls\CustomButtonCompatRenderer.cs" />
+    <Compile Include="Persistence\SqLiteDb.cs" />
+    <Compile Include="CustomControls\HtmlFormattedLabelRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
@@ -211,10 +212,12 @@
     <AndroidResource Include="Resources\drawable\Ordini.png" />
     <AndroidResource Include="Resources\drawable\home.png" />
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomControls\" />
 
+    <Folder Include="Persistence\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\Montserrat-Bold.ttf" />

@@ -60,7 +60,7 @@ namespace Omal.ViewModels
         {
             get
             {
-                if (_GruppoMetadati == null && CurPage != null && !loadGruppoMetadati)
+                if (_GruppoMetadati == null && CurPage != null && !loadGruppoMetadati && _GruppoMetadati==null)
                     LoadGruppoMetadati();
                 return _GruppoMetadati;
             }
@@ -77,9 +77,6 @@ namespace Omal.ViewModels
             if (!loadGruppoMetadati)
             {
                 loadGruppoMetadati = true;
-                var content = ((ContentPage)CurPage).Content;
-                var stack = new StackLayout { Orientation = StackOrientation.Vertical };
-                stack.Children.Add(new Label { Text = CurProdotto.nome });
                 var tmpG = await DataStore.ProdottoGruppiMetadati.GetItemsAsync();
                 tmpG = tmpG.Where(x => x.idprodotto == CurProdotto.idprodotto).OrderBy(x => x.ordine);
                 GruppoMetadati = new ObservableCollection<Models.ProdottoGruppiMetadati>(tmpG);
@@ -96,7 +93,18 @@ namespace Omal.ViewModels
        
         private void OnLocalPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            
+            if (string.Equals(e.PropertyName, "CurProdotto", StringComparison.InvariantCultureIgnoreCase))   
+            {
+                if (_CurProdotto != null)
+                {
+                    var content = ((ContentPage)CurPage).Content;
+                    var stack = new StackLayout { Orientation = StackOrientation.Vertical };
+
+                    stack.Children.Add(new Label { Text =string.Equals(App.CurLang,"IT", StringComparison.InvariantCultureIgnoreCase
+                                                                      )?CurProdotto.nome:CurProdotto.nome_en });
+
+                }
+            }
         }
     }
 }

@@ -29,7 +29,10 @@ namespace Omal.ViewModels
                 {
                     // Sto ordinando una valvola
                     var idcodicevalvola = parametri["idcodicevalvola"].ToString();
-                    var valvola = ((IEnumerable<Models.Valvola>)Articoli).FirstOrDefault(x=>x.idcodicevalvola == Convert.ToInt32(idcodicevalvola));
+                    int IntIdCodiceValvola = Convert.ToInt32(idcodicevalvola);
+                    var valvole = Articoli.Select(x => (Models.Valvola)x).ToList();
+                    var valvola = valvole.FirstOrDefault(x => x.idcodicevalvola == IntIdCodiceValvola);
+                    //var v = (Articoli.FirstOrDefault(x => x.idcodicevalvola == IntIdCodiceValvola);
                     if (valvola == null) throw new KeyNotFoundException("IdCodiceValvola non trovato");
                     var elementoCarrello = DataStore.Carrello.FirstOrDefault(x => x.IdArticolo == valvola.idcodicevalvola && x.Tipologia == CurProdotto.tipologia && x.IdProdotto == CurProdotto.idprodotto);
                     if (elementoCarrello == null)

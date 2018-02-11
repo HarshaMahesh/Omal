@@ -11,8 +11,8 @@ namespace Omal.Views
 
         public InfoProductV()
         {
-            InitializeComponent();
             BindingContext = viewModel = new ViewModels.InfoProductVM();
+            InitializeComponent();
             viewModel.CurPage = this;
             viewModel.Navigation = Navigation;
 

@@ -26,8 +26,8 @@ namespace Omal.ViewModels
                 if (_CurGruppoProdottoMetadati != value)
                 {
                     _CurGruppoProdottoMetadati = value;
+                    LoadContent();
                     OnPropertyChanged();
-                    OnPropertyChanged("ContentHtml");
                 }
             }
             get
@@ -36,13 +36,11 @@ namespace Omal.ViewModels
             }
         }
 
-        string _ContentHtml = string.Empty;
+        string _ContentHtml = "";
         public string ContentHtml
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(_ContentHtml) && !loadContentHtml)
-                    LoadContent();
                 return _ContentHtml;
                     
             }
@@ -56,36 +54,34 @@ namespace Omal.ViewModels
 
         async void LoadContent()
         {
+            if (_CurGruppoProdottoMetadati == null) return;
             if (!loadContentHtml)
             {
                 loadContentHtml = true;
-                if (_CurGruppoProdottoMetadati != null)
+                var elementi = await DataStore.ProdottoMetadati.GetItemsAsync();
+                elementi = elementi.Where(x => x.idgruppometadato == CurGruppoProdottoMetadati.idgruppometadato).OrderBy(x => x.ordine).ToList();
+                List<string> Elementi = new List<String>();
+
+                // recupero l'elenco dei metadati
+                foreach (var elemento in elementi)
                 {
-                    List<string> Elementi = new List<String>();
-                    string _ContentHtmlTmp = string.Empty;
-                    // recupero l'elenco dei metadati
-                    var elementi = await DataStore.ProdottoMetadati.GetItemsAsync();
-                    elementi = elementi.Where(x => x.idgruppometadato == CurGruppoProdottoMetadati.idgruppometadato).OrderBy(x => x.ordine).ToList();
-                    foreach (var elemento in elementi)
-                    {
-                        string immagine = App.CurLang == "IT" ? elemento.immagine_metadati_it : elemento.immagine_metadati_en;
-                        string testo = App.CurLang == "IT" ? elemento.testo_esteso_metadati_it : elemento.testo_esteso_metadati_en;
-                        string curElemento = string.Empty;
-                        if (!string.IsNullOrWhiteSpace(immagine)) curElemento = string.Format("<P ALIGN='CENTER'><img src='{0}' /></P>", immagine);
-                        if (!string.IsNullOrWhiteSpace(testo)) curElemento += testo;
-                        if (!string.IsNullOrWhiteSpace(curElemento)) Elementi.Add(curElemento.Trim());
-                    }
-                    _ContentHtmlTmp = string.Join("<hr />", Elementi);
-                    // recupero il prodotto di riferimento (sarà il titolo)
-                    var prodotto = await DataStore.Prodotti.GetItemAsync(CurGruppoProdottoMetadati.idprodotto);
-                    string titolo = string.Empty;
-                    if (App.CurLang == "IT")
-                        titolo = prodotto.nome;
-                    else
-                        titolo = prodotto.nome_en;
-                    _ContentHtmlTmp = string.Format("<P ALIGN='CENTER'>{0}</P>{1}", titolo, _ContentHtmlTmp);
-                    ContentHtml = _ContentHtmlTmp;
+                    string immagine = App.CurLang == "IT" ? elemento.immagine_metadati_it : elemento.immagine_metadati_en;
+                    string testo = App.CurLang == "IT" ? elemento.testo_esteso_metadati_it : elemento.testo_esteso_metadati_en;
+                    string curElemento = string.Empty;
+                    if (!string.IsNullOrWhiteSpace(immagine)) curElemento = string.Format("<P ALIGN='CENTER'><img src='{0}' /></P>", immagine);
+                    if (!string.IsNullOrWhiteSpace(testo)) curElemento += testo;
+                    if (!string.IsNullOrWhiteSpace(curElemento)) Elementi.Add(curElemento.Trim());
                 }
+                _ContentHtml = string.Join("<hr />", Elementi);
+                // recupero il prodotto di riferimento (sarà il titolo)
+                var prodotto = await DataStore.Prodotti.GetItemAsync(CurGruppoProdottoMetadati.idprodotto);
+                string titolo = string.Empty;
+                if (App.CurLang == "IT")
+                    titolo = prodotto.nome;
+                else
+                    titolo = prodotto.nome_en;
+                _ContentHtml = string.Format("<P ALIGN='CENTER'>{0}</P>{1}", titolo, _ContentHtml);
+                ContentHtml = _ContentHtml;
                 loadContentHtml = false;
             }
         }

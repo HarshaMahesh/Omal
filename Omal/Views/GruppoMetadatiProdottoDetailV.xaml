@@ -4,10 +4,12 @@
         <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
+        <ScrollView>
             <WebView VerticalOptions="FillAndExpand">
             <WebView.Source>
                 <HtmlWebViewSource Html="{Binding ContentHtml}"/>
             </WebView.Source>
             </WebView>
+        </ScrollView>
 	</ContentPage.Content>
 </ContentPage>
