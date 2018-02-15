@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+using Plugin.Share;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
@@ -15,13 +16,15 @@ namespace Omal.Views
         {
             InitializeComponent();
 
-           /* Telefono.GestureRecognizers.Add(new TapGestureRecognizer
+            Links.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(() => {
-                    Device.OpenUri(new Uri("tel:0308900145"));
+                    CrossShare.Current.OpenBrowser("http://www.omal.it");
                 })
-            });*/
+            });
         }
+
+
 
         protected async override void OnAppearing()
         {

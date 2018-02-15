@@ -14,7 +14,7 @@ namespace Omal.ViewModels
         {
             get
             {
-                return CurCliente == null || CurCliente.IdCliente == 0;
+                return CurCliente == null || CurCliente.IDCliente == 0;
             }
 
         }
@@ -34,9 +34,9 @@ namespace Omal.ViewModels
 
         private async void OnInsertCommand()
         {
-            var maxCliente = DataStore.Clienti.GetItemsAsync().Result.Max(x => x.IdCliente);
+            var maxCliente = DataStore.Clienti.GetItemsAsync().Result.Max(x => x.IDCliente);
             maxCliente += 1;
-            CurCliente.IdCliente = maxCliente;
+            CurCliente.IDCliente = maxCliente;
             await DataStore.Clienti.AddItemAsync(CurCliente);
             MessagingCenter.Send(new Models.Messages.ClienteInsertedOrUpdatedMessage() { Cliente = CurCliente}, "");
             await CurPage.Navigation.PopAsync();

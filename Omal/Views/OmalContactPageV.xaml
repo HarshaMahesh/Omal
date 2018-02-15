@@ -8,11 +8,11 @@
         <ScrollView>
         <StackLayout HorizontalOptions="Center" VerticalOptions="StartAndExpand" Padding="30">
         <Label Style="{StaticResource Titolo}" HorizontalTextAlignment="Center" Text="Contatti Omal" /> 
-        <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center">
+        <Label x:Name="Links" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center">
           <Label.FormattedText>
             <FormattedString>
               <Span Text="T. 030.8900145" FontAttributes="Bold"/>
-              <Span Text="&#10;@. info@omal.it"  />
+              <Span Text="&#10;@. info@omal.it" />
               <Span Text="&#10;W. www.omal.it" ForegroundColor="Blue" />
             </FormattedString>
           </Label.FormattedText>

@@ -4,7 +4,7 @@
         <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-            <WebView VerticalOptions="FillAndExpand" Navigating="Handle_Navigating">
+            <WebView x:Name="localBrowser" VerticalOptions="FillAndExpand" Navigating="Handle_Navigating">
             <WebView.Source>
                 <HtmlWebViewSource Html="{Binding ContentHtml}"/>
             </WebView.Source>

@@ -12,7 +12,7 @@ namespace Omal.ViewModels
             get
             {
                 if (App.CurUser == null) return string.Empty;
-                return App.CurUser.Nome;
+                return App.CurUser.NomeUtente;
             }
         }
 

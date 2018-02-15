@@ -40,7 +40,20 @@ namespace Omal.ViewModels
 
             }
         }
-        public string Errore { get; set; }
+
+        string errore = string.Empty;
+        public string Errore { 
+            get
+            {
+                return errore;
+            }
+            set
+            {
+                errore = value;
+                OnPropertyChanged();
+            }
+        
+        }
 
         public LoginVM()
         {
@@ -60,12 +73,13 @@ namespace Omal.ViewModels
 
         private async void OnLoginCommand(object obj)
         {
-            var utente = DataStore.Utenti.Login(Email,Password);
-            if (utente == null)
+            var token = await DataStore.Utenti.Login(Email,Password);
+            if (token == null)
                 Errore = "Email o password errata";
             else
             {
-                App.CurUser = utente;
+                App.CurToken = token;
+                App.CurUser = new Models.Utente { Email = token.email_utente, IdUtente = token.IDUtente, NomeUtente = token.NomeUtente, Password = Password };
                 Application.Current.Properties["Email"] = Email;
                 MessagingCenter.Send(new Models.Messages.LoginOrLogoutActionMessage(), "LoginOrLogout");
                 await Navigation.PopModalAsync();

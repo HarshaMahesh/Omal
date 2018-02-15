@@ -12,10 +12,23 @@ namespace Omal
     {
         public static bool UseMockDataStore = false;
         public static string BackendUrl = "http://demo.timmagine.com/omal/http/Admin/exe/";
-        public static string CurLang = "";
+        public static string CurLang
+        {
+            get
+            {
+                if (Application.Current.Properties.ContainsKey("APPLANG"))
+                    return Application.Current.Properties["APPLANG"].ToString();
+                return string.Empty;
+            }
+            set
+            {
+                Application.Current.Properties["APPLANG"] = value;
+            }
+        
+        }
         public static Models.Utente CurUser = null;
+        public static Models.Token CurToken = null;
         public static Models.Ordine CurOrdine = new Models.Ordine();
-        public static string CurToken = "";
         public static DateTime? LastUpdate 
         {
             get
@@ -48,11 +61,12 @@ namespace Omal
                 DependencyService.Register<Services.MockOmalDataStore>();
             else
                 DependencyService.Register<Services.OmalDataStore>();
-            if (Device.RuntimePlatform == Device.iOS)
+            //if (Device.RuntimePlatform == Device.iOS)
+            if (string.IsNullOrWhiteSpace(App.CurLang))
                 MainPage = new Views.WelcomeV();
             else
             {
-                MainPage = new Views.WelcomeV();
+                MainPage = new MainPage();
             }
         }
 
@@ -62,6 +76,7 @@ namespace Omal
             _connection.CreateTableAsync<Models.Categoria>();
             _connection.CreateTableAsync<Models.Prodotto>();
             _connection.CreateTableAsync<Models.Valvola>();
+            _connection.CreateTableAsync<Models.Cliente>();
             _connection.CreateTableAsync<Models.ProdottoMetadati>();
             _connection.CreateTableAsync<Models.ProdottoGruppiMetadati>();
         }

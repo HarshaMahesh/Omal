@@ -37,6 +37,7 @@ namespace Omal.Views
             BindingContext = viewModel = new ViewModels.ArticoliSearchResultVM();
             viewModel.CurPage = this;
             viewModel.Navigation = Navigation;
+
         }
 
         public ArticoliSearchResultV (Models.Prodotto prodotto, bool prodottoIsValvola, IEnumerable<Models.Base> articoli):this()
@@ -44,6 +45,7 @@ namespace Omal.Views
             viewModel.prodottoIsValvola = prodottoIsValvola;
             viewModel.Articoli = articoli;
             viewModel.CurProdotto = prodotto;
+            Title = App.CurLang == "IT" ? "Acquista Articolo" : "Buy Articles";
         }
     }
 }

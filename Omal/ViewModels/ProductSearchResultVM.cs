@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 
 
@@ -29,6 +30,12 @@ namespace Omal.ViewModels
 
         public ProductSearchResultVM()
         {
+            PropertyChanged += OnLocalPropertyChanged;
+        }
+
+        private void OnLocalPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (string.Equals(e.PropertyName, "prodotti", StringComparison.InvariantCultureIgnoreCase)) OnPropertyChanged("NumeroProdotti");
         }
 
         string productFilter;
@@ -94,9 +101,9 @@ namespace Omal.ViewModels
                 if (!string.IsNullOrWhiteSpace(ProductFilter))
                 {
                     if (App.CurLang == "IT")
-                        tmpProdotti = tmpProdotti.Where(x => x.nome.Contains(ProductFilter));
+                        tmpProdotti = tmpProdotti.Where(x => x.nome.ToLower().Contains(ProductFilter.ToLower()));
                     else
-                        tmpProdotti = tmpProdotti.Where(x => x.nome_en.Contains(ProductFilter));
+                        tmpProdotti = tmpProdotti.Where(x => x.nome_en.ToLower().Contains(ProductFilter.ToLower()));
                 }
                 else
                 if (IdCategoria.HasValue)

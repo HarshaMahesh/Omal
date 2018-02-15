@@ -9,19 +9,21 @@
         <TableView BindingContext="{Binding CurCliente}">
             <TableView.Root>
                 <TableSection>
+                    <TextCell Text="{Binding Nome}" Detail="Nome"  />
+                    <TextCell Text="{Binding Cognome}" Detail="Cognome"  />
                     <TextCell Text="{Binding RagioneSociale}" Detail="Ragione Sociale"  />
                     <TextCell Text="{Binding PIva}" Detail="P.Iva" />
                     <TextCell Text="{Binding CFiscale}" Detail="Codice Fiscale" />
                 </TableSection>
                 <TableSection Title="Posizione">
                     <TextCell Text="{Binding Indirizzo}" Detail="Indirizzo"/>
-                    <TextCell Text="{Binding Città}" Detail="Comune"/>
+                    <TextCell Text="{Binding Citta}" Detail="Comune"/>
                     <TextCell Text="{Binding Cap}" Detail="Cap"/>
                     <TextCell Text="{Binding Provincia}" Detail="Provincia"/>
                     <TextCell Text="{Binding Nazione}" Detail="Nazione"/>
                 </TableSection>
                 <TableSection Title="Contatti">
-                    <TextCell Text="{Binding Email}" Detail="Email"/>
+                    <TextCell Text="{Binding Email}" Detail="Email" />
                     <TextCell Text="{Binding Telefono}" Detail="Telefono"/>
                     <TextCell Text="{Binding Fax}" Detail="Fax"/>
                 </TableSection>

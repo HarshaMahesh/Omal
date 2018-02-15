@@ -1,29 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Omal.Models;
+using Omal.Persistence;
+using Xamarin.Forms;
 
 namespace Omal.Services
 {
-    public class MockUtentiDataStore : IUtentiDataStore
+    public class OmalUtentiDataStore : IUtentiDataStore
     {
         List<Models.Utente> items;
+        HttpClient client;
+        public SQLite.SQLiteAsyncConnection Connection => DependencyService.Get<ISQLiteDb>().GetConnection();
 
-        public MockUtentiDataStore()
+
+        public OmalUtentiDataStore()
         {
             items = new List<Models.Utente>();
-            var mockItems = new List<Models.Utente>
-            {
-                new Models.Utente(){  Email="luca.cavedaghi@cualeva.com", IdUtente=1, NomeUtente="Luca", Password="Luca" },
-                new Models.Utente(){  NomeUtente="Elio", Email="elio.cattozzo@docsmarshal.com", IdUtente=2, Password="elio" },
-            };
-
-            foreach (var item in mockItems)
-            {
-
-                items.Add(item);
-            }
+            client = new HttpClient();
         }
 
         public async Task<bool> AddItemAsync(Models.Utente item)
@@ -60,9 +57,39 @@ namespace Omal.Services
             return await Task.FromResult(items);
         }
 
-        public Task<Models.Token> Login(string email, string password)
+        public async Task<Models.Token> Login(string email, string password)
         {
-            throw new NotImplementedException();
+            /*
+idtoken "38"
+token   "3YGSHWCUA7"
+dataora_inserimento "2018-02-14 21:45:28"
+dataora_scadenza    "2018-02-14 23:45:28"
+IDUtente    "2"
+dataora_server  "2018-02-14 21:45:28"
+email_utente    "info@omal.it"
+NomeUtente  "OMAL SpA"
+            */
+            var url = string.Format("{0}{1}?token=1&user={2}&pass={3}", App.BackendUrl, "login.php",email,password);
+            var json = await client.GetStringAsync(url);
+            try
+            {
+                var utente = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { data = new List<tok>() }).data[0].tokens[0]);
+                return utente;
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            return null;
         }
+
+        class tok
+        {
+            public List<Models.Token> tokens { get; set; }
+        }
+
+
+
     }
+
 }

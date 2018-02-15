@@ -63,7 +63,7 @@ namespace Omal.Services
             if ((items.Count == 0 || forceRefresh) && CrossConnectivity.Current.IsConnected)
             {
                 var url = string.Format("{0}{1}?tabella=gruppi_metadati", App.BackendUrl, "webservice.php");
-                if (!string.IsNullOrWhiteSpace(App.CurToken)) url += string.Format("&token={0}", App.CurToken);
+                if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.idtoken);
                 var json = await client.GetStringAsync(url);
                 var tmp = await Task.Run(() => JsonConvert.DeserializeObject<List<Models.FkProdottoGruppiMetadati>>(json));
                 items = tmp.Where(x => x.idgruppometadato.HasValue).Select(x => new ProdottoGruppiMetadati

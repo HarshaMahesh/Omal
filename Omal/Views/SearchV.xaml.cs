@@ -21,5 +21,10 @@ namespace Omal.Views
             viewModel.Navigation = Navigation;
             viewModel.CurPage = this;
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }

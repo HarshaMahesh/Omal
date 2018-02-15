@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using SQLite;
 
 namespace Omal.Models
 {
     public class Cliente: Base
     {
-        public int IdCliente {   get;set;    }
+        [PrimaryKey]
+        public int IDCliente {   get;set;    }
+        public int IDUtente { get;  set;}
+        public string societapersona { get; set; }
 
         string ragioneSociale;
         public string RagioneSociale { 
@@ -16,8 +20,19 @@ namespace Omal.Models
                 OnPropertyChanged();
             }
         }
-        public string PIva { get; set; }
-        public string CFiscale { get; set; }
+
+        string cognomeNome;
+        public string CognomeNome
+        {
+            get { return cognomeNome; }
+            set
+            {
+                cognomeNome = value;
+                OnPropertyChanged();
+            }
+        }
+        public string Piva { get; set; }
+        public string CodiceFiscale { get; set; }
         public string Email { get; set; }
         public string Telefono { get; set; }
         public string Fax { get; set; }
@@ -35,7 +50,7 @@ namespace Omal.Models
         }
 
         string città;
-        public string Città
+        public string Citta
         {
             get { return città; }
             set
@@ -67,13 +82,15 @@ namespace Omal.Models
             }
         }
 
+        public DateTime dataora_modifica { get; set; }
+        public int annullato { get; set; }
         public int IdUtenteReferente { get; set; }
         public string CittaProvinciaNazione
         {
             get
             {
                 List<String> elementi = new List<string>();
-                if (!string.IsNullOrWhiteSpace(Città)) elementi.Add(Città);
+                if (!string.IsNullOrWhiteSpace(città)) elementi.Add(città);
                 if (!string.IsNullOrWhiteSpace(Provincia)) elementi.Add(Provincia);
                 if (!string.IsNullOrWhiteSpace(Nazione)) elementi.Add(Nazione.ToUpper());
                 return String.Join(",", elementi);
@@ -81,3 +98,21 @@ namespace Omal.Models
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

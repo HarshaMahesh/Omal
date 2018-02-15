@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -34,6 +35,7 @@ namespace Omal.ViewModels
 
         public AnagraficaClientiVM()
         {
+            PropertyChanged += OnLocalPropertyChanged;
             AddNewCommand = new Command(OnAddNewCommand);
             MessagingCenter.Subscribe<Models.Messages.ClienteInsertedOrUpdatedMessage>(this, "", sender =>
             {
@@ -43,6 +45,14 @@ namespace Omal.ViewModels
 
             });
 
+        }
+
+        private void OnLocalPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (string.Equals(e.PropertyName, "Items", StringComparison.InvariantCultureIgnoreCase))
+            {
+                OnPropertyChanged("NumeroContatti");
+            }
         }
 
         private void OnAddNewCommand()
@@ -72,8 +82,8 @@ namespace Omal.ViewModels
         {
             get
             {
-                if (Clienti == null)  return "Nessun Contatto";
-                var ritorno =  Clienti.Select(x => x.Count).Sum();
+                if (clienti == null)  return "Nessun Contatto";
+                var ritorno =  clienti.Select(x => x.Count).Sum();
                 if (ritorno == 0) return "Nessun Contatto";
                 if (ritorno == 1) return "Trovato un contatto";
                 return string.Format("Trovati {0} contatti", ritorno);
@@ -88,16 +98,41 @@ namespace Omal.ViewModels
         {
             get
             {
-                if (clienti == null)
+                if ((clienti == null || clienti.Count == 0) && !clientiIsLoading)
+                    LoadClienti();
+                return clienti;
+            }
+            set
+            {
+                clienti = value;
+                OnPropertyChanged();
+            }
+        }
+
+        bool clientiIsLoading = false;
+        async void LoadClienti()
+        {
+            if (!clientiIsLoading)
+            {
+                clientiIsLoading = true;
+                try
                 {
+                    var tuttiClienti = await DataStore.Clienti.GetItemsAsync(false);
+                    tuttiClienti = tuttiClienti.Where(x => x.annullato == 0);
                     var elenco = new ObservableCollection<Models.GruppoClienti>();
-                    if (tuttiClienti == null) tuttiClienti = DataStore.Clienti.GetItemsAsync().Result.ToList();
                     var elencoClienti = tuttiClienti;
-                    var iniziali =elencoClienti.Where(x => !string.IsNullOrWhiteSpace(x.RagioneSociale)).Select(x => x.RagioneSociale.Substring(0, 1)).Distinct();
+                    var iniziali = elencoClienti.Where(x => !string.IsNullOrWhiteSpace(x.RagioneSociale)).Select(x => x.RagioneSociale.Substring(0, 1)).Distinct().ToList();
+                    iniziali.Add(" ");
                     foreach (var item in iniziali)
                     {
+                        List<Models.Cliente> sclienti;
                         var elemento = new Models.GruppoClienti(item, item);
-                        var sclienti = elencoClienti.Where(x => !string.IsNullOrWhiteSpace(x.RagioneSociale) && x.RagioneSociale.StartsWith(item, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                        if (string.IsNullOrWhiteSpace(item)) 
+                        {
+                            sclienti = elencoClienti.Where(x => string.IsNullOrWhiteSpace(x.RagioneSociale)).ToList();                        
+                        }
+                        else
+                            sclienti= elencoClienti.Where(x => !string.IsNullOrWhiteSpace(x.RagioneSociale) && x.RagioneSociale.StartsWith(item, StringComparison.InvariantCultureIgnoreCase)).ToList();
                         if (!string.IsNullOrWhiteSpace(SearchText)) sclienti = sclienti.Where(x => x.RagioneSociale.Contains(SearchText)).ToList();
                         if (sclienti != null && sclienti.Count > 0)
                         {
@@ -106,9 +141,11 @@ namespace Omal.ViewModels
                         }
                     }
                     clienti = new ObservableCollection<Models.GruppoClienti>(elenco.OrderBy(x => x.Titolo));
-                    OnPropertyChanged("NumeroContatti");
                 }
-                return clienti;
+                finally
+                {
+                    clientiIsLoading = false;
+                }
             }
         }
 

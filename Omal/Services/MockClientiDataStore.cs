@@ -20,8 +20,8 @@ namespace Omal.Services
             items = new List<Models.Cliente>();
             var mockItems = new List<Models.Cliente>
             {
-                new Cliente(){ Cap="25087", CFiscale="03793970983", Città="Salò", Email="luca.cavedaghi@cualeva.com", Fax="", IdCliente=1, IdUtenteReferente=0, Indirizzo="P.zza Vittorio Emanuele II", Nazione="Italia", PIva ="03793970983", Provincia="Brescia", RagioneSociale="Cualeva S.r.l", Telefono="+39 0365 189 6342"},
-                new Cliente(){ Cap="25087", CFiscale="02608470981", Città="Salò", Email="info@timmagine.com", Fax="+39 0365 1871301", IdCliente=2, IdUtenteReferente=0, Indirizzo="Via Giulio Natta, 10", Nazione="Italia", PIva ="02608470981", Provincia="Brescia", RagioneSociale="TImmagine S.r.l", Telefono="+39 0365 1871300"}
+                new Cliente(){ Cap="25087", CodiceFiscale="03793970983", Citta="Salò", Email="luca.cavedaghi@cualeva.com", Fax="", IDCliente=1, IdUtenteReferente=0, Indirizzo="P.zza Vittorio Emanuele II", Nazione="Italia", Piva ="03793970983", Provincia="Brescia", RagioneSociale="Cualeva S.r.l", Telefono="+39 0365 189 6342"},
+                new Cliente(){ Cap="25087", CodiceFiscale="02608470981", Citta="Salò", Email="info@timmagine.com", Fax="+39 0365 1871301", IDCliente=2, IdUtenteReferente=0, Indirizzo="Via Giulio Natta, 10", Nazione="Italia", Piva ="02608470981", Provincia="Brescia", RagioneSociale="TImmagine S.r.l", Telefono="+39 0365 1871300"}
             };
 
             foreach (var item in mockItems)
@@ -40,7 +40,7 @@ namespace Omal.Services
 
         public async Task<bool> UpdateItemAsync(Models.Cliente item)
         {
-            var _item = items.Where((Models.Cliente arg) => arg.IdCliente == item.IdCliente).FirstOrDefault();
+            var _item = items.Where((Models.Cliente arg) => arg.IDCliente == item.IDCliente).FirstOrDefault();
             items.Remove(_item);
             items.Add(item);
 
@@ -49,7 +49,7 @@ namespace Omal.Services
 
         public async Task<bool> DeleteItemAsync(int id)
         {
-            var _item = items.Where((Models.Cliente arg) => arg.IdCliente == id).FirstOrDefault();
+            var _item = items.Where((Models.Cliente arg) => arg.IDCliente == id).FirstOrDefault();
             items.Remove(_item);
 
             return await Task.FromResult(true);
@@ -57,7 +57,7 @@ namespace Omal.Services
 
         public async Task<Models.Cliente> GetItemAsync(int id)
         {
-            return await Task.FromResult(items.FirstOrDefault(s => s.IdCliente == id));
+            return await Task.FromResult(items.FirstOrDefault(s => s.IDCliente == id));
         }
 
         public async Task<IEnumerable<Models.Cliente>> GetItemsAsync(bool forceRefresh = false)

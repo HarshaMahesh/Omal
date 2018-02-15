@@ -25,6 +25,17 @@ namespace Omal.ViewModels
                 }
                 var codiceProdotto = parametri["idprodotto"].ToString();
                 var qta = parametri["qta"].ToString();
+                int IQta;
+                if (!int.TryParse(qta,out IQta))
+                {
+                    CurPage.DisplayAlert("Carrello", "Qta nn valida. Numero intero richiesto.", "OK");
+                    return;
+                }
+                if (IQta < 0)
+                {
+                    CurPage.DisplayAlert("Carrello", "Qta nn valida. Il numero deve essere maggiore di 0", "OK");
+                    return; 
+                }
                 if (parametri["isvalvola"].ToString() == "1")
                 {
                     // Sto ordinando una valvola
@@ -38,7 +49,7 @@ namespace Omal.ViewModels
                     if (elementoCarrello == null)
                         DataStore.Carrello.Add(new Models.Carrello() { CodiceArticolo = valvola.codice_articolo, DescrizioneCarrello_En = curProdotto.descrizione_en, DescrizioneCarrello_It = curProdotto.descrizione, IdArticolo = valvola.idcodicevalvola, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = valvola.Prezzo, Qta = Convert.ToInt32(qta), Tipologia = curProdotto.tipologia, IdProdotto = CurProdotto.idprodotto });
                     else
-                        elementoCarrello.Qta += Convert.ToInt32(qta);                                                                              
+                        elementoCarrello.Qta += IQta;                                                                              
                 }
                 else
                 {
@@ -48,9 +59,9 @@ namespace Omal.ViewModels
                     if (attuatore == null) throw new KeyNotFoundException("IdCodiceAttuatore non trovato");
                     var elementoCarrello = DataStore.Carrello.FirstOrDefault(x => x.IdArticolo == attuatore.IdCodiceAttuatore && x.Tipologia == CurProdotto.tipologia && x.IdProdotto == CurProdotto.idprodotto);
                     if (elementoCarrello == null)
-                        DataStore.Carrello.Add(new Models.Carrello() { CodiceArticolo = attuatore.Codice_Articolo, DescrizioneCarrello_En = curProdotto.descrizione_en, DescrizioneCarrello_It = curProdotto.descrizione, IdArticolo = attuatore.IdCodiceAttuatore, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = attuatore.Prezzo, Qta = Convert.ToInt32(qta), Tipologia = curProdotto.tipologia, IdProdotto = CurProdotto.idprodotto });
+                        DataStore.Carrello.Add(new Models.Carrello() { CodiceArticolo = attuatore.Codice_Articolo, DescrizioneCarrello_En = curProdotto.descrizione_en, DescrizioneCarrello_It = curProdotto.descrizione, IdArticolo = attuatore.IdCodiceAttuatore, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = attuatore.Prezzo, Qta = IQta, Tipologia = curProdotto.tipologia, IdProdotto = CurProdotto.idprodotto });
                     else
-                        elementoCarrello.Qta += Convert.ToInt32(qta);                                                                              
+                        elementoCarrello.Qta += IQta;
                 }
                 MessagingCenter.Send<Models.Messages.BasketEditedMessage>(new Models.Messages.BasketEditedMessage(){ },"");
                 CurPage.DisplayAlert("Carrello", "Articoli aggiunti al carrello", "OK");
@@ -180,13 +191,13 @@ namespace Omal.ViewModels
                     curValvola.Add(
                         string.Format(
                             "<form method='GET'>" +
-                            "{2}&emsp;€ {3}&emsp;" +
+                            "{2}&emsp;€ {3}&emsp;{4}&emsp;" +
                                 "<input type='number' name='qta' />"+
                                 "<input type='hidden' name='idprodotto' value='{0}' />" +
                                 "<input type='hidden' name='isvalvola' value='1' />" +
                                 "<input type='hidden' name='idcodicevalvola' value='{1}' />" +
                                 "<input type='submit' value='Ordina' />" +
-                            "</form>",curProdotto.idprodotto,  valvola.idcodicevalvola, "Prezzo",valvola.Prezzo.ToString("F") ));
+                            "</form>",curProdotto.idprodotto,  valvola.idcodicevalvola, "Prezzo",valvola.Prezzo.ToString("F") ,"Qta"));
                 }
                 if (!string.IsNullOrWhiteSpace(valvola.url_3d)) curValvola.Add(string.Format("<a href='{0}'>Mostra 3D</a>", valvola.url_3d));
                 if (!string.IsNullOrWhiteSpace(valvola.url_download)) curValvola.Add(string.Format("<a href='{0}'>Download</a>", valvola.url_download));
@@ -202,6 +213,7 @@ namespace Omal.ViewModels
             MessagingCenter.Subscribe<Models.Messages.LoginOrLogoutActionMessage>(this, "LoginOrLogout", sender =>
             {
                 OnPropertyChanged("ContentHtml");
+
             });
         }
     }

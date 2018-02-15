@@ -44,9 +44,9 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding DescrizioneCarrello_It}" Style="{StaticResource Descrizione}" />
+                        <Label Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding CodiceArticolo}" HorizontalTextAlignment="Center" Style="{StaticResource Descrizione}" />
                         <Label Grid.Row="1" Grid.Column="0"  VerticalOptions="Center" HorizontalOptions="Center" Text="Prezzo" FontAttributes="Bold" />
-                        <Label Grid.Row="2" Grid.Column="0"  VerticalOptions="Center" Text="{Binding PrezzoUnitario, StringFormat='€ {0:F}'}" FontAttributes="Bold" />
+                        <Label Grid.Row="2" Grid.Column="0"  VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding PrezzoUnitario, StringFormat='€ {0:F}'}" FontAttributes="Bold" />
                         <Label Grid.Row="1" Grid.Column="1"  VerticalOptions="Center" HorizontalOptions="Center" Text="Sconto" FontAttributes="Bold" />
                         <Entry Keyboard="Numeric" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" Placeholder="%" Text="{Binding Sconto}" MinimumWidthRequest="100" />
                         <Label  Grid.Row="1" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" Text="Qta" FontAttributes="Bold" />

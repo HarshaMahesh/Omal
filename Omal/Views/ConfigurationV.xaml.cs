@@ -15,5 +15,10 @@ namespace Omal.Views
             Vm.CurPage = this;
             InitializeComponent();
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }

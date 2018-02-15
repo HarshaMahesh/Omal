@@ -8,7 +8,7 @@
     <StackLayout>
             <ActivityIndicator IsRunning="{Binding IsRunning}" />
             <CustomControls:HtmlFormattedLabel BackgroundColor="Black" FontSize="8" TextColor="Yellow"  VerticalOptions="StartAndExpand" IsVisible="{Binding IsRunning}" Text="{Binding UpdateDbText}"  Margin="5" />
-            <TableView Margin="5" IsVisible="{Binding IsRunning, {Converter InverseBooleanConverter}" Intent="Settings"  >
+            <TableView Margin="5" IsVisible="{Binding IsRunning, {Converter InverseBooleanConverter} " Intent="Settings"  >
            <TableView.Root>
                 <TableSection Title="Database">
                     <ViewCell>
@@ -18,7 +18,7 @@
                             </StackLayout>
                     </ViewCell>
                         <ViewCell>
-                            <Button Command="{Binding UpdateDbCommand}" Text="Update" HorizontalOptions="EndAndExpand" />
+                            <Button Command="{Binding UpdateDbCommand}" IsVisible="{Binding IsRunning, {Converter InverseBooleanConverter}" Text="Update" HorizontalOptions="EndAndExpand" />
                         </ViewCell>
                 </TableSection>
             </TableView.Root>

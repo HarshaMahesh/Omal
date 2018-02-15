@@ -2,17 +2,20 @@
 <ContentPage Title="{Binding Title}" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.LoginV">
     <ContentPage.ToolbarItems>
     </ContentPage.ToolbarItems>
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" />
+    </ContentPage.Padding>
 	<ContentPage.Content>
         <StackLayout Orientation="Vertical" Padding="20">
         <Label Style="{StaticResource Descrizione}"  Text="Effettua il login per accedere ad ordini disegni 3D e prezzi di ogni articolo">
         </Label>
-            <Entry  Placeholder="Indirizzo Email" Text="{Binding Email}" />
-            <Entry  Placeholder="Password" IsPassword="true" Text="{Binding Password}" />
+            <Entry x:Name="UserName"  Placeholder="Indirizzo Email" Text="{Binding Email}" />
+            <Entry  x:Name="Password" Placeholder="Password" IsPassword="true" Text="{Binding Password}" />
             <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                <Button  Text="Login" Command="{Binding LoginCommand}" />
+                <Button x:Name="LoginBtn"  Text="Login" Command="{Binding LoginCommand}" />
                 <Button  Text="Back" Command="{Binding CanceLoginCommand}" />
             </StackLayout>
-
+            <Label Text="{Binding Errore}" TextColor="Red" />
         </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

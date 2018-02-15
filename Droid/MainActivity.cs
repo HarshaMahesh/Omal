@@ -43,7 +43,7 @@ namespace Omal.Droid
         {
             BottomTabbedRenderer.BottomBarHeight = 50;
             BottomTabbedRenderer.Typeface = Typeface.CreateFromAsset(Assets, "fonts/Montserrat-Bold.ttf");
-            BottomTabbedRenderer.FontSize = 12f;
+            BottomTabbedRenderer.FontSize = 8f;
             var stateList = new Android.Content.Res.ColorStateList(
                 new int[][] {
                     new int[] { Android.Resource.Attribute.StateChecked
@@ -104,7 +104,7 @@ namespace Omal.Droid
 
             if (registerHandlerForDefaultRenderer != null)
             {
-                registerHandlerForDefaultRenderer.Invoke(this, new[] { typeof(Xamarin.Forms.Button), typeof(CustomButtonCompatRenderer), typeof(ButtonRenderer) });
+           //     registerHandlerForDefaultRenderer.Invoke(this, new[] { typeof(Xamarin.Forms.Button), typeof(CustomButtonCompatRenderer), typeof(ButtonRenderer) });
                 //registerHandlerForDefaultRenderer.Invoke(this, new[] { typeof(Xamarin.Forms.Button), typeof(Xamarin.Forms.Platform.Android.AppCompat.ButtonRenderer), typeof(ButtonRenderer) });
 
                 // register the other default renderers

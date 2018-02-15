@@ -13,29 +13,28 @@ using Xamarin.Forms;
 
 namespace Omal.Services
 {
-    public class OmalAttuatoriDataStore : IDataStore<Models.Attuatore>
+    public class OmalClientiDataStore : IDataStore<Models.Cliente>
     {
-        List<Models.Attuatore> items;
-        public SQLite.SQLiteAsyncConnection Connection => DependencyService.Get<ISQLiteDb>().GetConnection();
+        List<Models.Cliente> items;
         HttpClient client;
+        public SQLite.SQLiteAsyncConnection Connection => DependencyService.Get<ISQLiteDb>().GetConnection();
 
-        public OmalAttuatoriDataStore()
+        public OmalClientiDataStore()
         {
-            items = new List<Models.Attuatore>();
+            items = new List<Models.Cliente>();
             client = new HttpClient();
-
         }
 
-        public async Task<bool> AddItemAsync(Models.Attuatore item)
+        public async Task<bool> AddItemAsync(Models.Cliente item)
         {
             items.Add(item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> UpdateItemAsync(Models.Attuatore item)
+        public async Task<bool> UpdateItemAsync(Models.Cliente item)
         {
-            var _item = items.Where((Models.Attuatore arg) => arg.IdCodiceAttuatore == item.IdCodiceAttuatore).FirstOrDefault();
+            var _item = items.Where((Models.Cliente arg) => arg.IDCliente == item.IDCliente).FirstOrDefault();
             items.Remove(_item);
             items.Add(item);
 
@@ -44,29 +43,29 @@ namespace Omal.Services
 
         public async Task<bool> DeleteItemAsync(int id)
         {
-            var _item = items.Where((Models.Attuatore arg) => arg.IdCodiceAttuatore == id).FirstOrDefault();
+            var _item = items.Where((Models.Cliente arg) => arg.IDCliente == id).FirstOrDefault();
             items.Remove(_item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<Models.Attuatore> GetItemAsync(int id)
+        public async Task<Models.Cliente> GetItemAsync(int id)
         {
-            return await Task.FromResult(items.FirstOrDefault(s => s.IdCodiceAttuatore == id));
+            return await Task.FromResult(items.FirstOrDefault(s => s.IDCliente == id));
         }
 
-        public async Task<IEnumerable<Models.Attuatore>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Models.Cliente>> GetItemsAsync(bool forceRefresh = false)
         {
             if (items == null || items.Count == 0)
             {
-                items = await Connection.Table<Models.Attuatore>().OrderBy(x => x.Ordine).ToListAsync();
+                items = await Connection.Table<Models.Cliente>().ToListAsync();
             }
             if ((items.Count == 0 || forceRefresh) && CrossConnectivity.Current.IsConnected)
             {
-                var url = string.Format("{0}{1}?tabella=attuatori", App.BackendUrl, "webservice.php");
+                var url = string.Format("{0}{1}?tabella=clienti", App.BackendUrl, "webservice.php");
                 if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.idtoken);
                 var json = await client.GetStringAsync(url);
-                items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { Data = new List<Models.Attuatore>() }).Data);
+                items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { data = new List<Models.Cliente>() }).data);
                 foreach (var item in items)
                     Connection.InsertOrReplaceAsync(item);
             }

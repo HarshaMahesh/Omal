@@ -32,8 +32,7 @@ namespace Omal.ViewModels
             });
             MessagingCenter.Subscribe<Models.Messages.ClienteInsertedOrUpdatedMessage>(this, "", sender =>
             {
-                clienti = null;
-                OnPropertyChanged("Clienti");
+                LoadClienti();
             });
             SalvaCommand = new RelayCommand(OnSalvaCommand,CanSaveCommand);
             InviaCommand = new RelayCommand(OnInviaCommand, CanInviaCommand);
@@ -84,12 +83,12 @@ namespace Omal.ViewModels
 
         private void OnInviaCommand(object obj)
         {
-            throw new NotImplementedException();
+            CurPage.DisplayAlert("Invio Ordine","Invio da implemetare", "Ok");
         }
 
         private void OnSalvaCommand(object obj)
         {
-            throw new NotImplementedException();
+            CurPage.DisplayAlert("Salva Ordine", "Salvataggio da implemetare", "Ok");
         }
 
         ObservableCollection<Models.Cliente> clienti;
@@ -97,9 +96,33 @@ namespace Omal.ViewModels
         {
             get
             {
-                if (clienti == null)
-                    clienti = new ObservableCollection<Models.Cliente>(DataStore.Clienti.GetItemsAsync().Result.OrderBy((x=>x.RagioneSociale)));
+                if ((clienti == null || clienti.Count() == 0  ) && !clientiIsLoading)
+                    LoadClienti();
                 return clienti;
+            }
+            set
+            {
+                clienti = value;
+                OnPropertyChanged();
+            }
+        }
+
+        bool clientiIsLoading = false;
+        async void LoadClienti()
+        {
+            if (!clientiIsLoading)
+            {
+                clientiIsLoading = true;
+                try
+                {
+                    var tmpC = await DataStore.Clienti.GetItemsAsync(false);
+                    tmpC = tmpC.Where(x => x.annullato == 0);
+                    Clienti = new ObservableCollection<Models.Cliente>(tmpC);
+                }
+                finally
+                {
+                    clientiIsLoading = false;
+                }
             }
         }
 
@@ -131,7 +154,7 @@ namespace Omal.ViewModels
             {
                 if (App.CurOrdine == null) return;
                 selectedCliente = value;
-                App.CurOrdine.IdCliente = selectedCliente.IdCliente;
+                App.CurOrdine.IdCliente = selectedCliente.IDCliente;
                 OnPropertyChanged();
             }
         }

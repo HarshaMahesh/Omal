@@ -10,10 +10,10 @@ namespace Omal.Services
         {
             Prodotti = new OmalProdottiDataStore();
             Categorie = new OmalCategorieDataStore();
-            Utenti = new MockUtentiDataStore();
+            Utenti = new OmalUtentiDataStore();
             ProdottoGruppiMetadati = new OmalProdottoGruppiMetadatiDataStore();
             ProdottoMetadati = new OmalProdottoMetadatiDataStore();
-            Clienti = new MockClientiDataStore();
+            Clienti = new OmalClientiDataStore();
             Valvole = new OmalValvoleDataStore();
             Attuatori = new MockAttuatoriDataStore();
             Ordini = new MockOrdiniDataStore();

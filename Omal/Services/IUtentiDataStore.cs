@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
+
 namespace Omal
 {
     public interface IUtentiDataStore: IDataStore<Models.Utente>
     {
-        Models.Utente Login(string email, string password);
+        Task<Models.Token> Login(string email, string password);
     }
 }

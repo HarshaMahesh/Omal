@@ -164,6 +164,9 @@ namespace Omal.ViewModels
             isFirstTry[1] = true;
             isFirstTry[2] = true;
             isFirstTry[3] = true;
+            OnPropertyChanged("SelectedPicker4");
+            OnPropertyChanged("SelectedPicker3");
+            OnPropertyChanged("SelectedPicker2");
             OnPropertyChanged("SelectedPicker1");
         }
 
