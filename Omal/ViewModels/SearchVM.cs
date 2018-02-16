@@ -13,7 +13,7 @@ namespace Omal.ViewModels
         public RelayCommand SearchWithCategoriesCommand{get;set;}
         public RelayCommand SearchWithProductNameCommand { get; set; }
 
-        public string CurTitle { get { return "Search"; }}
+        public string CurTitle { get { return TitoloCerca; }}
 
         string productNameFilter;
         public string ProductNameFilter
@@ -31,16 +31,37 @@ namespace Omal.ViewModels
 
         }
 
+        public bool Picker2IsVisible
+        {
+            get
+            {
+                return !string.IsNullOrWhiteSpace(SelectedPrimoLivello.Value);
+            }
+        }
+
+        public bool Picker3IsVisible
+        {
+            get
+            {
+                return !string.IsNullOrWhiteSpace(SelectedSecondoLivello.Value);
+            }
+        }
+
         public SearchVM()
         {
             PropertyChanged += OnLocalPropertyChanged;
-            SearchWithCategoriesCommand = new RelayCommand(OnSearchWithCategoriesCommand);
+            SearchWithCategoriesCommand = new RelayCommand(OnSearchWithCategoriesCommand, CanExecuteSearchWithCategoriesCommand);
             SearchWithProductNameCommand = new RelayCommand(OnSearchWithProductNameCommand, CanExecuteSearchWithProductNameCommand);
+        }
+
+        private bool CanExecuteSearchWithCategoriesCommand(object arg)
+        {
+            return !string.IsNullOrWhiteSpace(SelectedPrimoLivello.Value); 
         }
 
         private bool CanExecuteSearchWithProductNameCommand(object arg)
         {
-             return !string.IsNullOrWhiteSpace(ProductNameFilter); 
+            return !string.IsNullOrWhiteSpace(ProductNameFilter);
         }
 
         private async void OnSearchWithProductNameCommand(object obj)
@@ -48,7 +69,7 @@ namespace Omal.ViewModels
             await Navigation.PushAsync(new Views.ProductsSearchResutlV(ProductNameFilter));
         }
 
-        private async void OnSearchWithCategoriesCommand()
+        private async void OnSearchWithCategoriesCommand(object obj)
         {
             int curCategoria = 0;
             if (SelectedPrimoLivello.Key != 0) curCategoria = SelectedPrimoLivello.Key;
@@ -63,11 +84,14 @@ namespace Omal.ViewModels
             {
                 secondoLivello = null;
                 OnPropertyChanged("SecondoLivello");
+                OnPropertyChanged("Picker2IsVisible");
+                SearchWithCategoriesCommand.ChangeCanExecute();
             }
             if (string.Equals(e.PropertyName, "SelectedSecondoLivello", StringComparison.InvariantCultureIgnoreCase))
             {
                 terzoLivello = null;
                 OnPropertyChanged("TerzoLivello");
+                OnPropertyChanged("Picker3IsVisible");
             }
                 
         }

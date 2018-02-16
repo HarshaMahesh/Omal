@@ -10,15 +10,21 @@
         <StackLayout Padding="10">
            <ListView SelectedItem="{Binding SelectedProduct}" x:Name="ElencoProdotti" ItemsSource="{Binding Prodotti}">
            <ListView.ItemTemplate> 
-                <DataTemplate>
-                    <ImageCell  Detail="{Binding nome}" Text="{Binding tipologia}" >
-                    <ImageCell.ImageSource>
-                        <UriImageSource Uri="{Binding immagine_placeholder}"
-                            CacheValidity="1"
-                            CachingEnabled="true"/>
-                        </ImageCell.ImageSource>       
-                    </ImageCell>
-                </DataTemplate>
+                    <DataTemplate>
+            <ViewCell>
+                <StackLayout Orientation="Horizontal">
+                                <Image Margin="5" HeightRequest="50">
+                                <Image.Source>
+                                    <UriImageSource Uri="{Binding immagine_placeholder}"
+                                    CacheValidity="30" 
+                                    CachingEnabled="true"/>
+                                </Image.Source>       
+                                </Image>
+                    <Label Text="{Binding nome}" VerticalOptions="CenterAndExpand" Margin="5" LineBreakMode="WordWrap"/>
+                </StackLayout>
+            </ViewCell>
+        </DataTemplate>
+                
             </ListView.ItemTemplate>
                 <ListView.Footer>
                 <Label Margin="20" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroProdotti}"  />

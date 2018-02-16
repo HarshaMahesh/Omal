@@ -20,23 +20,18 @@
         </Grid.RowDefinitions>
             <StackLayout Margin="0,0,0,0" Grid.Row="0" Orientation="Vertical">
                <Label Style="{StaticResource Titolo}">Prodotti</Label>
-                <Label Style="{StaticResource Descrizione}">Cerca il prodotto inserendo una parte del nome</Label>
-                    <Entry  Placeholder="Cerca Prodotto" Text="{Binding ProductNameFilter, Mode=TwoWay}" />
+                
+                    <Entry  Placeholder="{Binding ProdottoRicercato}" Text="{Binding ProductNameFilter, Mode=TwoWay}" />
 
                 <Button Command="{Binding SearchWithProductNameCommand, Mode=TwoWay}" Text="Cerca" HorizontalOptions="End" />
             </StackLayout>
             <StackLayout Margin="0,0,0,0" Grid.Row="1" Orientation="Vertical">
-                <Label Style="{StaticResource Descrizione}">Cerca il prodotto dichiarando una o pià categorie di appartenenza</Label>
-                <Picker BackgroundColor="White" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPrimoLivello}" ItemsSource="{Binding PrimoLivello}"  />
-                <Picker BackgroundColor="White" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedSecondoLivello}" ItemsSource="{Binding SecondoLivello}" />
-                <Picker BackgroundColor="White" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedTerzoLivello}" ItemsSource="{Binding TerzoLivello}" />
+                <Picker Title="{Binding ProdottoPicker1}" BackgroundColor="White" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPrimoLivello}" ItemsSource="{Binding PrimoLivello}"  />
+                <Picker Title="{Binding ProdottoPicker2}" IsVisible="{Binding Picker2IsVisible}" BackgroundColor="White" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedSecondoLivello}" ItemsSource="{Binding SecondoLivello}" />
+                <Picker Title="{Binding ProdottoPicker3}" IsVisible="{Binding Picker3IsVisible}" BackgroundColor="White" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedTerzoLivello}" ItemsSource="{Binding TerzoLivello}" />
                 <Button Text="Cerca" Command="{Binding SearchWithCategoriesCommand }"/>
             </StackLayout>
-            <StackLayout Margin="0,0,0,0" Grid.Row="2" Orientation="Vertical">
-                <Label Style="{StaticResource Titolo}">Ordini</Label>
-                <Label Style="{StaticResource Descrizione}">Visualizza il riepilogo dettagliato dei tuoi ultimi ordini</Label>
-                <Button Text="Dettagli"  />
-            </StackLayout>
+
         </Grid>
         </ScrollView>
     </ContentPage.Content>

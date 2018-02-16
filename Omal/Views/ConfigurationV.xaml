@@ -11,26 +11,15 @@
         <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn}" Text="{Binding Aggiungi}" Command="{Binding AddNewCommand}" />
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
-    <StackLayout>
+    <StackLayout Margin="5">
             <ActivityIndicator IsRunning="{Binding IsRunning}" />
+            <Label Text="Database" Style="{StaticResource Titolo}" />
+            <Label Text="{Binding UltimoAggiornamento}" VerticalOptions="Center" />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="{Binding LastUpdate}" VerticalOptions="Center"  HorizontalOptions="EndAndExpand"/>
+                <Button IsVisible="{Binding IsRunning, {Converter InverseBooleanConverter}" Command="{Binding UpdateDbCommand}" HorizontalOptions="EndAndExpand" Text="{Binding Aggiorna}" />
+            </StackLayout>
             <CustomControls:HtmlFormattedLabel BackgroundColor="Black" FontSize="8" TextColor="Yellow"  VerticalOptions="StartAndExpand" IsVisible="{Binding IsRunning}" Text="{Binding UpdateDbText}"  Margin="5" />
-            <TableView Margin="5" IsVisible="{Binding IsRunning, {Converter InverseBooleanConverter} " Intent="Settings"  >
-           <TableView.Root>
-                <TableSection Title="Database">
-                    <ViewCell>
-                            <StackLayout Orientation="Horizontal" Margin="5">
-                                <Label Text="Last Update" VerticalOptions="Center" />
-                                <Label Text="{Binding LastUpdate}" VerticalOptions="Center"  HorizontalOptions="EndAndExpand"/>
-                            </StackLayout>
-                    </ViewCell>
-                        <ViewCell>
-                            <Button Command="{Binding UpdateDbCommand}" IsVisible="{Binding IsRunning, {Converter InverseBooleanConverter}" Text="Update" HorizontalOptions="EndAndExpand" />
-                        </ViewCell>
-                </TableSection>
-            </TableView.Root>
-        </TableView>
-            
-        </StackLayout>
-
+    </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

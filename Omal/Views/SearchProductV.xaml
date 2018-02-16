@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage 
+<ContentPage  BackgroundColor="White"
     xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.SearchProductV" Title="{Binding CurTitle}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout Orientation="Vertical">
-            <Label Style="{StaticResource Titolo}" Text="{Binding CurProdotto.nome}" />
-            <StackLayout BackgroundColor="White" HorizontalOptions="Center" Orientation="Vertical" VerticalOptions="Center" >
-                    <Image Margin="5" Source="{Binding CurProdotto.immagine_placeholder}" />
-                    <Button Margin="5" Text="Info" HorizontalOptions="Fill" Command="{Binding GoToDetailCommand}" />                
-            </StackLayout>
-            <StackLayout Orientation="Vertical" Margin="10">
-            <Label Margin="0,40,0,0" HorizontalTextAlignment="Center" Style="{StaticResource Titolo}" Text="Trova Articolo" />
+        <StackLayout Orientation="Vertical" Margin="5">
+            <Label Style="{StaticResource Titolo}" Text="{Binding CurProdotto.nome}" BackgroundColor="#EAEAEA" HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
+            <Image HorizontalOptions="Center" Margin="5" HeightRequest="100" Source="{Binding CurProdotto.immagine_placeholder}" />
+            <Button Margin="5" BackgroundColor="#EAEAEA" TextColor="#5E5B5B" Text="MAGGIORI INFO" HorizontalOptions="Fill" Command="{Binding GoToDetailCommand}" />                
+            <StackLayout Orientation="Vertical" Margin="5">
+            <Label Margin="0,10,0,0" HorizontalTextAlignment="Center" Style="{StaticResource Titolo}" Text="Trova Articolo" />
             <Label IsVisible="{Binding Picker1IsVisible}" Text="{Binding DescrizionePicker1}" Style="{StaticResource Descrizione}" />
             <Picker IsVisible="{Binding Picker1IsVisible}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPicker1}" ItemsSource="{Binding Picker1}"  />
             <Label IsVisible="{Binding Picker2IsVisible}" Text="{Binding DescrizionePicker2}" Style="{StaticResource Descrizione}" />

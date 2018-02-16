@@ -2,8 +2,8 @@
 <ContentPage BackgroundColor="White"
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-
-    xmlns:Common="clr-namespace:Omal.Common"
+    Title="{Binding TitoloClienti}" 
+    xmlns:Common="clr-namespace:Omal.Common" 
     x:Class="Omal.Views.AnagraficaClientiV">
     <ContentPage.ToolbarItems>
         <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />

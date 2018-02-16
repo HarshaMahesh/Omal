@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage 
+    Title="{Binding TitoloContattiOmal}"
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
@@ -7,7 +8,6 @@
 	<ContentPage.Content>
         <ScrollView>
         <StackLayout HorizontalOptions="Center" VerticalOptions="StartAndExpand" Padding="30">
-        <Label Style="{StaticResource Titolo}" HorizontalTextAlignment="Center" Text="Contatti Omal" /> 
         <Label x:Name="Links" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center">
           <Label.FormattedText>
             <FormattedString>

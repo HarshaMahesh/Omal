@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage Title="{Binding CurTitle}" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.InfoProductV">
+<ContentPage BackgroundColor="White" Title="{Binding CurTitle}" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.InfoProductV">
 	<ContentPage.ToolbarItems>
         <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <Label Style="{StaticResource Titolo}" Text="{Binding CurProdotto.nome}" />
+        <StackLayout Orientation="Vertical" Margin="5">
+            <Label Style="{StaticResource Titolo}" Text="{Binding CurProdotto.nome}" BackgroundColor="#EAEAEA" HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
             <ListView SelectedItem="{Binding CurGruppoProdotto}" ItemsSource="{Binding GruppoMetadati}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
