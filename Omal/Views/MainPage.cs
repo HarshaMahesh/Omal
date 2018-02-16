@@ -11,11 +11,11 @@ namespace Omal
         {
             
             SearchPage = new NavigationPage(new Views.SearchV()) { Title = "Cerca", Icon="Cerca.png" };
-            AnagrafichePage = new NavigationPage(new Views.AnagraficheV()) { Title = "Anagrafiche", Icon = "Archivio.png"  };
+            AnagrafichePage = new NavigationPage(new Views.AnagraficheV()) { Title = "Archivio", Icon = "Archivio.png"  };
             BasketPage = new NavigationPage(new Views.BasketV()) { Title = "Carrello", Icon ="Ordini.png" };
             ContactOmalPage = new NavigationPage(new Views.OmalContactPageV()) { Title = "Contatti Omal", Icon="Omal.png" };
             ConfigurazioniPage = new Views.ConfigurationV();
-                ImpostazioniPage = new NavigationPage(ConfigurazioniPage) { Title = "Impostazioni", Icon = "Impostazioni.png" };
+            ImpostazioniPage = new NavigationPage(ConfigurazioniPage) { Title = "Impostazioni", Icon = "Impostazioni.png" };
             switch (Device.RuntimePlatform)
             {
                 case Device.Android:

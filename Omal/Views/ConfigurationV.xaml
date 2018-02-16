@@ -2,8 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:Converters ="clr-namespace:Omal.Converters"
+    xmlns:Common="clr-namespace:Omal.Common"
     xmlns:CustomControls = "clr-namespace:Omal.CustomControls"
-    x:Class="Omal.Views.ConfigurationV">
+    Title="{Binding TitoloImpostazioni}"
+    x:Class="Omal.Views.ConfigurationV" BackgroundColor="White">
+    <ContentPage.ToolbarItems>
+        <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
+        <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn}" Text="{Binding Aggiungi}" Command="{Binding AddNewCommand}" />
+    </ContentPage.ToolbarItems>
 	<ContentPage.Content>
     <StackLayout>
             <ActivityIndicator IsRunning="{Binding IsRunning}" />

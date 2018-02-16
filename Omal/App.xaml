@@ -48,8 +48,8 @@
                 <Setter Property="BackgroundColor" Value="#60A5D1" />
             </Style>
             <Style  TargetType="Button">
-                <Setter Property="BorderWidth" Value="1.5" />
-                <Setter Property="BorderColor" Value="#60A5D1" />
+                <Setter Property="BorderWidth" Value="0" />
+         
                 <Setter Property="TextColor" Value="#60A5D1" />
                 <Setter Property="WidthRequest" Value="100" />
                 <Setter Property="BorderRadius" Value="20" />
@@ -57,6 +57,9 @@
                 <Setter Property="Margin" Value="5" />
                 <Setter Property="HorizontalOptions" Value="End" />
                 <Setter Property="FontFamily" Value="Montserrat-Bold" />
+            </Style>
+            <Style TargetType="ListView">
+                <Setter Property="BackgroundColor" Value="#FFFFFF" />
             </Style>
             <Converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
 		</ResourceDictionary>

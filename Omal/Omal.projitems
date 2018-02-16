@@ -139,6 +139,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\OmalClientiDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\OmalUtentiDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Token.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AppResources\Traduzioni.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -218,5 +219,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
     <Folder Include="$(MSBuildThisFileDirectory)CustomControls\" />
     <Folder Include="$(MSBuildThisFileDirectory)Persistence\" />
+    <Folder Include="$(MSBuildThisFileDirectory)AppResources\" />
   </ItemGroup>
 </Project>

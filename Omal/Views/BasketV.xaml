@@ -5,6 +5,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Margin="10">
+        <Label IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding LogonRichiesto}" />
         <ListView VerticalOptions="FillAndExpand" IsVisible="{Binding IsLoggedIn}" ItemsSource="{Binding Items}">
         <ListView.RowHeight>
                 <OnPlatform x:TypeArguments="x:Int32">

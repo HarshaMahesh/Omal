@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace Omal.ViewModels
 {
-    public class BaseVM: INotifyPropertyChanged
+    public class BaseVM: AppResources.Traduzioni, INotifyPropertyChanged
     {
         public virtual string LoggedUserName {
             get

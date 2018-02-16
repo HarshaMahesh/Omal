@@ -9,9 +9,11 @@
       <Common:BindableToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <Button HorizontalOptions="Fill" Text="Clienti" Command="{Binding GoToAnagraficaClientiCommand}" />
-            <Button HorizontalOptions="Fill" Text="Ordini" Command="{Binding GoToAnagraficaOrdiniCommand}" />
-        </StackLayout>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Padding="6" Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <Button HorizontalOptions="Fill" Text="Clienti" Command="{Binding GoToAnagraficaClientiCommand}" />
+                <Button HorizontalOptions="Fill" Text="Ordini" Command="{Binding GoToAnagraficaOrdiniCommand}" />
+            </StackLayout>
+        </AbsoluteLayout>
 	</ContentPage.Content>
 </ContentPage>

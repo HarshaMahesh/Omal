@@ -48,23 +48,23 @@ namespace Omal.Droid.CustomControls
                 // Create a drawable for the button's normal state
                 _normal = new Android.Graphics.Drawables.GradientDrawable();
 
-                if (button.BackgroundColor.R == -1.0 && button.BackgroundColor.G == -1.0 && button.BackgroundColor.B == -1.0)
+               /* if (button.BackgroundColor.R == -1.0 && button.BackgroundColor.G == -1.0 && button.BackgroundColor.B == -1.0)
                     _normal.SetColor(Android.Graphics.Color.ParseColor("#ff2c2e2f"));
                 else
-                    _normal.SetColor(button.BackgroundColor.ToAndroid());
+                    _normal.SetColor(button.BackgroundColor.ToAndroid());*/
 
                 _normal.SetStroke((int)borderWidth, button.BorderColor.ToAndroid());
                 _normal.SetCornerRadius(borderRadius);
 
                 // Create a drawable for the button's pressed state
                 _pressed = new Android.Graphics.Drawables.GradientDrawable();
-                var highlight = Context.ObtainStyledAttributes(new int[]
+              /*  var highlight = Context.ObtainStyledAttributes(new int[]
                                     {
                                         Android.Resource.Attribute.ColorAccent  //  .ColorActivatedHighlight
                                     }).GetColor(0, Android.Graphics.Color.Gray);
 
-                _pressed.SetColor(highlight);
-                _pressed.SetStroke((int)borderWidth, button.BorderColor.ToAndroid());
+                _pressed.SetColor(highlight);*/
+              //  _pressed.SetStroke((int)borderWidth, button.BorderColor.ToAndroid());
                 _pressed.SetCornerRadius(borderRadius);
 
                 // Add the drawables to a state list and assign the state list to the button
