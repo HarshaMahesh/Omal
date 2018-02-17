@@ -49,7 +49,9 @@ namespace Omal.ViewModels
 
         private void OnLocalPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (string.Equals(e.PropertyName, "Items", StringComparison.InvariantCultureIgnoreCase))
+            if (string.Equals(e.PropertyName, "Items", StringComparison.InvariantCultureIgnoreCase) ||
+                (string.Equals(e.PropertyName, "Clienti", StringComparison.InvariantCultureIgnoreCase)
+                ))
             {
                 OnPropertyChanged("NumeroContatti");
             }

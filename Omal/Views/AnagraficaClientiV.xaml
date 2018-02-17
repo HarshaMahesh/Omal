@@ -12,20 +12,9 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical"> 
             <Label IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Margin="10" HorizontalTextAlignment="Center" Style="{StaticResource Descrizione}" Text="{Binding LogonRichiesto}" />
-            <SearchBar BackgroundColor="#60A5D1" TextColor="White"  Placeholder="{Binding ClienteRicercato}" Text="{Binding SearchText}"  IsVisible="{Binding IsLoggedIn}"  >
-                <SearchBar.IsVisible>
-                    <OnPlatform x:TypeArguments="x:Boolean"
-                          iOS="{Binding IsLoggedIn}"
-                          Android="false"/>
-                    </SearchBar.IsVisible>
-                </SearchBar>
-            <Entry TextColor="White"  BackgroundColor="#60A5D1" Placeholder="{Binding ClienteRicercato}" Text="{Binding SearchText}"  IsVisible="{Binding IsLoggedIn}" >
-                <Entry.IsVisible>
-                    <OnPlatform x:TypeArguments="x:Boolean"
-                          iOS="false"
-                          Android="{Binding IsLoggedIn}"/>
-                    </Entry.IsVisible>
-            </Entry>
+            <SearchBar IsVisible="false" x:Name="sb"  BackgroundColor="#60A5D1" TextColor="White"  Placeholder="{Binding ClienteRicercato}" Text="{Binding SearchText}" />
+            <Entry IsVisible="false" x:Name="esb" TextColor="White"  BackgroundColor="#60A5D1" Placeholder="{Binding ClienteRicercato}" Text="{Binding SearchText}"  />
+
             <ListView SelectedItem="{Binding ClienteSelected}" IsVisible="{Binding IsLoggedIn}" IsGroupingEnabled="true" ItemsSource="{Binding Clienti}" GroupShortNameBinding="{Binding TitoloCorto}" GroupDisplayBinding="{Binding Titolo}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

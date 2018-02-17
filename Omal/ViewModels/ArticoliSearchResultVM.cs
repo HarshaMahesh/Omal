@@ -124,7 +124,8 @@ namespace Omal.ViewModels
             foreach (var attuatore in attuatori)
             {                
                 List<string> curAttuatore = new List<string>();
-                if (!string.IsNullOrWhiteSpace(attuatore.immagine_placeholder)) curAttuatore.Add(string.Format("<center><img src='{0}' /></center>", attuatore.immagine_placeholder));
+                if (!string.IsNullOrWhiteSpace(attuatore.immagine_placeholder)) 
+                    curAttuatore.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a></P>", attuatore.immagine_placeholder, string.Format("local_{0}", attuatore.immagine_placeholder)));
                 if (!string.IsNullOrWhiteSpace(attuatore.Valore_iso)) curAttuatore.Add(string.Format(elemento, "Valore_iso", attuatore.Valore_iso));
                 if (!string.IsNullOrWhiteSpace(attuatore.Valore_coppia)) curAttuatore.Add(string.Format(elemento, "Valore_coppia", attuatore.Valore_coppia));
                 if (App.CurLang == "IT")
@@ -165,7 +166,8 @@ namespace Omal.ViewModels
             {
                 
                 List<string> curValvola = new List<string>();
-                if (!string.IsNullOrWhiteSpace(valvola.immagine_placeholder)) curValvola.Add(string.Format(@"<center><img src=""{0}"" /></center>", valvola.immagine_placeholder));
+                if (!string.IsNullOrWhiteSpace(valvola.immagine_placeholder)) 
+                    curValvola.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a></P>", valvola.immagine_placeholder, string.Format("local_{0}", valvola.immagine_placeholder)));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_azionamento)) curValvola.Add(string.Format(elemento, "valore_azionamento", valvola.valore_azionamento));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_materiale)) curValvola.Add(string.Format(elemento, "valore_materiale", valvola.valore_materiale));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_dn)) curValvola.Add(string.Format(elemento,"valore_dn", valvola.valore_dn));

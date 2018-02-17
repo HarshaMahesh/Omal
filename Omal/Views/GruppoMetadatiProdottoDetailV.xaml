@@ -5,9 +5,9 @@
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
         <ScrollView>
-            <WebView VerticalOptions="FillAndExpand" >
+            <WebView VerticalOptions="FillAndExpand" Navigating="Handle_Navigating" >
             <WebView.Source>
-                <HtmlWebViewSource Html="{Binding ContentHtml}"/>
+                <HtmlWebViewSource Html="{Binding ContentHtml}" />
             </WebView.Source>
             </WebView>
         </ScrollView>

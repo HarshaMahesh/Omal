@@ -68,7 +68,7 @@ namespace Omal.ViewModels
                     string immagine = App.CurLang == "IT" ? elemento.immagine_metadati_it : elemento.immagine_metadati_en;
                     string testo = App.CurLang == "IT" ? elemento.testo_esteso_metadati_it : elemento.testo_esteso_metadati_en;
                     string curElemento = string.Empty;
-                    if (!string.IsNullOrWhiteSpace(immagine)) curElemento = string.Format("<P ALIGN='CENTER'><img src='{0}' /></P>", immagine);
+                    if (!string.IsNullOrWhiteSpace(immagine)) curElemento = string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a></P>", immagine, string.Format("local_{0}",immagine));
                     if (!string.IsNullOrWhiteSpace(testo)) curElemento += testo;
                     if (!string.IsNullOrWhiteSpace(curElemento)) Elementi.Add(curElemento.Trim());
                 }

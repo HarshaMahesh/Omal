@@ -15,6 +15,16 @@ namespace Omal.Views
             BindingContext = viewModel = new ViewModels.AnagraficaClientiVM();
             viewModel.CurPage = this;
             viewModel.Navigation = Navigation;
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    sb.IsVisible = true;
+                    break;
+                case Device.Android:
+                    esb.IsVisible = true;
+                    break;
+
+            }
         }
     }
 }

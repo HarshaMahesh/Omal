@@ -9,6 +9,15 @@ namespace Omal.Views
     {
         void Handle_Navigating(object sender, Xamarin.Forms.WebNavigatingEventArgs e)
         {
+            if (e.Url.Contains("local_"))
+            {
+                var indice = e.Url.IndexOf("local_");
+                string url = e.Url.Remove(0, indice + "local_".Length);
+                if (!CrossShare.IsSupported) return;
+                CrossShare.Current.OpenBrowser(url);
+                e.Cancel = true;
+                return;
+            }
             if (e.Url.Contains("partcommunity"))
             {
                 if (!CrossShare.IsSupported)
@@ -16,6 +25,7 @@ namespace Omal.Views
                 CrossShare.Current.OpenBrowser(e.Url);
                 e.Cancel = true;
             }
+
                 
             viewModel.Navigating(e.Url);
             if (Device.RuntimePlatform != Device.iOS)
