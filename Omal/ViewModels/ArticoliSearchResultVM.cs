@@ -193,13 +193,13 @@ namespace Omal.ViewModels
                     curValvola.Add(
                         string.Format(
                             "<form method='GET'>" +
-                            "{2}&emsp;€ {3}&emsp;{4}&emsp;" +
-                                "<input type='number' name='qta' />"+
+                            "{2}&emsp;€ {3}&emsp;" +
+                            "<input type='number' name='qta' placeholder='{4}' />"+
                                 "<input type='hidden' name='idprodotto' value='{0}' />" +
                                 "<input type='hidden' name='isvalvola' value='1' />" +
                                 "<input type='hidden' name='idcodicevalvola' value='{1}' />" +
                                 "<input type='submit' value='Ordina' />" +
-                            "</form>",curProdotto.idprodotto,  valvola.idcodicevalvola, "Prezzo",valvola.Prezzo.ToString("F") ,"Qta"));
+                            "</form>",curProdotto.idprodotto,  valvola.idcodicevalvola, "P.",valvola.Prezzo.ToString("F") ,StrQta));
                 }
                 if (!string.IsNullOrWhiteSpace(valvola.url_3d)) curValvola.Add(string.Format("<a href='{0}'>Mostra 3D</a>", valvola.url_3d));
                 if (!string.IsNullOrWhiteSpace(valvola.url_download)) curValvola.Add(string.Format("<a href='{0}'>Download</a>", valvola.url_download));

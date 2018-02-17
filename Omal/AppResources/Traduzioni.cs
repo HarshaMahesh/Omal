@@ -31,8 +31,29 @@ namespace Omal.AppResources
         public string ProdottoPicker2 { get { return GetCurvalueLang(_ProdottoPicker2); } }
         public string ProdottoPicker3 { get { return GetCurvalueLang(_ProdottoPicker3); } }
         public string TitoloContattiOmal { get { return GetCurvalueLang(_TitoloContattiOmal); } }
+        public string Cliente { get { return GetCurvalueLang(_Cliente); } }
+        public string Note { get { return GetCurvalueLang(_Note); } }
+        public string StrTotaleOrdine { get { return GetCurvalueLang(_TotaleOrdine); } }
+        public string StrSconto { get { return GetCurvalueLang(_StrSconto); } }
+        public string StrQta { get { return GetCurvalueLang(_StrQta); } }
 
+        Dictionary<string, string> _StrSconto = new Dictionary<string, string>
+        {
+            {"IT", "Sconto (%)"},
+            {"EN", "Sconto (%)"}
+        };
 
+        Dictionary<string, string> _StrQta = new Dictionary<string, string>
+        {
+            {"IT", "Qta"},
+            {"EN", "Qty"}
+        };
+
+        Dictionary<string, string> _TotaleOrdine = new Dictionary<string, string>
+        {
+            {"IT", "Totale Ordine"},
+            {"EN", "Totale Ordine"}
+        };
 
         Dictionary<string, string> _ProdottoPicker1 = new Dictionary<string, string>
         {
@@ -82,11 +103,24 @@ namespace Omal.AppResources
             {"EN", "Clients"}
         };
 
+        Dictionary<string, string> _Note = new Dictionary<string, string>
+        {
+            {"IT", "Note"},
+            {"EN", "Notes"}
+        };
+
         Dictionary<string, string> _TitoloCerca = new Dictionary<string, string>
         {
             {"IT", "Cerca"},
             {"EN", "Search"}
         };
+
+        Dictionary<string, string> _Cliente = new Dictionary<string, string>
+        {
+            {"IT", "Cliente"},
+            {"EN", "Customer"}
+        };
+
 
 
 
