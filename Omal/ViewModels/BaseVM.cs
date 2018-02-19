@@ -48,7 +48,7 @@ namespace Omal.ViewModels
                     if (CurPage != null) await CurPage.DisplayAlert("Alert", "Navigation null", "OK");
                     return;
                 }
-                await Navigation.PushModalAsync(new Views.LoginV());
+                await Navigation.PushAsync(new Views.LoginV());
             } else
             {
                 bool action; 

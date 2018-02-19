@@ -8,26 +8,22 @@
         <Common:BindableToolbarItem IsVisible="{Binding IsInsert, Converter={StaticResource InverseBooleanConverter}}}" Text="Aggiorna" Command="{Binding EditCommand}" />
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
-        <TableView BindingContext="{Binding CurCliente}">
-            <TableView.Root>
-                <TableSection>
-                    <EntryCell Label="Ragione Sociale" Text="{Binding RagioneSociale}" Placeholder="es: Cualeva Srl"  />
-                    <EntryCell Label="P.Iva" Text="{Binding PIva}" Placeholder="es: 03793970983" />
-                    <EntryCell Label="C.Fiscale" Text="{Binding CFiscale}" Placeholder="es: 03793970983" />
-                </TableSection>
-                <TableSection Title="Posizione">
-                    <EntryCell Label="Indirizzo" Text="{Binding Indirizzo}" Placeholder="es: P.zza Vittorio Emanuele II"/>
-                    <EntryCell Label="Città" Text="{Binding Città}" Placeholder="es: Salò"/>
-                    <EntryCell Label="Cap" Text="{Binding Cap}" Placeholder="es: 2587"/>
-                    <EntryCell Label="Provincia" Text="{Binding Provincia}" Placeholder="es: Brescia"/>
-                    <EntryCell Label="Nazione" Text="{Binding Nazione}" Placeholder="es: Italia"/>
-                </TableSection>
-                <TableSection Title="Contatti">
-                    <EntryCell Label="Email" Text="{Binding Email}" Placeholder="es: info@cualeva.com"/>
-                    <EntryCell Label="Telefono" Text="{Binding Telefono}" Placeholder="es: +39 0365 189 6342"/>
-                    <EntryCell Label="Fax" Text="{Binding Fax}" Placeholder="es: +39 0365 189 634"/>
-                </TableSection>
-            </TableView.Root>
-        </TableView>
+        <ScrollView>
+        <StackLayout Margin="5">
+        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.RagioneSociale}" Placeholder="{Binding StrRagioneSociale}"  />
+        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.PIva}" Placeholder="{Binding StrPIva}" />
+        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.CFiscale}" Placeholder="{Binding StrCFiscale}" />
+        <Label Style="{StaticResource Titolo}" Text="{Binding StrPosizione}" BackgroundColor="#EAEAEA" />
+        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Indirizzo}" Placeholder="{Binding StrIndirizzo}"/>
+        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Città}" Placeholder="{Binding StrCitta}"/>
+        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Cap}" Placeholder="{Binding StrCap}"/>
+        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Provincia}" Placeholder="{Binding StrProvincia}"/>
+        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Nazione}" Placeholder="{Binding StrNazione}"/>
+        <Label  Style="{StaticResource Titolo}" Text="{Binding StrContatti}" BackgroundColor="#EAEAEA" />
+        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Email}" Placeholder="{Binding StrEmail}"/>
+        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Telefono}" Placeholder="{Binding StrTelefono}"/>
+        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Fax}" Placeholder="{Binding StrFax}"/>
+        </StackLayout>
+            </ScrollView>
 	</ContentPage.Content>
 </ContentPage>

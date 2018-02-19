@@ -29,7 +29,7 @@ namespace Omal.ViewModels
                 if (CurCliente != null)
                     return CurCliente.RagioneSociale;
                 else
-                    return "Dettaglio Cliente";
+                    return TitoloDettaglioCliente;
             }
         }
 

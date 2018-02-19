@@ -48,7 +48,7 @@
                         <Label Grid.Row="2" Grid.Column="0"  VerticalOptions="Center" HorizontalTextAlignment="Start" Text="{Binding PrezzoUnitario, StringFormat='€ {0:F}'}" FontAttributes="Bold" />
                         <Entry TextColor="#004899" BackgroundColor="#EAEAEA" Keyboard="Numeric" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" Placeholder="{Binding StrSconto}" Text="{Binding Sconto}" MinimumWidthRequest="100" />
                         <Entry TextColor="#004899" BackgroundColor="#EAEAEA" Keyboard="Numeric"  Grid.Row="2" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Start" Placeholder="{Binding StrQta}" Text="{Binding Qta}" MinimumWidthRequest="100" />
-                        <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text="{Binding PrezzoTotale, StringFormat='Totale € {0:F}'}" FontAttributes="Bold" />
+                        <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text="{Binding PrezzoTotale, StringFormat='Totale € {0:F}'}" FontAttributes="Bold" />
                     </Grid>
                 </ViewCell>
             </DataTemplate>

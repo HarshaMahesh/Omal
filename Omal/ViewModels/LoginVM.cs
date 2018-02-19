@@ -82,7 +82,7 @@ namespace Omal.ViewModels
                 App.CurUser = new Models.Utente { Email = token.email_utente, IdUtente = token.IDUtente, NomeUtente = token.NomeUtente, Password = Password };
                 Application.Current.Properties["Email"] = Email;
                 MessagingCenter.Send(new Models.Messages.LoginOrLogoutActionMessage(), "LoginOrLogout");
-                await Navigation.PopModalAsync();
+                await Navigation.PopAsync();
             }
 
         }

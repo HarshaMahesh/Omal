@@ -104,14 +104,29 @@ namespace Omal.ViewModels
                 {
                     ritorno += "<br><b>Per vedere i prezzi è necessario effettuare il login</b>";
                 }
-                ritorno += string.Format("<b>{0}</b>", App.CurLang == "IT"? curProdotto.nome:curProdotto.nome_en);
+                ritorno += string.Format(@"<p style=""color:#004899;background-color:#EAEAEA"" align='center'><b>{0}</b></p>", App.CurLang == "IT"? curProdotto.nome:curProdotto.nome_en);
                 ritorno += string.Format("<p ALIGN='CENTER'>Trovati {0} articoli</p>", Articoli.Count());
                 if (prodottoIsValvola)
                     ritorno += HtmlPerValvole();
                 else
                     ritorno += HtmlPerAttuatori();
                
-                return ritorno;
+                var baseStr = @"<html><head><style type=""text/css"">" +
+                @" @font-face {
+                    font-family: Montserrat-Regular;"
+                    + @"src: url(""file:///android_asset/fonts/MyFont.otf"")" +
+            
+           @"}
+        body {
+                font-family: Montserrat-Regular;
+                text - align: justify;
+            }
+    </style>
+</head>
+<body>" + ritorno +
+   @"</body>
+   </html>";
+                return baseStr;
             }
         }
 
