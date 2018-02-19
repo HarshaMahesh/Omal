@@ -1,6 +1,7 @@
 {
   "images": [
     {
+      "filename": "ICONA_40.png",
       "size": "20x20",
       "scale": "2x",
       "idiom": "iphone"
@@ -54,6 +55,7 @@
       "idiom": "ipad"
     },
     {
+      "filename": "ICONA_40.png",
       "size": "20x20",
       "scale": "2x",
       "idiom": "ipad"
@@ -71,6 +73,7 @@
       "idiom": "ipad"
     },
     {
+      "filename": "ICONA_40.png",
       "size": "40x40",
       "scale": "1x",
       "idiom": "ipad"
@@ -94,17 +97,20 @@
       "idiom": "ipad"
     },
     {
+      "filename": "ICONA_152.png",
       "size": "76x76",
       "scale": "2x",
       "idiom": "ipad"
     },
     {
+      "filename": "icona_omal_app_ai-1.png",
       "size": "1024x1024",
       "scale": "1x",
       "idiom": "ios-marketing"
     },
     {
       "role": "notificationCenter",
+      "filename": "ICONA_48.png",
       "size": "24x24",
       "subtype": "38mm",
       "scale": "2x",
@@ -112,6 +118,7 @@
     },
     {
       "role": "notificationCenter",
+      "filename": "ICONA_55.png",
       "size": "27.5x27.5",
       "subtype": "42mm",
       "scale": "2x",

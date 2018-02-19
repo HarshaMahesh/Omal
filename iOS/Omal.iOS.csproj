@@ -39,7 +39,7 @@
     <CodesignKey>iPhone Developer: Luca Cavedaghi (HVNLXV848Z)</CodesignKey>
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchLink>None</MtouchLink>
     <MtouchArch>ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
@@ -53,7 +53,7 @@
     <WarningLevel>4</WarningLevel>
     <CodesignKey>iPhone Developer: Luca Cavedaghi (HVNLXV848Z)</CodesignKey>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
@@ -177,6 +177,11 @@
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_1536x2008.png" />
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_2048x1496.png" />
     <ImageAsset Include="Assets.xcassets\Prova.launchimage\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_152.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_48.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_55.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icona_omal_app_ai-1.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\fonts\Montserrat-Bold.ttf" />
@@ -211,6 +216,10 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <Import Project="..\Omal\Omal.projitems" Label="Shared" Condition="Exists('..\Omal\Omal.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
