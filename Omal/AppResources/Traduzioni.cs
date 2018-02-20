@@ -18,6 +18,10 @@ namespace Omal.AppResources
             if (elemento.ContainsKey(defaultLang)) return elemento[defaultLang];
             return "OOOPS";
         }
+
+
+        public string StrTrovaArticolo { get { return GetCurvalueLang(_StrTrovaArticolo); } }
+
         public string LogonRichiesto { get  { return GetCurvalueLang(_LogonRichiesto); } }
         public string Aggiungi { get { return GetCurvalueLang(_Aggiungi); } }
         public string ClienteRicercato { get { return GetCurvalueLang(_ClienteRicercato); } }
@@ -52,8 +56,64 @@ namespace Omal.AppResources
         public string StrTelefono { get { return GetCurvalueLang(_StrTelefono); } }
         public string StrFax { get { return GetCurvalueLang(_StrFax); } }
         public string TitoloDettaglioCliente { get { return GetCurvalueLang(_TitoloDettaglioCliente); } }
+        public string StrInfoProdottoPicker1Valvola { get { return GetCurvalueLang(_StrInfoProdottoPicker1Valvola); } }
+        public string StrInfoProdottoPicker2Valvola { get { return GetCurvalueLang(_StrInfoProdottoPicker2Valvola); } }
+        public string StrInfoProdottoPicker3Valvola { get { return GetCurvalueLang(_StrInfoProdottoPicker3Valvola); } }
+        public string StrInfoProdottoPicker4Valvola { get { return GetCurvalueLang(_StrInfoProdottoPicker4Valvola); } }
+        public string StrInfoProdottoPicker1Attuatore { get { return GetCurvalueLang(_StrInfoProdottoPicker1Attuatore); } }
+        public string StrInfoProdottoPicker2Attuatore { get { return GetCurvalueLang(_StrInfoProdottoPicker2Attuatore); } }
+        public string StrInfoProdottoPicker3Attuatore { get { return GetCurvalueLang(_StrInfoProdottoPicker3Attuatore); } }
+        public string StrBtnPulisci { get { return GetCurvalueLang(_StrBtnPulisci); } }
+
+        Dictionary<string, string> _StrBtnPulisci = new Dictionary<string, string>
+        {
+            {"IT", "Elimina"},
+            {"EN", "Elimina"}
+        };
 
 
+        Dictionary<string, string> _StrInfoProdottoPicker1Attuatore = new Dictionary<string, string>
+        {
+            {"IT", "Misura"},
+            {"EN", "Misura"}
+        };
+        Dictionary<string, string> _StrInfoProdottoPicker2Attuatore = new Dictionary<string, string>
+        {
+            {"IT", "ISO"},
+            {"EN", "ISO"}
+        };
+        Dictionary<string, string> _StrInfoProdottoPicker3Attuatore = new Dictionary<string, string>
+        {
+            {"IT", "Coppia"},
+            {"EN", "Coppia"}
+        };
+
+        Dictionary<string, string> _StrInfoProdottoPicker1Valvola = new Dictionary<string, string>
+        {
+            {"IT", "Azionamenti"},
+            {"EN", "Azionamenti"}
+        };
+        Dictionary<string, string> _StrInfoProdottoPicker2Valvola = new Dictionary<string, string>
+        {
+            {"IT", "Misure DN"},
+            {"EN", "Misure DN"}
+        };
+        Dictionary<string, string> _StrInfoProdottoPicker3Valvola = new Dictionary<string, string>
+        {
+            {"IT", "Pressione nominale"},
+            {"EN", "Pressione nominale"}
+        };
+        Dictionary<string, string> _StrInfoProdottoPicker4Valvola = new Dictionary<string, string>
+        {
+            {"IT", "Varianti"},
+            {"EN", "Varianti"}
+        };
+
+        Dictionary<string, string> _StrTrovaArticolo = new Dictionary<string, string>
+        {
+            {"IT", "Trova Articolo"},
+            {"EN", "Trova Articolo"}
+        };
         Dictionary<string, string> _TitoloDettaglioCliente = new Dictionary<string, string>
         {
             {"IT", "Dettaglio Cliente"},

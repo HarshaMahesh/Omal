@@ -35,7 +35,7 @@ namespace Omal.Services
 
         public async Task<bool> UpdateItemAsync(Models.Attuatore item)
         {
-            var _item = items.Where((Models.Attuatore arg) => arg.IdCodiceAttuatore == item.IdCodiceAttuatore).FirstOrDefault();
+            var _item = items.Where((Models.Attuatore arg) => arg.idcodiceattuatore == item.idcodiceattuatore).FirstOrDefault();
             items.Remove(_item);
             items.Add(item);
 
@@ -44,7 +44,7 @@ namespace Omal.Services
 
         public async Task<bool> DeleteItemAsync(int id)
         {
-            var _item = items.Where((Models.Attuatore arg) => arg.IdCodiceAttuatore == id).FirstOrDefault();
+            var _item = items.Where((Models.Attuatore arg) => arg.idcodiceattuatore == id).FirstOrDefault();
             items.Remove(_item);
 
             return await Task.FromResult(true);
@@ -52,14 +52,14 @@ namespace Omal.Services
 
         public async Task<Models.Attuatore> GetItemAsync(int id)
         {
-            return await Task.FromResult(items.FirstOrDefault(s => s.IdCodiceAttuatore == id));
+            return await Task.FromResult(items.FirstOrDefault(s => s.idcodiceattuatore == id));
         }
 
         public async Task<IEnumerable<Models.Attuatore>> GetItemsAsync(bool forceRefresh = false)
         {
             if (items == null || items.Count == 0)
             {
-                items = await Connection.Table<Models.Attuatore>().OrderBy(x => x.Ordine).ToListAsync();
+                items = await Connection.Table<Models.Attuatore>().OrderBy(x => x.ordine).ToListAsync();
             }
             if ((items.Count == 0 || forceRefresh) && CrossConnectivity.Current.IsConnected)
             {

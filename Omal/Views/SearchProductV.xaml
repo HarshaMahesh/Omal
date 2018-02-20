@@ -10,18 +10,14 @@
             <Label Style="{StaticResource Titolo}" Text="{Binding CurProdotto.nome}" BackgroundColor="#EAEAEA" HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
             <Image HorizontalOptions="Center" Margin="5" HeightRequest="100" Source="{Binding CurProdotto.immagine_placeholder}" />
             <Button Margin="5" BackgroundColor="#EAEAEA" TextColor="#5E5B5B" Text="MAGGIORI INFO" HorizontalOptions="Fill" Command="{Binding GoToDetailCommand}" />                
-            <StackLayout Orientation="Vertical" Margin="5">
-            <Label Margin="0,10,0,0" HorizontalTextAlignment="Center" Style="{StaticResource Titolo}" Text="Trova Articolo" />
-            <Label IsVisible="{Binding Picker1IsVisible}" Text="{Binding DescrizionePicker1}" Style="{StaticResource Descrizione}" />
-            <Picker IsVisible="{Binding Picker1IsVisible}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPicker1}" ItemsSource="{Binding Picker1}"  />
-            <Label IsVisible="{Binding Picker2IsVisible}" Text="{Binding DescrizionePicker2}" Style="{StaticResource Descrizione}" />
-            <Picker IsVisible="{Binding Picker2IsVisible}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPicker2}" ItemsSource="{Binding Picker2}"  />
-            <Label IsVisible="{Binding Picker3IsVisible}" Text="{Binding DescrizionePicker3}" Style="{StaticResource Descrizione}" />
-            <Picker IsVisible="{Binding Picker3IsVisible}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPicker3}" ItemsSource="{Binding Picker3}"  />
-            <Label IsVisible="{Binding Picker4IsVisible}" Text="{Binding DescrizionePicker4}" Style="{StaticResource Descrizione}" />
-            <Picker IsVisible="{Binding Picker4IsVisible}"  HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPicker4}" ItemsSource="{Binding Picker4}"  />
-            <StackLayout HorizontalOptions="EndAndExpand"  Orientation="Horizontal">
-                <Button IsVisible="{Binding Picker2IsVisible}" Text="Pulisci" Command="{Binding PulisciCommand}" />                
+            <StackLayout Orientation="Vertical" BackgroundColor="#EAEAEA">
+            <Label Margin="0,10,0,0" HorizontalTextAlignment="Center" Style="{StaticResource Titolo}" Text="{Binding StrTrovaArticolo}" />
+            <Picker Margin="5,0,5,0" Title="{Binding DescrizionePicker1}" IsVisible="{Binding Picker1IsVisible}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPicker1}" ItemsSource="{Binding Picker1}"  />
+            <Picker Margin="5,0,5,0" Title="{Binding DescrizionePicker2}" IsVisible="{Binding Picker2IsVisible}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPicker2}" ItemsSource="{Binding Picker2}"  />
+            <Picker Margin="5,0,5,0" Title="{Binding DescrizionePicker3}" IsVisible="{Binding Picker3IsVisible}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPicker3}" ItemsSource="{Binding Picker3}"  />
+            <Picker Margin="5,0,5,0" Title="{Binding DescrizionePicker4}" IsVisible="{Binding Picker4IsVisible}"  HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPicker4}" ItemsSource="{Binding Picker4}"  />
+            <StackLayout Margin="5" HorizontalOptions="EndAndExpand"  Orientation="Horizontal">
+                <Button IsVisible="{Binding Picker2IsVisible}" Text="{Binding StrBtnPulisci}" Command="{Binding PulisciCommand}" />                
                     <Button Text="Trova" Command="{Binding CercaArticoliCommand}" />                
             </StackLayout>
             </StackLayout> 

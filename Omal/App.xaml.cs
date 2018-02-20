@@ -76,6 +76,7 @@ namespace Omal
         private void ConnectAndCreateSqlDb()
         {
             var _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+            _connection.CreateTableAsync<Models.Attuatore>();
             _connection.CreateTableAsync<Models.Categoria>();
             _connection.CreateTableAsync<Models.Prodotto>();
             _connection.CreateTableAsync<Models.Valvola>();

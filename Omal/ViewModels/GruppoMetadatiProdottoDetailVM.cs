@@ -59,7 +59,7 @@ namespace Omal.ViewModels
             {
                 loadContentHtml = true;
                 var elementi = await DataStore.ProdottoMetadati.GetItemsAsync();
-                elementi = elementi.Where(x => x.idgruppometadato == CurGruppoProdottoMetadati.idgruppometadato).OrderBy(x => x.ordine).ToList();
+                elementi = elementi.Where(x => x.idgruppometadato == CurGruppoProdottoMetadati.idgruppometadato && x.idProdotto == CurGruppoProdottoMetadati.idprodotto).OrderBy(x => x.ordine).ToList();
                 List<string> Elementi = new List<String>();
 
                 // recupero l'elenco dei metadati
@@ -80,8 +80,28 @@ namespace Omal.ViewModels
                     titolo = prodotto.nome;
                 else
                     titolo = prodotto.nome_en;
-                _ContentHtml = string.Format("<P ALIGN='CENTER'>{0}</P>{1}", titolo, _ContentHtml);
-                ContentHtml = _ContentHtml;
+
+
+                _ContentHtml = string.Format(@"<p style=""color:#004899;background-color:#EAEAEA"" align='center'><b>{0}</b></p>{1}", titolo ,_ContentHtml);
+                var baseStr = @"<html><head><style type=""text/css"">" +
+                @" @font-face {
+                    font-family: Montserrat-Regular;"
+                    + @"src: url(""file:///android_asset/fonts/MyFont.otf"")" +
+           @"}
+table {width: 100% ! important; margin: 0 auto !important;}
+table td {border: 1px solid #ccc; padding: 5px; }
+table tr:first-child td {color: #174288; font-weight: bold; text-align: center;}
+table .fr-highlighted {color: #174288; font-weight: bold;}
+        body {
+                font-family: Montserrat-Regular;
+                text - align: justify;
+            }
+    </style>
+</head>
+<body>" + _ContentHtml +
+   @"</body>
+   </html>";
+                ContentHtml = baseStr;
                 loadContentHtml = false;
             }
         }

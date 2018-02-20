@@ -15,7 +15,7 @@ namespace Omal.Services
             ProdottoMetadati = new OmalProdottoMetadatiDataStore();
             Clienti = new OmalClientiDataStore();
             Valvole = new OmalValvoleDataStore();
-            Attuatori = new MockAttuatoriDataStore();
+            Attuatori = new OmalAttuatoriDataStore();
             Ordini = new MockOrdiniDataStore();
             Carrello = new List<Models.Carrello>();
         }

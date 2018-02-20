@@ -25,6 +25,10 @@ namespace Omal.Views
             });
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
 
 
         protected async override void OnAppearing()

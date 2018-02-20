@@ -53,15 +53,18 @@ namespace Omal.ViewModels
                 }
                 else
                 {
-                    // sto ordinando un attuatore
+                    // Sto ordinando una valvola
                     var idcodiceattuatore = parametri["idcodiceattuatore"].ToString();
-                    var attuatore = ((IEnumerable<Models.Attuatore>)Articoli).FirstOrDefault(x => x.IdCodiceAttuatore == Convert.ToInt32(idcodiceattuatore));
+                    int IntIdCodiceAttuatore = Convert.ToInt32(idcodiceattuatore);
+                    var attuatori = Articoli.Select(x => (Models.Attuatore)x).ToList();
+                    var attuatore = attuatori.FirstOrDefault(x => x.idcodiceattuatore == IntIdCodiceAttuatore);
+
                     if (attuatore == null) throw new KeyNotFoundException("IdCodiceAttuatore non trovato");
-                    var elementoCarrello = DataStore.Carrello.FirstOrDefault(x => x.IdArticolo == attuatore.IdCodiceAttuatore && x.Tipologia == CurProdotto.tipologia && x.IdProdotto == CurProdotto.idprodotto);
+                    var elementoCarrello = DataStore.Carrello.FirstOrDefault(x => x.IdArticolo == attuatore.idcodiceattuatore && x.Tipologia == CurProdotto.tipologia && x.IdProdotto == CurProdotto.idprodotto);
                     if (elementoCarrello == null)
-                        DataStore.Carrello.Add(new Models.Carrello() { CodiceArticolo = attuatore.Codice_Articolo, DescrizioneCarrello_En = curProdotto.descrizione_en, DescrizioneCarrello_It = curProdotto.descrizione, IdArticolo = attuatore.IdCodiceAttuatore, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = attuatore.Prezzo, Qta = IQta, Tipologia = curProdotto.tipologia, IdProdotto = CurProdotto.idprodotto });
+                        DataStore.Carrello.Add(new Models.Carrello() { CodiceArticolo = attuatore.codice_articolo, DescrizioneCarrello_En = curProdotto.descrizione_en, DescrizioneCarrello_It = curProdotto.descrizione, IdArticolo = attuatore.idcodiceattuatore, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = attuatore.Prezzo, Qta = Convert.ToInt32(qta), Tipologia = curProdotto.tipologia, IdProdotto = CurProdotto.idprodotto });
                     else
-                        elementoCarrello.Qta += IQta;
+                        elementoCarrello.Qta += IQta;     
                 }
                 MessagingCenter.Send<Models.Messages.BasketEditedMessage>(new Models.Messages.BasketEditedMessage(){ },"");
                 CurPage.DisplayAlert("Carrello", "Articoli aggiunti al carrello", "OK");
@@ -133,16 +136,16 @@ namespace Omal.ViewModels
 
         private string HtmlPerAttuatori()
         {
-            var attuatori = (IEnumerable<Models.Attuatore>)Articoli;
+            //var attuatori = (IEnumerable<Models.Attuatore>)Articoli;
             string ritorno = string.Empty;
             string elemento = "{0}<br /><b>{1}</b><br />";
-            foreach (var attuatore in attuatori)
+            foreach (Models.Attuatore attuatore in Articoli)
             {                
                 List<string> curAttuatore = new List<string>();
                 if (!string.IsNullOrWhiteSpace(attuatore.immagine_placeholder)) 
                     curAttuatore.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a></P>", attuatore.immagine_placeholder, string.Format("local_{0}", attuatore.immagine_placeholder)));
-                if (!string.IsNullOrWhiteSpace(attuatore.Valore_iso)) curAttuatore.Add(string.Format(elemento, "Valore_iso", attuatore.Valore_iso));
-                if (!string.IsNullOrWhiteSpace(attuatore.Valore_coppia)) curAttuatore.Add(string.Format(elemento, "Valore_coppia", attuatore.Valore_coppia));
+                if (!string.IsNullOrWhiteSpace(attuatore.valore_iso)) curAttuatore.Add(string.Format(elemento, "Valore_iso", attuatore.valore_iso));
+                if (!string.IsNullOrWhiteSpace(attuatore.valore_coppia)) curAttuatore.Add(string.Format(elemento, "Valore_coppia", attuatore.valore_coppia));
                 if (App.CurLang == "IT")
                 {
                     if (!string.IsNullOrWhiteSpace(attuatore.note_footer)) curAttuatore.Add(string.Format(elemento, "note_footer", attuatore.note_footer));
@@ -163,9 +166,10 @@ namespace Omal.ViewModels
                                 "<input type='hidden' name='isvalvola' value='0' />" +
                                 "<input type='hidden' name='idcodiceattuatore' value='{1}' />" +
                                 "<input type='submit' value='Ordina' />" +
-                            "</form>", curProdotto.idprodotto, attuatore.IdCodiceAttuatore,"Prezzo",attuatore.Prezzo.ToString("F")));
+                            "</form>", curProdotto.idprodotto, attuatore.idcodiceattuatore,"Prezzo",attuatore.Prezzo.ToString("F")));
                 }
-                curAttuatore.Add(string.Format("<a href='{0}'>Mostra 3D</a>&emsp;<a href=''>Invia 3D</a>",attuatore.url3d));
+                if (!string.IsNullOrWhiteSpace(attuatore.url_3d)) curAttuatore.Add(string.Format("<a href='{0}'>Mostra 3D</a>", attuatore.url_3d));
+                if (!string.IsNullOrWhiteSpace(attuatore.url_download)) curAttuatore.Add(string.Format("<a href='{0}'>Download</a>",attuatore.url_download));
                 curAttuatore.Add("<hr/>");
                 ritorno += string.Join("", curAttuatore);
             }

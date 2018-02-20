@@ -20,15 +20,15 @@ namespace Omal.Services
             items = new List<Models.Attuatore>();
             var mockItems = new List<Models.Attuatore>
             {
-                new Attuatore(){ Codice_Articolo="CodiceArticolo_01", Giacenza=0, IdCodiceAttuatore=1, IdProdotto=3, immagine_placeholder="https://picsum.photos/50/50?image=74", note_footer="", note_footer_en ="", Ordine=0, Prezzo=0, url3d="", urlDownload="", Valore_coppia="Valore Coppia 01", Valore_iso="Valore Iso 01", Valore_misura="Valore misura 01" },
-new Attuatore(){ Codice_Articolo="CodiceArticolo_01", Giacenza=0, IdCodiceAttuatore=1, IdProdotto=3, immagine_placeholder="https://picsum.photos/50/50?image=75", note_footer="", note_footer_en ="", Ordine=0, Prezzo=0, url3d="", urlDownload="", Valore_coppia="Valore Coppia 01", Valore_iso="Valore Iso 02", Valore_misura="Valore misura 02" },
-new Attuatore(){ Codice_Articolo="CodiceArticolo_01", Giacenza=0, IdCodiceAttuatore=1, IdProdotto=3, immagine_placeholder="https://picsum.photos/50/50?image=76", note_footer="", note_footer_en ="", Ordine=0, Prezzo=0, url3d="", urlDownload="", Valore_coppia="Valore Coppia 02", Valore_iso="Valore Iso 01", Valore_misura="Valore misura 01" },
-new Attuatore(){ Codice_Articolo="CodiceArticolo_02", Giacenza=0, IdCodiceAttuatore=2, IdProdotto=4, immagine_placeholder="https://picsum.photos/50/50?image=77", note_footer="", note_footer_en ="", Ordine=0, Prezzo=0, url3d="", urlDownload="", Valore_coppia="Valore Coppia 02", Valore_iso="Valore Iso 01", Valore_misura="Valore misura 02" },
-new Attuatore(){ Codice_Articolo="CodiceArticolo_02", Giacenza=0, IdCodiceAttuatore=2, IdProdotto=4, immagine_placeholder="https://picsum.photos/50/50?image=78", note_footer="", note_footer_en ="", Ordine=0, Prezzo=0, url3d="", urlDownload="", Valore_coppia="Valore Coppia 01", Valore_iso="Valore Iso 03", Valore_misura="Valore misura 02" },
-new Attuatore(){ Codice_Articolo="CodiceArticolo_03", Giacenza=0, IdCodiceAttuatore=3, IdProdotto=5, immagine_placeholder="https://picsum.photos/50/50?image=79", note_footer="", note_footer_en ="", Ordine=0, Prezzo=0, url3d="", urlDownload="", Valore_coppia="Valore Coppia 01", Valore_iso="Valore Iso 01", Valore_misura="Valore misura 01" },
-new Attuatore(){ Codice_Articolo="CodiceArticolo_03", Giacenza=0, IdCodiceAttuatore=3, IdProdotto=5, immagine_placeholder="https://picsum.photos/50/50?image=80", note_footer="", note_footer_en ="", Ordine=0, Prezzo=0, url3d="", urlDownload="", Valore_coppia="Valore Coppia 01", Valore_iso="Valore Iso 02", Valore_misura="Valore misura 01" },
-new Attuatore(){ Codice_Articolo="CodiceArticolo_03", Giacenza=0, IdCodiceAttuatore=3, IdProdotto=5, immagine_placeholder="https://picsum.photos/50/50?image=81", note_footer="", note_footer_en ="", Ordine=0, Prezzo=0, url3d="", urlDownload="", Valore_coppia="Valore Coppia 01", Valore_iso="Valore Iso 03", Valore_misura="Valore misura 02" },
-new Attuatore(){ Codice_Articolo="CodiceArticolo_03", Giacenza=0, IdCodiceAttuatore=3, IdProdotto=5, immagine_placeholder="https://picsum.photos/50/50?image=82", note_footer="", note_footer_en ="", Ordine=0, Prezzo=0, url3d="", urlDownload="", Valore_coppia="Valore Coppia 01", Valore_iso="Valore Iso 04", Valore_misura="Valore misura 03" },
+                new Attuatore(){ codice_articolo="CodiceArticolo_01", giacenza=0, idcodiceattuatore=1, idprodotto=3, immagine_placeholder="https://picsum.photos/50/50?image=74", note_footer="", note_footer_en ="", ordine=0, Prezzo=0, url_3d="", url_download="", valore_coppia="Valore Coppia 01", valore_iso="Valore Iso 01", valore_misura="Valore misura 01" },
+new Attuatore(){ codice_articolo="CodiceArticolo_01", giacenza=0, idcodiceattuatore=1, idprodotto=3, immagine_placeholder="https://picsum.photos/50/50?image=75", note_footer="", note_footer_en ="", ordine=0, Prezzo=0, url_3d="", url_download="", valore_coppia="Valore Coppia 01", valore_iso="Valore Iso 02", valore_misura="Valore misura 02" },
+new Attuatore(){ codice_articolo="CodiceArticolo_01", giacenza=0, idcodiceattuatore=1, idprodotto=3, immagine_placeholder="https://picsum.photos/50/50?image=76", note_footer="", note_footer_en ="", ordine=0, Prezzo=0, url_3d="", url_download="", valore_coppia="Valore Coppia 02", valore_iso="Valore Iso 01", valore_misura="Valore misura 01" },
+new Attuatore(){ codice_articolo="CodiceArticolo_02", giacenza=0, idcodiceattuatore=2, idprodotto=4, immagine_placeholder="https://picsum.photos/50/50?image=77", note_footer="", note_footer_en ="", ordine=0, Prezzo=0, url_3d="", url_download="", valore_coppia="Valore Coppia 02", valore_iso="Valore Iso 01", valore_misura="Valore misura 02" },
+new Attuatore(){ codice_articolo="CodiceArticolo_02", giacenza=0, idcodiceattuatore=2, idprodotto=4, immagine_placeholder="https://picsum.photos/50/50?image=78", note_footer="", note_footer_en ="", ordine=0, Prezzo=0, url_3d="", url_download="", valore_coppia="Valore Coppia 01", valore_iso="Valore Iso 03", valore_misura="Valore misura 02" },
+new Attuatore(){ codice_articolo="CodiceArticolo_03", giacenza=0, idcodiceattuatore=3, idprodotto=5, immagine_placeholder="https://picsum.photos/50/50?image=79", note_footer="", note_footer_en ="", ordine=0, Prezzo=0, url_3d="", url_download="", valore_coppia="Valore Coppia 01", valore_iso="Valore Iso 01", valore_misura="Valore misura 01" },
+new Attuatore(){ codice_articolo="CodiceArticolo_03", giacenza=0, idcodiceattuatore=3, idprodotto=5, immagine_placeholder="https://picsum.photos/50/50?image=80", note_footer="", note_footer_en ="", ordine=0, Prezzo=0, url_3d="", url_download="", valore_coppia="Valore Coppia 01", valore_iso="Valore Iso 02", valore_misura="Valore misura 01" },
+new Attuatore(){ codice_articolo="CodiceArticolo_03", giacenza=0, idcodiceattuatore=3, idprodotto=5, immagine_placeholder="https://picsum.photos/50/50?image=81", note_footer="", note_footer_en ="", ordine=0, Prezzo=0, url_3d="", url_download="", valore_coppia="Valore Coppia 01", valore_iso="Valore Iso 03", valore_misura="Valore misura 02" },
+new Attuatore(){ codice_articolo="CodiceArticolo_03", giacenza=0, idcodiceattuatore=3, idprodotto=5, immagine_placeholder="https://picsum.photos/50/50?image=82", note_footer="", note_footer_en ="", ordine=0, Prezzo=0, url_3d="", url_download="", valore_coppia="Valore Coppia 01", valore_iso="Valore Iso 04", valore_misura="Valore misura 03" },
  
             };
 
@@ -48,7 +48,7 @@ new Attuatore(){ Codice_Articolo="CodiceArticolo_03", Giacenza=0, IdCodiceAttuat
 
         public async Task<bool> UpdateItemAsync(Models.Attuatore item)
         {
-            var _item = items.Where((Models.Attuatore arg) => arg.IdCodiceAttuatore == item.IdCodiceAttuatore).FirstOrDefault();
+            var _item = items.Where((Models.Attuatore arg) => arg.idcodiceattuatore == item.idcodiceattuatore).FirstOrDefault();
             items.Remove(_item);
             items.Add(item);
 
@@ -57,7 +57,7 @@ new Attuatore(){ Codice_Articolo="CodiceArticolo_03", Giacenza=0, IdCodiceAttuat
 
         public async Task<bool> DeleteItemAsync(int id)
         {
-            var _item = items.Where((Models.Attuatore arg) => arg.IdCodiceAttuatore == id).FirstOrDefault();
+            var _item = items.Where((Models.Attuatore arg) => arg.idcodiceattuatore == id).FirstOrDefault();
             items.Remove(_item);
 
             return await Task.FromResult(true);
@@ -65,7 +65,7 @@ new Attuatore(){ Codice_Articolo="CodiceArticolo_03", Giacenza=0, IdCodiceAttuat
 
         public async Task<Models.Attuatore> GetItemAsync(int id)
         {
-            return await Task.FromResult(items.FirstOrDefault(s => s.IdCodiceAttuatore == id));
+            return await Task.FromResult(items.FirstOrDefault(s => s.idcodiceattuatore == id));
         }
 
         public async Task<IEnumerable<Models.Attuatore>> GetItemsAsync(bool forceRefresh = false)

@@ -8,6 +8,7 @@ namespace Omal.Models
         public int idgruppometadato {   get;set;    }
         [PrimaryKey]
         public int idmetadato { get; set; }
+        public int idProdotto { get; set; }
         public string immagine_metadati_it { get; set; }
         public string immagine_metadati_en { get; set; }
         public int? ordine { get; set; }
@@ -20,6 +21,7 @@ namespace Omal.Models
     {
         public int? idgruppometadato { get; set; }
         public int? idmetadato { get; set; }
+        public int? idProdotto { get; set; }
         public string immagine_metadati_it { get; set; }
         public string immagine_metadati_en { get; set; }
         public int? ordine { get; set; }
