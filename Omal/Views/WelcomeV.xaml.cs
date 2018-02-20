@@ -42,7 +42,16 @@ namespace Omal.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-           
+            if (!App.LastUpdate.HasValue)
+            {
+                switch (Device.RuntimePlatform)
+                {
+                    case Device.Android:
+                        NavigationPage.SetHasNavigationBar(this, false);
+                        break;
+                }
+                Navigation.PushModalAsync(new NavigationPage(new Views.DbUpdateV(true)));
+            }
         }
     }
 }

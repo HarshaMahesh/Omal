@@ -53,6 +53,8 @@ namespace Omal
         }
 
 
+
+
         public App()
         {
             InitializeComponent();
@@ -61,9 +63,10 @@ namespace Omal
                 DependencyService.Register<Services.MockOmalDataStore>();
             else
                 DependencyService.Register<Services.OmalDataStore>();
-            //if (Device.RuntimePlatform == Device.iOS)
             if (string.IsNullOrWhiteSpace(App.CurLang))
+            {
                 MainPage = new Views.WelcomeV();
+            }
             else
             {
                 MainPage = new MainPage();

@@ -9,9 +9,9 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.Cualeva.Omal</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4</string>
+	<string>1.5</string>
 	<key>CFBundleVersion</key>
-	<string>1.4</string>
+	<string>1.5</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -87,5 +87,11 @@
 	<string>Questa app richiede l&apos;accesso alla libreria multimediale</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<string></string>
+	<key>MKDirectionsApplicationSupportedModes</key>
+	<array>
+		<string>MKDirectionsModePedestrian</string>
+		<string>MKDirectionsModeCar</string>
+		<string>MKDirectionsModeBike</string>
+	</array>
 </dict>
 </plist>

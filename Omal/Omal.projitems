@@ -140,6 +140,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\OmalUtentiDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Token.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AppResources\Traduzioni.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\DbUpdateV.xaml.cs">
+      <DependentUpon>DbUpdateV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DbUpdateVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -208,6 +212,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ConfigurationV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\DbUpdateV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
