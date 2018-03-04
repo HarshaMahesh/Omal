@@ -27,5 +27,11 @@ namespace Omal.Views
         {
             viewModel.ProductFilter = productNameFilter;
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ElencoProdotti.SelectedItem = null;
+        }
     }
 }

@@ -15,12 +15,19 @@ namespace Omal.Views
             InitializeComponent();
             viewModel.CurPage = this;
             viewModel.Navigation = Navigation;
-
         }
 
         public InfoProductV(Models.Prodotto curProdotto) : this()
         {
             viewModel.CurProdotto = curProdotto;
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            CurGruppo.SelectedItem = null;
+        }
+
+
     }
 }
