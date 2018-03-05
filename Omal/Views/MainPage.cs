@@ -11,10 +11,10 @@ namespace Omal
         Page SearchPage, AnagrafichePage, BasketPage, ContactOmalPage = null, ImpostazioniPage = null, ConfigurazioniPage;
         public MainPage()
         {
-            
-            SearchPage = new NavigationPage(new Views.SearchV()) { Title = "Cerca", Icon="Cerca.png" };
-            AnagrafichePage = new NavigationPage(new Views.AnagraficheV()) { Title = "Archivio", Icon = "Archivio.png"  };
-            BasketPage = new NavigationPage(new Views.BasketV()) { Title = "Carrello", Icon ="Ordini.png" };
+            var tmpTraduzioni = new AppResources.Traduzioni();
+            SearchPage = new NavigationPage(new Views.SearchV()) { Title = tmpTraduzioni.TitoloCerca, Icon="Cerca.png" };
+            AnagrafichePage = new NavigationPage(new Views.AnagraficheV()) { Title = tmpTraduzioni.TitoloArchivio, Icon = "Archivio.png"  };
+            BasketPage = new NavigationPage(new Views.BasketV()) { Title = tmpTraduzioni.TitoloCarrello, Icon ="Ordini.png" };
             ContactOmalPage = new NavigationPage(new Views.OmalContactPageV()) { Title = "Contatti Omal", Icon="Omal.png" };
             ConfigurazioniPage = new Views.ConfigurationV();
             ImpostazioniPage = new NavigationPage(ConfigurazioniPage) { Title = "Impostazioni", Icon = "Impostazioni.png" };

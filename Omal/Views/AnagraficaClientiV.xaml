@@ -2,7 +2,7 @@
 <ContentPage BackgroundColor="White"
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    Title="{Binding TitoloClienti}" 
+    Title="{Binding TitoloClienti, Converter={StaticResource UpperCaseConverter}}" 
     xmlns:Common="clr-namespace:Omal.Common" 
     x:Class="Omal.Views.AnagraficaClientiV">
     <ContentPage.ToolbarItems>

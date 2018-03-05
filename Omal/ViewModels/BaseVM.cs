@@ -38,7 +38,7 @@ namespace Omal.ViewModels
             });
         }
 
-        public string LoginOrLogOutActionText { get { if (App.CurUser == null) return "Login"; else return "Logout"; }}
+        public string LoginOrLogOutActionText { get { if (App.CurUser == null) return "Login"; else return App.CurUser.NomeUtente; }}
 
         private async void OnLoginOrLogoutCommand(object obj)
         {

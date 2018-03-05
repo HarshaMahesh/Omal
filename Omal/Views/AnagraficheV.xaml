@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage Title="{Binding CurTitle}" 
+<ContentPage Title="{Binding CurTitle, Converter={StaticResource UpperCaseConverter}}" 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Common="clr-namespace:Omal.Common"
@@ -8,12 +8,24 @@
     <ContentPage.ToolbarItems>
       <Common:BindableToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
-    <ContentPage.Content>
-        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <StackLayout Padding="6" Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
-                <Button HorizontalOptions="Fill" Text="Clienti" Command="{Binding GoToAnagraficaClientiCommand}" />
-                <Button HorizontalOptions="Fill" Text="Ordini" Command="{Binding GoToAnagraficaOrdiniCommand}" />
+  
+        <RelativeLayout>
+    <Image  Aspect="AspectFill" Source="valvolaOMAL.png" Opacity="0.3"
+                RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+    <Grid RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+          <StackLayout VerticalOptions="Center" Padding="6" Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <Label IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Margin="10" HorizontalTextAlignment="Center"  Text="{Binding LogonRichiesto}" />
+                <Button IsVisible="{Binding IsLoggedIn}" HorizontalOptions="Fill" Style="{StaticResource Azzurro}" Text="{Binding BtnClienti, Converter={StaticResource UpperCaseConverter}}" Command="{Binding GoToAnagraficaClientiCommand}" />
+                <Button IsVisible="{Binding IsLoggedIn}" HorizontalOptions="Fill" Style="{StaticResource Azzurro}" Text="{Binding BtnOrdini, Converter={StaticResource UpperCaseConverter}}" Command="{Binding GoToAnagraficaOrdiniCommand}" />
             </StackLayout>
-        </AbsoluteLayout>
-	</ContentPage.Content>
+    </Grid>
+  </RelativeLayout>
+
+	
 </ContentPage>

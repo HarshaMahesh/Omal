@@ -195,6 +195,7 @@
     <BundleResource Include="Resources\Impostazioni.png" />
     <BundleResource Include="Resources\Omal.png" />
     <BundleResource Include="Resources\Ordini.png" />
+    <BundleResource Include="Resources\valvolaOMAL.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />

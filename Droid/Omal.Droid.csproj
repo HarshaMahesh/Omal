@@ -215,6 +215,7 @@
     <AndroidResource Include="Resources\drawable\home.png" />
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\valvolaOMAL.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomControls\" />

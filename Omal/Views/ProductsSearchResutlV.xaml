@@ -2,33 +2,37 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="Omal.Views.ProductsSearchResutlV" Title="{Binding CurTitle}">
+    x:Class="Omal.Views.ProductsSearchResutlV" Title="{Binding TitoloProdotti, Converter={StaticResource UpperCaseConverter}}">
     <ContentPage.ToolbarItems>
             <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
         <StackLayout Padding="10">
-           <ListView SelectedItem="{Binding SelectedProduct}" x:Name="ElencoProdotti" ItemsSource="{Binding Prodotti}">
+           <ListView RowHeight="100" SelectedItem="{Binding SelectedProduct}" x:Name="ElencoProdotti" ItemsSource="{Binding Prodotti}">
+            <ListView.Header>
+                    <Grid BackgroundColor="#ebebeb" HeightRequest="60">
+                        <Label VerticalOptions="Center" Margin="5" HorizontalTextAlignment="Center"  Style="{StaticResource Titolo}" Text="{Binding NumeroProdotti}"  />
+                    </Grid>
+                
+            </ListView.Header>
            <ListView.ItemTemplate> 
                     <DataTemplate>
             <ViewCell>
                 <StackLayout Orientation="Horizontal">
-                                <Image Margin="5" HeightRequest="50">
+                                <Image Margin="5" MinimumHeightRequest="70">
                                 <Image.Source>
                                     <UriImageSource Uri="{Binding immagine_placeholder}"
                                     CacheValidity="30" 
                                     CachingEnabled="true"/>
                                 </Image.Source>       
                                 </Image>
-                    <Label Text="{Binding nome}" VerticalOptions="CenterAndExpand" Margin="5" LineBreakMode="WordWrap"/>
+                    <Label Text="{Binding nome}" VerticalOptions="CenterAndExpand" Margin="10" LineBreakMode="WordWrap"/>
                 </StackLayout>
             </ViewCell>
         </DataTemplate>
                 
             </ListView.ItemTemplate>
-                <ListView.Footer>
-                <Label Margin="20" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroProdotti}"  />
-                </ListView.Footer>
+
             </ListView>
         </StackLayout>
 	</ContentPage.Content>

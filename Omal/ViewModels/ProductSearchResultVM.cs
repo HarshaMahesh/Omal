@@ -9,7 +9,7 @@ namespace Omal.ViewModels
 {
     public class ProductSearchResultVM: BaseVM
     {
-        public string CurTitle { get { return "Prodotti"; } }
+        public string CurTitle { get { return TitoloProdotti; } }
 
 
         Models.Prodotto _SelectedProduct = null;

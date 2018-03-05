@@ -11,7 +11,7 @@ namespace Omal.ViewModels
 
         public string CurTitle
         {
-            get { return "Anagrafiche"; }
+            get { return TitoloArchivio; }
         }
 
         public AnagraficheVM()

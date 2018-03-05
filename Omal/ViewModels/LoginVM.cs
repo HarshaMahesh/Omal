@@ -8,6 +8,10 @@ namespace Omal.ViewModels
     {
         public RelayCommand LoginCommand { get; set; }
         public RelayCommand CanceLoginCommand { get; set; }
+
+        public string CurTitle { get { return TitoloLogin; } }
+
+
         string email;
         public string Email { 
             get

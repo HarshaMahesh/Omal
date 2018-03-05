@@ -7,13 +7,12 @@
     </ContentPage.Padding>
 	<ContentPage.Content>
         <StackLayout Orientation="Vertical" Padding="20">
-        <Label Style="{StaticResource Descrizione}"  Text="{Binding LogonTesto}">
+        <Label HorizontalOptions="Center" Style="{StaticResource Descrizione}"  Text="{Binding LogonTesto}">
         </Label>
-            <Entry Style="{StaticResource WhiteEntry}" x:Name="UserName"  Placeholder="Indirizzo Email" Text="{Binding Email}" />
+            <Entry Margin="0,100,0,0" Style="{StaticResource WhiteEntry}" x:Name="UserName"  Placeholder="Indirizzo Email" Text="{Binding Email}" />
             <Entry Style="{StaticResource WhiteEntry}" x:Name="Password" Placeholder="Password" IsPassword="true" Text="{Binding Password}" />
-            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                <Button x:Name="LoginBtn"  Text="Login" Command="{Binding LoginCommand}" />
-                <Button  Text="Back" Command="{Binding CanceLoginCommand}" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button x:Name="LoginBtn" Style="{StaticResource Azzurro}"  Text="{Binding LoginButton, Converter={StaticResource UpperCaseConverter}}" Command="{Binding LoginCommand}" />
             </StackLayout>
             <Label Text="{Binding Errore}" TextColor="Red" />
         </StackLayout>

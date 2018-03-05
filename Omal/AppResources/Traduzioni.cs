@@ -35,6 +35,14 @@ namespace Omal.AppResources
         public string ProdottoPicker2 { get { return GetCurvalueLang(_ProdottoPicker2); } }
         public string ProdottoPicker3 { get { return GetCurvalueLang(_ProdottoPicker3); } }
         public string TitoloContattiOmal { get { return GetCurvalueLang(_TitoloContattiOmal); } }
+        public string TitoloLogin { get { return GetCurvalueLang(_TitoloLogin); } }
+        public string TitoloArchivio { get { return GetCurvalueLang(_TitoloArchivio); } }
+        public string TitoloCarrello { get { return GetCurvalueLang(_TitoloCarrello); } }
+        public string TitoloDettaglioCliente { get { return GetCurvalueLang(_TitoloDettaglioCliente); } }
+        public string TitoloProdotti { get { return GetCurvalueLang(_TitoloProdotti); } }
+
+
+
         public string Cliente { get { return GetCurvalueLang(_Cliente); } }
         public string Note { get { return GetCurvalueLang(_Note); } }
         public string StrTotaleOrdine { get { return GetCurvalueLang(_TotaleOrdine); } }
@@ -55,7 +63,7 @@ namespace Omal.AppResources
         public string StrEmail { get { return GetCurvalueLang(_StrEmail); } }
         public string StrTelefono { get { return GetCurvalueLang(_StrTelefono); } }
         public string StrFax { get { return GetCurvalueLang(_StrFax); } }
-        public string TitoloDettaglioCliente { get { return GetCurvalueLang(_TitoloDettaglioCliente); } }
+
         public string StrInfoProdottoPicker1Valvola { get { return GetCurvalueLang(_StrInfoProdottoPicker1Valvola); } }
         public string StrInfoProdottoPicker2Valvola { get { return GetCurvalueLang(_StrInfoProdottoPicker2Valvola); } }
         public string StrInfoProdottoPicker3Valvola { get { return GetCurvalueLang(_StrInfoProdottoPicker3Valvola); } }
@@ -64,11 +72,80 @@ namespace Omal.AppResources
         public string StrInfoProdottoPicker2Attuatore { get { return GetCurvalueLang(_StrInfoProdottoPicker2Attuatore); } }
         public string StrInfoProdottoPicker3Attuatore { get { return GetCurvalueLang(_StrInfoProdottoPicker3Attuatore); } }
         public string StrBtnPulisci { get { return GetCurvalueLang(_StrBtnPulisci); } }
+        public string LoginButton {get {return GetCurvalueLang(_LoginButton);}}
+        public string NavigationBarLoginButton { get { return GetCurvalueLang(_NavigationBarLoginButton); } }
+        public string BtnClienti { get { return GetCurvalueLang(_BtnClienti); } }
+        public string BtnOrdini { get { return GetCurvalueLang(_BtnOrdini); } }
+        public string BtnCerca { get { return GetCurvalueLang(_BtnCerca); } }
+        public string BtnMaggioriInfo { get { return GetCurvalueLang(_BtnMaggioriInfo); } }
+        public string BtnTrova { get { return GetCurvalueLang(_BtnTrova); } }
 
+        Dictionary<string, string> _BtnTrova = new Dictionary<string, string>
+        {
+            {"IT", "Trova"},
+            {"EN", "Find"}
+        };
+        Dictionary<string, string> _BtnMaggioriInfo = new Dictionary<string, string>
+        {
+            {"IT", "Maggiori Info"},
+            {"EN", "More Info"}
+        };
+
+        Dictionary<string, string> _TitoloProdotti = new Dictionary<string, string>
+        {
+            {"IT", "Risultati"},
+            {"EN", "Search Results"}
+        };
+
+        Dictionary<string, string> _BtnCerca = new Dictionary<string, string>
+        {
+            {"IT", "Cerca"},
+            {"EN", "Search"}
+        };
+
+        Dictionary<string, string> _BtnClienti = new Dictionary<string, string>
+        {
+            {"IT", "Clienti"},
+            {"EN", "Customers"}
+        };
+
+        Dictionary<string, string> _BtnOrdini = new Dictionary<string, string>
+        {
+            {"IT", "Ordini"},
+            {"EN", "Orders"}
+        };
+
+        Dictionary<string, string> _TitoloCarrello = new Dictionary<string, string>
+        {
+            {"IT", "Ordini"},
+            {"EN", "Orders"}
+        };
+
+        Dictionary<string, string> _TitoloArchivio = new Dictionary<string, string>
+        {
+            {"IT", "Archivio"},
+            {"EN", "Archive"}
+        };
+        Dictionary<string, string> _NavigationBarLoginButton = new Dictionary<string, string>
+        {
+            {"IT", "Login"},
+            {"EN", "Login"}
+        };
+        Dictionary<string, string> _LoginButton = new Dictionary<string, string>
+        {
+            {"IT", "Login"},
+            {"EN", "Login"}
+        };
         Dictionary<string, string> _StrBtnPulisci = new Dictionary<string, string>
         {
             {"IT", "Elimina"},
             {"EN", "Elimina"}
+        };
+
+        Dictionary<string, string> _TitoloLogin = new Dictionary<string, string>
+        {
+            {"IT", "Accessi"},
+            {"EN", "Login"}
         };
 
 

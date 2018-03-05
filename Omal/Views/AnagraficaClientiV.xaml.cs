@@ -23,7 +23,6 @@ namespace Omal.Views
                 case Device.Android:
                     esb.IsVisible = true;
                     break;
-
             }
         }
     }
