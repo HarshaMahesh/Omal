@@ -17,15 +17,16 @@
                   "{ConstraintExpression Type=RelativeToParent, Property=Width}"
                 RelativeLayout.HeightConstraint=
                   "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
-        <Grid RelativeLayout.WidthConstraint=
+            <ScrollView RelativeLayout.WidthConstraint=
               "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint=
-              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}" >
+        <Grid >
                 <Grid.RowDefinitions >
-                <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                
+
             <StackLayout Grid.Row="0" BackgroundColor="#EAEAEA" Margin="0,0,0,0" Orientation="Vertical">
                 <Picker Margin="10,50,10,10" Title="{Binding ProdottoPicker1}" BackgroundColor="White" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPrimoLivello}" ItemsSource="{Binding PrimoLivello}"  />
                 <Picker Margin="10" Title="{Binding ProdottoPicker2}" IsVisible="{Binding Picker2IsVisible}" BackgroundColor="White" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedSecondoLivello}" ItemsSource="{Binding SecondoLivello}" />
@@ -33,10 +34,12 @@
                 <Button Text="{Binding BtnCerca, Converter={StaticResource UpperCaseConverter}}" HorizontalOptions="Center"  Command="{Binding SearchWithCategoriesCommand }" Margin="0,10,0,50"/>
             </StackLayout>
             <StackLayout  Grid.Row="1" Margin="0,0,0,0" BackgroundColor="Transparent"  Orientation="Vertical">
-                <CControls:CualevaRoundedEntry CualevaRoundedEntryBackgroundColor="#60A5D1"  LeftPadding="10"  BorderRadius="10"   Margin="5" TextColor="White"  BackgroundColor="Transparent" Placeholder="{Binding ProdottoRicercato}" Text="{Binding ProductNameFilter, Mode=TwoWay}" />
+                <CControls:CualevaRoundedEntry CualevaRoundedEntryBackgroundColor="#60A5D1"  LeftPadding="10"  BorderRadius="20"   Margin="5" TextColor="White"  BackgroundColor="Transparent" Placeholder="{Binding ProdottoRicercato}" Text="{Binding ProductNameFilter, Mode=TwoWay}" />
                 <Button HorizontalOptions="Center" Margin="10" Command="{Binding SearchWithProductNameCommand, Mode=TwoWay}" Text="{Binding BtnCerca, Converter={StaticResource UpperCaseConverter}}" />
             </StackLayout>
+                 
         </Grid>
+                   </ScrollView>
         </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>
