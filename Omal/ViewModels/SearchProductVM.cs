@@ -20,7 +20,7 @@ namespace Omal.ViewModels
 
         public string CurTitle
         {
-            get { return "Prodotto"; }
+            get { return TitoloProdotto; }
         }
 
 

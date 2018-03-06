@@ -21,7 +21,6 @@ namespace Omal.AppResources
 
 
         public string StrTrovaArticolo { get { return GetCurvalueLang(_StrTrovaArticolo); } }
-
         public string LogonRichiesto { get  { return GetCurvalueLang(_LogonRichiesto); } }
         public string Aggiungi { get { return GetCurvalueLang(_Aggiungi); } }
         public string ClienteRicercato { get { return GetCurvalueLang(_ClienteRicercato); } }
@@ -40,7 +39,8 @@ namespace Omal.AppResources
         public string TitoloCarrello { get { return GetCurvalueLang(_TitoloCarrello); } }
         public string TitoloDettaglioCliente { get { return GetCurvalueLang(_TitoloDettaglioCliente); } }
         public string TitoloProdotti { get { return GetCurvalueLang(_TitoloProdotti); } }
-
+        public string TitoloProdotto { get { return GetCurvalueLang(_TitoloProdotto); } }
+        public string TitoloArticoli { get { return GetCurvalueLang(_TitoloArticoli); } }
 
 
         public string Cliente { get { return GetCurvalueLang(_Cliente); } }
@@ -79,7 +79,39 @@ namespace Omal.AppResources
         public string BtnCerca { get { return GetCurvalueLang(_BtnCerca); } }
         public string BtnMaggioriInfo { get { return GetCurvalueLang(_BtnMaggioriInfo); } }
         public string BtnTrova { get { return GetCurvalueLang(_BtnTrova); } }
+        public string ErrNumeroCarrello { get { return GetCurvalueLang(_ErrNumeroCarrello); } }
+        public string ErrQtaMaggiore0 { get { return GetCurvalueLang(_ErrQtaMaggiore0); } }
+        public string MsgArticoliAggiuntiAlCarrello { get { return GetCurvalueLang(_MsgArticoliAggiuntiAlCarrello); } }
 
+
+
+        Dictionary<string, string> _TitoloArticoli = new Dictionary<string, string>
+        {
+            {"IT",  "Articoli"},
+            {"EN",  "Articoli"}
+        };
+        Dictionary<string, string> _MsgArticoliAggiuntiAlCarrello = new Dictionary<string, string>
+        {
+            {"IT",  "Articoli aggiunti al carrello"},
+            {"EN",  "Articoli aggiunti al carrello"}
+        };
+
+        Dictionary<string, string> _ErrQtaMaggiore0 = new Dictionary<string, string>
+        {
+            {"IT",  "Qta nn valida.Il numero deve essere maggiore di 0"},
+            {"EN",  "Qta nn valida.Il numero deve essere maggiore di 0"}
+        };
+        Dictionary<string, string> _TitoloProdotto = new Dictionary<string, string>
+        {
+            {"IT",  "Prodotto"},
+            {"EN",  "Product"}
+        };
+       
+        Dictionary<string, string> _ErrNumeroCarrello = new Dictionary<string, string>
+        {
+            {"IT",  "Qta nn valida. Numero intero richiesto."},
+            {"EN",  "Qta nn valida. Numero intero richiesto."}
+        };
         Dictionary<string, string> _BtnTrova = new Dictionary<string, string>
         {
             {"IT", "Trova"},

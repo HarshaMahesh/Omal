@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage  BackgroundColor="White"
-    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.SearchProductV" Title="{Binding CurTitle}">
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.SearchProductV" 
+              Title="{Binding CurTitle, Converter={StaticResource UpperCaseConverter}}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
@@ -29,7 +30,7 @@
             <Picker Margin="5,0,5,0" Title="{Binding DescrizionePicker4}" IsVisible="{Binding Picker4IsVisible}"  HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPicker4}" ItemsSource="{Binding Picker4}"  />
             <StackLayout Margin="5" HorizontalOptions="Center"  Orientation="Horizontal">
                 <Button IsVisible="{Binding Picker2IsVisible}" Text="{Binding StrBtnPulisci, Converter={StaticResource UpperCaseConverter}}" Command="{Binding PulisciCommand}" />                
-                <Button Text="{Binding BtnTrova, Converter={StaticResource UpperCaseConverter}}" Style="{StaticResource Azzurro}" Command="{Binding CercaArticoliCommand}" />                
+                <Button Text="{Binding BtnTrova, Converter={StaticResource UpperCaseConverter}}" Style="{StaticResource Azzurro}" Command="{Binding CercaArticoliCommand}" IsVisible="{Binding MoreThanOneAtrticle}" />                
             </StackLayout>
         </StackLayout> 
         </Grid>

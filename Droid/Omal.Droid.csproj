@@ -197,6 +197,8 @@
     <Compile Include="CustomControls\CustomButtonCompatRenderer.cs" />
     <Compile Include="Persistence\SqLiteDb.cs" />
     <Compile Include="CustomControls\HtmlFormattedLabelRenderer.cs" />
+    <Compile Include="CustomControls\CualevaRoundedEntryRenderAndroid.cs" />
+    <Compile Include="CustomControls\BorderRender.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />

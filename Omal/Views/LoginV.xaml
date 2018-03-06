@@ -6,15 +6,28 @@
         <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" />
     </ContentPage.Padding>
 	<ContentPage.Content>
+          <RelativeLayout>
+    <Image  Aspect="AspectFill" Source="valvolaOMAL.png" Opacity="0.3"
+                RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+    <Grid RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+   
         <StackLayout Orientation="Vertical" Padding="20">
-        <Label HorizontalOptions="Center" Style="{StaticResource Descrizione}"  Text="{Binding LogonTesto}">
-        </Label>
-            <Entry Margin="0,100,0,0" Style="{StaticResource WhiteEntry}" x:Name="UserName"  Placeholder="Indirizzo Email" Text="{Binding Email}" />
+        <Label HorizontalOptions="Center" Style="{StaticResource Descrizione}"  Text="{Binding LogonTesto}" />
+
+            <Entry Margin="0,0,0,0" Style="{StaticResource WhiteEntry}" x:Name="UserName"  Placeholder="Indirizzo Email" Text="{Binding Email}" />
             <Entry Style="{StaticResource WhiteEntry}" x:Name="Password" Placeholder="Password" IsPassword="true" Text="{Binding Password}" />
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Button x:Name="LoginBtn" Style="{StaticResource Azzurro}"  Text="{Binding LoginButton, Converter={StaticResource UpperCaseConverter}}" Command="{Binding LoginCommand}" />
             </StackLayout>
             <Label Text="{Binding Errore}" TextColor="Red" />
         </StackLayout>
+    </Grid>
+       </RelativeLayout>
 	</ContentPage.Content>
 </ContentPage>
