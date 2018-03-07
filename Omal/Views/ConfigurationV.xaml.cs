@@ -7,6 +7,11 @@ namespace Omal.Views
 {
     public partial class ConfigurationV : ContentPage
     {
+        void Handle_Tapped(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new WelcomeV());
+        }
+
         ViewModels.ConfigurationVM Vm;
 
         public ConfigurationV()

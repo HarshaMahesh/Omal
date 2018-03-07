@@ -6,6 +6,7 @@ namespace Omal.Persistence
     public interface ISQLiteDb
     {
         SQLiteAsyncConnection GetConnection();
+        long GetDBSize();
     }
 }
 

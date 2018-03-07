@@ -104,12 +104,8 @@ namespace Omal.ViewModels
             {
                 if (curProdotto == null) return string.Empty;
                 string ritorno = string.Empty;
-                if (!IsLoggedIn)
-                {
-                    ritorno += "<br><b>Per vedere i prezzi è necessario effettuare il login</b>";
-                }
                 ritorno += string.Format(@"<p style=""color:#004899;background-color:#EAEAEA"" align='center'><b>{0}</b></p>", App.CurLang == "IT"? curProdotto.nome:curProdotto.nome_en);
-                ritorno += string.Format("<p ALIGN='CENTER'>Trovati {0} articoli</p>", Articoli.Count());
+                ritorno += string.Format("<p ALIGN='CENTER'>{0}</p>", string.Format(MsgRisultatoRicercaArticoli, Articoli.Count()));
                 if (prodottoIsValvola)
                     ritorno += HtmlPerValvole();
                 else
@@ -152,14 +148,14 @@ namespace Omal.ViewModels
         {
             //var attuatori = (IEnumerable<Models.Attuatore>)Articoli;
             string ritorno = string.Empty;
-            string elemento = "<p align='center'>{0}<br /><b>{1}</b></p>";
+            string elemento = @"<center><span style=""color:#004899;font-size: 8px"">{0}</span><br /><b>{1}</b></center>";
             foreach (Models.Attuatore attuatore in Articoli)
             {                
                 List<string> curAttuatore = new List<string>();
                 if (!string.IsNullOrWhiteSpace(attuatore.immagine_placeholder)) 
                     curAttuatore.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a></P>", attuatore.immagine_placeholder, string.Format("local_{0}", attuatore.immagine_placeholder)));
-                if (!string.IsNullOrWhiteSpace(attuatore.valore_iso)) curAttuatore.Add(string.Format(elemento, "Valore_iso", attuatore.valore_iso));
-                if (!string.IsNullOrWhiteSpace(attuatore.valore_coppia)) curAttuatore.Add(string.Format(elemento, "Valore_coppia", attuatore.valore_coppia));
+                if (!string.IsNullOrWhiteSpace(attuatore.valore_iso)) curAttuatore.Add(string.Format(elemento, StrValoreIso, attuatore.valore_iso));
+                if (!string.IsNullOrWhiteSpace(attuatore.valore_coppia)) curAttuatore.Add(string.Format(elemento, StrValoreCoppia, attuatore.valore_coppia));
                 if (App.CurLang == "IT")
                 {
                     if (!string.IsNullOrWhiteSpace(attuatore.note_footer)) curAttuatore.Add(string.Format(elemento, "note_footer", attuatore.note_footer));
@@ -173,19 +169,22 @@ namespace Omal.ViewModels
                 {
                     curAttuatore.Add(
                         string.Format(
-                            "<form method='GET'>" +
+                            "<center><form method='GET'>" +
                             @"<div style='height: 35px;'><p style='line - height:35px;display: table-cell; vertical-align: middle; padding: 10px;' align='center'><span style='color:#004899;font-size: 16px'><b>€{3}</b></span>&emsp;" +
-                            @"{2}:<input type='number' name='qta' style=""width: 3em;"" />&emsp;" +
+                            @"{2}:<input type='number' name='qta' style=""width: 4em;"" />&emsp;" +
                                 "<input type='hidden' name='idprodotto' value='{0}' />" +
                                 "<input type='hidden' name='isvalvola' value='0' />" +
                             "<input type='hidden' name='idcodiceattuatore' value='{1}' />" +
-                            "<input type='submit' class='button button4' value='Ordina' /></p></div>" +
-                            "</form>", curProdotto.idprodotto, attuatore.idcodiceattuatore, StrQta, attuatore.Prezzo.ToString("F")));
-
-                        
+                            "<input type='submit' class='button button4' value='{4}' /></p></div></center>" +
+                            "</form>", curProdotto.idprodotto, attuatore.idcodiceattuatore, StrQta, attuatore.Prezzo.ToString("F"),BtnOrdina.ToUpper()));
+                    if (!string.IsNullOrWhiteSpace(attuatore.url_3d)) curAttuatore.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", attuatore.url_3d, BtnMostra3D.ToUpper()));
+                    if (!string.IsNullOrWhiteSpace(attuatore.url_download)) curAttuatore.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", attuatore.url_download, BtnDownload.ToUpper()));
                 }
-                if (!string.IsNullOrWhiteSpace(attuatore.url_3d)) curAttuatore.Add(string.Format("<a class='button button4' href='{0}'>Mostra 3D</a>", attuatore.url_3d));
-                if (!string.IsNullOrWhiteSpace(attuatore.url_download)) curAttuatore.Add(string.Format("<a class='button button4' href='{0}'>Download</a>",attuatore.url_download));
+                else
+                {
+                    curAttuatore.Add(string.Format("<br><b>{0}</b>", ErrPerPrezziNecessarioLogin));
+                }
+
                 curAttuatore.Add("<hr/>");
                 ritorno += string.Join("", curAttuatore);
             }
@@ -196,7 +195,7 @@ namespace Omal.ViewModels
         {
             //var valvole = (IEnumerable<Models.Valvola>) Articoli;
             string ritorno = string.Empty;
-            string elemento = "<p align='center'>{0}<br /><b>{1}</b></p>";
+            string elemento = @"<center><span style=""color:#004899;font-size: 8px"">{0}</span><br /><b>{1}</b></center>";
             foreach (Models.Valvola valvola in Articoli)
             {
                 
@@ -205,18 +204,17 @@ namespace Omal.ViewModels
                     curValvola.Add(string.Format(@"<p style=""color:#004899;font-size: 18px"" align='center'><b>{0}</b></p>", valvola.codice_articolo));
                 if (!string.IsNullOrWhiteSpace(valvola.immagine_placeholder)) 
                     curValvola.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a></P>", valvola.immagine_placeholder, string.Format("local_{0}", valvola.immagine_placeholder)));
-                if (!string.IsNullOrWhiteSpace(valvola.valore_azionamento)) curValvola.Add(string.Format(elemento, "valore_azionamento", valvola.valore_azionamento));
-                if (!string.IsNullOrWhiteSpace(valvola.valore_materiale)) curValvola.Add(string.Format(elemento, "valore_materiale", valvola.valore_materiale));
-                if (!string.IsNullOrWhiteSpace(valvola.valore_dn)) curValvola.Add(string.Format(elemento,"valore_dn", valvola.valore_dn));
-                if (!string.IsNullOrWhiteSpace(valvola.valore_inch)) curValvola.Add(string.Format(elemento, "valore_inch", valvola.valore_inch));
-                if (!string.IsNullOrWhiteSpace(valvola.valore_pnansi)) curValvola.Add(string.Format(elemento, "valore_pnansi", valvola.valore_pnansi));
-                 
-                 if (!string.IsNullOrWhiteSpace(valvola.codice_attuatore)) curValvola.Add(string.Format(elemento, "Codice_Attuatore", valvola.codice_attuatore));
-                 if (!string.IsNullOrWhiteSpace(valvola.codice_kit)) curValvola.Add(string.Format(elemento, "codice_kit", valvola.codice_kit));
-                 if (!string.IsNullOrWhiteSpace(valvola.codice_valvola)) curValvola.Add(string.Format(elemento, "Codice_Valvola", valvola.codice_valvola));
-                 if (!string.IsNullOrWhiteSpace(valvola.valore_nmm)) curValvola.Add(string.Format(elemento, "valore_nmm", valvola.valore_nmm));
-                 if (!string.IsNullOrWhiteSpace(valvola.valore_hmm)) curValvola.Add(string.Format(elemento, "valore_hmm", valvola.valore_hmm));
-                 if (!string.IsNullOrWhiteSpace(valvola.valore_pesokg)) curValvola.Add(string.Format(elemento, "valore_pesokg", valvola.valore_pesokg));
+                if (!string.IsNullOrWhiteSpace(valvola.valore_azionamento)) curValvola.Add(string.Format(elemento, StrAzionamento, valvola.valore_azionamento));
+                if (!string.IsNullOrWhiteSpace(valvola.valore_materiale)) curValvola.Add(string.Format(elemento, StrMateriale, valvola.valore_materiale));
+                if (!string.IsNullOrWhiteSpace(valvola.valore_dn)) curValvola.Add(string.Format(elemento,StrDn, valvola.valore_dn));
+                if (!string.IsNullOrWhiteSpace(valvola.valore_inch)) curValvola.Add(string.Format(elemento, StrInch, valvola.valore_inch));
+                if (!string.IsNullOrWhiteSpace(valvola.valore_pnansi)) curValvola.Add(string.Format(elemento, StrPnasi, valvola.valore_pnansi));
+                if (!string.IsNullOrWhiteSpace(valvola.codice_attuatore)) curValvola.Add(string.Format(elemento, StrAttuatore, valvola.codice_attuatore));
+                if (!string.IsNullOrWhiteSpace(valvola.codice_kit)) curValvola.Add(string.Format(elemento, StrKit, valvola.codice_kit));
+                if (!string.IsNullOrWhiteSpace(valvola.codice_valvola)) curValvola.Add(string.Format(elemento, StrValvola, valvola.codice_valvola));
+                if (!string.IsNullOrWhiteSpace(valvola.valore_nmm)) curValvola.Add(string.Format(elemento, StrNmm, valvola.valore_nmm));
+                if (!string.IsNullOrWhiteSpace(valvola.valore_hmm)) curValvola.Add(string.Format(elemento, StrHmm, valvola.valore_hmm));
+                if (!string.IsNullOrWhiteSpace(valvola.valore_pesokg)) curValvola.Add(string.Format(elemento,StrPesoKg, valvola.valore_pesokg));
                 if (App.CurLang == "IT")
                 {
                     if (!string.IsNullOrWhiteSpace(valvola.note_footer)) curValvola.Add(string.Format(elemento, "note_footer", valvola.note_footer));
@@ -229,19 +227,22 @@ namespace Omal.ViewModels
                 {
                     curValvola.Add(
                         string.Format(
-                            "<form method='GET'>" +
-                            @"<div style='height: 35px;'><p style='line - height:35px;display: table-cell; vertical-align: middle; padding: 10px;' align='center'><span style='color:#004899;font-size: 16px'><b>€{3}</b></span>&emsp;" +
-                            @"{2}:<input type='number' name='qta' style=""width: 3em;"" />&emsp;"+
+                            "<center><form method='GET'>" +
+                            @"<div style='height: 35px;'><p style='line - height:35px;display: table-cell; vertical-align: middle; padding: 10px;'><span style='color:#004899;font-size: 16px'><b>€{3}</b></span>&emsp;" +
+                            @"{2}:<input type='number' name='qta' style=""width: 4em;"" />&emsp;"+
                                 "<input type='hidden' name='idprodotto' value='{0}' />" +
                                 "<input type='hidden' name='isvalvola' value='1' />" +
                                 "<input type='hidden' name='idcodicevalvola' value='{1}' />" +
-                            "<input type='submit' class='button button4' value='Ordina' /></p></div>" +
-                            "</form>",curProdotto.idprodotto,  valvola.idcodicevalvola, StrQta,valvola.Prezzo.ToString("F") ));
+                            "<input type='submit' class='button button4' value='{4}' /></p></div>" +
+                            "</form></center>",curProdotto.idprodotto,  valvola.idcodicevalvola, StrQta,valvola.Prezzo.ToString("F"),BtnOrdina.ToUpper() ));
+                    if (!string.IsNullOrWhiteSpace(valvola.url_3d)) curValvola.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", valvola.url_3d, BtnMostra3D.ToUpper()));
+                    if (!string.IsNullOrWhiteSpace(valvola.url_download)) curValvola.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", valvola.url_download, BtnDownload.ToUpper()));
+                } else
+                {
+                    curValvola.Add( string.Format("<br><b>{0}</b>", ErrPerPrezziNecessarioLogin));
                 }
-                if (!string.IsNullOrWhiteSpace(valvola.url_3d)) curValvola.Add(string.Format("<a class='button button4' href='{0}'>Mostra 3D</a>", valvola.url_3d));
-                if (!string.IsNullOrWhiteSpace(valvola.url_download)) curValvola.Add(string.Format("<a class='button button4' href='{0}'>Download</a>", valvola.url_download));
                 curValvola.Add("<hr/>");
-                ritorno += string.Join("", curValvola);
+                ritorno += string.Format("<p align='center'>{0}</p>", string.Join("", curValvola));
             }
             return ritorno;
 

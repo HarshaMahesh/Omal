@@ -23,6 +23,19 @@ namespace Omal.iOS.Persistence
 
             return new SQLiteAsyncConnection(path);
         }
+
+        public long GetDBSize()
+        {
+            string docFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            string libFolder = Path.Combine(docFolder, "..", "Library", "Databases");
+            if (!System.IO.Directory.Exists(libFolder)) System.IO.Directory.CreateDirectory(libFolder);
+            var path = Path.Combine(libFolder, "MySQLiteDb.db3");
+            var fileInfo = new FileInfo(path);
+            if (!fileInfo.Exists)
+                return 0;
+            else
+                return fileInfo.Length / 1000;
+        }
     }
 }
 

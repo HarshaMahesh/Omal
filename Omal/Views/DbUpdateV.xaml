@@ -11,7 +11,7 @@
             <ProgressBar x:Name="PBar" Progress="{Binding ProgressB}" />
             <CustomControls:HtmlFormattedLabel BackgroundColor="Black" FontSize="8" TextColor="Yellow"  VerticalOptions="StartAndExpand" IsVisible="{Binding IsRunning}" Text="{Binding UpdateDbText}"  Margin="5" />
             <Label TextColor="Red" Text="{Binding ErroreTxt}" />
-            <Button Text="Riprova" Command="{Binding UpdateDbCommand}" IsVisible="{Binding Errore}" />
+            <Button Text="{Binding BtnRiprova, Converter={StaticResource UpperCaseConverter}}" Style="{StaticResource Azzurro}" Command="{Binding UpdateDbCommand}" IsVisible="{Binding Errore}" />
         </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

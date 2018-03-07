@@ -81,6 +81,22 @@ namespace Omal.ViewModels
             }
         }
 
+        Models.Carrello _SelectedItem;
+        public Models.Carrello SelectedItem
+        {
+            get
+            {
+                return _SelectedItem;
+            }
+            set
+            {
+                if (value != null)
+                    OnPropertyChanged();
+            }
+        }
+
+
+
         private void OnInviaCommand(object obj)
         {
             CurPage.DisplayAlert("Invio Ordine","Invio da implemetare", "Ok");
@@ -222,9 +238,8 @@ namespace Omal.ViewModels
             get
             {
                 var totale = DataStore.Carrello.Sum(x=>x.Qta);
-                if (totale == 0) return "Carrello vuoto";
-                if (totale == 1) return "1 articolo nel carrello";
-                return string.Format("{0} articoli nel carrello",totale);
+                if (totale == 0) return StrCarrelloVuoto;
+                return string.Format(StrCarrelloNrArticoli,totale);
             }
         }
     }

@@ -20,6 +20,17 @@ namespace Omal.Droid.Persistence
             var path = Path.Combine(documentsPath, "MySQLiteDb.db3");
             return new SQLiteAsyncConnection(path);
         }
+
+        public long GetDBSize()
+        {
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var path = Path.Combine(documentsPath, "MySQLiteDb.db3");
+            var fileInfo = new FileInfo(path);
+            if (!fileInfo.Exists)
+                return 0;
+            else
+                return fileInfo.Length/1000;
+        }
     }
 }
 

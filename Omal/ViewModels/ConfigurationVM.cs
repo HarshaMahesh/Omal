@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Omal.Persistence;
 
 namespace Omal.ViewModels
 {
@@ -58,18 +59,30 @@ namespace Omal.ViewModels
             get { return "Configurazione"; }
         }
 
+        public string CurLang
+        {
+            get
+            {
+                return App.CurLang;
+            }
+        }
+
         public string LastUpdate
         {
             get
             {
+                string giorno = "Mai";
                 var val = App.LastUpdate;
+                if (val.HasValue) giorno = val.Value.ToString("d MMMM yyyy");
+                var _connection = DependencyService.Get<ISQLiteDb>();
+                var dimensione = _connection.GetDBSize();
                 if (!val.HasValue) return "Mai";
-                var giorni = Convert.ToInt32((DateTime.Now - val.Value).TotalDays);
-                if (giorni > 1) return string.Format("{0} giorni fa.", giorni);
-                return "Ora";
+                return string.Format(StrUltimoAggiornamento, giorno, dimensione.ToString("n2"));
             }
 
         }
+
+
 
 
     }

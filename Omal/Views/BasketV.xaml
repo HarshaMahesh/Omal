@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.BasketV">
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.BasketV" Title="{Binding TitoloCarrello, Converter={StaticResource UpperCaseConverter}}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Margin="10">
         <Label IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding LogonRichiesto}" />
-        <ListView VerticalOptions="FillAndExpand" IsVisible="{Binding IsLoggedIn}" ItemsSource="{Binding Items}">
+        <ListView VerticalOptions="FillAndExpand" IsVisible="{Binding IsLoggedIn}" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem,Mode=TwoWay}">
         <ListView.RowHeight>
                 <OnPlatform x:TypeArguments="x:Int32">
                     <On Platform="iOS">150</On>
@@ -18,12 +20,12 @@
                 <Picker Title="{Binding Cliente}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding RagioneSociale}" SelectedItem="{Binding SelectedCliente}" ItemsSource="{Binding Clienti}"  />
                 <Entry  BackgroundColor="White" Placeholder="{Binding Note}" Text="{Binding NoteOrdine}" />
                 <StackLayout Orientation="Horizontal" >
-                    <Label VerticalOptions="Center" Style="{StaticResource Descrizione}" Text="{Binding StrTotaleOrdine}" FontSize="18" TextColor="#004899" />    
+                    <Label VerticalOptions="Center" Style="{StaticResource Descrizione}"  Text="{Binding StrTotaleOrdine}" FontSize="18" TextColor="#004899" />    
                     <Label VerticalOptions="Center" Text="{Binding TotaleOrdine, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" FontAttributes="Bold" FontSize="18" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Button  Text="Salva" Command="{Binding SalvaCommand}" /> 
-                    <Button  Text="Invia" Command="{Binding InviaCommand}" />
+                    <Button  Text="Salva" Command="{Binding SalvaCommand}" Style="{StaticResource Azzurro}" /> 
+                    <Button  Text="Invia" Command="{Binding InviaCommand}" Style="{StaticResource Azzurro}"  />
                     <Button  Text="Annulla" Command="{Binding AnnullaCommand}" />
                 </StackLayout>
             </StackLayout>
@@ -34,21 +36,27 @@
                     <Grid Margin="10" BackgroundColor="White">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />    
-                            <ColumnDefinition />    
-                            <ColumnDefinition />    
+                            <ColumnDefinition Width="40"/>    
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding CodiceArticolo}" HorizontalTextAlignment="Center" Style="{StaticResource Descrizione}" />
-                        <Label Grid.Row="1" Grid.Column="0"  VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Prezzo" FontAttributes="Bold" />
-                        <Label Grid.Row="2" Grid.Column="0"  VerticalOptions="Center" HorizontalTextAlignment="Start" Text="{Binding PrezzoUnitario, StringFormat='€ {0:F}'}" FontAttributes="Bold" />
-                        <Entry TextColor="#004899" BackgroundColor="#EAEAEA" Keyboard="Numeric" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" Placeholder="{Binding StrSconto}" Text="{Binding Sconto}" MinimumWidthRequest="100" />
-                        <Entry TextColor="#004899" BackgroundColor="#EAEAEA" Keyboard="Numeric"  Grid.Row="2" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Start" Placeholder="{Binding StrQta}" Text="{Binding Qta}" MinimumWidthRequest="100" />
-                        <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text="{Binding PrezzoTotale, StringFormat='Totale € {0:F}'}" FontAttributes="Bold" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="QTA"  VerticalOptions="Center" Style="{StaticResource Descrizione}" />
+                        <Entry WidthRequest="70" TextColor="#004899" BackgroundColor="#EAEAEA"  Keyboard="Numeric"  Grid.Row="1" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Start" Placeholder="{Binding StrQta}" Text="{Binding Qta}"/>
+                        <Label Grid.Row="1" Grid.Column="3" Text="SCONTO" Style="{StaticResource Descrizione}"    VerticalOptions="Center" HorizontalTextAlignment="Start"/>
+                        <Entry Grid.Row="1" Grid.Column="4" VerticalOptions="Center" Placeholder="{Binding StrSconto}" Text="{Binding Sconto}" TextColor="#004899" BackgroundColor="#EAEAEA" Keyboard="Numeric"  MinimumWidthRequest="100" />
+                        <Label   FontSize="14"
+                                        HorizontalOptions="StartAndExpand"
+                                         Grid.Row="1" Grid.Column="0" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="{Binding PrezzoUnitario, StringFormat='€ {0:F}'}" Style="{StaticResource Titolo}"
+                                         />
+                     <Label FontSize="11" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="CenterAndExpand"  VerticalOptions="Center" Text="{Binding PrezzoTotaleStr}" />            
+
                     </Grid>
                 </ViewCell>
             </DataTemplate>

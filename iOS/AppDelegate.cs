@@ -4,6 +4,8 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
+
+
 namespace Omal.iOS
 {
     [Register("AppDelegate")]
@@ -11,6 +13,7 @@ namespace Omal.iOS
     {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+           
             global::Xamarin.Forms.Forms.Init();
             Xamarin.FormsMaps.Init();
             LoadApplication(new App());

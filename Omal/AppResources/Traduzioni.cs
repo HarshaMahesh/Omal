@@ -41,7 +41,7 @@ namespace Omal.AppResources
         public string TitoloProdotti { get { return GetCurvalueLang(_TitoloProdotti); } }
         public string TitoloProdotto { get { return GetCurvalueLang(_TitoloProdotto); } }
         public string TitoloArticoli { get { return GetCurvalueLang(_TitoloArticoli); } }
-
+        public string TitoloAggiornaCatalogo { get { return GetCurvalueLang(_TitoloAggiornaCatalogo); } }
 
         public string Cliente { get { return GetCurvalueLang(_Cliente); } }
         public string Note { get { return GetCurvalueLang(_Note); } }
@@ -79,12 +79,162 @@ namespace Omal.AppResources
         public string BtnCerca { get { return GetCurvalueLang(_BtnCerca); } }
         public string BtnMaggioriInfo { get { return GetCurvalueLang(_BtnMaggioriInfo); } }
         public string BtnTrova { get { return GetCurvalueLang(_BtnTrova); } }
+        public string BtnOrdina { get { return GetCurvalueLang(_BtnOrdina); } }
+        public string BtnRiprova { get { return GetCurvalueLang(_BtnRiprova); } }
+        public string BtnMostra3D{ get { return GetCurvalueLang(_BtnMostra3D); } }
+        public string BtnDownload { get { return GetCurvalueLang(_BtnDownload); } }
         public string ErrNumeroCarrello { get { return GetCurvalueLang(_ErrNumeroCarrello); } }
         public string ErrQtaMaggiore0 { get { return GetCurvalueLang(_ErrQtaMaggiore0); } }
+        public string ErrPerPrezziNecessarioLogin { get { return GetCurvalueLang(_ErrPerPrezziNecessarioLogin); } }
         public string MsgArticoliAggiuntiAlCarrello { get { return GetCurvalueLang(_MsgArticoliAggiuntiAlCarrello); } }
+        public string MsgRisultatoRicercaArticoli { get { return GetCurvalueLang(_MsgRisultatoRicercaArticoli); } }
+
+        public string StrAzionamento { get { return GetCurvalueLang(_StrAzionamento); } }
+        public string StrMateriale { get { return GetCurvalueLang(_StrMateriale); } }
+        public string StrDn { get { return GetCurvalueLang(_StrDn); } }
+        public string StrInch { get { return GetCurvalueLang(_StrInch); } }
+        public string StrPnasi { get { return GetCurvalueLang(_StrPnasi); } }
+        public string StrAttuatore { get { return GetCurvalueLang(_StrAttuatore); } }
+        public string StrKit { get { return GetCurvalueLang(_StrKit); } }
+        public string StrValvola { get { return GetCurvalueLang(_StrValvola); } }
+        public string StrNmm { get { return GetCurvalueLang(_StrNmm); } }
+        public string StrHmm { get { return GetCurvalueLang(_StrHmm); } }
+        public string StrPesoKg { get { return GetCurvalueLang(_StrPesoKg); } }
+        public string StrValoreIso { get { return GetCurvalueLang(_StrValoreIso); } }
+        public string StrValoreCoppia { get { return GetCurvalueLang(_StrValoreCoppia); } }
+        public string StrUltimoAggiornamento { get { return GetCurvalueLang(_StrUltimoAggiornamento); } }
+        public string StrCarrelloVuoto { get { return GetCurvalueLang(_StrCarrelloVuoto); } }
+        public string StrCarrelloNrArticoli { get { return GetCurvalueLang(_StrCarrelloNrArticoli); } }
+        public string StrLingua { get { return GetCurvalueLang(_StrLingua); } }
+
+        Dictionary<string, string> _StrLingua = new Dictionary<string, string>
+        {
+            {"IT",  "Lingua"},
+            {"EN",  "Languages"}
+        };
+        Dictionary<string, string> _StrUltimoAggiornamento = new Dictionary<string, string>
+        {
+            {"IT",  "ultimo aggiornamento {0}. {1} Kb"},
+            {"EN",  "last update {0}. {1} Kb"}
+        };
+        Dictionary<string, string> _BtnRiprova = new Dictionary<string, string>
+        {
+            {"IT",  "Riprova"},
+            {"EN",  "Retry"}
+        };
+        Dictionary<string, string> _TitoloAggiornaCatalogo = new Dictionary<string, string>
+        {
+            {"IT",  "Aggiorna Catalogo"},
+            {"EN",  "Update Caatalogue"}
+        };
+        Dictionary<string, string> _StrCarrelloVuoto = new Dictionary<string, string>
+        {
+            {"IT",  "Carrello vuoto"},
+            {"EN",  "Carrello vuoto"}
+        };
+        Dictionary<string, string> _StrCarrelloNrArticoli = new Dictionary<string, string>
+        {
+            {"IT",  "{0} articoli nel carrello"},
+            {"EN",  "{0} articoli nel carrello"}
+        };
+
+        Dictionary<string, string> _StrValoreIso = new Dictionary<string, string>
+        {
+            {"IT",  "Valore_iso"},
+            {"EN",  "Valore_iso"}
+        };
+        Dictionary<string, string> _StrValoreCoppia = new Dictionary<string, string>
+        {
+            {"IT",  "Valore_coppia"},
+            {"EN",  "Valore_coppia"}
+        };
+
+        Dictionary<string, string> _StrAzionamento = new Dictionary<string, string>
+        {
+            {"IT",  "valore_azionamento"},
+            {"EN",  "valore_azionamento"}
+        };
+
+        Dictionary<string, string> _StrMateriale = new Dictionary<string, string>
+        {
+            {"IT",  "valore_materiale"},
+            {"EN",  "valore_materiale"}
+        };
+        Dictionary<string, string> _StrDn = new Dictionary<string, string>
+        {
+            {"IT",  "valore_dn"},
+            {"EN",  "valore_dn"}
+        };
+        Dictionary<string, string> _StrInch = new Dictionary<string, string>
+        {
+            {"IT",  "valore_inch"},
+            {"EN",  "valore_inch"}
+        };
+        Dictionary<string, string> _StrPnasi = new Dictionary<string, string>
+        {
+            {"IT",  "valore_pnansi"},
+            {"EN",  "valore_pnansi"}
+        };
+        Dictionary<string, string> _StrAttuatore = new Dictionary<string, string>
+        {
+            {"IT",  "Codice_Attuatore"},
+            {"EN",  "Codice_Attuatore"}
+        };
+        Dictionary<string, string> _StrKit = new Dictionary<string, string>
+        {
+            {"IT",  "codice_kit"},
+            {"EN",  "codice_kit"}
+        };
+        Dictionary<string, string> _StrValvola = new Dictionary<string, string>
+        {
+            {"IT",  "Codice_Valvola"},
+            {"EN",  "Codice_Valvola"}
+        };
+        Dictionary<string, string> _StrNmm = new Dictionary<string, string>
+        {
+            {"IT",  "valore_nmm"},
+            {"EN",  "valore_nmm"}
+        };
+        Dictionary<string, string> _StrHmm = new Dictionary<string, string>
+        {
+            {"IT",  "valore_hmm"},
+            {"EN",  "valore_hmm"}
+        };
+            Dictionary<string, string> _StrPesoKg = new Dictionary<string, string>
+        {
+                {"IT",  "valore_pesokg"},
+                {"EN",  "valore_pesokg"}
+        };
 
 
 
+        
+
+        Dictionary<string, string> _BtnMostra3D = new Dictionary<string, string>
+        {
+            {"IT",  "Mostra 3D"},
+            {"EN",  "Mostra 3D"}
+        };
+        Dictionary<string, string> _BtnDownload = new Dictionary<string, string>
+        {
+            {"IT",  "Download"},
+            {"EN",  "Download"}
+        };
+        Dictionary<string, string> _BtnOrdina = new Dictionary<string, string>
+        {
+            {"IT",  "Ordina"},
+            {"EN",  "Ordina"}
+        };
+        Dictionary<string, string> _MsgRisultatoRicercaArticoli = new Dictionary<string, string>
+        {
+            {"IT",  "Risultato Ricerca: {0} articoli"},
+            {"EN",  "Risultato Ricerca: {0} articoli"}
+        };
+        Dictionary<string, string> _ErrPerPrezziNecessarioLogin = new Dictionary<string, string>
+        {
+            {"IT",  "Effettua il login per vedere prezzi e rendering 3D"},
+            {"EN",  "Effettua il login per vedere prezzi e rendering 3D"}
+        };
         Dictionary<string, string> _TitoloArticoli = new Dictionary<string, string>
         {
             {"IT",  "Articoli"},
@@ -296,7 +446,7 @@ namespace Omal.AppResources
         Dictionary<string, string> _StrSconto = new Dictionary<string, string>
         {
             {"IT", "Sconto"},
-            {"EN", "Sconto (%)"}
+            {"EN", "Sconto"}
         };
 
 
