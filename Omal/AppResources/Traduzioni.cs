@@ -106,7 +106,10 @@ namespace Omal.AppResources
         public string StrCarrelloVuoto { get { return GetCurvalueLang(_StrCarrelloVuoto); } }
         public string StrCarrelloNrArticoli { get { return GetCurvalueLang(_StrCarrelloNrArticoli); } }
         public string StrLingua { get { return GetCurvalueLang(_StrLingua); } }
+        public string StrVersioneItaliana { get { return "Versione Italiana"; } }
+        public string StrVersioneInglese { get { return "English Version"; } }
 
+       
         Dictionary<string, string> _StrLingua = new Dictionary<string, string>
         {
             {"IT",  "Lingua"},

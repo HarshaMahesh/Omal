@@ -20,6 +20,7 @@
             <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor" Value="#EAEAEA" />
             </Style>
+
             <Style TargetType="TabbedPage" ApplyToDerivedTypes="true">
                 <Setter Property="BarBackgroundColor" Value="#5E5B5B" />
                 <Setter Property="BackgroundColor" Value="#5E5B5B" />
@@ -54,7 +55,6 @@
             </Style>
             <Style  TargetType="Button">
                 <Setter Property="BorderWidth" Value="0" />
-         
                 <Setter Property="TextColor" Value="#60A5D1" />
                 <Setter Property="WidthRequest" Value="100" />
                 <Setter Property="BorderRadius" Value="20" />
@@ -76,6 +76,7 @@
             <Style TargetType="ListView">
                 <Setter Property="BackgroundColor" Value="#FFFFFF" />
             </Style>
+            <CControls:CualevaRoundedEntry x:Key="CualevaRoundedEntry" />
             <Converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
             <Converters:UpperCaseConverter x:Key="UpperCaseConverter" />
 		</ResourceDictionary>
