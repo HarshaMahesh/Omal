@@ -15,6 +15,7 @@ namespace Omal.Views
             BindingContext = viewModel = new ViewModels.OrdersEditVM();
             viewModel.Navigation = Navigation;
             viewModel.CurPage = this;
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
 

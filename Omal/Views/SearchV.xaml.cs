@@ -20,6 +20,7 @@ namespace Omal.Views
             BindingContext = viewModel = new ViewModels.SearchVM();
             viewModel.Navigation = Navigation;
             viewModel.CurPage = this;
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
         protected override bool OnBackButtonPressed()

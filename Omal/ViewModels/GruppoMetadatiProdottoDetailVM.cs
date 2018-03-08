@@ -13,9 +13,27 @@ namespace Omal.ViewModels
                     return "Dettaglio";
                 else
                 {
-                    return App.CurLang=="IT"?CurGruppoProdottoMetadati.gruppo_metadati_it : CurGruppoProdottoMetadati.gruppo_metadati_en;
+                    return App.CurLang=="IT"?CurGruppoProdottoMetadati.gruppo_metadati_it.ToUpper() : CurGruppoProdottoMetadati.gruppo_metadati_en.ToUpper();
                 }
             }        
+        }
+
+        Models.Prodotto _CurProdotto = null;
+        public Models.Prodotto CurProdotto
+        {
+            get
+            {
+                return _CurProdotto;
+            }
+            set
+            {
+                if (_CurProdotto != value)
+                {
+                    _CurProdotto = value;
+                    OnPropertyChanged();
+                    OnPropertyChanged("GruppoMetadati");
+                }
+            }
         }
 
         Models.ProdottoGruppiMetadati _CurGruppoProdottoMetadati = null;
@@ -26,6 +44,8 @@ namespace Omal.ViewModels
                 if (_CurGruppoProdottoMetadati != value)
                 {
                     _CurGruppoProdottoMetadati = value;
+                    if (_CurGruppoProdottoMetadati != null)
+                    {}
                     LoadContent();
                     OnPropertyChanged();
                 }
@@ -74,15 +94,15 @@ namespace Omal.ViewModels
                 }
                 _ContentHtml = string.Join("<hr />", Elementi);
                 // recupero il prodotto di riferimento (sarà il titolo)
-                var prodotto = await DataStore.Prodotti.GetItemAsync(CurGruppoProdottoMetadati.idprodotto);
+                CurProdotto = await DataStore.Prodotti.GetItemAsync(CurGruppoProdottoMetadati.idprodotto);
                 string titolo = string.Empty;
-                if (App.CurLang == "IT")
+              /*  if (App.CurLang == "IT")
                     titolo = prodotto.nome;
                 else
-                    titolo = prodotto.nome_en;
+                    titolo = prodotto.nome_en;*/
 
 
-                _ContentHtml = string.Format(@"<p style=""color:#004899;background-color:#EAEAEA"" align='center'><b>{0}</b></p>{1}", titolo ,_ContentHtml);
+            //    _ContentHtml = string.Format(@"<p style=""color:#004899;background-color:#EAEAEA"" align='center'><b>{0}</b></p>{1}", titolo ,_ContentHtml);
                 var baseStr = @"<html><head><style type=""text/css"">" +
                 @" @font-face {
                     font-family: Montserrat-Regular;"
@@ -91,6 +111,12 @@ namespace Omal.ViewModels
 table {width: 100% ! important; margin: 0 auto !important;}
 table td {border: 1px solid #ccc; padding: 5px; }
 table tr:first-child td {color: #174288; font-weight: bold; text-align: center;}
+table tr:nth-child(odd) td{
+           background:#EAEAEA;
+}
+table tr:nth-child(even) td{
+            background:#FFFFFF;
+}
 table .fr-highlighted {color: #174288; font-weight: bold;}
         body {
                 font-family: Montserrat-Regular;

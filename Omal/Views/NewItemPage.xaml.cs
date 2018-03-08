@@ -19,6 +19,7 @@ namespace Omal
             };
 
             BindingContext = this;
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
         async void Save_Clicked(object sender, EventArgs e)

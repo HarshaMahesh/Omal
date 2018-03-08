@@ -60,8 +60,7 @@ namespace Omal.Droid
             BottomTabbedRenderer.ItemPadding = new Xamarin.Forms.Thickness(3);
             BottomTabbedRenderer.IconSize = 26;
             BottomTabbedRenderer.ShouldUpdateSelectedIcon = true;
-
-
+     
 
             /*   var stateList = new Android.Content.Res.ColorStateList(
                    new int[][] {

@@ -199,6 +199,7 @@
     <BundleResource Include="Resources\Omal.png" />
     <BundleResource Include="Resources\Ordini.png" />
     <BundleResource Include="Resources\valvolaOMAL.png" />
+    <BundleResource Include="Resources\ic_arrow_drop_down.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="CustomControls\CualevaRoundedEntryRenderIOS.cs" />
     <Compile Include="Persistence\SqLiteDb.cs" />
     <Compile Include="CustomControls\HtmlFormattedLabelRender.cs" />
+    <Compile Include="CustomControls\CualevaPickerRenderIOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

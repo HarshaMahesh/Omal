@@ -145,6 +145,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DbUpdateVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\UpperCaseConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomControls\CualevaPicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />

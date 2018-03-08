@@ -36,6 +36,7 @@ namespace Omal.Views
         public WelcomeV()
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
 

@@ -4,12 +4,19 @@
         <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Margin="5">
-            <Label Style="{StaticResource Titolo}" Text="{Binding CurProdotto.nome}" BackgroundColor="#EAEAEA" HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
-            <ListView x:Name="CurGruppo" SelectedItem="{Binding CurGruppoProdotto}" ItemsSource="{Binding GruppoMetadati}">
+        <StackLayout Orientation="Vertical">
+        <StackLayout BackgroundColor="#EAEAEA">
+            <Label Margin="5" Style="{StaticResource Titolo}" FontSize="20" Text="{Binding CurProdotto.nome}"  HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
+        </StackLayout>
+            <ListView Margin="5" x:Name="CurGruppo" SelectedItem="{Binding CurGruppoProdotto}" ItemsSource="{Binding GruppoMetadati}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding gruppo_metadati_it}" />
+                        <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                         <Label Text="{Binding gruppo_metadati_it, Converter={StaticResource UpperCaseConverter}}" Margin="5" Style="{StaticResource Titolo}"  VerticalOptions="Center" />
+                         <Label Text="->" Margin="5" HorizontalOptions="EndAndExpand" VerticalOptions="Center"  />
+                        </StackLayout>
+                            </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

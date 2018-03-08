@@ -15,6 +15,7 @@ namespace Omal.Views
             InitializeComponent();
             viewModel.CurPage = this;
             viewModel.Navigation = Navigation;
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
         public InfoProductV(Models.Prodotto curProdotto) : this()

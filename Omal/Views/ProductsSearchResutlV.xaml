@@ -2,24 +2,25 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="Omal.Views.ProductsSearchResutlV" Title="{Binding TitoloProdotti, Converter={StaticResource UpperCaseConverter}}">
+    x:Class="Omal.Views.ProductsSearchResutlV" Title="{Binding TitoloProdotti, Converter={StaticResource UpperCaseConverter}}" BackgroundColor="#ebebeb">
     <ContentPage.ToolbarItems>
             <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
         <StackLayout Padding="10">
-           <ListView RowHeight="100" SelectedItem="{Binding SelectedProduct}" x:Name="ElencoProdotti" ItemsSource="{Binding Prodotti}">
+           <ListView  BackgroundColor="#ebebeb" RowHeight="90" SelectedItem="{Binding SelectedProduct}" x:Name="ElencoProdotti" ItemsSource="{Binding Prodotti}">
             <ListView.Header>
                     <Grid BackgroundColor="#ebebeb" HeightRequest="60">
                         <Label VerticalOptions="Center" Margin="5" HorizontalTextAlignment="Center"  Style="{StaticResource Titolo}" Text="{Binding NumeroProdotti}"  />
                     </Grid>
-                
             </ListView.Header>
+
+                
            <ListView.ItemTemplate> 
                     <DataTemplate>
             <ViewCell>
-                <StackLayout Orientation="Horizontal">
-                                <Image Margin="5" MinimumHeightRequest="70">
+                <StackLayout BackgroundColor="White" Orientation="Horizontal">
+                                <Image Margin="25,4,1,4" WidthRequest="70">
                                 <Image.Source>
                                     <UriImageSource Uri="{Binding immagine_placeholder}"
                                     CacheValidity="30" 

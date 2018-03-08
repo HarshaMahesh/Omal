@@ -28,6 +28,7 @@ namespace Omal.Views
             BindingContext = viewModel = new ViewModels.GruppoMetadatiProdottoDetailVM();
             viewModel.CurPage = this;
             viewModel.Navigation = Navigation;
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
         public GruppoMetadatiProdottoDetailV(Models.ProdottoGruppiMetadati curProdottoGruppoMetadati):this()

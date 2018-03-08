@@ -13,6 +13,7 @@ namespace Omal.Views
             BindingContext = viewModel = new ViewModels.SearchProductVM();
             viewModel.Navigation = Navigation;
             viewModel.CurPage = this;
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
         public SearchProductV(Models.Prodotto curProdotto) : this()

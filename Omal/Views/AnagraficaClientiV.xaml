@@ -4,18 +4,32 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     Title="{Binding TitoloClienti, Converter={StaticResource UpperCaseConverter}}" 
     xmlns:Common="clr-namespace:Omal.Common" 
+             xmlns:CControls="clr-namespace:Omal.CustomControls"
     x:Class="Omal.Views.AnagraficaClientiV">
     <ContentPage.ToolbarItems>
         <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
         <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn}" Text="{Binding Aggiungi}" Command="{Binding AddNewCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical"> 
-            <Label IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Margin="10" HorizontalTextAlignment="Center" Style="{StaticResource Descrizione}" Text="{Binding LogonRichiesto}" />
-            <SearchBar IsVisible="false" x:Name="sb"  BackgroundColor="#60A5D1" TextColor="White"  Placeholder="{Binding ClienteRicercato}" Text="{Binding SearchText}" />
-            <Entry IsVisible="false" x:Name="esb" TextColor="White"  BackgroundColor="#60A5D1" Placeholder="{Binding ClienteRicercato}" Text="{Binding SearchText}"  />
-
-            <ListView SelectedItem="{Binding ClienteSelected}" IsVisible="{Binding IsLoggedIn}" IsGroupingEnabled="true" ItemsSource="{Binding Clienti}" GroupShortNameBinding="{Binding TitoloCorto}" GroupDisplayBinding="{Binding Titolo}">
+     <RelativeLayout>
+   
+    <Grid IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            
+          <StackLayout WidthRequest="240" VerticalOptions="Center" Padding="6" Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <Label IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Margin="10" HorizontalTextAlignment="Center"  Text="{Binding LogonRichiesto}" />
+            </StackLayout>
+    </Grid>
+            <Grid IsVisible="{Binding IsLoggedIn}">
+            <Grid.RowDefinitions >
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+              <Image Grid.Row="0"  Aspect="AspectFill" Source="valvolaOMAL.png" Opacity="0.3" />
+                 <CControls:CualevaRoundedEntry Grid.Row="0" Margin="30" BorderRadius="25" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#60A5D1"  LeftPadding="10"  TextColor="White"  BackgroundColor="Transparent"  Placeholder="{Binding ClienteRicercato}" Text="{Binding SearchText}"  />   
+                <ListView Grid.Row="1" SelectedItem="{Binding ClienteSelected}" IsVisible="{Binding IsLoggedIn}" IsGroupingEnabled="true" ItemsSource="{Binding Clienti}" GroupShortNameBinding="{Binding TitoloCorto}" GroupDisplayBinding="{Binding Titolo}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding RagioneSociale}" Detail="{Binding CittaProvinciaNazione}" />
@@ -25,7 +39,10 @@
                     <Label Margin="10" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroContatti}"  />
                 </ListView.Footer>
             </ListView>
+            </Grid>
 
-        </StackLayout>
+                
+            
+  </RelativeLayout>
 	</ContentPage.Content>
 </ContentPage>

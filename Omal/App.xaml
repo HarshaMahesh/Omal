@@ -28,6 +28,7 @@
             </Style>
             <Style TargetType="Picker" ApplyToDerivedTypes="true">
                 <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                <Setter Property="HeightRequest" Value="45" />
             </Style>
             <Style x:Key="Titolo" TargetType="Label">
                 <Setter Property="TextColor" Value="#004899" />
@@ -53,6 +54,12 @@
                 <Setter Property="FontFamily" Value="Montserrat-Medium" />
                 <Setter Property="BackgroundColor" Value="#60A5D1" />
             </Style>
+            <Style TargetType="CControls:CualevaPicker">
+                <Setter Property="Image" Value="ic_arrow_drop_down" />
+                <Setter Property="HeightRequest" Value="45" />
+            </Style>
+
+            
             <Style  TargetType="Button">
                 <Setter Property="BorderWidth" Value="0" />
                 <Setter Property="TextColor" Value="#60A5D1" />

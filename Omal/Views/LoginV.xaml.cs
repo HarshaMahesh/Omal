@@ -15,6 +15,7 @@ namespace Omal.Views
             InitializeComponent();
             BindingContext = viewModel = new ViewModels.LoginVM();
             viewModel.Navigation = Navigation;
+            NavigationPage.SetBackButtonTitle(this, "");
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Omal.Views
             BindingContext = viewModel = new ViewModels.AnagraficaClientiDetailVM();
             viewModel.CurPage = this;
             viewModel.Navigation = Navigation;
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
         public AnagraficaClientiDetailV(Models.Cliente curCliente):this()

@@ -12,6 +12,7 @@ namespace Omal.Views
         public AnagraficaClientiEditDetailV()
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
         public AnagraficaClientiEditDetailV(Models.Cliente curCliente):this()

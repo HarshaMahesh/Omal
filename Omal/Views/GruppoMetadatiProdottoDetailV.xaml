@@ -5,11 +5,16 @@
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
         <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <StackLayout BackgroundColor="#EAEAEA">
+                    <Label Margin="5" Style="{StaticResource Titolo}" FontSize="20" Text="{Binding CurProdotto.nome}"  HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
+                </StackLayout>
             <WebView VerticalOptions="FillAndExpand" Navigating="Handle_Navigating" >
-            <WebView.Source>
-                <HtmlWebViewSource Html="{Binding ContentHtml}" />
-            </WebView.Source>
+                <WebView.Source>
+                    <HtmlWebViewSource Html="{Binding ContentHtml}" />
+                </WebView.Source>
             </WebView>
+            </StackLayout>
         </ScrollView>
 	</ContentPage.Content>
 </ContentPage>

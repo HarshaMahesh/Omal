@@ -23,6 +23,7 @@ namespace Omal.Views
                     CrossShare.Current.OpenBrowser("http://www.omal.it");
                 })
             });
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
         protected override bool OnBackButtonPressed()

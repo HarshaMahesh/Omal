@@ -15,6 +15,8 @@ namespace Omal.Views
             BindingContext = viewModel = new ViewModels.BasketVM();
             viewModel.CurPage = this;
             viewModel.Navigation = Navigation;
+            NavigationPage.SetBackButtonTitle(this, "");
+
         }
     }
 }

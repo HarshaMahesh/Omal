@@ -15,6 +15,7 @@ namespace Omal.Views
             BindingContext = viewModel = new ViewModels.ProductSearchResultVM();
             viewModel.Navigation = Navigation;
             viewModel.CurPage = this;
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
         public ProductsSearchResutlV(int idCategoria):this()

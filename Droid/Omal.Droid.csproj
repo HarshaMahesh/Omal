@@ -203,6 +203,7 @@
     <Compile Include="CustomControls\HtmlFormattedLabelRenderer.cs" />
     <Compile Include="CustomControls\CualevaRoundedEntryRenderAndroid.cs" />
     <Compile Include="CustomControls\BorderRender.cs" />
+    <Compile Include="CustomControls\CualevaPickerRenderAndroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -222,6 +223,7 @@
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\valvolaOMAL.png" />
+    <AndroidResource Include="Resources\drawable\ic_arrow_drop_down.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomControls\" />
