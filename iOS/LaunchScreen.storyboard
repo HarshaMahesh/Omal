@@ -25,6 +25,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinX="YES" flexibleMaxY="YES" flexibleMinY="YES"/>
                                 <rect key="contentStretch" x="0.0" y="0" width="1" height="1"/>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="395" fixedFrame="YES">
+                                <rect key="frame" x="664" y="790" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" colorSpace="calibratedRGB" red="0.30980392156862746" green="0.57647058823529407" blue="0.77647058823529413" alpha="1"/>
                     </view>
@@ -41,5 +45,21 @@
         <image name="Impostazioni.png" width="32" height="30"/>
         <image name="Omal.png" width="32" height="30"/>
         <image name="Ordini.png" width="32" height="30"/>
+        <image name="valvolaOMAL.png" width="1638" height="1229"/>
+        <image name="ic_arrow_drop_down.png" width="32" height="32"/>
+        <image name="omalc1.png" width="1250" height="1250"/>
+        <image name="omalc2.png" width="1251" height="1250"/>
+        <image name="omalc3.png" width="1251" height="1250"/>
+        <image name="omalc4.png" width="1250" height="1250"/>
+        <image name="omalc5.png" width="1251" height="1250"/>
+        <image name="omalc6.png" width="1250" height="1251"/>
+        <image name="omalc7.png" width="1251" height="1251"/>
+        <image name="omalc8.png" width="1251" height="1251"/>
+        <image name="omalc9.png" width="1250" height="1251"/>
+        <image name="omalc10.png" width="1251" height="1251"/>
+        <image name="omalc11.png" width="1250" height="1251"/>
+        <image name="omalc12.png" width="1251" height="1251"/>
+        <image name="omalc13.png" width="1251" height="1251"/>
+        <image name="omalc14.png" width="1250" height="1251"/>
     </resources>
 </document>

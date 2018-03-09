@@ -9,35 +9,35 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Margin="5">
         <Label IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding LogonRichiesto}" />
-        <ListView VerticalOptions="FillAndExpand" IsVisible="{Binding IsLoggedIn}" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem,Mode=TwoWay}">
-        <ListView.RowHeight>
-                <OnPlatform x:TypeArguments="x:Int32">
-                    <On Platform="iOS">150</On>
-                    <On Platform="Android">170</On>
-                </OnPlatform>
-                </ListView.RowHeight>
+        <ListView  VerticalOptions="FillAndExpand" IsVisible="{Binding IsLoggedIn}" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem,Mode=TwoWay}">
         <ListView.Header>
             <StackLayout BackgroundColor="#EAEAEA">
                 <Grid Margin="10">
                             <Grid.ColumnDefinitions >
-                                <ColumnDefinition Width="130"/>
-                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="5" />
                                 <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="75" />
-                                <ColumnDefinition Width="10" />
-                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                        
-                    <CControls:CualevaPicker Grid.ColumnSpan="6" Grid.Row="0" Title="{Binding Cliente}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding RagioneSociale}" SelectedItem="{Binding SelectedCliente}" ItemsSource="{Binding Clienti}"  />
-                    <Entry HorizontalTextAlignment="End"  Grid.Row="1" WidthRequest="70" HeightRequest="40" Grid.ColumnSpan="6" HorizontalOptions="Fill" BackgroundColor="White" Placeholder="{Binding Note}"  Text="{Binding NoteOrdine}" />              
-                    <Label Grid.Row="2" Grid.ColumnSpan="6" Margin="10" HorizontalOptions="StartAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroCarrelli}"  />
+                        <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                    <CControls:CualevaPicker Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="0" Title="{Binding Cliente}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding RagioneSociale}" SelectedItem="{Binding SelectedCliente}" ItemsSource="{Binding Clienti}"  />
+                    <Entry FontSize="10" Grid.Column="0" TextColor="Black" Grid.Row="1" HeightRequest="40" Grid.ColumnSpan="6" HorizontalOptions="Fill" BackgroundColor="White" Placeholder="{Binding Note}"  Text="{Binding NoteOrdine}" />              
+                    <Label VerticalOptions="Center" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="6" Margin="10" HorizontalOptions="StartAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroCarrelli}"  />
                     <Label FontSize="14" Grid.Row="3" Grid.Column="0" VerticalOptions="Center" Style="{StaticResource Titolo}"  Text="{Binding StrTotaleOrdine}"  TextColor="#004899" />    
                     <Label Grid.Row="3" Grid.Column="2" VerticalOptions="Center" Style="{StaticResource Descrizione}"  Text="{Binding StrSconto}"  />    
-                    <Entry HorizontalTextAlignment="End"  HeightRequest="40" Grid.Row="3" Grid.Column="3" Text="" BackgroundColor="White" WidthRequest="70" />            
-                    <Label FontSize="14" Grid.Row="3" Grid.Column="5"  VerticalOptions="Center" Text="{Binding TotaleOrdine, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" FontAttributes="Bold"  />
+                    <Entry TextColor="Black"  HeightRequest="40" Grid.Row="3" Grid.Column="3" Text="" BackgroundColor="White" WidthRequest="70" />            
+                    <Label  FontSize="14" Grid.Row="3" Grid.Column="5"  VerticalOptions="Center" Text="{Binding TotaleOrdine, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
 
-                    <Label FontSize="14" Grid.Row="4" Grid.Column="0" VerticalOptions="Center" Style="{StaticResource Titolo}"  Text="{Binding StrTotaleOrdineSconto}"  TextColor="#004899" />            
-                    <Label FontSize="14" Grid.Row="4" Grid.Column="5"  VerticalOptions="Center" Text="{Binding TotaleOrdine, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" FontAttributes="Bold"  />
+                    <Label Margin="0,0,30,0" FontSize="14" Grid.Row="4" Grid.Column="0" VerticalOptions="Center" Style="{StaticResource Titolo}"  Text="{Binding StrTotaleOrdineSconto}"  TextColor="#004899" />            
+                    <Label Margin="0,0,30,0" FontSize="14" Grid.Row="4" Grid.Column="5"  VerticalOptions="Center" Style="{StaticResource Titolo}" Text="{Binding TotaleOrdine, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand"  />
                 
                 <StackLayout Grid.Row="5" Grid.ColumnSpan="6" Orientation="Horizontal" HorizontalOptions="Center">
                     <Button  Text="Salva" Command="{Binding SalvaCommand}" Style="{StaticResource Azzurro}" /> 
@@ -52,27 +52,27 @@
             <DataTemplate>
                  <ViewCell>
                     <Grid Margin="10" BackgroundColor="White">
-                        <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="130"/>
-                                <ColumnDefinition Width="10" />
+                        <Grid.ColumnDefinitions >
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="5" />
                                 <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="75" />
-                                <ColumnDefinition Width="10" />
-                                <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+                            </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="30" />
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0" Grid.ColumnSpan="6" Text="{Binding CodiceArticolo}" HorizontalTextAlignment="Start" Style="{StaticResource Descrizione}" />
-                        <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0" >
+                        <StackLayout Grid.Row="1" Orientation="Horizontal"  Grid.Column="0" Grid.ColumnSpan="1" BackgroundColor="Black" >
                             <Label Text="QTA"  VerticalOptions="Center" Style="{StaticResource Descrizione}" />
-                            <Entry HorizontalTextAlignment="End"  WidthRequest="70" HeightRequest="40" TextColor="#004899" BackgroundColor="#EAEAEA"  Keyboard="Numeric"   VerticalOptions="Center" HorizontalOptions="Start" Placeholder="{Binding StrQta}" Text="{Binding Qta}"/>
+                            <Entry WidthRequest="70" HeightRequest="40" TextColor="#004899" BackgroundColor="#EAEAEA"  Keyboard="Numeric"   VerticalOptions="Center" HorizontalOptions="Start" Placeholder="{Binding StrQta}" Text="{Binding Qta}"/>
                         </StackLayout>
                         <Label Grid.Row="1" Grid.Column="2" Text="Sconto"  Style="{StaticResource Descrizione}" VerticalOptions="Center" HorizontalTextAlignment="Start"/>
-                        <Entry HorizontalTextAlignment="End"  WidthRequest="70" Grid.Column="3"  HeightRequest="40" Grid.Row="1" VerticalOptions="Center"   Placeholder="{Binding StrSconto}" Text="{Binding Sconto}" TextColor="#004899" BackgroundColor="#EAEAEA" Keyboard="Numeric"  MinimumWidthRequest="100" />
-                        <Label FontSize="14" Grid.Row="1" Grid.Column="5"  VerticalOptions="Center" Text="{Binding PrezzoUnitario, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" FontAttributes="Bold"  />
+                        <Entry Grid.Column="3"  HorizontalTextAlignment="End"  WidthRequest="70"  HeightRequest="40" Grid.Row="1" VerticalOptions="Center"   Placeholder="{Binding StrSconto}" Text="{Binding Sconto}" TextColor="#004899" BackgroundColor="#EAEAEA" Keyboard="Numeric"  MinimumWidthRequest="100" />
+                        <Label Grid.Column="4" FontSize="14" Grid.Row="1"   VerticalOptions="Center" Text="{Binding PrezzoUnitario, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" FontAttributes="Bold"  />
                         <Label FontSize="11" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="CenterAndExpand"  VerticalOptions="Center" Text="{Binding PrezzoTotaleStr}" />            
 
                     </Grid>

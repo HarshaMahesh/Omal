@@ -7,8 +7,7 @@
     Title="{Binding TitoloImpostazioni, Converter={StaticResource UpperCaseConverter}}"
     x:Class="Omal.Views.ConfigurationV" BackgroundColor="White">
     <ContentPage.ToolbarItems>
-        <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
-        <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn}" Text="{Binding Aggiungi}" Command="{Binding AddNewCommand}" />
+        <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
     <StackLayout Margin="5">

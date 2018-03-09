@@ -19,7 +19,7 @@
                 <ColumnDefinition Width="120" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-        <Image VerticalOptions="StartAndExpand" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="Center"  HeightRequest="90" BackgroundColor="#60A5D1" Source="LogoOmal" Margin="10"  />
+        <Image VerticalOptions="StartAndExpand" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="Center"  HeightRequest="90"  Source="LogoOmal" Margin="10"  />
             <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Fill" Orientation="Vertical" HorizontalOptions="Fill">
                 <Button HorizontalOptions="Fill" Text="VERSIONE ITALIANA" Clicked="Handle_Clicked_IT" />
                 <Button HorizontalOptions="Fill" Text="ENGLISH VERSION"  Clicked="Handle_Clicked_EN" />

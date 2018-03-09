@@ -35,7 +35,39 @@ namespace PickerWithIcon.iOS
                     imageView.AddSubview(downarrow);
                     Control.RightView = imageView;
                 }
+                SetFont();
             }
+
+            protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+            {
+                base.OnElementPropertyChanged(sender, e);
+                if (this.Element == null)
+                    return;
+                if ((e.PropertyName == CualevaPicker.FontFamilyProperty.PropertyName) ||
+                    (e.PropertyName == CualevaPicker.FontSizeProperty.PropertyName))
+                {
+                    SetFont();
+                }
+            }
+
+            private void SetFont()
+            {
+                
+                var view = this.Element as CualevaPicker;
+                var fontSize = Font.Default.FontSize;
+                if (view.FontSize != 0)
+                    fontSize = view.FontSize;
+                    
+                if (!string.IsNullOrWhiteSpace(view.FontFamily))
+                {
+                    UIFont uiFont;
+                    uiFont = UIFont.FromName(view.FontFamily, (nfloat)fontSize);
+                    Control.Font = uiFont;
+                }
+
+            }
+
+
         }
 
 

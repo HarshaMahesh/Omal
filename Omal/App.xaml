@@ -75,6 +75,10 @@
             <Style TargetType="CControls:CualevaPicker">
                 <Setter Property="Image" Value="omalc14" />
                 <Setter Property="HeightRequest" Value="45" />
+                <Setter Property="FontFamily" Value="Montserrat-Medium" />
+               
+
+                
             </Style>
 
             
