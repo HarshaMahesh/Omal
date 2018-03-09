@@ -30,6 +30,7 @@ namespace Omal.iOS.CustomControls
             UpdateBorderRadius();
             UpdateLeftPadding();
             UpdateRightPadding();
+            UpdateImage();
             SetFont();
             Control.ClipsToBounds = true;
             ResizeHeight();
@@ -64,10 +65,14 @@ namespace Omal.iOS.CustomControls
             else if (e.PropertyName == CualevaRoundedEntry.FontProperty.PropertyName)
             {
                 SetFont();
-            } else  if (e.PropertyName == CualevaRoundedEntry.CualevaRoundedEntryBackgroundColorProperty.PropertyName)
+            }
+            else if (e.PropertyName == CualevaRoundedEntry.CualevaRoundedEntryBackgroundColorProperty.PropertyName)
             {
                 UpdateCualevaRoundedEntryBackgroundColor();
-            } 
+            }
+            else if (e.PropertyName == CualevaRoundedEntry.ImageProperty.PropertyName)
+                UpdateImage();
+                
                 
         }
 
@@ -110,6 +115,23 @@ namespace Omal.iOS.CustomControls
             Control.Layer.BackgroundColor = entryEx.CualevaRoundedEntryBackgroundColor.ToCGColor();
         }
 
+        private void UpdateImage()
+        {
+            var entryEx = this.Element as CualevaRoundedEntry;
+            if (string.IsNullOrWhiteSpace(entryEx.Image)) return;
+            var locImage = UIImage.FromBundle(entryEx.Image);
+            var downarrow = new UIImageView(locImage)
+            {
+                // Indent it 10 pixels from the left.
+                Frame = new RectangleF((entryEx.BorderRadius  /2)-10, 0, 40, 40 )
+            };
+            Control.LeftViewMode = UITextFieldViewMode.Always;
+            var imageView = new UIView(new CGRect(0, 0, 40, 40));
+            imageView.AddSubview(downarrow);
+            Control.LeftView = imageView;
+
+        }
+
 
         private void UpdateBorderWidth()
         {
@@ -132,7 +154,18 @@ namespace Omal.iOS.CustomControls
         private void UpdateLeftPadding()
         {
             var entryEx = this.Element as CualevaRoundedEntry;
-            var leftPaddingView = new UIView(new CGRect(0, 0, entryEx.LeftPadding, 0));
+            var daSommare = 0;
+            if (entryEx.BorderRadius > 0)
+            {
+                daSommare =(int) entryEx.BorderRadius;
+            }
+            if (!string.IsNullOrWhiteSpace(entryEx.Image))
+            {
+                var locImage = UIImage.FromBundle(entryEx.Image);
+                daSommare += (int)locImage.CGImage.Width;
+
+            }
+            var leftPaddingView = new UIView(new CGRect(0, 0, entryEx.LeftPadding + daSommare, 0));
             Control.LeftView = leftPaddingView;
             Control.LeftViewMode = UITextFieldViewMode.Always;
         }

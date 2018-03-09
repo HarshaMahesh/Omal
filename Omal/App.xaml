@@ -54,8 +54,26 @@
                 <Setter Property="FontFamily" Value="Montserrat-Medium" />
                 <Setter Property="BackgroundColor" Value="#60A5D1" />
             </Style>
+            <Style x:Key="cerca" TargetType="CControls:CualevaRoundedEntry">
+                <Setter Property="TextColor" Value="#FFFFFF" />
+                <Setter Property="FontFamily" Value="Montserrat-Medium" />
+                <Setter Property="Image" Value="omalc2" />
+            </Style>
+            <Style x:Key="email" TargetType="CControls:CualevaRoundedEntry">
+                <Setter Property="FontFamily" Value="Montserrat-Medium" />
+                <Setter Property="Image" Value="omalc12" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="#FFFFFF" />
+            </Style>
+            <Style x:Key="psw" TargetType="CControls:CualevaRoundedEntry">                
+               <Setter Property="FontFamily" Value="Montserrat-Medium" />
+                <Setter Property="Image" Value="omalc13" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="#FFFFFF" />
+            </Style>
+            
             <Style TargetType="CControls:CualevaPicker">
-                <Setter Property="Image" Value="ic_arrow_drop_down" />
+                <Setter Property="Image" Value="omalc14" />
                 <Setter Property="HeightRequest" Value="45" />
             </Style>
 

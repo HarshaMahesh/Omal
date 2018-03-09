@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace Omal.Views
 {
-    public partial class WelcomeV : ContentPage
+    public partial class WelcomeV : CustomControls.CualevaGradientContentPage
     {
         void Handle_Clicked_EN(object sender, System.EventArgs e)
         {
@@ -36,6 +36,8 @@ namespace Omal.Views
         public WelcomeV()
         {
             InitializeComponent();
+            StartColor = Color.FromHex("#005FAA");
+            EndColor = Color.FromHex("#7FBADE");
             NavigationPage.SetBackButtonTitle(this, "");
         }
 

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage BackgroundColor="#60A5D1" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.WelcomeV">
+<CControls:CualevaGradientContentPage
+    xmlns:CControls="clr-namespace:Omal.CustomControls" 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Omal.Views.WelcomeV">
 	<ContentPage.Content>
         <Grid VerticalOptions="EndAndExpand">
         <Grid.RowDefinitions>
@@ -22,6 +26,5 @@
             </StackLayout>
             <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="End" FontFamily="Montserrat-Regular" FontSize="10" TextColor="White" HorizontalOptions="Center" Text="2018 Omal" />
         </Grid>
-
 	</ContentPage.Content>
-</ContentPage>
+</CControls:CualevaGradientContentPage>

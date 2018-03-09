@@ -204,6 +204,7 @@
     <Compile Include="CustomControls\CualevaRoundedEntryRenderAndroid.cs" />
     <Compile Include="CustomControls\BorderRender.cs" />
     <Compile Include="CustomControls\CualevaPickerRenderAndroid.cs" />
+    <Compile Include="CustomControls\CualevaGradientContentPageRenderAndroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -224,6 +225,20 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\valvolaOMAL.png" />
     <AndroidResource Include="Resources\drawable\ic_arrow_drop_down.png" />
+    <AndroidResource Include="Resources\drawable\omalc1.png" />
+    <AndroidResource Include="Resources\drawable\omalc3.png" />
+    <AndroidResource Include="Resources\drawable\omalc4.png" />
+    <AndroidResource Include="Resources\drawable\omalc5.png" />
+    <AndroidResource Include="Resources\drawable\omalc6.png" />
+    <AndroidResource Include="Resources\drawable\omalc7.png" />
+    <AndroidResource Include="Resources\drawable\omalc8.png" />
+    <AndroidResource Include="Resources\drawable\omalc9.png" />
+    <AndroidResource Include="Resources\drawable\omalc10.png" />
+    <AndroidResource Include="Resources\drawable\omalc11.png" />
+    <AndroidResource Include="Resources\drawable\omalc14.png" />
+    <AndroidResource Include="Resources\drawable\omalc2.png" />
+    <AndroidResource Include="Resources\drawable\omalc12.png" />
+    <AndroidResource Include="Resources\drawable\omalc13.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomControls\" />

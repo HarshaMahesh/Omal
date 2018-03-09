@@ -200,6 +200,20 @@
     <BundleResource Include="Resources\Ordini.png" />
     <BundleResource Include="Resources\valvolaOMAL.png" />
     <BundleResource Include="Resources\ic_arrow_drop_down.png" />
+    <BundleResource Include="Resources\omalc1.png" />
+    <BundleResource Include="Resources\omalc2.png" />
+    <BundleResource Include="Resources\omalc3.png" />
+    <BundleResource Include="Resources\omalc4.png" />
+    <BundleResource Include="Resources\omalc5.png" />
+    <BundleResource Include="Resources\omalc6.png" />
+    <BundleResource Include="Resources\omalc7.png" />
+    <BundleResource Include="Resources\omalc8.png" />
+    <BundleResource Include="Resources\omalc9.png" />
+    <BundleResource Include="Resources\omalc10.png" />
+    <BundleResource Include="Resources\omalc11.png" />
+    <BundleResource Include="Resources\omalc12.png" />
+    <BundleResource Include="Resources\omalc13.png" />
+    <BundleResource Include="Resources\omalc14.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />
@@ -208,6 +222,7 @@
     <Compile Include="Persistence\SqLiteDb.cs" />
     <Compile Include="CustomControls\HtmlFormattedLabelRender.cs" />
     <Compile Include="CustomControls\CualevaPickerRenderIOS.cs" />
+    <Compile Include="CustomControls\CualevaGradientContentPageRenderIOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

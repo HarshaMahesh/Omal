@@ -19,9 +19,11 @@
             RelativeLayout.HeightConstraint=
               "{ConstraintExpression Type=RelativeToParent, Property=Height}">
           <StackLayout VerticalOptions="Center" Padding="6" Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
-             
-            <CControls:CualevaRoundedEntry LeftPadding="10" Margin="5" BorderRadius="25" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#FFFFFF"   Style="{StaticResource WhiteEntry}" x:Name="UserName"  Placeholder="Indirizzo Email" Text="{Binding Email}" />
-            <CControls:CualevaRoundedEntry LeftPadding="10" Margin="5" BorderRadius="25" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#FFFFFF" Style="{StaticResource WhiteEntry}"  x:Name="Password" Placeholder="Password" IsPassword="true" Text="{Binding Password}" />
+             <CControls:CualevaRoundedEntry Style="{StaticResource email}" LeftPadding="10" Margin="5" BorderRadius="25" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#FFFFFF"  x:Name="UserName"  Placeholder="Indirizzo Email" Text="{Binding Email}" />
+            <CControls:CualevaRoundedEntry 
+                    Style="{StaticResource psw}"
+                    LeftPadding="10" Margin="5" BorderRadius="25" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#FFFFFF"   x:Name="Password" 
+                    Placeholder="Password" IsPassword="true" Text="{Binding Password}" />
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Button x:Name="LoginBtn" Style="{StaticResource Azzurro}"  Text="{Binding LoginButton, Converter={StaticResource UpperCaseConverter}}" Command="{Binding LoginCommand}" />
             </StackLayout>

@@ -11,6 +11,13 @@ namespace Omal.CustomControls
 
         #region Properties
 
+        public static readonly BindableProperty ImageProperty = BindableProperty.Create(nameof(Image), typeof(string), typeof(CualevaPicker), string.Empty);
+
+        public string Image
+        {
+            get { return (string)GetValue(ImageProperty); }
+            set { SetValue(ImageProperty, value); }
+        }
 
         public static BindableProperty FontProperty = BindableProperty.Create<CualevaRoundedEntry, Font>(o => o.Font, Font.Default);
         public Font Font

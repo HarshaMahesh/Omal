@@ -13,22 +13,26 @@
 	<ContentPage.Content>
     <StackLayout Margin="5">
             <ActivityIndicator IsRunning="{Binding IsRunning}" />
-            <Label Text="{Binding TitoloAggiornaCatalogo, Converter={StaticResource UpperCaseConverter}}" Style="{StaticResource Titolo}" />
             <Grid BackgroundColor="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-                <Label Text="{Binding LastUpdate}" Grid.Column="0" VerticalOptions="Center"  HorizontalOptions="EndAndExpand"/>
-                <Button Style="{StaticResource Azzurro}" Grid.Column="1" IsVisible="{Binding IsRunning, {Converter InverseBooleanConverter}" Command="{Binding UpdateDbCommand}" HorizontalOptions="EndAndExpand" Text="{Binding Aggiorna, Converter={StaticResource UpperCaseConverter}}" />
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="{Binding TitoloAggiornaCatalogo, Converter={StaticResource UpperCaseConverter}}" Style="{StaticResource Titolo}" />
+                <Label Grid.Row="1"  Text="{Binding LastUpdate}" Grid.Column="0" VerticalOptions="Center"  HorizontalOptions="EndAndExpand"/>
+                <Button Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Center" Style="{StaticResource Azzurro}" Grid.Column="1" IsVisible="{Binding IsRunning, {Converter InverseBooleanConverter}" Command="{Binding UpdateDbCommand}" HorizontalOptions="EndAndExpand" Text="{Binding Aggiorna, Converter={StaticResource UpperCaseConverter}}" />
             </Grid>
-            <TableView Intent="Settings">
+<TableView Intent="Settings">
     <TableRoot>
         <TableSection>
             <ViewCell Tapped="Handle_Tapped">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="{Binding StrLingua, Converter={StaticResource UpperCaseConverter}}" Margin="5" Style="{StaticResource Titolo}"  VerticalOptions="Center" />
-                    <Label Text="{Binding CurLang}" Margin="5" HorizontalOptions="EndAndExpand" VerticalOptions="Center"  />
+                    <Label Text="{Binding CurLang}" Margin="5" HorizontalOptions="EndAndExpand" VerticalOptions="Center"   />
                 </StackLayout>
             </ViewCell>
         </TableSection>

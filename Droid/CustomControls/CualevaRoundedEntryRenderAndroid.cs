@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using Android.Graphics;
 using Android.Graphics.Drawables;
+using Android.Support.V4.Content;
 using Android.Views;
 using Omal.CustomControls;
 using Omal.Droid.CustomControls;
@@ -44,7 +47,8 @@ namespace Omal.Droid.CustomControls
                 e.PropertyName == CualevaRoundedEntry.BorderColorProperty.PropertyName ||
                 e.PropertyName == CualevaRoundedEntry.BorderRadiusProperty.PropertyName ||
                 e.PropertyName == CualevaRoundedEntry.BackgroundColorProperty.PropertyName ||
-                e.PropertyName == CualevaRoundedEntry.CualevaRoundedEntryBackgroundColorProperty.PropertyName 
+                e.PropertyName == CualevaRoundedEntry.CualevaRoundedEntryBackgroundColorProperty.PropertyName ||
+                e.PropertyName == CualevaRoundedEntry.ImageProperty.PropertyName
                )
             {
                 UpdateBackground(entryEx);
@@ -57,7 +61,7 @@ namespace Omal.Droid.CustomControls
             else if (e.PropertyName == Entry.HorizontalTextAlignmentProperty.PropertyName)
             {
                 UpdateTextAlighnment(entryEx);
-            }
+            } 
         }
 
         protected override void Dispose(bool disposing)
@@ -79,28 +83,78 @@ namespace Omal.Droid.CustomControls
 
         private void UpdateBackground(CualevaRoundedEntry entryEx)
         {
-         /*   if (_renderer != null)
-            {
-                _renderer.Dispose();
-                _renderer = null;
-            }
-            _renderer = new BorderRenderer();
-            Control.Background = _renderer.GetBorderBackground(entryEx.BorderColor, entryEx.BackgroundColor, entryEx.BorderWidth, entryEx.BorderRadius);
-*/
+    
             var gradientDrawable = new GradientDrawable();
             gradientDrawable.SetCornerRadius(entryEx.BorderRadius);
             gradientDrawable.SetStroke((int)entryEx.BorderWidth, entryEx.BorderColor.ToAndroid());
             gradientDrawable.SetColor(entryEx.CualevaRoundedEntryBackgroundColor.ToAndroid());
-            Control.SetBackground(gradientDrawable);
+
+            if (!string.IsNullOrWhiteSpace(entryEx.Image))
+            {
+                List<Drawable> layers = new List<Drawable>();
+                layers.Add(gradientDrawable);
+                var ly = GetDrawable(entryEx.Image, entryEx.BorderRadius);
+                if (ly != null)
+                    layers.Add(ly);
+                LayerDrawable layerDrawable = new LayerDrawable(layers.ToArray());
+                layerDrawable.SetLayerInset(0, 0, 0, 0, 0);
+                Control.SetBackground(layerDrawable);
+            } else
+                Control.SetBackground(gradientDrawable);
+        }
+
+       
+
+        private BitmapDrawable GetDrawable(string imagePath, double borderRadius)
+        {
+            BitmapDrawable result=null;
+            int resID = Resources.GetIdentifier(imagePath, "drawable", this.Context.PackageName);
+            try
+            {
+                var drawable = ContextCompat.GetDrawable(this.Context, resID);
+                var bitmap = ((BitmapDrawable)drawable).Bitmap;
+
+                result = new BitmapDrawable(Resources, padBitmap(Bitmap.CreateScaledBitmap(bitmap, 70, 70, true), borderRadius));
+                result.Gravity = Android.Views.GravityFlags.Left;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                // eccezione silente
+            }
+            return result;
+        }
+
+        public  Bitmap padBitmap(Bitmap bitmap, double borderRadius)
+        {
+            int paddingX = Convert.ToInt32(borderRadius);
+            int paddingY=0;
 
 
-        
+            Bitmap paddedBitmap = Bitmap.CreateBitmap(
+                bitmap.Width + paddingX,
+                bitmap.Height + paddingY,Bitmap.Config.Argb8888);
 
+            Canvas canvas = new Canvas(paddedBitmap);
+            canvas.DrawColor(Android.Graphics.Color.Transparent);
+            canvas.DrawBitmap(
+                bitmap,
+                paddingX / 2,
+                paddingY / 2, new Paint(PaintFlags.FilterBitmap));
+
+            return paddedBitmap;
         }
 
         private void UpdatePadding(CualevaRoundedEntry entryEx)
         {
-            Control.SetPadding((int)Forms.Context.ToPixels(entryEx.LeftPadding), 0,
+            int paddingToAdd = 0;
+            if (!string.IsNullOrWhiteSpace(entryEx.Image))
+            {
+                var image = GetDrawable(entryEx.Image, entryEx.BorderRadius);
+                if (image != null)
+                    paddingToAdd = 20;
+            }
+            Control.SetPadding((int)Forms.Context.ToPixels(entryEx.LeftPadding + paddingToAdd), 0,
                 (int)Forms.Context.ToPixels(entryEx.RightPadding), 0);
         }
 

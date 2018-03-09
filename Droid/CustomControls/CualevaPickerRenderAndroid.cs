@@ -19,7 +19,7 @@ using Xamarin.Forms.Platform.Android;
             {
                 base.OnElementChanged(e);
 
-            element = (CualevaPicker)this.Element;
+                element = (CualevaPicker)this.Element;
 
                 if (Control != null && this.Element != null && !string.IsNullOrEmpty(element.Image))
                     Control.Background = AddPickerStyles(element.Image);

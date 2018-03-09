@@ -28,7 +28,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
               <Image Grid.Row="0"  Aspect="AspectFill" Source="valvolaOMAL.png" Opacity="0.3" />
-                 <CControls:CualevaRoundedEntry Grid.Row="0" Margin="30" BorderRadius="25" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#60A5D1"  LeftPadding="10"  TextColor="White"  BackgroundColor="Transparent"  Placeholder="{Binding ClienteRicercato}" Text="{Binding SearchText}"  />   
+                 <CControls:CualevaRoundedEntry Style="{StaticResource cerca}" Grid.Row="0" Margin="30" BorderRadius="25" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#60A5D1"  LeftPadding="10"  TextColor="White"  BackgroundColor="Transparent"  Placeholder="{Binding ClienteRicercato}" Text="{Binding SearchText}"  />   
                 <ListView Grid.Row="1" SelectedItem="{Binding ClienteSelected}" IsVisible="{Binding IsLoggedIn}" IsGroupingEnabled="true" ItemsSource="{Binding Clienti}" GroupShortNameBinding="{Binding TitoloCorto}" GroupDisplayBinding="{Binding Titolo}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

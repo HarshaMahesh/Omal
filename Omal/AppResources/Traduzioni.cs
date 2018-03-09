@@ -11,7 +11,7 @@ namespace Omal.AppResources
 
         string defaultLang = "IT";
 
-        string GetCurvalueLang(Dictionary<string,string> elemento)
+        string GetCurvalueLang(Dictionary<string, string> elemento)
         {
             if (elemento == null) return string.Empty;
             if (elemento.ContainsKey(App.CurLang)) return elemento[App.CurLang];
@@ -21,7 +21,7 @@ namespace Omal.AppResources
 
 
         public string StrTrovaArticolo { get { return GetCurvalueLang(_StrTrovaArticolo); } }
-        public string LogonRichiesto { get  { return GetCurvalueLang(_LogonRichiesto); } }
+        public string LogonRichiesto { get { return GetCurvalueLang(_LogonRichiesto); } }
         public string Aggiungi { get { return GetCurvalueLang(_Aggiungi); } }
         public string ClienteRicercato { get { return GetCurvalueLang(_ClienteRicercato); } }
         public string ProdottoRicercato { get { return GetCurvalueLang(_ProdottoRicercato); } }
@@ -43,15 +43,17 @@ namespace Omal.AppResources
         public string TitoloArticoli { get { return GetCurvalueLang(_TitoloArticoli); } }
         public string TitoloAggiornaCatalogo { get { return GetCurvalueLang(_TitoloAggiornaCatalogo); } }
 
+
         public string Cliente { get { return GetCurvalueLang(_Cliente); } }
         public string Note { get { return GetCurvalueLang(_Note); } }
         public string StrTotaleOrdine { get { return GetCurvalueLang(_TotaleOrdine); } }
-        public string StrSconto { get { return GetCurvalueLang(_StrSconto); } }
+        public string StrTotaleScontato { get { return GetCurvalueLang(_StrTotaleScontato); } }
         public string StrQta { get { return GetCurvalueLang(_StrQta); } }
         public string LogonTesto { get { return GetCurvalueLang(_LogonTesto); } }
 
         public string StrRagioneSociale { get { return GetCurvalueLang(_StrRagioneSociale); } }
         public string StrPIva { get { return GetCurvalueLang(_StrPIva); } }
+        public string StrSconto { get { return GetCurvalueLang(_StrSconto); } }
         public string StrCFiscale { get { return GetCurvalueLang(_StrCFiscale); } }
         public string StrPosizione { get { return GetCurvalueLang(_StrPosizione); } }
         public string StrIndirizzo { get { return GetCurvalueLang(_StrIndirizzo); } }
@@ -64,6 +66,7 @@ namespace Omal.AppResources
         public string StrTelefono { get { return GetCurvalueLang(_StrTelefono); } }
         public string StrFax { get { return GetCurvalueLang(_StrFax); } }
 
+        public string StrTotaleOrdineSconto { get { return GetCurvalueLang(_StrTotaleOrdineSconto); }}
         public string StrInfoProdottoPicker1Valvola { get { return GetCurvalueLang(_StrInfoProdottoPicker1Valvola); } }
         public string StrInfoProdottoPicker2Valvola { get { return GetCurvalueLang(_StrInfoProdottoPicker2Valvola); } }
         public string StrInfoProdottoPicker3Valvola { get { return GetCurvalueLang(_StrInfoProdottoPicker3Valvola); } }
@@ -110,6 +113,13 @@ namespace Omal.AppResources
         public string StrVersioneInglese { get { return "English Version"; } }
 
        
+
+        Dictionary<string, string> _StrTotaleOrdineSconto = new Dictionary<string, string>
+        {
+            {"IT",  "Totale Scontato"},
+            {"EN",  "Totale Scontato"}
+        };
+
         Dictionary<string, string> _StrLingua = new Dictionary<string, string>
         {
             {"IT",  "Lingua"},
@@ -458,6 +468,14 @@ namespace Omal.AppResources
         {
             {"IT", "Qta"},
             {"EN", "Qty"}
+        };
+
+
+
+        Dictionary<string, string> _StrTotaleScontato = new Dictionary<string, string>
+        {
+            {"IT", "Totale Scontato"},
+            {"EN", "Totale Scontato"}
         };
 
         Dictionary<string, string> _TotaleOrdine = new Dictionary<string, string>

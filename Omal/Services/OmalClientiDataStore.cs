@@ -63,7 +63,7 @@ namespace Omal.Services
             if ((items.Count == 0 || forceRefresh) && CrossConnectivity.Current.IsConnected)
             {
                 var url = string.Format("{0}{1}?tabella=clienti", App.BackendUrl, "webservice.php");
-                if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.idtoken);
+                if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
                 var json = await client.GetStringAsync(url);
                 items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { data = new List<Models.Cliente>() }).data);
                 foreach (var item in items)
