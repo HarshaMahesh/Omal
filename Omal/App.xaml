@@ -52,7 +52,8 @@
             <Style TargetType="CControls:CualevaRoundedEntry">
                 <Setter Property="TextColor" Value="#FFFFFF" />
                 <Setter Property="FontFamily" Value="Montserrat-Medium" />
-                <Setter Property="BackgroundColor" Value="#60A5D1" />
+                <Setter Property="BorderRadius" Value="10" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
             </Style>
             <Style x:Key="cerca" TargetType="CControls:CualevaRoundedEntry">
                 <Setter Property="TextColor" Value="#FFFFFF" />
