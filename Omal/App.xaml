@@ -61,11 +61,13 @@
             </Style>
             <Style x:Key="email" TargetType="CControls:CualevaRoundedEntry">
                 <Setter Property="FontFamily" Value="Montserrat-Medium" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="Image" Value="omalc12" />
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="BackgroundColor" Value="#FFFFFF" />
             </Style>
-            <Style x:Key="psw" TargetType="CControls:CualevaRoundedEntry">                
+            <Style x:Key="psw" TargetType="CControls:CualevaRoundedEntry"> 
+               <Setter Property="BackgroundColor" Value="Transparent" />
                <Setter Property="FontFamily" Value="Montserrat-Medium" />
                 <Setter Property="Image" Value="omalc13" />
                 <Setter Property="TextColor" Value="Black" />
@@ -76,9 +78,10 @@
                 <Setter Property="Image" Value="omalc14" />
                 <Setter Property="HeightRequest" Value="45" />
                 <Setter Property="FontFamily" Value="Montserrat-Medium" />
-               
+                <Setter Property="BorderRadius" Value="10" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="CualevaRoundedEntryBackgroundColor" Value="White" />
 
-                
             </Style>
 
             

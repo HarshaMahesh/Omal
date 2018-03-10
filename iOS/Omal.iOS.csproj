@@ -214,6 +214,7 @@
     <BundleResource Include="Resources\omalc12.png" />
     <BundleResource Include="Resources\omalc13.png" />
     <BundleResource Include="Resources\omalc14.png" />
+    <BundleResource Include="Resources\rightarrow.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />

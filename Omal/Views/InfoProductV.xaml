@@ -6,7 +6,7 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
         <StackLayout BackgroundColor="#EAEAEA">
-            <Label Margin="5" Style="{StaticResource Titolo}" FontSize="20" Text="{Binding CurProdotto.nome}"  HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
+            <Label Margin="5" Style="{StaticResource Titolo}" FontSize="18" Text="{Binding CurProdotto.nome}"  HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
         </StackLayout>
             <ListView Margin="5" x:Name="CurGruppo" SelectedItem="{Binding CurGruppoProdotto}" ItemsSource="{Binding GruppoMetadati}">
                 <ListView.ItemTemplate>
@@ -14,7 +14,7 @@
                         <ViewCell>
                         <StackLayout Orientation="Horizontal">
                          <Label Text="{Binding gruppo_metadati_it, Converter={StaticResource UpperCaseConverter}}" Margin="5" Style="{StaticResource Titolo}"  VerticalOptions="Center" />
-                         <Label Text="->" Margin="5" HorizontalOptions="EndAndExpand" VerticalOptions="Center"  />
+                         <Image Source="right-arrow" Margin="5" HorizontalOptions="EndAndExpand" VerticalOptions="Center"  />
                         </StackLayout>
                             </ViewCell>
                     </DataTemplate>

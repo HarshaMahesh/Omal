@@ -152,7 +152,7 @@ namespace Omal.Droid.CustomControls
             {
                 var image = GetDrawable(entryEx.Image, entryEx.BorderRadius);
                 if (image != null)
-                    paddingToAdd = 20;
+                    paddingToAdd = 50;
             }
             Control.SetPadding((int)Forms.Context.ToPixels(entryEx.LeftPadding + paddingToAdd), 0,
                 (int)Forms.Context.ToPixels(entryEx.RightPadding), 0);

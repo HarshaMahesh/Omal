@@ -239,6 +239,7 @@
     <AndroidResource Include="Resources\drawable\omalc2.png" />
     <AndroidResource Include="Resources\drawable\omalc12.png" />
     <AndroidResource Include="Resources\drawable\omalc13.png" />
+    <AndroidResource Include="Resources\drawable\rightarrow.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomControls\" />

@@ -7,7 +7,7 @@
         <ScrollView>
             <StackLayout Orientation="Vertical">
                 <StackLayout BackgroundColor="#EAEAEA">
-                    <Label Margin="5" Style="{StaticResource Titolo}" FontSize="20" Text="{Binding CurProdotto.nome}"  HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
+                    <Label Margin="5" Style="{StaticResource Titolo}" FontSize="18" Text="{Binding CurProdotto.nome}"  HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
                 </StackLayout>
             <WebView Margin="-5" VerticalOptions="FillAndExpand" Navigating="Handle_Navigating" >
                 <WebView.Source>
