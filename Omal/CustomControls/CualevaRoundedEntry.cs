@@ -19,12 +19,7 @@ namespace Omal.CustomControls
             set { SetValue(ImageProperty, value); }
         }
 
-        public static BindableProperty FontProperty = BindableProperty.Create<CualevaRoundedEntry, Font>(o => o.Font, Font.Default);
-        public Font Font
-        {
-            get { return (Font)GetValue(FontProperty); }
-            set { SetValue(FontProperty, value); }
-        }
+
 
         public static BindableProperty BorderColorProperty = BindableProperty.Create<CualevaRoundedEntry, Color>(o => o.BorderColor, Color.Transparent);
 

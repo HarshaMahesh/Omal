@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Support.V4.Content;
+using Android.Util;
 using Android.Views;
 using Omal.CustomControls;
 using Omal.Droid.CustomControls;
@@ -152,10 +154,25 @@ namespace Omal.Droid.CustomControls
             {
                 var image = GetDrawable(entryEx.Image, entryEx.BorderRadius);
                 if (image != null)
-                    paddingToAdd = 50;
+                {
+                    var pixel = 70;
+                    paddingToAdd =(int) dpFromPx(Forms.Context, pixel);
+
+                }
+                    
             }
             Control.SetPadding((int)Forms.Context.ToPixels(entryEx.LeftPadding + paddingToAdd), 0,
                 (int)Forms.Context.ToPixels(entryEx.RightPadding), 0);
+        }
+
+        public static float pxFromDp(Context context, float dp)
+        {
+            return dp * context.Resources.DisplayMetrics.Density;
+        }
+
+        public static float dpFromPx(Context context, float px)
+        {
+            return px / context.Resources.DisplayMetrics.Density;
         }
 
         private void UpdateTextAlighnment(CualevaRoundedEntry entryEx)

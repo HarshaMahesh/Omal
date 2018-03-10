@@ -25,20 +25,72 @@ namespace Omal.Services
             client = new HttpClient();
         }
 
-        public async Task<bool> AddItemAsync(Models.Cliente item)
+        public async Task<Models.ResponseBase> AddItemAsync(Models.Cliente item)
         {
+            var url = string.Format("{0}{1}?tabella=clienti", App.BackendUrl, "webservicei.php");
+            if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
+            var formContent = new FormUrlEncodedContent(new[]
+           {
+                new KeyValuePair<string, string>("IDToken", App.CurToken.token),
+                new KeyValuePair<string, string>("RagioneSociale", item.RagioneSociale),
+                new KeyValuePair<string, string>("CognomeNome", item.CognomeNome),
+                new KeyValuePair<string, string>("CodiceFiscale", item.CodiceFiscale),
+                new KeyValuePair<string, string>("Piva", item.Piva),
+                new KeyValuePair<string, string>("Email", item.Email),
+                new KeyValuePair<string, string>("Telefono", item.Telefono),
+                new KeyValuePair<string, string>("Fax", item.Fax),
+                new KeyValuePair<string, string>("Indirizzo", item.Indirizzo),
+                new KeyValuePair<string, string>("Cap", item.Cap),
+                new KeyValuePair<string, string>("Citta", item.Citta),
+                new KeyValuePair<string, string>("Provincia", item.Provincia),
+                new KeyValuePair<string, string>("Nazione", item.Nazione),
+                new KeyValuePair<string, string>("societapersona", "societa"),
+            });
+            var response = await client.PostAsync(url, formContent);
+            var json = await response.Content.ReadAsStringAsync();
+            var jsonSerializerSettings = new JsonSerializerSettings();
+            jsonSerializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
+            var risposta = JsonConvert.DeserializeAnonymousType(json, new { data = new List<ResponseClienti>() }, jsonSerializerSettings).data.FirstOrDefault();
+            if (risposta.HasError == 0 && risposta.IDCliente.HasValue)
+                item.IDCliente = risposta.IDCliente.Value;
             items.Add(item);
-
-            return await Task.FromResult(true);
+            return await Task.FromResult(risposta);
         }
 
-        public async Task<bool> UpdateItemAsync(Models.Cliente item)
+        public async Task<Models.ResponseBase> UpdateItemAsync(Models.Cliente item)
         {
-            var _item = items.Where((Models.Cliente arg) => arg.IDCliente == item.IDCliente).FirstOrDefault();
-            items.Remove(_item);
-            items.Add(item);
-
-            return await Task.FromResult(true);
+            var url = string.Format("{0}{1}?tabella=clienti", App.BackendUrl, "webservicei.php");
+            if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
+            var formContent = new FormUrlEncodedContent(new[]
+           {
+                new KeyValuePair<string, string>("IDToken", App.CurToken.token),
+                new KeyValuePair<string, string>("IDCliente", item.IDCliente.ToString()),
+                new KeyValuePair<string, string>("RagioneSociale", item.RagioneSociale),
+                new KeyValuePair<string, string>("CognomeNome", item.CognomeNome),
+                new KeyValuePair<string, string>("CodiceFiscale", item.CodiceFiscale),
+                new KeyValuePair<string, string>("Piva", item.Piva),
+                new KeyValuePair<string, string>("Email", item.Email),
+                new KeyValuePair<string, string>("Telefono", item.Telefono),
+                new KeyValuePair<string, string>("Fax", item.Fax),
+                new KeyValuePair<string, string>("Indirizzo", item.Indirizzo),
+                new KeyValuePair<string, string>("Cap", item.Cap),
+                new KeyValuePair<string, string>("Citta", item.Citta),
+                new KeyValuePair<string, string>("Provincia", item.Provincia),
+                new KeyValuePair<string, string>("Nazione", item.Nazione),
+                new KeyValuePair<string, string>("societapersona", "societa"),
+            });
+            var response = await client.PostAsync(url, formContent);
+            var json = await response.Content.ReadAsStringAsync();
+            var jsonSerializerSettings = new JsonSerializerSettings();
+            jsonSerializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
+            var risposta = JsonConvert.DeserializeAnonymousType(json, new { data = new List<ResponseClienti>() }, jsonSerializerSettings).data.FirstOrDefault();
+            if (risposta.HasError ==0)
+            {
+                var _item = items.Where((Models.Cliente arg) => arg.IDCliente == item.IDCliente).FirstOrDefault();
+                items.Remove(_item);
+                items.Add(item);
+            }
+            return await Task.FromResult(risposta);
         }
 
         public async Task<bool> DeleteItemAsync(int id)

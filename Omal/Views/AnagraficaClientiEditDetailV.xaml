@@ -2,6 +2,7 @@
 <ContentPage Title="{Binding CurTitle}" xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Common="clr-namespace:Omal.Common"
+             xmlns:CControls="clr-namespace:Omal.CustomControls"
     x:Class="Omal.Views.AnagraficaClientiEditDetailV">
     <ContentPage.ToolbarItems>
         <Common:BindableToolbarItem IsVisible="{Binding IsInsert}" Text="Inserisci" Command="{Binding InsertCommand}" />
@@ -10,19 +11,19 @@
 	<ContentPage.Content>
         <ScrollView>
         <StackLayout Margin="5">
-        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.RagioneSociale}" Placeholder="{Binding StrRagioneSociale}"  />
-        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.PIva}" Placeholder="{Binding StrPIva}" />
-        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.CFiscale}" Placeholder="{Binding StrCFiscale}" />
+        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.RagioneSociale}" Placeholder="{Binding StrRagioneSociale}"  />
+        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.PIva}" Placeholder="{Binding StrPIva}" />
+        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.CFiscale}" Placeholder="{Binding StrCFiscale}" />
         <Label Style="{StaticResource Titolo}" Text="{Binding StrPosizione}" BackgroundColor="#EAEAEA" />
-        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Indirizzo}" Placeholder="{Binding StrIndirizzo}"/>
-        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Città}" Placeholder="{Binding StrCitta}"/>
-        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Cap}" Placeholder="{Binding StrCap}"/>
-        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Provincia}" Placeholder="{Binding StrProvincia}"/>
-        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Nazione}" Placeholder="{Binding StrNazione}"/>
+        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Indirizzo}" Placeholder="{Binding StrIndirizzo}"/>
+        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Città}" Placeholder="{Binding StrCitta}"/>
+        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Cap}" Placeholder="{Binding StrCap}"/>
+        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Provincia}" Placeholder="{Binding StrProvincia}"/>
+        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Nazione}" Placeholder="{Binding StrNazione}"/>
         <Label  Style="{StaticResource Titolo}" Text="{Binding StrContatti}" BackgroundColor="#EAEAEA" />
-        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Email}" Placeholder="{Binding StrEmail}"/>
-        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Telefono}" Placeholder="{Binding StrTelefono}"/>
-        <Entry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Fax}" Placeholder="{Binding StrFax}"/>
+        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Email}" Placeholder="{Binding StrEmail}"/>
+        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Telefono}" Placeholder="{Binding StrTelefono}"/>
+        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Fax}" Placeholder="{Binding StrFax}"/>
         </StackLayout>
             </ScrollView>
 	</ContentPage.Content>

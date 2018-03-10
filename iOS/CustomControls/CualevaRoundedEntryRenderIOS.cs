@@ -31,7 +31,7 @@ namespace Omal.iOS.CustomControls
             UpdateLeftPadding();
             UpdateRightPadding();
             UpdateImage();
-            SetFont();
+      //      SetFont();
             Control.ClipsToBounds = true;
             ResizeHeight();
             UpdateCualevaRoundedEntryBackgroundColor();
@@ -62,10 +62,7 @@ namespace Omal.iOS.CustomControls
             {
                 UpdateRightPadding();
             }
-            else if (e.PropertyName == CualevaRoundedEntry.FontProperty.PropertyName)
-            {
-                SetFont();
-            }
+
             else if (e.PropertyName == CualevaRoundedEntry.CualevaRoundedEntryBackgroundColorProperty.PropertyName)
             {
                 UpdateCualevaRoundedEntryBackgroundColor();
@@ -98,7 +95,7 @@ namespace Omal.iOS.CustomControls
             Element.HeightRequest = height;
         }
 
-        private void SetFont()
+     /*   private void SetFont()
         {
             var view = this.Element as CualevaRoundedEntry;
             UIFont uiFont;
@@ -107,7 +104,7 @@ namespace Omal.iOS.CustomControls
                 Control.Font = uiFont;
             else if (view.Font == Font.Default)
                 Control.Font = UIFont.SystemFontOfSize(17f);
-        }
+        }*/
 
         private void UpdateCualevaRoundedEntryBackgroundColor()
         {
@@ -129,7 +126,6 @@ namespace Omal.iOS.CustomControls
             var imageView = new UIView(new CGRect(0, 0, 40, 40));
             imageView.AddSubview(downarrow);
             Control.LeftView = imageView;
-
         }
 
 

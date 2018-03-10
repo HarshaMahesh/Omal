@@ -36,6 +36,10 @@ namespace PickerWithIcon.iOS
                     Control.RightView = imageView;
                 }
                 SetFont();
+                UpdateBorderWidth();
+                UpdateBorderColor();
+                UpdateBorderRadius();
+                UpdateCualevaRoundedEntryBackgroundColor();
             }
 
             protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -47,12 +51,49 @@ namespace PickerWithIcon.iOS
                     (e.PropertyName == CualevaPicker.FontSizeProperty.PropertyName))
                 {
                     SetFont();
+                } else if (e.PropertyName == CualevaPicker.CualevaRoundedEntryBackgroundColorProperty.PropertyName)
+                {
+                    UpdateCualevaRoundedEntryBackgroundColor();
+                }  if (e.PropertyName == CualevaPicker.BorderWidthProperty.PropertyName)
+                {
+                    UpdateBorderWidth();
                 }
+                else if (e.PropertyName == CualevaPicker.BorderColorProperty.PropertyName)
+                {
+                    UpdateBorderColor();
+                }
+                else if (e.PropertyName == CualevaPicker.BorderRadiusProperty.PropertyName)
+                {
+                    UpdateBorderRadius();
+                }
+            }
+
+            private void UpdateBorderWidth()
+            {
+                var entryEx = this.Element as CualevaPicker;
+                Control.Layer.BorderWidth = entryEx.BorderWidth;
+            }
+
+            private void UpdateBorderColor()
+            {
+                var entryEx = this.Element as CualevaPicker;
+                Control.Layer.BorderColor = entryEx.BorderColor.ToUIColor().CGColor;
+            }
+
+            private void UpdateBorderRadius()
+            {
+                var entryEx = this.Element as CualevaPicker;
+                Control.Layer.CornerRadius = (nfloat)entryEx.BorderRadius;
+            }
+
+            private void UpdateCualevaRoundedEntryBackgroundColor()
+            {
+                var entryEx = this.Element as CualevaPicker;
+                Control.Layer.BackgroundColor = entryEx.CualevaRoundedEntryBackgroundColor.ToCGColor();
             }
 
             private void SetFont()
             {
-                
                 var view = this.Element as CualevaPicker;
                 var fontSize = Font.Default.FontSize;
                 if (view.FontSize != 0)

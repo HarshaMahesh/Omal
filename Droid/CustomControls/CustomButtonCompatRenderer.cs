@@ -72,7 +72,7 @@ namespace Omal.Droid.CustomControls
                 sld.AddState(new int[] { Android.Resource.Attribute.StatePressed }, _pressed);
                 sld.AddState(new int[] { }, _normal);
                 Control.SetBackground(sld);     //.SetBackgroundDrawable(sld); // deprecated
-                button.FontFamily = "Montserrat-Medium";
+
             }
         }
 

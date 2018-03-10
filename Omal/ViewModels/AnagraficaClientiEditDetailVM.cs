@@ -27,20 +27,45 @@ namespace Omal.ViewModels
 
         private async void OnEditCommand()
         {
-            await DataStore.Clienti.UpdateItemAsync(CurCliente);
+            
+            bool errore = false;
+            try
+            {
+                var ritorno = await DataStore.Clienti.UpdateItemAsync(CurCliente);
+                if (ritorno.HasError == 1) throw new Exception(App.CurLang == "IT" ? ritorno.ErrorDescription : ritorno.ErrorDescription_En);
+            }
+            catch (Exception ex)
+            {
+                errore = true;
+                CurPage.DisplayAlert(TitoloClienti, ex.Message, "OK");
+            }
+            if (errore) return;
+
             MessagingCenter.Send(new Models.Messages.ClienteInsertedOrUpdatedMessage() { Cliente = CurCliente }, "");
             await CurPage.Navigation.PopAsync();
         }
 
         private async void OnInsertCommand()
         {
-            var maxCliente = DataStore.Clienti.GetItemsAsync().Result.Max(x => x.IDCliente);
+            /*var maxCliente = DataStore.Clienti.GetItemsAsync().Result.Max(x => x.IDCliente);
             maxCliente += 1;
-            CurCliente.IDCliente = maxCliente;
-            await DataStore.Clienti.AddItemAsync(CurCliente);
-            MessagingCenter.Send(new Models.Messages.ClienteInsertedOrUpdatedMessage() { Cliente = CurCliente}, "");
-            await CurPage.Navigation.PopAsync();
+            CurCliente.IDCliente = maxCliente;*/
+            bool errore = false;
+            try
+            {
+                var ritorno = await DataStore.Clienti.AddItemAsync(CurCliente);
+                if (ritorno.HasError == 1) throw new Exception(App.CurLang == "IT" ? ritorno.ErrorDescription : ritorno.ErrorDescription_En);
+            }
+            catch (Exception ex)
+            {
+                errore = true;
+                CurPage.DisplayAlert(TitoloClienti, ex.Message, "OK");
+            }
+            if (errore) return;
 
+
+            await CurPage.Navigation.PopAsync();
+            MessagingCenter.Send(new Models.Messages.ClienteInsertedOrUpdatedMessage() { Cliente = CurCliente }, "");
         }
 
         public string CurTitle

@@ -26,20 +26,20 @@ namespace Omal.Services
             }
         }
 
-        public async Task<bool> AddItemAsync(Models.Utente item)
+        public async Task<Models.ResponseBase> AddItemAsync(Models.Utente item)
         {
             items.Add(item);
 
-            return await Task.FromResult(true);
+            return await Task.FromResult(new Models.ResponseBase());
         }
 
-        public async Task<bool> UpdateItemAsync(Models.Utente item)
+        public async Task<Models.ResponseBase> UpdateItemAsync(Models.Utente item)
         {
             var _item = items.Where((Models.Utente arg) => arg.IdUtente == item.IdUtente).FirstOrDefault();
             items.Remove(_item);
             items.Add(item);
 
-            return await Task.FromResult(true);
+            return await Task.FromResult(new Models.ResponseBase());
         }
 
         public async Task<bool> DeleteItemAsync(int id)

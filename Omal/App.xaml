@@ -5,6 +5,18 @@
     xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.App">
 	<Application.Resources>
 		<ResourceDictionary>
+             <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                <On Platform="Android" Value="fonts/Montserrat-Bold.ttf#Montserrat Bold" />
+                <On Platform="iOS" Value="Montserrat-Bold" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="MediumFont">
+                <On Platform="Android" Value="fonts/Montserrat-Medium.ttf#Montserrat Medium" />
+                <On Platform="iOS" Value="Montserrat-Bold" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
+                <On Platform="Android" Value="fonts/Montserrat-Regular.ttf#Montserrat Regular" />
+                <On Platform="iOS" Value="Montserrat-Regular" />
+            </OnPlatform>
 			<Color x:Key="Primary">#004899</Color>
 			<Color x:Key="PrimaryDark">Red</Color>
 			<Color x:Key="Accent">#96d1ff</Color>
@@ -30,46 +42,47 @@
                 <Setter Property="BackgroundColor" Value="#FFFFFF" />
                 <Setter Property="HeightRequest" Value="45" />
             </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
+            </Style>
             <Style x:Key="Titolo" TargetType="Label">
                 <Setter Property="TextColor" Value="#004899" />
-                <Setter Property="FontFamily" Value="Montserrat-Bold" />
+                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
             </Style>
             <Style x:Key="Descrizione" TargetType="Label">
                 <Setter Property="TextColor" Value="Gray" />
-                <Setter Property="FontAttributes" Value="Italic" />
                 <Setter Property="FontSize" Value="13" /> 
             </Style>
             <Style TargetType="Entry">
                 <Setter Property="TextColor" Value="#FFFFFF" />
-                <Setter Property="FontFamily" Value="Montserrat-Medium" />
+                <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
                 <Setter Property="BackgroundColor" Value="#60A5D1" />
             </Style>
-            <Style x:Key="WhiteEntry" TargetType="Entry">
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="FontFamily" Value="Montserrat-Medium" />
-                <Setter Property="BackgroundColor" Value="#FFFFFF" />
-            </Style>
+         
+
             <Style TargetType="CControls:CualevaRoundedEntry">
                 <Setter Property="TextColor" Value="#FFFFFF" />
-                <Setter Property="FontFamily" Value="Montserrat-Medium" />
+                <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
                 <Setter Property="BorderRadius" Value="10" />
                 <Setter Property="BackgroundColor" Value="Transparent" />
             </Style>
+            <Style x:Key="WhiteEntry" TargetType="CControls:CualevaRoundedEntry">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
+                <Setter Property="CualevaRoundedEntryBackgroundColor" Value="#FFFFFF" />
+            </Style>
             <Style x:Key="cerca" TargetType="CControls:CualevaRoundedEntry">
                 <Setter Property="TextColor" Value="#FFFFFF" />
-                <Setter Property="FontFamily" Value="Montserrat-Medium" />
                 <Setter Property="Image" Value="omalc2" />
+                <Setter Property="CualevaRoundedEntryBackgroundColor" Value="#60A5D1" />
+                <Setter Property="LeftPadding" Value="5" />
             </Style>
             <Style x:Key="email" TargetType="CControls:CualevaRoundedEntry">
-                <Setter Property="FontFamily" Value="Montserrat-Medium" />
-                <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="Image" Value="omalc12" />
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="BackgroundColor" Value="#FFFFFF" />
             </Style>
             <Style x:Key="psw" TargetType="CControls:CualevaRoundedEntry"> 
-               <Setter Property="BackgroundColor" Value="Transparent" />
-               <Setter Property="FontFamily" Value="Montserrat-Medium" />
                 <Setter Property="Image" Value="omalc13" />
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="BackgroundColor" Value="#FFFFFF" />
@@ -78,7 +91,7 @@
             <Style TargetType="CControls:CualevaPicker">
                 <Setter Property="Image" Value="omalc14" />
                 <Setter Property="HeightRequest" Value="45" />
-                <Setter Property="FontFamily" Value="Montserrat-Medium" />
+                <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
                 <Setter Property="BorderRadius" Value="10" />
                 <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="CualevaRoundedEntryBackgroundColor" Value="White" />
@@ -94,8 +107,9 @@
                 <Setter Property="BackgroundColor" Value="#FFFFFF" />
                 <Setter Property="Margin" Value="5" />
                 <Setter Property="HorizontalOptions" Value="End" />
-                <Setter Property="FontFamily" Value="Montserrat-Bold" />
+                <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
             </Style>
+            
             <Style x:Key="Azzurro" TargetType="Button">
                 <Setter Property="BorderWidth" Value="0" />
                 <Setter Property="TextColor" Value="#FFFFFF" />
@@ -104,7 +118,7 @@
                 <Setter Property="BackgroundColor" Value="#60A5D1" />
                 <Setter Property="Margin" Value="5" />
                 <Setter Property="HorizontalOptions" Value="End" />
-                <Setter Property="FontFamily" Value="Montserrat-Bold" />
+                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
             </Style>
             <Style TargetType="ListView">
                 <Setter Property="BackgroundColor" Value="#FFFFFF" />

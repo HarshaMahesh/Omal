@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Android.Content.Res;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Support.V4.Content;
@@ -26,24 +27,19 @@ namespace Omal.Droid.CustomControls
             if (Control != null && this.Element != null && !string.IsNullOrEmpty(element.Image))
                 Control.Background = AddPickerStyles(element.Image);
             UpdateBackground(element);
+
         }
 
         public LayerDrawable AddPickerStyles(string imagePath)
         {
             element = (CualevaPicker)this.Element;
             ShapeDrawable border = new ShapeDrawable();
-
             border.Paint.Color = Android.Graphics.Color.Gray;
             border.SetPadding(10, 10, 10, 10);
             border.Paint.SetStyle(Paint.Style.Stroke);
-          
-       
-
             Drawable[] layers = { border, GetDrawable(imagePath,element.BorderRadius) };
             LayerDrawable layerDrawable = new LayerDrawable(layers);
-
             layerDrawable.SetLayerInset(0, 0, 0, 0, 0);
-
             return layerDrawable;
         }
 
@@ -74,6 +70,7 @@ namespace Omal.Droid.CustomControls
                 Control.SetBackground(gradientDrawable);
         }
 
+      
 
 
         private BitmapDrawable GetDrawable(string imagePath, double borderRadius)

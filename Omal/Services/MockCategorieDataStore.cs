@@ -41,20 +41,20 @@ new Models.Categoria () { codice="Codice21", descrizione ="Descrizione attuatori
             }
         }
 
-        public async Task<bool> AddItemAsync(Models.Categoria item)
+        public async Task<Models.ResponseBase> AddItemAsync(Models.Categoria item)
         {
             items.Add(item);
 
-            return await Task.FromResult(true);
+            return await Task.FromResult(new Models.ResponseBase());
         }
 
-        public async Task<bool> UpdateItemAsync(Models.Categoria item)
+        public async Task<Models.ResponseBase> UpdateItemAsync(Models.Categoria item)
         {
             var _item = items.Where((Models.Categoria arg) => arg.idCategoria == item.idCategoria).FirstOrDefault();
             items.Remove(_item);
             items.Add(item);
 
-            return await Task.FromResult(true);
+            return await Task.FromResult(new Models.ResponseBase());
         }
 
         public async Task<bool> DeleteItemAsync(int id)

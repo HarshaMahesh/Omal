@@ -147,6 +147,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\UpperCaseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomControls\CualevaPicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomControls\CualevaGradientContentPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ResponseBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ResponseClienti.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />

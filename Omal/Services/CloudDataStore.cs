@@ -44,22 +44,22 @@ namespace Omal
             return null;
         }
 
-        public async Task<bool> AddItemAsync(Item item)
+        public async Task<Models.ResponseBase> AddItemAsync(Item item)
         {
             if (item == null || !CrossConnectivity.Current.IsConnected)
-                return false;
+                return new Models.ResponseBase();
 
             var serializedItem = JsonConvert.SerializeObject(item);
 
             var response = await client.PostAsync($"api/item", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
 
-            return response.IsSuccessStatusCode;
+            return new Models.ResponseBase();
         }
 
-        public async Task<bool> UpdateItemAsync(Item item)
+        public async Task<Models.ResponseBase> UpdateItemAsync(Item item)
         {
             if (item == null || item.Id == null || !CrossConnectivity.Current.IsConnected)
-                return false;
+                return new Models.ResponseBase();
 
             var serializedItem = JsonConvert.SerializeObject(item);
             var buffer = Encoding.UTF8.GetBytes(serializedItem);
@@ -67,7 +67,7 @@ namespace Omal
 
             var response = await client.PutAsync(new Uri($"api/item/{item.Id}"), byteContent);
 
-            return response.IsSuccessStatusCode;
+            return new Models.ResponseBase();
         }
 
         public async Task<bool> DeleteItemAsync(int id)

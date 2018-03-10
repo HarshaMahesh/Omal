@@ -14,7 +14,7 @@
             <StackLayout BackgroundColor="#EAEAEA">
                 <Grid Margin="10">
                             <Grid.ColumnDefinitions >
-                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="140"/>
                                 <ColumnDefinition Width="5" />
                                 <ColumnDefinition Width="110" />
                                 <ColumnDefinition Width="*" />
@@ -25,9 +25,10 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="40" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="50" />
                             </Grid.RowDefinitions>
                     <CControls:CualevaPicker Grid.ColumnSpan="5" Grid.Row="0" Title="{Binding Cliente}" HorizontalOptions="FillAndExpand" ItemDisplayBinding="{Binding RagioneSociale}" SelectedItem="{Binding SelectedCliente}" ItemsSource="{Binding Clienti}"  />
-                    <CControls:CualevaRoundedEntry  Placeholder="{Binding Note}"  Text="{Binding NoteOrdine}" TextColor="Black" Grid.Row="1" HeightRequest="40" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" FontSize="10" BackgroundColor="Transparent"  LeftPadding="10"  BorderRadius="10"  CualevaRoundedEntryBackgroundColor="#FFFFFF"  />
+                    <CControls:CualevaRoundedEntry  Placeholder="{Binding Note}"  Text="{Binding NoteOrdine}" TextColor="Black" Grid.Row="1" HeightRequest="40" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" FontSize="13" BackgroundColor="Transparent"  LeftPadding="10"  BorderRadius="10"  CualevaRoundedEntryBackgroundColor="#FFFFFF"  />
                     <Label VerticalOptions="Center" Grid.Row="2" Grid.ColumnSpan="5" Margin="10" HorizontalOptions="StartAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroCarrelli}"  />
                     <Label FontSize="14" Grid.Row="3"  VerticalOptions="Center" Style="{StaticResource Titolo}"  Text="{Binding StrTotaleOrdine}"  TextColor="#004899" />    
 
@@ -35,10 +36,7 @@
                         <Label  VerticalOptions="Center" Style="{StaticResource Descrizione}"  Text="{Binding StrSconto}"  />    
                         <CControls:CualevaRoundedEntry CualevaRoundedEntryBackgroundColor="White" TextColor="Black"  HeightRequest="40" Text="" WidthRequest="70" />            
                     </StackLayout>
-                    
-
                     <Label  FontSize="14" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"  VerticalOptions="Center" Text="{Binding TotaleOrdine, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
-
                     <Label Margin="0,0,30,0" FontSize="14" Grid.Row="4" VerticalOptions="Center" Style="{StaticResource Titolo}"  Text="{Binding StrTotaleOrdineSconto}"  TextColor="#004899" />            
                     <Label  FontSize="14" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"  VerticalOptions="Center" Text="{Binding TotaleOrdine, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
                 
@@ -56,7 +54,7 @@
                  <ViewCell>
                     <Grid Margin="10">
                         <Grid.ColumnDefinitions >
-                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="140"/>
                                 <ColumnDefinition Width="5" />
                                 <ColumnDefinition Width="110" />
                                 <ColumnDefinition Width="*" />

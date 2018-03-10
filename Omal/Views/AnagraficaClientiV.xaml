@@ -8,41 +8,35 @@
     x:Class="Omal.Views.AnagraficaClientiV">
     <ContentPage.ToolbarItems>
         <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
-        <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn}" Text="{Binding Aggiungi}" Command="{Binding AddNewCommand}" />
+        <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn}" Text="{Binding BtnAggiungi}" Command="{Binding AddNewCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-     <RelativeLayout>
-   
-    <Grid IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" RelativeLayout.WidthConstraint=
-              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-            RelativeLayout.HeightConstraint=
-              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
-            
-          <StackLayout WidthRequest="240" VerticalOptions="Center" Padding="6" Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
-                <Label IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Margin="10" HorizontalTextAlignment="Center"  Text="{Binding LogonRichiesto}" />
-            </StackLayout>
-    </Grid>
-            <Grid IsVisible="{Binding IsLoggedIn}">
-            <Grid.RowDefinitions >
-                    <RowDefinition Height="80" />
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-              <Image Grid.Row="0"  Aspect="AspectFill" Source="valvolaOMAL.png" Opacity="0.3" />
-                 <CControls:CualevaRoundedEntry Style="{StaticResource cerca}" Grid.Row="0" Margin="30" BorderRadius="25" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#60A5D1"  LeftPadding="10"  TextColor="White"  BackgroundColor="Transparent"  Placeholder="{Binding ClienteRicercato}" Text="{Binding SearchText}"  />   
-                <ListView Grid.Row="1" SelectedItem="{Binding ClienteSelected}" IsVisible="{Binding IsLoggedIn}" IsGroupingEnabled="true" ItemsSource="{Binding Clienti}" GroupShortNameBinding="{Binding TitoloCorto}" GroupDisplayBinding="{Binding Titolo}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding RagioneSociale}" Detail="{Binding CittaProvinciaNazione}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                <ListView.Footer>
-                    <Label Margin="10" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroContatti}"  />
-                </ListView.Footer>
-            </ListView>
-            </Grid>
-
-                
-            
-  </RelativeLayout>
+        <Grid HorizontalOptions="Fill">
+        <Grid.RowDefinitions >
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+             <Image Grid.Row="0" Grid.RowSpan="3"  Aspect="AspectFill" Source="valvolaOMAL.png" Opacity="0.3" />
+            <CControls:CualevaRoundedEntry Margin="5" HeightRequest="50"  VerticalOptions="Center" Style="{StaticResource cerca}" 
+                                           Grid.Row="1"  TextColor="White"   
+                                           Placeholder="{Binding ClienteRicercato}" Text="{Binding SearchText}"  />   
+            <ListView x:Name="ListaClienti" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="3" 
+                      SelectedItem="{Binding ClienteSelected}" 
+                      IsGroupingEnabled="true" 
+                      ItemsSource="{Binding Clienti}" 
+                      GroupShortNameBinding="{Binding TitoloCorto}" 
+                      GroupDisplayBinding="{Binding Titolo}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding RagioneSociale}" Detail="{Binding CittaProvinciaNazione}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <Label Margin="10" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroContatti}"  />
+            </ListView.Footer>
+        </ListView>
+        </Grid>
 	</ContentPage.Content>
 </ContentPage>

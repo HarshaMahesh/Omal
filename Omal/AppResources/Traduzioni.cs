@@ -86,8 +86,10 @@ namespace Omal.AppResources
         public string BtnRiprova { get { return GetCurvalueLang(_BtnRiprova); } }
         public string BtnMostra3D{ get { return GetCurvalueLang(_BtnMostra3D); } }
         public string BtnDownload { get { return GetCurvalueLang(_BtnDownload); } }
+        public string BtnAggiungi { get { return GetCurvalueLang(_BtnAggiungi); } }
         public string ErrNumeroCarrello { get { return GetCurvalueLang(_ErrNumeroCarrello); } }
         public string ErrQtaMaggiore0 { get { return GetCurvalueLang(_ErrQtaMaggiore0); } }
+
         public string ErrPerPrezziNecessarioLogin { get { return GetCurvalueLang(_ErrPerPrezziNecessarioLogin); } }
         public string MsgArticoliAggiuntiAlCarrello { get { return GetCurvalueLang(_MsgArticoliAggiuntiAlCarrello); } }
         public string MsgRisultatoRicercaArticoli { get { return GetCurvalueLang(_MsgRisultatoRicercaArticoli); } }
@@ -111,8 +113,26 @@ namespace Omal.AppResources
         public string StrLingua { get { return GetCurvalueLang(_StrLingua); } }
         public string StrVersioneItaliana { get { return "Versione Italiana"; } }
         public string StrVersioneInglese { get { return "English Version"; } }
+        public string StrNessunContatto { get { return GetCurvalueLang(_StrNessunContatto); } }
+        public string StrTrovatiNrContatti { get { return GetCurvalueLang(_StrTrovatiNrContatti); } }
 
-       
+        Dictionary<string, string> _StrNessunContatto = new Dictionary<string, string>
+        {
+            {"IT",  "Nessun contatto"},
+            {"EN",  "No contact found"}
+        };
+
+        Dictionary<string, string> _StrTrovatiNrContatti = new Dictionary<string, string>
+        {
+            {"IT",  " Trovati {0} contatti"},
+            {"EN",  " Trovati {0} contatti"}
+        };
+
+        Dictionary<string, string> _BtnAggiungi = new Dictionary<string, string>
+        {
+            {"IT",  "Aggiungi"},
+            {"EN",  "Add"}
+        };
 
         Dictionary<string, string> _StrTotaleOrdineSconto = new Dictionary<string, string>
         {

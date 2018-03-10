@@ -26,6 +26,7 @@ namespace Omal.ViewModels
                     OnPropertyChanged();
                     clienti = null;
                     OnPropertyChanged("Clienti");
+                    OnPropertyChanged("NumeroContatti");
                 }
 
             }
@@ -62,7 +63,7 @@ namespace Omal.ViewModels
             CurPage.Navigation.PushAsync(new Views.AnagraficaClientiEditDetailV(new Models.Cliente(){}));
         }
 
-        Models.Cliente _ClienteSelected;
+        Models.Cliente _ClienteSelected = null;
         public Models.Cliente ClienteSelected
         {
             get
@@ -72,10 +73,9 @@ namespace Omal.ViewModels
 
             set
             {
-                if (_ClienteSelected != value)
+                if (value != null)
                 {
-                    _ClienteSelected = value;
-                    if (_ClienteSelected != null) CurPage.Navigation.PushAsync(new Views.AnagraficaClientiDetailV(_ClienteSelected));
+                    CurPage.Navigation.PushAsync(new Views.AnagraficaClientiDetailV(value));
                 }
             }
         }
@@ -84,11 +84,10 @@ namespace Omal.ViewModels
         {
             get
             {
-                if (clienti == null)  return "Nessun Contatto";
+                if (clienti == null)  return StrNessunContatto;
                 var ritorno =  clienti.Select(x => x.Count).Sum();
-                if (ritorno == 0) return "Nessun Contatto";
-                if (ritorno == 1) return "Trovato un contatto";
-                return string.Format("Trovati {0} contatti", ritorno);
+                if (ritorno == 0) return StrNessunContatto;
+                return string.Format(StrTrovatiNrContatti, ritorno);
             }
         }
 

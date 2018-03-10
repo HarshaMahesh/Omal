@@ -18,5 +18,11 @@ namespace Omal.Views
            
             NavigationPage.SetBackButtonTitle(this, "");
         }
-    }
+
+		protected override void OnAppearing()
+		{
+            base.OnAppearing();
+            ListaClienti.SelectedItem = null;
+		}
+	}
 }

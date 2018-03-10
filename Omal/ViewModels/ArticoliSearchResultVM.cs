@@ -114,7 +114,7 @@ namespace Omal.ViewModels
                 var baseStr = @"<html><head><style type=""text/css"">" +
                 @" @font-face {
                     font-family: Montserrat-Regular;"
-                    + @"src: url(""file:///android_asset/fonts/MyFont.otf"")" +
+                    + @"src: url(""file:///android_asset/fonts/Montserrat-Regular.ttf"")" +
             
            @"}
         body {
