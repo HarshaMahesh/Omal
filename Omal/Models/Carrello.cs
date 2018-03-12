@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using SQLite;
 
 namespace Omal.Models
 {
@@ -25,6 +26,15 @@ namespace Omal.Models
                 OnPropertyChanged();
             }
         }
+        [Ignore]
+        public double PrezzoUnitarioScontato
+        {
+            get
+            {
+                return (PrezzoUnitario * Qta) * (Sconto / 100);
+            }
+        }
+        [Ignore]
         public double PrezzoTotale 
         { 
             get
@@ -32,7 +42,7 @@ namespace Omal.Models
                 return (PrezzoUnitario * Qta) - (PrezzoUnitario * Qta) * (Sconto/100);
             }
         }
-
+        [Ignore]
         public string PrezzoTotaleStr
         {
             get
@@ -72,6 +82,7 @@ namespace Omal.Models
                 ( string.Equals("Qta", e.PropertyName, StringComparison.InvariantCultureIgnoreCase) ||
                 string.Equals("Sconto", e.PropertyName, StringComparison.InvariantCultureIgnoreCase))
             {
+                OnPropertyChanged("PrezzoUnitarioScontato");
                 OnPropertyChanged("PrezzoTotale");
                 OnPropertyChanged("PrezzoTotaleStr");
             }

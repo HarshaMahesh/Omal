@@ -20,8 +20,6 @@ namespace Omal.ViewModels
                 if (App.CurOrdine == null)
                 {
                     App.CurOrdine = new Models.Ordine();
-                    // recupero il codice dell'ordine più alto 
-                    App.CurOrdine.DataInizio = DateTime.Now;
                 }
                 var codiceProdotto = parametri["idprodotto"].ToString();
                 var qta = parametri["qta"].ToString();
@@ -43,11 +41,11 @@ namespace Omal.ViewModels
                     int IntIdCodiceValvola = Convert.ToInt32(idcodicevalvola);
                     var valvole = Articoli.Select(x => (Models.Valvola)x).ToList();
                     var valvola = valvole.FirstOrDefault(x => x.idcodicevalvola == IntIdCodiceValvola);
-                    //var v = (Articoli.FirstOrDefault(x => x.idcodicevalvola == IntIdCodiceValvola);
+
                     if (valvola == null) throw new KeyNotFoundException("IdCodiceValvola non trovato");
-                    var elementoCarrello = DataStore.Carrello.FirstOrDefault(x => x.IdArticolo == valvola.idcodicevalvola && x.Tipologia == CurProdotto.tipologia && x.IdProdotto == CurProdotto.idprodotto);
+                    var elementoCarrello = App.CurOrdine.carrelli.FirstOrDefault(x => x.IdArticolo == valvola.idcodicevalvola && x.Tipologia == CurProdotto.tipologia && x.IdProdotto == CurProdotto.idprodotto);
                     if (elementoCarrello == null)
-                        DataStore.Carrello.Add(new Models.Carrello() { CodiceArticolo = valvola.codice_articolo, DescrizioneCarrello_En = curProdotto.descrizione_en, DescrizioneCarrello_It = curProdotto.descrizione, IdArticolo = valvola.idcodicevalvola, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = valvola.Prezzo, Qta = Convert.ToInt32(qta), Tipologia = curProdotto.tipologia, IdProdotto = CurProdotto.idprodotto });
+                        App.CurOrdine.carrelli.Add(new Models.Carrello() { CodiceArticolo = valvola.codice_articolo, DescrizioneCarrello_En = curProdotto.descrizione_en, DescrizioneCarrello_It = curProdotto.descrizione, IdArticolo = valvola.idcodicevalvola, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = valvola.Prezzo, Qta = Convert.ToInt32(qta), Tipologia = curProdotto.tipologia, IdProdotto = CurProdotto.idprodotto });
                     else
                         elementoCarrello.Qta += IQta;                                                                              
                 }
@@ -60,9 +58,9 @@ namespace Omal.ViewModels
                     var attuatore = attuatori.FirstOrDefault(x => x.idcodiceattuatore == IntIdCodiceAttuatore);
 
                     if (attuatore == null) throw new KeyNotFoundException("IdCodiceAttuatore non trovato");
-                    var elementoCarrello = DataStore.Carrello.FirstOrDefault(x => x.IdArticolo == attuatore.idcodiceattuatore && x.Tipologia == CurProdotto.tipologia && x.IdProdotto == CurProdotto.idprodotto);
+                    var elementoCarrello = App.CurOrdine.carrelli.FirstOrDefault(x => x.IdArticolo == attuatore.idcodiceattuatore && x.Tipologia == CurProdotto.tipologia && x.IdProdotto == CurProdotto.idprodotto);
                     if (elementoCarrello == null)
-                        DataStore.Carrello.Add(new Models.Carrello() { CodiceArticolo = attuatore.codice_articolo, DescrizioneCarrello_En = curProdotto.descrizione_en, DescrizioneCarrello_It = curProdotto.descrizione, IdArticolo = attuatore.idcodiceattuatore, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = attuatore.Prezzo, Qta = Convert.ToInt32(qta), Tipologia = curProdotto.tipologia, IdProdotto = CurProdotto.idprodotto });
+                        App.CurOrdine.carrelli.Add(new Models.Carrello() { CodiceArticolo = attuatore.codice_articolo, DescrizioneCarrello_En = curProdotto.descrizione_en, DescrizioneCarrello_It = curProdotto.descrizione, IdArticolo = attuatore.idcodiceattuatore, IdOrdine = App.CurOrdine.IdOrdine, PrezzoUnitario = attuatore.Prezzo, Qta = Convert.ToInt32(qta), Tipologia = curProdotto.tipologia, IdProdotto = CurProdotto.idprodotto });
                     else
                         elementoCarrello.Qta += IQta;     
                 }

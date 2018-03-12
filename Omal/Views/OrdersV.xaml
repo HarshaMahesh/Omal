@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Omal.Views.OrdersV"
+             Title="{Binding TitoloOrdini, Converter={StaticResource UpperCaseConverter}}"
+             xmlns:Common="clr-namespace:Omal.Common" 
+             xmlns:CControls="clr-namespace:Omal.CustomControls"
+             >
+ <ContentPage.ToolbarItems>
+        <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
+        <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn}" Text="{Binding BtnAggiungi}" Command="{Binding AddNewCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="Fill">
+        <Grid.RowDefinitions >
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+             <Image Grid.Row="0" Grid.RowSpan="3"  Aspect="AspectFill" Source="valvolaOMAL.png" Opacity="0.3" />
+            <CControls:CualevaRoundedEntry Margin="5" HeightRequest="50"  VerticalOptions="Center" Style="{StaticResource cerca}" 
+                                           Grid.Row="1"  TextColor="White"   
+                                           Placeholder="{Binding ClienteRicercato}" Text="{Binding SearchText}"  />   
+            <ListView x:Name="ListaOrdini" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="3" 
+                      SelectedItem="{Binding OrdineSelected}" 
+                      ItemsSource="{Binding Ordini}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding ClienteRagSoc}" Detail="{Binding DataInizio}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <Label Margin="10" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroContatti}"  />
+            </ListView.Footer>
+        </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

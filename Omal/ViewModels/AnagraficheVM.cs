@@ -27,7 +27,7 @@ namespace Omal.ViewModels
 
         private void OnGoToAnagraficaOrdiniCommand()
         {
-            //CurPage.Navigation.PushAsync(new Views.AnagraficheV());
+            CurPage.Navigation.PushAsync(new Views.OrdersV());
         }
     }
 }

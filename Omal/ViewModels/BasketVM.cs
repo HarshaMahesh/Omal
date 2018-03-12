@@ -42,12 +42,12 @@ namespace Omal.ViewModels
 
         private bool CanAnnullaCommand(object arg)
         {
-            return App.CurOrdine != null && DataStore.Carrello.Count > 0;
+            return App.CurOrdine != null && App.CurOrdine.carrelli.Count > 0;;
         }
 
         private bool CanInviaCommand(object arg)
         {
-            return App.CurOrdine != null && App.CurOrdine.IdCliente != 0 && DataStore.Carrello.Count > 0;
+            return App.CurOrdine != null && App.CurOrdine.IdCliente != 0 && App.CurOrdine.carrelli.Count > 0;;
         }
 
         private void LocalPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -61,15 +61,20 @@ namespace Omal.ViewModels
 
         private bool CanSaveCommand(object arg)
         {
-            return App.CurOrdine != null && App.CurOrdine.IdCliente != 0 && DataStore.Carrello.Count > 0;
+            return App.CurOrdine != null && App.CurOrdine.IdCliente != 0 && App.CurOrdine.carrelli.Count > 0;
         }
 
         private async void OnAnnullaCommand(object obj)
         {
-            var answer = await CurPage.DisplayAlert("Question?", "Sei sicuro di voler anullare l'ordine corrente?", "Si", "No");
+            var answer = await CurPage.DisplayAlert(TitoloCarrello,StrSicuroAnnullareCarrello, StrSi, StrNo);
             if (answer)
             {
-                DataStore.Carrello.Clear();
+                App.CurOrdine.Stato = Models.Enums.EOrdineStato.ordineAnnullato;
+                DataStore.Ordini.UpdateItemAsync(App.CurOrdine);
+                ClearItems();
+                App.CurOrdine = null;
+                App.CurOrdine = new Models.Ordine();
+
                 ClearItems();
                 App.CurOrdine.Totale = 0;
                 OnPropertyChanged("Items");
@@ -81,7 +86,7 @@ namespace Omal.ViewModels
             }
         }
 
-        Models.Carrello _SelectedItem;
+        Models.Carrello _SelectedItem = null;
         public Models.Carrello SelectedItem
         {
             get
@@ -102,9 +107,21 @@ namespace Omal.ViewModels
             CurPage.DisplayAlert("Invio Ordine","Invio da implemetare", "Ok");
         }
 
-        private void OnSalvaCommand(object obj)
+        private async void OnSalvaCommand(object obj)
         {
-            CurPage.DisplayAlert("Salva Ordine", "Salvataggio da implemetare", "Ok");
+            var answer = await CurPage.DisplayAlert(TitoloCarrello, StrSicuroSalvareCarrello, StrSi, StrNo);
+            if (answer)
+            {
+                try
+                {
+                    var ritorno =  await DataStore.Ordini.AddItemAsync(App.CurOrdine);
+                }
+                catch (Exception ex)
+                {
+                    CurPage.DisplayAlert("Error",ex.Message,"Ok");
+                }
+                await CurPage.DisplayAlert(TitoloCarrello, StrSalvataggioCarrelloCompletato,"Ok");
+            }
         }
 
         ObservableCollection<Models.Cliente> clienti;
@@ -170,12 +187,14 @@ namespace Omal.ViewModels
             {
                 if (App.CurOrdine == null) return;
                 selectedCliente = value;
-                App.CurOrdine.IdCliente = selectedCliente.IDCliente;
+                if (selectedCliente == null)
+                {
+                    App.CurOrdine.IdCliente = 0;
+                } else
+                    App.CurOrdine.IdCliente = selectedCliente.IDCliente;
                 OnPropertyChanged();
             }
         }
-
-
 
         private void ClearItems()
         {
@@ -202,7 +221,7 @@ namespace Omal.ViewModels
             {
                 if (items == null)
                 {
-                    items = new ObservableCollection<Models.Carrello>(DataStore.Carrello);
+                    items = new ObservableCollection<Models.Carrello>(App.CurOrdine.carrelli);
                     InviaCommand.ChangeCanExecute();
                     AnnullaCommand.ChangeCanExecute();
                     SalvaCommand.ChangeCanExecute();
@@ -237,7 +256,7 @@ namespace Omal.ViewModels
         {
             get
             {
-                var totale = DataStore.Carrello.Sum(x=>x.Qta);
+                var totale = App.CurOrdine.carrelli.Sum(x=>x.Qta);
                 if (totale == 0) return StrCarrelloVuoto;
                 return string.Format(StrCarrelloNrArticoli,totale);
             }

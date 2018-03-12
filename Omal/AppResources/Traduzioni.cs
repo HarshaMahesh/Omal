@@ -42,6 +42,7 @@ namespace Omal.AppResources
         public string TitoloProdotto { get { return GetCurvalueLang(_TitoloProdotto); } }
         public string TitoloArticoli { get { return GetCurvalueLang(_TitoloArticoli); } }
         public string TitoloAggiornaCatalogo { get { return GetCurvalueLang(_TitoloAggiornaCatalogo); } }
+        public string TitoloOrdini { get { return GetCurvalueLang(_TitoloOrdini); } }
 
 
         public string Cliente { get { return GetCurvalueLang(_Cliente); } }
@@ -115,7 +116,45 @@ namespace Omal.AppResources
         public string StrVersioneInglese { get { return "English Version"; } }
         public string StrNessunContatto { get { return GetCurvalueLang(_StrNessunContatto); } }
         public string StrTrovatiNrContatti { get { return GetCurvalueLang(_StrTrovatiNrContatti); } }
+        public string StrSicuroAnnullareCarrello { get { return GetCurvalueLang(_StrSicuroAnnullareCarrello); } }
+        public string StrSicuroSalvareCarrello { get { return GetCurvalueLang(_StrSicuroSalvareCarrello); } }
+        public string StrSalvataggioCarrelloCompletato { get { return GetCurvalueLang(_StrSalvataggioCarrelloCompletato); } }
+        public string StrSi { get { return GetCurvalueLang(_StrSi); } }
+        public string StrNo { get { return GetCurvalueLang(_StrNo); } }
 
+
+
+        Dictionary<string, string> _TitoloOrdini = new Dictionary<string, string>
+        {
+            {"IT",  "Ordini"},
+            {"EN",  "Orders"}
+        };
+        Dictionary<string, string> _StrSalvataggioCarrelloCompletato = new Dictionary<string, string>
+        {
+            {"IT",  "Salvataggio completato. Sarà possibile riprendere il carrello in ogni momento dopo aver effettuato il login accedendo nell'aposita zona dedicata alla ricerca degli ordini."},
+            {"EN",  "Salvataggio completato. Sarà possibile riprendere il carrello in ogni momento dopo aver effettuato il login accedendo nell'aposita zona dedicata alla ricerca degli ordini."}
+        };
+        Dictionary<string, string> _StrSicuroSalvareCarrello = new Dictionary<string, string>
+        {
+            {"IT",  "Si desidera salvare il carrello corrente?"},
+            {"EN",  "Si desidera salvare il carrello corrente?"}
+        };
+        Dictionary<string, string> _StrNo = new Dictionary<string, string>
+        {
+            {"IT",  "No"},
+            {"EN",  "No"}
+        };
+        Dictionary<string, string> _StrSi = new Dictionary<string, string>
+        {
+            {"IT",  "Si"},
+            {"EN",  "Yes"}
+        };
+
+        Dictionary<string, string> _StrSicuroAnnullareCarrello = new Dictionary<string, string>
+        {
+            {"IT",  "Sei sicuro di voler anullare l'ordine corrente?"},
+            {"EN",  "Sei sicuro di voler anullare l'ordine corrente?"}
+        };
         Dictionary<string, string> _StrNessunContatto = new Dictionary<string, string>
         {
             {"IT",  "Nessun contatto"},

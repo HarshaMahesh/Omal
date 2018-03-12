@@ -47,7 +47,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\SearchV.xaml.cs">
       <DependentUpon>SearchV.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\OrdersV.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\BasketV.xaml.cs">
       <DependentUpon>BasketV.xaml</DependentUpon>
     </Compile>
@@ -149,6 +148,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)CustomControls\CualevaGradientContentPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ResponseBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ResponseClienti.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\OmalOrdiniDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Enums\EOrdineStato.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ResponseOrdini.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\OrdersV.xaml.cs">
+      <DependentUpon>OrdersV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\OrdersVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -224,6 +230,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\OrdersV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
@@ -233,5 +243,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)CustomControls\" />
     <Folder Include="$(MSBuildThisFileDirectory)Persistence\" />
     <Folder Include="$(MSBuildThisFileDirectory)AppResources\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Models\Enums\" />
   </ItemGroup>
 </Project>

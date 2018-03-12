@@ -45,7 +45,6 @@ namespace Omal.ViewModels
                 OnPropertyChanged("Clienti");
 
             });
-
         }
 
         private void OnLocalPropertyChanged(object sender, PropertyChangedEventArgs e)

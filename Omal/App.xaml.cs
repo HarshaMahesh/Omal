@@ -83,6 +83,7 @@ namespace Omal
             _connection.CreateTableAsync<Models.Cliente>();
             _connection.CreateTableAsync<Models.ProdottoMetadati>();
             _connection.CreateTableAsync<Models.ProdottoGruppiMetadati>();
+            _connection.CreateTableAsync<Models.Ordine>();
         }
     }
 }
