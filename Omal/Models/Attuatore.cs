@@ -25,6 +25,7 @@ namespace Omal.Models
         public string url_3d { get; set; }
         public string url_download { get; set; }
         public string immagine_placeholder { get; set; }
+        public string immagine_placeholder_dt { get; set; }
         public int annullato { get; set; }
         public DateTime dataora_modifica { get; set; }
     }

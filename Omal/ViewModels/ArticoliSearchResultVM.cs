@@ -150,6 +150,10 @@ namespace Omal.ViewModels
             foreach (Models.Attuatore attuatore in Articoli)
             {                
                 List<string> curAttuatore = new List<string>();
+                if (!string.IsNullOrWhiteSpace(attuatore.immagine_placeholder) &&  !string.IsNullOrWhiteSpace(attuatore.immagine_placeholder_dt))
+                {
+                    curAttuatore.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a>&emsp;<a href='{3}'><img Height='100' src='{2}' /></a></P>", attuatore.immagine_placeholder, string.Format("local_{0}", attuatore.immagine_placeholder),attuatore.immagine_placeholder_dt, string.Format("local_{0}", attuatore.immagine_placeholder_dt)));
+                } else
                 if (!string.IsNullOrWhiteSpace(attuatore.immagine_placeholder)) 
                     curAttuatore.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a></P>", attuatore.immagine_placeholder, string.Format("local_{0}", attuatore.immagine_placeholder)));
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_iso)) curAttuatore.Add(string.Format(elemento, StrValoreIso, attuatore.valore_iso));
@@ -200,6 +204,10 @@ namespace Omal.ViewModels
                 List<string> curValvola = new List<string>();
                 if (!string.IsNullOrWhiteSpace(valvola.codice_articolo)) 
                     curValvola.Add(string.Format(@"<p style=""color:#004899;font-size: 18px"" align='center'><b>{0}</b></p>", valvola.codice_articolo));
+                if (!string.IsNullOrWhiteSpace(valvola.immagine_placeholder) && !String.IsNullOrWhiteSpace(valvola.immagine_placeholder_dt))
+                {
+                    curValvola.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a>&emsp;<a href='{3}'><img Height='100' src='{2}' /></a></P>", valvola.immagine_placeholder, string.Format("local_{0}", valvola.immagine_placeholder),valvola.immagine_placeholder_dt, string.Format("local_{0}", valvola.immagine_placeholder_dt)));
+                } else
                 if (!string.IsNullOrWhiteSpace(valvola.immagine_placeholder)) 
                     curValvola.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a></P>", valvola.immagine_placeholder, string.Format("local_{0}", valvola.immagine_placeholder)));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_azionamento)) curValvola.Add(string.Format(elemento, StrAzionamento, valvola.valore_azionamento));
