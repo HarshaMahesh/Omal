@@ -39,8 +39,8 @@ namespace Omal.Services
                 new KeyValuePair<string, string>("IDToken", App.CurToken.token),
                 new KeyValuePair<string, string>("IdCliente", item.IdCliente.ToString()),
                 new KeyValuePair<string, string>("CodiceOrdine", item.CodiceOrdine),
-                new KeyValuePair<string, string>("DataInizio", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")),
-                new KeyValuePair<string, string>("DataFine", ""),
+                new KeyValuePair<string, string>("DataInizio", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
+                new KeyValuePair<string, string>("DataFine", item.DataFine.HasValue?item.DataFine.Value.ToString("yyyy-MM-dd HH:mm:ss"):""),
                 new KeyValuePair<string, string>("DataEliminazione", ""),
                 new KeyValuePair<string, string>("Note", item.Note),
                 new KeyValuePair<string, string>("TotaleConSconto", item.TotaleConSconto.ToString("f2")),
@@ -50,6 +50,7 @@ namespace Omal.Services
                 new KeyValuePair<string, string>("Stato", ((int)item.Stato).ToString()),
             });
             int i = 0;
+
             foreach (var carrello in item.carrelli)
             {
                 Kiavi.AddRange(new[]

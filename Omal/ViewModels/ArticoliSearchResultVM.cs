@@ -207,7 +207,7 @@ table .fr-highlighted {color: #174288; font-weight: bold;}
                                 "<input type='hidden' name='idprodotto' value='{0}' />" +
                                 "<input type='hidden' name='isvalvola' value='0' />" +
                             "<input type='hidden' name='idcodiceattuatore' value='{1}' />" +
-                            "<input type='submit' class='button button4' value='{4}' /></p></div></center>" +
+                            "<input type='submit' class='button button4' value='{4}' />&emsp;<input type='submit' class='button button4' value='I' /></p></div></center>" +
                             "</form>", curProdotto.idprodotto, attuatore.idcodiceattuatore, StrQta, attuatore.Prezzo.ToString("F"),BtnOrdina.ToUpper()));
                     if (!string.IsNullOrWhiteSpace(attuatore.url_3d)) curAttuatore.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", attuatore.url_3d, BtnMostra3D.ToUpper()));
                     if (!string.IsNullOrWhiteSpace(attuatore.url_download)) curAttuatore.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", attuatore.url_download, BtnDownload.ToUpper()));
