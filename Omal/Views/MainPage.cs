@@ -37,6 +37,19 @@ namespace Omal
 
             } else
             Title = Children[0].Title;
+
+            MessagingCenter.Subscribe<Models.Messages.ChangeTabbedPageMessage>(this, "", sender =>
+            {
+                switch (sender.SetPage)
+                {
+                    case Models.Enums.EPages.Carrello:
+                        CurrentPage = BasketPage;
+                        break;
+                               
+                    default:
+                        break;
+                }
+            });
         }
 
         protected async override void OnAppearing()

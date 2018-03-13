@@ -73,6 +73,7 @@ namespace Omal.ViewModels
                 App.CurOrdine = curOrdine;
                 MessagingCenter.Send<Models.Messages.BasketLoadedMessage>(new Models.Messages.BasketLoadedMessage() { Ordine = curOrdine }, "");
                 CurPage.DisplayAlert(TitoloOrdini, StrOrdineCaricato, "ok");
+                MessagingCenter.Send(new Models.Messages.ChangeTabbedPageMessage() { SetPage =  Models.Enums.EPages.Carrello }, "");
             }
         }
 

@@ -125,9 +125,30 @@ namespace Omal.ViewModels
 
 
 
-        private void OnInviaCommand(object obj)
+        private async void  OnInviaCommand(object obj)
         {
-            CurPage.DisplayAlert("Invio Ordine","Invio da implemetare", "Ok");
+            var answer = await CurPage.DisplayAlert(TitoloCarrello, StrSicuroSalvareCarrello, StrSi, StrNo);
+            if (answer)
+            {
+                try
+                {
+                    bool isNew = string.IsNullOrWhiteSpace(App.CurOrdine.CodiceOrdine);
+                    App.CurOrdine.Stato = Models.Enums.EOrdineStato.ordineInviato;
+                    App.CurOrdine.DataFine = DateTime.Now;
+
+                    var ritorno = await DataStore.Ordini.UpdateItemAsync(App.CurOrdine);
+                    if (ritorno.HasError == 1) throw new Exception(App.CurLang == "IT" ? ritorno.ErrorDescription : ritorno.ErrorDescription_En);
+                    if (isNew)
+                    {
+                        MessagingCenter.Send(new Models.Messages.OrdineNewMessage() { Ordine = App.CurOrdine }, "");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    CurPage.DisplayAlert("Error", ex.Message, "Ok");
+                }
+                await CurPage.DisplayAlert(TitoloCarrello, StrSalvataggioCarrelloCompletato, "Ok");
+            }
         }
 
         private async void OnSalvaCommand(object obj)

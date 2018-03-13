@@ -158,6 +158,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\BasketLoadedMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\ElementSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\OrdineNewMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Enums\EPages.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\ChangeTabbedPageMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />

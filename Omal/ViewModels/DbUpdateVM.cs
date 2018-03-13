@@ -100,10 +100,11 @@ namespace Omal.ViewModels
                     var clienti = await DataStore.Clienti.GetItemsAsync(true);
                     UpdateDbText += string.Format(@"{1} -> Clienti {0}{2}", clienti.Count(), DateTime.Now.ToShortTimeString(), Environment.NewLine);
                     ProgressB = 0.3;
+                    var ordini = await DataStore.Ordini.GetItemsAsync(true);
+                    ProgressB = 0.4;
+                    UpdateDbText += string.Format(@"{1} -> Ordini {0}{2}", ordini.Count(), DateTime.Now.ToShortTimeString(), Environment.NewLine);
                 }
-                var ordini = await DataStore.Ordini.GetItemsAsync(true);
-                ProgressB = 0.4;
-                UpdateDbText += string.Format(@"{1} -> Ordini {0}{2}", ordini.Count(), DateTime.Now.ToShortTimeString(), Environment.NewLine);
+
                 var prodotti = await DataStore.Prodotti.GetItemsAsync(true);
                 ProgressB = 0.5;
                 UpdateDbText += string.Format(@"{1} -> Prodotti {0}{2}", prodotti.Count(), DateTime.Now.ToShortTimeString(), Environment.NewLine);
