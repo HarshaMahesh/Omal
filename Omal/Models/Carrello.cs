@@ -32,7 +32,7 @@ namespace Omal.Models
         {
             get
             {
-                return (PrezzoUnitario * Qta) * (Sconto / 100);
+                return PrezzoUnitario  - ((PrezzoUnitario * Sconto) / 100);
             }
         }
         [Ignore]
@@ -40,7 +40,7 @@ namespace Omal.Models
         {
             get
             {
-                return (PrezzoUnitario * Qta) - (PrezzoUnitario * Qta) * (Sconto / 100);
+                return (PrezzoUnitario * Qta) - (((PrezzoUnitario * Qta) * Sconto) / 100);
             }
         }
         [Ignore]

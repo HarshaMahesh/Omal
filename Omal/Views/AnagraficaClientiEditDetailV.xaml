@@ -12,11 +12,11 @@
         <ScrollView>
         <StackLayout Margin="5">
         <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.RagioneSociale}" Placeholder="{Binding StrRagioneSociale}"  />
-        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.PIva}" Placeholder="{Binding StrPIva}" />
-        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.CFiscale}" Placeholder="{Binding StrCFiscale}" />
+        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Piva}" Placeholder="{Binding StrPIva}" />
+        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.CodiceFiscale}" Placeholder="{Binding StrCFiscale}" />
         <Label Style="{StaticResource Titolo}" Text="{Binding StrPosizione}" BackgroundColor="#EAEAEA" />
         <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Indirizzo}" Placeholder="{Binding StrIndirizzo}"/>
-        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Città}" Placeholder="{Binding StrCitta}"/>
+        <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Citta}" Placeholder="{Binding StrCitta}"/>
         <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Cap}" Placeholder="{Binding StrCap}"/>
         <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Provincia}" Placeholder="{Binding StrProvincia}"/>
         <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Nazione}" Placeholder="{Binding StrNazione}"/>

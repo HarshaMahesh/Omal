@@ -156,6 +156,8 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\OrdersVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\BasketLoadedMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ElementSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\OrdineNewMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />

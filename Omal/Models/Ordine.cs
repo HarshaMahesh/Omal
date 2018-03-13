@@ -21,6 +21,7 @@ namespace Omal.Models
         public DateTime? DataInizio { get; set; }
         public DateTime? DataFine { get; set; }
         public string Note { get; set; }
+        public int IDUtente { get; set; }
         double totale = 0;
         public double Totale 
         { 

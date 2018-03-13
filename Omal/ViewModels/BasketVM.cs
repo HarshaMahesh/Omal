@@ -21,6 +21,7 @@ namespace Omal.ViewModels
             {
                 ClearItems();
                 OnPropertyChanged("Items");
+                OnPropertyChanged("Clienti");
                 OnPropertyChanged("NumeroCarrelli");
 
             });
@@ -53,6 +54,8 @@ namespace Omal.ViewModels
             {
                 LoadClienti();
             });
+
+
             SalvaCommand = new RelayCommand(OnSalvaCommand,CanSaveCommand);
             InviaCommand = new RelayCommand(OnInviaCommand, CanInviaCommand);
             AnnullaCommand = new RelayCommand(OnAnnullaCommand, CanAnnullaCommand);
@@ -93,7 +96,6 @@ namespace Omal.ViewModels
                 ClearItems();
                 App.CurOrdine = null;
                 App.CurOrdine = new Models.Ordine();
-
                 ClearItems();
                 App.CurOrdine.Totale = 0;
                 OnPropertyChanged("Items");
@@ -135,7 +137,13 @@ namespace Omal.ViewModels
             {
                 try
                 {
+                    bool isNew = string.IsNullOrWhiteSpace(App.CurOrdine.CodiceOrdine);
                     var ritorno =  await DataStore.Ordini.UpdateItemAsync(App.CurOrdine);
+                    if (ritorno.HasError == 1) throw new Exception(App.CurLang == "IT" ? ritorno.ErrorDescription : ritorno.ErrorDescription_En);
+                    if (isNew) 
+                    {
+                        MessagingCenter.Send(new Models.Messages.OrdineNewMessage() { Ordine = App.CurOrdine }, "");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -164,13 +172,13 @@ namespace Omal.ViewModels
         bool clientiIsLoading = false;
         async void LoadClienti()
         {
-            if (!clientiIsLoading)
+            if (!clientiIsLoading && App.CurUser != null)
             {
                 clientiIsLoading = true;
                 try
                 {
                     var tmpC = await DataStore.Clienti.GetItemsAsync(false);
-                    tmpC = tmpC.Where(x => x.annullato == 0);
+                    tmpC = tmpC.Where(x => x.annullato == 0 && x.IDUtente == App.CurUser.IdUtente);
                     Clienti = new ObservableCollection<Models.Cliente>(tmpC);
                 }
                 finally

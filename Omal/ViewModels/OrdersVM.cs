@@ -12,6 +12,11 @@ namespace Omal.ViewModels
         {
             PropertyChanged += OnLocalPropertyChanged;
             AddNewCommand = new Command(OnAddNewCommand);
+            MessagingCenter.Subscribe<Models.Messages.OrdineNewMessage>(this, "", sender =>
+            {
+                Ordini.Add(sender.Ordine);
+            });
+
         }
 
         private void OnAddNewCommand(object obj)
@@ -92,12 +97,13 @@ namespace Omal.ViewModels
         bool ordiniIsLoading = false;
         async void LoadOrdini()
         {
-            if (!ordiniIsLoading)
+            if (!ordiniIsLoading && App.CurUser != null)
             {
                 ordiniIsLoading = true;
                 try
                 {
                     var tuttOrdini = await DataStore.Ordini.GetItemsAsync(false);
+                    tuttOrdini = tuttOrdini.Where(x => x.IDUtente == App.CurUser.IdUtente);
                     if  (!string.IsNullOrWhiteSpace(SearchText)) 
                         tuttOrdini = tuttOrdini.Where(x => x.ClienteRagSoc.ToUpper().Contains(SearchText.ToUpper())).ToList();
                     tuttOrdini = tuttOrdini.OrderByDescending(x => x.DataInizio);

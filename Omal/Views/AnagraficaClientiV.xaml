@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     Title="{Binding TitoloClienti, Converter={StaticResource UpperCaseConverter}}" 
     xmlns:Common="clr-namespace:Omal.Common" 
-             xmlns:CControls="clr-namespace:Omal.CustomControls"
+    xmlns:CControls="clr-namespace:Omal.CustomControls"
+    x:Name="AnagraficaClientiV"
     x:Class="Omal.Views.AnagraficaClientiV">
     <ContentPage.ToolbarItems>
         <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
@@ -18,7 +19,7 @@
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-             <Image Grid.Row="0" Grid.RowSpan="3"  Aspect="AspectFill" Source="valvolaOMAL.png" Opacity="0.3" />
+             <Image Grid.Row="0" Grid.RowSpan="3"  Aspect="AspectFill" Source="IMG06837.png" Opacity="0.3" />
             <CControls:CualevaRoundedEntry Margin="5" HeightRequest="50"  VerticalOptions="Center" Style="{StaticResource cerca}" 
                                            Grid.Row="1"  TextColor="White"   
                                            Placeholder="{Binding ClienteRicercato}" Text="{Binding SearchText}"  />   
@@ -30,7 +31,15 @@
                       GroupDisplayBinding="{Binding Titolo}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding RagioneSociale}" Detail="{Binding CittaProvinciaNazione}" />
+                    <TextCell Text="{Binding RagioneSociale}" Detail="{Binding CittaProvinciaNazione}" >
+                            <TextCell.ContextActions>
+                                <MenuItem 
+                                        Text="{Binding Path=BindingContext.StrElimina, Source={Common:ElementSource AnagraficaClientiV}}" 
+                                        CommandParameter="{Binding .}"
+                                    Command="{Binding Path=BindingContext.EliminaCommand, Source={Common:ElementSource AnagraficaClientiV}}" IsDestructive="true" 
+                                />
+                            </TextCell.ContextActions>
+                    </TextCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
             <ListView.Footer>

@@ -92,7 +92,7 @@ namespace Omal.ViewModels
                     if (!string.IsNullOrWhiteSpace(testo)) curElemento += testo;
                     if (!string.IsNullOrWhiteSpace(curElemento)) Elementi.Add(curElemento.Trim());
                 }
-                _ContentHtml = string.Join("<hr />", Elementi);
+                _ContentHtml = string.Join("</ br>", Elementi);
                 // recupero il prodotto di riferimento (sarà il titolo)
                 CurProdotto = await DataStore.Prodotti.GetItemAsync(CurGruppoProdottoMetadati.idprodotto);
                 string titolo = string.Empty;
@@ -117,6 +117,12 @@ table tr:nth-child(odd) td{
 table tr:nth-child(even) td{
             background:#FFFFFF;
 }
+.metadato-testo strong {color: #174288;}
+.metadato-titoloimmagine {color: #174288; font-weight: bold; text-align: center;}
+.metadato-testo table {width: 100% ! important; margin: 0 auto !important;}
+.metadato-testo table td {border: 1px solid #ccc;}
+.metadato-testo table tr:first-child td {color: #174288; font-weight: bold; text-align: center;}
+.metadato-testo table .fr-highlighted {color: #174288; font-weight: bold;}
 table .fr-highlighted {color: #174288; font-weight: bold;}
         body {
                 font-family: Montserrat-Regular;

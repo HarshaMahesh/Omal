@@ -35,5 +35,25 @@ namespace Omal.Models
         public string immagine_placeholder_dt { get; set; }
         public int annullato { get; set; }
         public DateTime dataora_modifica { get; set; }
+        public string codice_KITMONTAGGIO { get; set; }
+        public string valore_ATEXopzione1 { get; set; }
+        public string valore_KITLEVAopzione2 { get; set; }
+        public string valore_KITGUARNIZIONIopzione3 { get; set; }
+        public string valore_LMMopzione4 { get; set; }
+        public string valore_TENUTAopzione5 { get; set; }
+        public string KIT_OTTURATORE_RICAMBIO { get; set; }
+        public string KIT_TESTA_RICAMBIO { get; set; }
+        public string P_INTERCETTATA { get; set; }
+        public string P_COMANDO_BAR_MIN { get; set; }
+        public string P_COMANDO_BAR_MAX { get; set; }
+        public string Kv { get; set; }
+        public string SH_TESTA_COMANDO { get; set; }
+        public string passaggio_mm { get; set; }
+        public string P_INTERCETTATA_DP_max_bar { get; set; }
+
+        public string codice_RIDUTTORE { get; set; }
+        public string KIT_VALVOLA_RIDUTTORE { get; set; }
+
+        public string KIT_RICAMBIO { get; set; }
     }
 }

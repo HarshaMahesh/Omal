@@ -53,6 +53,11 @@
                 <Setter Property="TextColor" Value="Gray" />
                 <Setter Property="FontSize" Value="13" /> 
             </Style>
+            <Style x:Key="Azzurra" TargetType="Label">
+                <Setter Property="TextColor" Value="#004899" />
+                <Setter Property="FontSize" Value="15" /> 
+                <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
+            </Style>
             <Style TargetType="Entry">
                 <Setter Property="TextColor" Value="#FFFFFF" />
                 <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />

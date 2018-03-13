@@ -7,5 +7,10 @@ namespace Omal.Models
         {
         }
         public int? IDOrdine { get; set; }
+        public string ordine
+        {
+            get;
+            set;
+        }
     }
 }

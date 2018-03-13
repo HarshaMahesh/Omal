@@ -12,11 +12,11 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                         <Label Text="{Binding gruppo_metadati_it, Converter={StaticResource UpperCaseConverter}}" Margin="5" Style="{StaticResource Titolo}"  VerticalOptions="Center" />
-                         <Image Source="right-arrow" Margin="5" HorizontalOptions="EndAndExpand" VerticalOptions="Center"  />
-                        </StackLayout>
-                            </ViewCell>
+                            <StackLayout Orientation="Horizontal" Margin="10">
+                                 <Label IsVisible="{Binding LangIsIT}" Text="{Binding gruppo_metadati_it, Converter={StaticResource UpperCaseConverter}}" Margin="5" Style="{StaticResource Azzurra}"  VerticalOptions="Center" />
+                                 <Image Source="right-arrow" Margin="5" HorizontalOptions="EndAndExpand" VerticalOptions="Center"  />
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

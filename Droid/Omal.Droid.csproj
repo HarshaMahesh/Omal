@@ -240,6 +240,9 @@
     <AndroidResource Include="Resources\drawable\omalc12.png" />
     <AndroidResource Include="Resources\drawable\omalc13.png" />
     <AndroidResource Include="Resources\drawable\rightarrow.png" />
+    <AndroidResource Include="Resources\drawable\IMG074428.png" />
+    <AndroidResource Include="Resources\drawable\IMG06837.png" />
+    <AndroidResource Include="Resources\drawable\IMG051428.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomControls\" />

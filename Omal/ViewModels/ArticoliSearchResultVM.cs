@@ -130,6 +130,26 @@ namespace Omal.ViewModels
     font-size: 16px;
     margin: 2px 2px;
 }
+table {width: 100% ! important; margin: 0 auto !important;}
+table td {border: 1px solid #ccc; padding: 5px; }
+table tr:first-child td {color: #174288; font-weight: bold; text-align: center;}
+table tr:nth-child(odd) td{
+           background:#EAEAEA;
+}
+table tr:nth-child(even) td{
+            background:#FFFFFF;
+}
+.metadato-testo table {width: 100% ! important; margin: 0 auto !important;}
+.metadato-testo table td {border: 0px solid #ccc;}
+.metadato-testo table tr:first-child td {color: #174288; font-weight: bold; text-align: center;}
+.metadato-testo table .fr-highlighted {color: #174288; font-weight: bold;}
+table .fr-highlighted {color: #174288; font-weight: bold;}
+
+
+.metadato-testo table {width: 100% ! important; margin: 0 auto !important;}
+.metadato-testo table td {border: 1px solid #ccc;}
+.metadato-testo table tr:first-child td {color: #174288; font-weight: bold; text-align: center;}
+.metadato-testo table .fr-highlighted {color: #174288; font-weight: bold;}
 
 .button4 {border-radius: 12px;}
     </style>
@@ -146,9 +166,9 @@ namespace Omal.ViewModels
         {
             //var attuatori = (IEnumerable<Models.Attuatore>)Articoli;
             string ritorno = string.Empty;
-            string elemento = @"<center><span style=""color:#004899;font-size: 8px"">{0}</span><br /><b>{1}</b></center>";
             foreach (Models.Attuatore attuatore in Articoli)
-            {                
+            {    
+                string elemento = @"<center><span style=""color:#004899;font-size: 10px"">{0}</span><br /><b>{1}</b></center>";
                 List<string> curAttuatore = new List<string>();
                 if (!string.IsNullOrWhiteSpace(attuatore.immagine_placeholder) &&  !string.IsNullOrWhiteSpace(attuatore.immagine_placeholder_dt))
                 {
@@ -156,8 +176,17 @@ namespace Omal.ViewModels
                 } else
                 if (!string.IsNullOrWhiteSpace(attuatore.immagine_placeholder)) 
                     curAttuatore.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a></P>", attuatore.immagine_placeholder, string.Format("local_{0}", attuatore.immagine_placeholder)));
+                curAttuatore.Add("<TABLE>");
+                elemento = @"<TR><TD><center><span style=""color:#004899;font-size: 10px"">{0}</span><br /><b>{1}</b></center></TD></TR>";
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_iso)) curAttuatore.Add(string.Format(elemento, StrValoreIso, attuatore.valore_iso));
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_coppia)) curAttuatore.Add(string.Format(elemento, StrValoreCoppia, attuatore.valore_coppia));
+                if (!string.IsNullOrWhiteSpace(attuatore.valore_coppiabar)) curAttuatore.Add(string.Format(elemento, Strvalore_coppiabar, attuatore.valore_coppiabar));
+                if (!string.IsNullOrWhiteSpace(attuatore.valore_voltaggio)) curAttuatore.Add(string.Format(elemento, Strvalore_voltaggio, attuatore.valore_voltaggio));
+                if (!string.IsNullOrWhiteSpace(attuatore.valore_pesokgbar)) curAttuatore.Add(string.Format(elemento, Strvalore_pesokgbar, attuatore.valore_pesokgbar));
+                if (!string.IsNullOrWhiteSpace(attuatore.valore_aria)) curAttuatore.Add(string.Format(elemento, Strvalore_aria, attuatore.valore_aria));
+                if (!string.IsNullOrWhiteSpace(attuatore.codice_guarnizioni)) curAttuatore.Add(string.Format(elemento, Strcodice_guarnizioni, attuatore.codice_guarnizioni));
+                if (!string.IsNullOrWhiteSpace(attuatore.valore_ch)) curAttuatore.Add(string.Format(elemento, Strvalore_ch, attuatore.valore_ch));
+                if (!string.IsNullOrWhiteSpace(attuatore.valore_ngiri)) curAttuatore.Add(string.Format(elemento, Strvalore_ngiri, attuatore.valore_ngiri));
                 if (App.CurLang == "IT")
                 {
                     if (!string.IsNullOrWhiteSpace(attuatore.note_footer)) curAttuatore.Add(string.Format(elemento, "note_footer", attuatore.note_footer));
@@ -167,6 +196,7 @@ namespace Omal.ViewModels
                 {
                     if (!string.IsNullOrWhiteSpace(attuatore.note_footer_en)) curAttuatore.Add(string.Format(elemento, "note_footer_en", attuatore.note_footer_en));
                 }
+                curAttuatore.Add("</TABLE>");
                 if (IsLoggedIn)
                 {
                     curAttuatore.Add(
@@ -197,19 +227,20 @@ namespace Omal.ViewModels
         {
             //var valvole = (IEnumerable<Models.Valvola>) Articoli;
             string ritorno = string.Empty;
-            string elemento = @"<center><span style=""color:#004899;font-size: 8px"">{0}</span><br /><b>{1}</b></center>";
             foreach (Models.Valvola valvola in Articoli)
             {
-                
+                string elemento = @"<center><span style=""color:#004899;font-size: 10px"">{0}</span><br /><b>{1}</b></center>";
                 List<string> curValvola = new List<string>();
                 if (!string.IsNullOrWhiteSpace(valvola.codice_articolo)) 
-                    curValvola.Add(string.Format(@"<p style=""color:#004899;font-size: 18px"" align='center'><b>{0}</b></p>", valvola.codice_articolo));
+                    curValvola.Add(string.Format(@"<p style=""color:#004899;font-size: 18px"" align='center'><b>{0}</b>{1}</p>", valvola.codice_articolo,!string.IsNullOrWhiteSpace(valvola.valore_ATEXopzione1)?"&emsp;<img src='http://demo.timmagine.com/omal/http/images/atex.png' />":""));
                 if (!string.IsNullOrWhiteSpace(valvola.immagine_placeholder) && !String.IsNullOrWhiteSpace(valvola.immagine_placeholder_dt))
                 {
                     curValvola.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a>&emsp;<a href='{3}'><img Height='100' src='{2}' /></a></P>", valvola.immagine_placeholder, string.Format("local_{0}", valvola.immagine_placeholder),valvola.immagine_placeholder_dt, string.Format("local_{0}", valvola.immagine_placeholder_dt)));
                 } else
                 if (!string.IsNullOrWhiteSpace(valvola.immagine_placeholder)) 
                     curValvola.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a></P>", valvola.immagine_placeholder, string.Format("local_{0}", valvola.immagine_placeholder)));
+                curValvola.Add("<TABLE>");
+                elemento = @"<TR><TD><center><span style=""color:#004899;font-size: 10px"">{0}</span><br /><b>{1}</b></center></TD></TR>";
                 if (!string.IsNullOrWhiteSpace(valvola.valore_azionamento)) curValvola.Add(string.Format(elemento, StrAzionamento, valvola.valore_azionamento));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_materiale)) curValvola.Add(string.Format(elemento, StrMateriale, valvola.valore_materiale));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_dn)) curValvola.Add(string.Format(elemento,StrDn, valvola.valore_dn));
@@ -221,6 +252,23 @@ namespace Omal.ViewModels
                 if (!string.IsNullOrWhiteSpace(valvola.valore_nmm)) curValvola.Add(string.Format(elemento, StrNmm, valvola.valore_nmm));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_hmm)) curValvola.Add(string.Format(elemento, StrHmm, valvola.valore_hmm));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_pesokg)) curValvola.Add(string.Format(elemento,StrPesoKg, valvola.valore_pesokg));
+                if (!string.IsNullOrWhiteSpace(valvola.valore_KITLEVAopzione2)) curValvola.Add(string.Format(elemento, Strvalore_KITLEVAopzione2, valvola.valore_KITLEVAopzione2));
+                if (!string.IsNullOrWhiteSpace(valvola.valore_KITGUARNIZIONIopzione3)) curValvola.Add(string.Format(elemento, Strvalore_KITGUARNIZIONIopzione3, valvola.valore_KITGUARNIZIONIopzione3));
+                if (!string.IsNullOrWhiteSpace(valvola.valore_LMMopzione4)) curValvola.Add(string.Format(elemento, Strvalore_LMMopzione4, valvola.valore_LMMopzione4));
+                if (!string.IsNullOrWhiteSpace(valvola.valore_TENUTAopzione5)) curValvola.Add(string.Format(elemento, Strvalore_TENUTAopzione5, valvola.valore_TENUTAopzione5));
+                if (!string.IsNullOrWhiteSpace(valvola.KIT_OTTURATORE_RICAMBIO)) curValvola.Add(string.Format(elemento, StrKIT_OTTURATORE_RICAMBIO, valvola.KIT_OTTURATORE_RICAMBIO));
+                if (!string.IsNullOrWhiteSpace(valvola.KIT_TESTA_RICAMBIO)) curValvola.Add(string.Format(elemento, StrKIT_TESTA_RICAMBIO, valvola.KIT_TESTA_RICAMBIO));
+                if (!string.IsNullOrWhiteSpace(valvola.P_INTERCETTATA)) curValvola.Add(string.Format(elemento, StrP_INTERCETTATA, valvola.P_INTERCETTATA));
+                if (!string.IsNullOrWhiteSpace(valvola.P_COMANDO_BAR_MAX)) curValvola.Add(string.Format(elemento, StrP_COMANDO_BAR_MAX, valvola.P_COMANDO_BAR_MAX));
+                if (!string.IsNullOrWhiteSpace(valvola.Kv)) curValvola.Add(string.Format(elemento, StrKv, valvola.Kv));
+                if (!string.IsNullOrWhiteSpace(valvola.SH_TESTA_COMANDO)) curValvola.Add(string.Format(elemento, StrSH_TESTA_COMANDO, valvola.SH_TESTA_COMANDO));
+                if (!string.IsNullOrWhiteSpace(valvola.passaggio_mm)) curValvola.Add(string.Format(elemento, Strpassaggio_mm, valvola.passaggio_mm));
+                if (!string.IsNullOrWhiteSpace(valvola.P_INTERCETTATA_DP_max_bar)) curValvola.Add(string.Format(elemento, StrP_INTERCETTATA_DP_max_bar, valvola.P_INTERCETTATA_DP_max_bar));
+                if (!string.IsNullOrWhiteSpace(valvola.codice_RIDUTTORE)) curValvola.Add(string.Format(elemento, Strcodice_RIDUTTORE, valvola.codice_RIDUTTORE));
+                if (!string.IsNullOrWhiteSpace(valvola.KIT_VALVOLA_RIDUTTORE)) curValvola.Add(string.Format(elemento, StrKIT_VALVOLA_RIDUTTORE, valvola.KIT_VALVOLA_RIDUTTORE));
+                if (!string.IsNullOrWhiteSpace(valvola.codice_KITMONTAGGIO)) curValvola.Add(string.Format(elemento, Strcodice_KITMONTAGGIO, valvola.codice_KITMONTAGGIO));
+                if (!string.IsNullOrWhiteSpace(valvola.KIT_RICAMBIO)) curValvola.Add(string.Format(elemento, Strcodice_KIT_RICAMBIO, valvola.KIT_RICAMBIO));
+
                 if (App.CurLang == "IT")
                 {
                     if (!string.IsNullOrWhiteSpace(valvola.note_footer)) curValvola.Add(string.Format(elemento, "note_footer", valvola.note_footer));
@@ -229,6 +277,7 @@ namespace Omal.ViewModels
                 {
                     if (!string.IsNullOrWhiteSpace(valvola.note_footer_en)) curValvola.Add(string.Format(elemento, "note_footer_en", valvola.note_footer_en));
                 }   
+                curValvola.Add("<TABLE>");
                 if (IsLoggedIn)
                 {
                     curValvola.Add(

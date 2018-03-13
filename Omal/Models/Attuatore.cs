@@ -28,5 +28,14 @@ namespace Omal.Models
         public string immagine_placeholder_dt { get; set; }
         public int annullato { get; set; }
         public DateTime dataora_modifica { get; set; }
+
+        public string valore_coppiabar { get; set; }
+        public string valore_voltaggio { get; set; }
+        public string valore_pesokgbar { get; set; }
+        public string valore_aria { get; set; }
+        public string codice_guarnizioni { get; set; }
+        public string valore_ch { get; set; }
+        public string valore_ngiri { get; set; }
+
     }
 }

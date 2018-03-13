@@ -18,7 +18,7 @@
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-             <Image Grid.Row="0" Grid.RowSpan="3"  Aspect="AspectFill" Source="valvolaOMAL.png" Opacity="0.3" />
+             <Image Grid.Row="0" Grid.RowSpan="3"  Aspect="AspectFill" Source="IMG06837.png" Opacity="0.3" />
             <CControls:CualevaRoundedEntry Margin="5" HeightRequest="50"  VerticalOptions="Center" Style="{StaticResource cerca}" 
                                            Grid.Row="1"  TextColor="White"   
                                            Placeholder="{Binding ClienteRicercato}" Text="{Binding SearchText}"  />   

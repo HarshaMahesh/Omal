@@ -28,6 +28,7 @@ namespace Omal.Services
         public async Task<Models.ResponseBase> AddItemAsync(Models.Ordine item)
         {
             item.CodiceOrdine = Guid.NewGuid().ToString("N");
+            item.IDUtente = App.CurUser.IdUtente;
             var url = string.Format("{0}{1}?tabella=ordinicarrelli", App.BackendUrl, "webservicei.php");
             if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
 
@@ -36,13 +37,13 @@ namespace Omal.Services
            {
                 new KeyValuePair<string, string>("IDToken", App.CurToken.token),
                 new KeyValuePair<string, string>("IDCliente", item.IdCliente.ToString()),
-                new KeyValuePair<string, string>("codice_ordine", item.CodiceOrdine),
-                new KeyValuePair<string, string>("datainizio_ordine", DateTime.Now.ToString("yyyyMMdd")),
-                new KeyValuePair<string, string>("datafine_ordine", ""),
-                new KeyValuePair<string, string>("dataeliminazione_ordine", ""),
-                new KeyValuePair<string, string>("note_ordine", ""),
-                new KeyValuePair<string, string>("TotaleOrdine", item.Totale.ToString("f2")),
-                new KeyValuePair<string, string>("TotaleOrdinePartenza", item.Totale.ToString("f2")),
+                new KeyValuePair<string, string>("CodiceOrdine", item.CodiceOrdine),
+                new KeyValuePair<string, string>("DataInizio", DateTime.Now.ToString("yyyyMMdd hh:MM:ss")),
+                new KeyValuePair<string, string>("DataFine", ""),
+                new KeyValuePair<string, string>("DataEliminazione", ""),
+                new KeyValuePair<string, string>("Note", item.Note),
+                new KeyValuePair<string, string>("TotaleConSconto", item.TotaleConSconto.ToString("f2")),
+                new KeyValuePair<string, string>("Totale", item.Totale.ToString("f2")),
                 new KeyValuePair<string, string>("Sconto", item.Sconto.ToString("f2")),
                 new KeyValuePair<string, string>("Annullato", "0"),
                 new KeyValuePair<string, string>("Stato", ((int)item.Stato).ToString()),
@@ -52,16 +53,16 @@ namespace Omal.Services
             {
                 Kiavi.AddRange(new[]
                 {
-                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][tipologia]",i), carrello.Tipologia),
-                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][idarticolo]",i), carrello.IdArticolo.ToString()),
-                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][codice_articolo]",i), carrello.CodiceArticolo),
-                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][descrizionecarrello_it]",i), carrello.DescrizioneCarrello_It),
-                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][descrizionecarrello_en]",i), carrello.DescrizioneCarrello_En),
-                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][prezzo_cadaunoPartenza]",i), carrello.PrezzoUnitario.ToString("f2")),
-                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][prezzo_cadauno]",i), carrello.PrezzoUnitarioScontato.ToString("f2")),
+                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][Tipologia]",i), carrello.Tipologia),
+                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][IdArticolo]",i), carrello.IdArticolo.ToString()),
+                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][CodiceArticolo]",i), carrello.CodiceArticolo),
+                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][DescrizioneCarrello_It]",i), carrello.DescrizioneCarrello_It),
+                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][DescrizioneCarrello_En]",i), carrello.DescrizioneCarrello_En),
+                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][PrezzoUnitario]",i), carrello.PrezzoUnitario.ToString("f2")),
+                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][PrezzoUnitarioScontato]",i), carrello.PrezzoUnitarioScontato.ToString("f2")),
                     new KeyValuePair<string, string>(string.Format("carrelli[{0}][Sconto]",i), carrello.Sconto.ToString("f2")),
-                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][quantita]",i), carrello.Qta.ToString()),
-                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][IDProdotto]",i), carrello.IdProdotto.ToString())
+                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][Qta]",i), carrello.Qta.ToString()),
+                    new KeyValuePair<string, string>(string.Format("carrelli[{0}][IdProdotto]",i), carrello.IdProdotto.ToString())
                 });
                 i++;
             }
@@ -88,6 +89,7 @@ namespace Omal.Services
         public async Task<Models.ResponseBase> UpdateItemAsync(Models.Ordine item)
         {
             if (item == null) throw new ArgumentNullException("item");
+            item.IDUtente = App.CurUser.IdUtente;
             if (string.IsNullOrWhiteSpace(item.CodiceOrdine)) return await AddItemAsync(item);
             var url = string.Format("{0}{1}?tabella=ordinicarrelli", App.BackendUrl, "webservicei.php");
             if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
@@ -98,16 +100,16 @@ namespace Omal.Services
                 new KeyValuePair<string, string>("IDToken", App.CurToken.token),
                 new KeyValuePair<string, string>("IDCliente", item.IdCliente.ToString()),
                 new KeyValuePair<string, string>("codice_ordine", item.CodiceOrdine),
-                new KeyValuePair<string, string>("note_ordine", ""),
-                new KeyValuePair<string, string>("TotaleOrdine", item.Totale.ToString("f2")),
+                new KeyValuePair<string, string>("note_ordine", item.Note),
+                new KeyValuePair<string, string>("TotaleOrdine", item.TotaleConSconto.ToString("f2")),
                 new KeyValuePair<string, string>("TotaleOrdinePartenza", item.Totale.ToString("f2")),
                 new KeyValuePair<string, string>("Sconto", item.Sconto.ToString("f2")),
                 new KeyValuePair<string, string>("Stato", ((int)item.Stato).ToString()),
             });
             if (item.IdOrdine != 0) Kiavi.Add(new KeyValuePair<string, string>("IdOrdine", item.IdOrdine.ToString()));
-            if (item.DataInizio.HasValue) Kiavi.Add(new KeyValuePair<string, string>("datainizio_ordine", item.DataInizio.Value.ToString("yyyyMMdd")));
-            if (item.DataFine.HasValue) Kiavi.Add(new KeyValuePair<string, string>("datafine_ordine", item.DataFine.Value.ToString("yyyyMMdd")));
-            if (item.DataEliminazione.HasValue) Kiavi.Add(new KeyValuePair<string, string>("dataeliminazione_ordine", item.DataEliminazione.Value.ToString("yyyyMMdd")));
+            if (item.DataInizio.HasValue) Kiavi.Add(new KeyValuePair<string, string>("datainizio_ordine", item.DataInizio.Value.ToString("yyyyMMdd hh:MM:ss")));
+            if (item.DataFine.HasValue) Kiavi.Add(new KeyValuePair<string, string>("datafine_ordine", item.DataFine.Value.ToString("yyyyMMdd hh:MM:ss")));
+            if (item.DataEliminazione.HasValue) Kiavi.Add(new KeyValuePair<string, string>("dataeliminazione_ordine", item.DataEliminazione.Value.ToString("yyyyMMdd hh:MM:ss")));
             Kiavi.Add(new KeyValuePair<string, string>("Annullato", (item.Stato == Models.Enums.EOrdineStato.ordineAnnullato) ? "1" : "0"));
             int i = 0;
             foreach (var carrello in item.carrelli)
@@ -167,7 +169,6 @@ namespace Omal.Services
                 items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { Data = new List<Models.Ordine>() }).Data);
                 foreach (var item in items)
                     Connection.InsertOrReplaceAsync(item);
-                return items;
             }
             var clienti = await Connection.Table<Models.Cliente>().ToListAsync();
             foreach (var item in items)

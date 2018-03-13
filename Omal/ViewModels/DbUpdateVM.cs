@@ -95,9 +95,12 @@ namespace Omal.ViewModels
                 var categorie = await DataStore.Categorie.GetItemsAsync(true);
                 ProgressB = 0.2;
                 UpdateDbText += string.Format(@"{1} -> Categorie {0}{2}", categorie.Count(), DateTime.Now.ToShortTimeString(), Environment.NewLine);
-                var clienti = await DataStore.Clienti.GetItemsAsync(true);
-                ProgressB = 0.3;
-                UpdateDbText += string.Format(@"{1} -> Clienti {0}{2}", clienti.Count(), DateTime.Now.ToShortTimeString(), Environment.NewLine);
+                if (App.CurUser != null)
+                {
+                    var clienti = await DataStore.Clienti.GetItemsAsync(true);
+                    UpdateDbText += string.Format(@"{1} -> Clienti {0}{2}", clienti.Count(), DateTime.Now.ToShortTimeString(), Environment.NewLine);
+                    ProgressB = 0.3;
+                }
                 var ordini = await DataStore.Ordini.GetItemsAsync(true);
                 ProgressB = 0.4;
                 UpdateDbText += string.Format(@"{1} -> Ordini {0}{2}", ordini.Count(), DateTime.Now.ToShortTimeString(), Environment.NewLine);

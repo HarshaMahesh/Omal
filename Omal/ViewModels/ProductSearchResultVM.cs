@@ -97,22 +97,35 @@ namespace Omal.ViewModels
             if (_prodotti == null && !prodottiLoading)
             {
                 prodottiLoading = true;
-                var tmpProdotti = await DataStore.Prodotti.GetItemsAsync();
+                var originalProdotti = await DataStore.Prodotti.GetItemsAsync();
+                var tmpProdotti = new List<Models.Prodotto>(originalProdotti);
                 if (!string.IsNullOrWhiteSpace(ProductFilter))
                 {
                     if (App.CurLang == "IT")
-                        tmpProdotti = tmpProdotti.Where(x => x.nome.ToLower().Contains(ProductFilter.ToLower()));
+                        tmpProdotti = tmpProdotti.Where(x => x.nome.ToLower().Contains(ProductFilter.ToLower())).ToList();
                     else
-                        tmpProdotti = tmpProdotti.Where(x => x.nome_en.ToLower().Contains(ProductFilter.ToLower()));
+                        tmpProdotti = tmpProdotti.Where(x => x.nome_en.ToLower().Contains(ProductFilter.ToLower())).ToList();
+                    if (tmpProdotti == null || tmpProdotti.Count() == 0)
+                    {
+                        // nn ho prodotti, quindi cerco eventuali codici articoli che siano coerenti con la stringa.
+                        var valvole = await DataStore.Valvole.GetItemsAsync();
+                        var prodotti = valvole.Where(x => x.codice_articolo.ToLower().Contains(productFilter.ToLower())).Select(x => x.idprodotto).Distinct().ToList();
+                        // cerco degli attuatori
+                        var attuatori = await DataStore.Valvole.GetItemsAsync();
+                        var prodotti2 = attuatori.Where(x => x.codice_articolo.ToLower().Contains(productFilter.ToLower())).Select(x => x.idprodotto).Distinct().ToList();
+                        prodotti.AddRange(prodotti2);
+                        prodotti = prodotti.Distinct().ToList();
+                        tmpProdotti = originalProdotti.Where(x => prodotti.Count(y => y == x.idprodotto) > 0).ToList();
+                    }
                 }
                 else
                 if (IdCategoria.HasValue)
                 {
                     var categorieFiglie = GetCategorieFiglie(IdCategoria.Value);
-                    tmpProdotti =tmpProdotti.Where(x => categorieFiglie.Contains(x.idcategoria));
+                    tmpProdotti = tmpProdotti.Where(x => categorieFiglie.Contains(x.idcategoria)).ToList();
                 }
                 else
-                    tmpProdotti = new ObservableCollection<Models.Prodotto>();
+                        tmpProdotti = new List<Models.Prodotto>();
                 foreach (var prodotto in tmpProdotti)
                 {
                     if (!Uri.IsWellFormedUriString(prodotto.immagine_placeholder, UriKind.Absolute)) prodotto.immagine_placeholder = "http://wordpress.docsmarshal.it/wp-content/uploads/2018/02/Logo_DM_Docsmarshal.png"; 

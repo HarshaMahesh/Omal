@@ -2,6 +2,8 @@
 <ContentPage 
     xmlns:CControls="clr-namespace:Omal.CustomControls"
     xmlns="http://xamarin.com/schemas/2014/forms" 
+    x:Name="BasketV"
+    xmlns:Common="clr-namespace:Omal.Common" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.BasketV" Title="{Binding TitoloCarrello, Converter={StaticResource UpperCaseConverter}}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
@@ -31,9 +33,9 @@
                     <CControls:CualevaRoundedEntry  Placeholder="{Binding Note}"  Text="{Binding NoteOrdine, Mode=TwoWay}" TextColor="Black" Grid.Row="1" HeightRequest="40" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" FontSize="13" BackgroundColor="Transparent"  LeftPadding="10"  BorderRadius="10"  CualevaRoundedEntryBackgroundColor="#FFFFFF"  />
                     <Label VerticalOptions="Center" Grid.Row="2" Grid.ColumnSpan="5" Margin="10" HorizontalOptions="StartAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroCarrelli}"  />
                     <Label FontSize="14" Grid.Row="3"  VerticalOptions="Center" Style="{StaticResource Titolo}"  Text="{Binding StrTotaleOrdine}"  TextColor="#004899" />    
-                    <Label  FontSize="14" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"  VerticalOptions="Center" Text="{Binding TotaleOrdine, Mode=TwoWay, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
+                    <Label FontSize="14" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"  VerticalOptions="Center" Text="{Binding TotaleOrdine, Mode=TwoWay, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
                     <Label Margin="0,0,30,0" FontSize="14" Grid.Row="4" VerticalOptions="Center" Style="{StaticResource Titolo}"  Text="{Binding StrTotaleOrdineSconto, Mode=TwoWay}"  TextColor="#004899" />            
-                    <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2">
+                    <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3">
                         <Label  VerticalOptions="Center" Style="{StaticResource Descrizione}"  Text="{Binding StrSconto}"  />    
                         <CControls:CualevaRoundedEntry  CualevaRoundedEntryBackgroundColor="White" TextColor="Black"  HeightRequest="40" Text="{Binding ScontoOrdine}" WidthRequest="50" />            
                     </StackLayout>
@@ -71,10 +73,9 @@
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
                             <Label  VerticalOptions="Center" Style="{StaticResource Descrizione}"  Text="Sconto"  />   
-                            <CControls:CualevaRoundedEntry CualevaRoundedEntryBackgroundColor="#EAEAEA" HeightRequest="40" WidthRequest="50" VerticalOptions="Center"   Text="{Binding Sconto}" TextColor="#004899" Keyboard="Numeric" />       
+                            <CControls:CualevaRoundedEntry  CualevaRoundedEntryBackgroundColor="#EAEAEA" HeightRequest="40" WidthRequest="50"    Text="{Binding Sconto}" TextColor="#004899" Keyboard="Numeric" />       
                         </StackLayout>
-
-                        <Label Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="1" FontSize="14"   VerticalOptions="Center" Text="{Binding PrezzoUnitario, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
+                        <Label Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="1" FontSize="14"   VerticalOptions="Center" Text="{Binding PrezzoTotale, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
                         <Label FontSize="11" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="4" HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text="{Binding PrezzoTotaleStr}" />            
 
                     </Grid>

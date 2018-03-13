@@ -78,5 +78,13 @@ namespace Omal.ViewModels
         #endregion
 
         public Page CurPage { get; set; }
+
+        public bool LangIsIT
+        {
+            get
+            {
+                return !String.IsNullOrWhiteSpace(App.CurLang) && string.Equals(App.CurLang.ToUpper(), "IT");
+            }
+        }
     }
 }

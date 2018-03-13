@@ -66,7 +66,7 @@ namespace Omal.AppResources
         public string StrEmail { get { return GetCurvalueLang(_StrEmail); } }
         public string StrTelefono { get { return GetCurvalueLang(_StrTelefono); } }
         public string StrFax { get { return GetCurvalueLang(_StrFax); } }
-
+        public string StrElimina { get {return GetCurvalueLang(_StrElimina); } }
         public string StrTotaleOrdineSconto { get { return GetCurvalueLang(_StrTotaleOrdineSconto); }}
         public string StrInfoProdottoPicker1Valvola { get { return GetCurvalueLang(_StrInfoProdottoPicker1Valvola); } }
         public string StrInfoProdottoPicker2Valvola { get { return GetCurvalueLang(_StrInfoProdottoPicker2Valvola); } }
@@ -106,6 +106,7 @@ namespace Omal.AppResources
         public string StrNmm { get { return GetCurvalueLang(_StrNmm); } }
         public string StrHmm { get { return GetCurvalueLang(_StrHmm); } }
         public string StrPesoKg { get { return GetCurvalueLang(_StrPesoKg); } }
+
         public string StrValoreIso { get { return GetCurvalueLang(_StrValoreIso); } }
         public string StrValoreCoppia { get { return GetCurvalueLang(_StrValoreCoppia); } }
         public string StrUltimoAggiornamento { get { return GetCurvalueLang(_StrUltimoAggiornamento); } }
@@ -123,6 +124,166 @@ namespace Omal.AppResources
         public string StrNo { get { return GetCurvalueLang(_StrNo); } }
         public string StrCaricaOrdineSelezionato { get { return GetCurvalueLang(_StrCaricaOrdineSelezionato); } }
         public string StrOrdineCaricato { get { return GetCurvalueLang(_StrOrdineCaricato); } }
+        public string StrConfermaEliminazione { get { return GetCurvalueLang(_StrConfermaEliminazione); } }
+        public string Strvalore_KITLEVAopzione2 { get { return GetCurvalueLang(_Strvalore_KITLEVAopzione2); } }
+        public string Strvalore_KITGUARNIZIONIopzione3 { get { return GetCurvalueLang(_Strvalore_KITGUARNIZIONIopzione3); } }
+        public string Strvalore_LMMopzione4 { get { return GetCurvalueLang(_Strvalore_LMMopzione4); } }
+        public string Strvalore_TENUTAopzione5 { get { return GetCurvalueLang(_Strvalore_TENUTAopzione5); } }
+        public string StrKIT_OTTURATORE_RICAMBIO { get { return GetCurvalueLang(_StrKIT_OTTURATORE_RICAMBIO); } }
+        public string StrKIT_TESTA_RICAMBIO { get { return GetCurvalueLang(_StrKIT_TESTA_RICAMBIO); } }
+        public string StrP_INTERCETTATA { get { return GetCurvalueLang(_StrP_INTERCETTATA); } }
+        public string StrP_COMANDO_BAR_MIN { get { return GetCurvalueLang(_StrP_COMANDO_BAR_MIN); } }
+        public string StrP_COMANDO_BAR_MAX { get { return GetCurvalueLang(_StrP_COMANDO_BAR_MAX); } }
+        public string StrKv { get { return GetCurvalueLang(_StrKv); } }
+        public string StrSH_TESTA_COMANDO { get { return GetCurvalueLang(_StrSH_TESTA_COMANDO); } }
+        public string Strpassaggio_mm { get { return GetCurvalueLang(_Strpassaggio_mm); } }
+        public string StrP_INTERCETTATA_DP_max_bar { get { return GetCurvalueLang(_Strpassaggio_mm); } }
+        public string Strvalore_coppiabar { get { return GetCurvalueLang(_Strvalore_coppiabar); } }
+        public string Strvalore_voltaggio { get { return GetCurvalueLang(_Strvalore_voltaggio); } }
+        public string Strvalore_pesokgbar { get { return GetCurvalueLang(_Strvalore_pesokgbar); } }
+        public string Strvalore_aria { get { return GetCurvalueLang(_Strvalore_aria); } }
+        public string Strcodice_guarnizioni { get { return GetCurvalueLang(_Strcodice_guarnizioni); } }
+        public string Strvalore_ch { get { return GetCurvalueLang(_Strvalore_ch); } }
+        public string Strvalore_ngiri { get { return GetCurvalueLang(_Strvalore_ngiri); } }
+        public string Strcodice_RIDUTTORE { get { return GetCurvalueLang(_Strcodice_RIDUTTORE); } }
+        public string StrKIT_VALVOLA_RIDUTTORE { get { return GetCurvalueLang(_StrKIT_VALVOLA_RIDUTTORE); } }
+        public string Strcodice_KITMONTAGGIO { get { return GetCurvalueLang(_Strcodice_KITMONTAGGIO); } }
+        public string Strcodice_KIT_RICAMBIO { get { return GetCurvalueLang(_Strcodice_KIT_RICAMBIO); } }
+
+        Dictionary<string, string> _Strcodice_KIT_RICAMBIO = new Dictionary<string, string>
+        {
+            {"IT",  "Kit ricambio"},
+            {"EN",  "Spare part kit"}
+        };
+        Dictionary<string, string> _Strcodice_KITMONTAGGIO = new Dictionary<string, string>
+        {
+            {"IT",  "Kit montaggio"},
+            {"EN",  "Mounting kit"}
+        };
+        Dictionary<string, string> _StrKIT_VALVOLA_RIDUTTORE = new Dictionary<string, string>
+        {
+            {"IT",  "Kit valvola-riduttore"},
+            {"EN",  "Kit valve-gear box"}
+        };
+        Dictionary<string, string> _Strcodice_RIDUTTORE = new Dictionary<string, string>
+        {
+            {"IT",  "Riduttore"},
+            {"EN",  "Gear Box"}
+        };
+
+        Dictionary<string, string> _Strvalore_ngiri = new Dictionary<string, string>
+        {
+            {"IT",  "N° Giri"},
+            {"EN",  "N° of turns"}
+        };
+
+        Dictionary<string, string> _Strvalore_ch = new Dictionary<string, string>
+        {
+            {"IT",  "Ch"},
+            {"EN",  "Ch"}
+        };
+        Dictionary<string, string> _Strcodice_guarnizioni = new Dictionary<string, string>
+        {
+            {"IT",  "Guarnizione di ricambio"},
+            {"EN",  "Spare seal"}
+        };
+        Dictionary<string, string> _Strvalore_aria = new Dictionary<string, string>
+        {
+            {"IT",  "Volume aria [dm3/cycle]"},
+            {"EN",  "Air volume [dm3/cycle]"}
+        };
+
+        Dictionary<string, string> _Strvalore_pesokgbar = new Dictionary<string, string>
+        {
+            {"IT",  "Peso a 2,8 bar [kg]"},
+            {"EN",  "Weight 2,8 bat [kg]"}
+        };
+        Dictionary<string, string> _Strvalore_voltaggio = new Dictionary<string, string>
+        {
+            {"IT",  "Voltaggio"},
+            {"EN",  "Voltague"}
+        };
+        Dictionary<string, string> _Strvalore_coppiabar = new Dictionary<string, string>
+        {
+            {"IT",  "Coppia a 5,6 bar [Nm]"},
+            {"EN",  "Torque 5,6 bar [Nm]"}
+        };
+        Dictionary<string, string> _StrP_INTERCETTATA_DP_max_bar = new Dictionary<string, string>
+        {
+            {"IT",  "P intercettata [P max. bar]"},
+            {"EN",  "P operating [P max. bar]"}
+        };
+        Dictionary<string, string> _Strpassaggio_mm = new Dictionary<string, string>
+        {
+            {"IT",  "Passaggio [mm]"},
+            {"EN",  "Bore [mm]"}
+        };
+        Dictionary<string, string> _StrSH_TESTA_COMANDO = new Dictionary<string, string>
+        {
+            {"IT",  "Testa Comando"},
+            {"EN",  "Control head"}
+        };
+        Dictionary<string, string> _StrKv = new Dictionary<string, string>
+        {
+            {"IT",  "Kv [m3/h]"},
+            {"EN",  "Kv [m3/h]"}
+        };
+        Dictionary<string, string> _StrP_COMANDO_BAR_MAX = new Dictionary<string, string>
+        {
+            {"IT",  "P comando bar [max]"},
+            {"EN",  "P control bar [max]"}
+        };
+        Dictionary<string, string> _StrP_COMANDO_BAR_MIN = new Dictionary<string, string>
+        {
+            {"IT",  "P comando bar [min]"},
+            {"EN",  "P control bar [min]"}
+        };
+        Dictionary<string, string> _StrP_INTERCETTATA = new Dictionary<string, string>
+        {
+            {"IT",  "P intercettata [P max. bar]"},
+            {"EN",  "P operating [P max. bar]"}
+        };
+        Dictionary<string, string> _StrKIT_TESTA_RICAMBIO = new Dictionary<string, string>
+        {
+            {"IT",  "Kit testa di ricambio"},
+            {"EN",  "Head spare kit"}
+        };
+        Dictionary<string, string> _StrKIT_OTTURATORE_RICAMBIO = new Dictionary<string, string>
+        {
+            {"IT",  "Kit Otturatore di ricambio"},
+            {"EN",  "Plug spare kit"}
+        };
+        Dictionary<string, string> _Strvalore_TENUTAopzione5 = new Dictionary<string, string>
+        {
+            {"IT",  "Guarnizione"},
+            {"EN",  "Liner"}
+        };
+        Dictionary<string, string> _Strvalore_LMMopzione4 = new Dictionary<string, string>
+        {
+            {"IT",  "L [mm]"},
+            {"EN",  "L [mm]"}
+        };
+        Dictionary<string, string> _Strvalore_KITGUARNIZIONIopzione3 = new Dictionary<string, string>
+        {
+            {"IT",  "Kit guarnizioni"},
+            {"EN",  "Seals kit"}
+        };
+        Dictionary<string, string> _Strvalore_KITLEVAopzione2 = new Dictionary<string, string>
+        {
+            {"IT",  "Kit Leva"},
+            {"EN",  "Lever kit"}
+        };
+        Dictionary<string, string> _StrConfermaEliminazione = new Dictionary<string, string>
+        {
+            {"IT",  "Conferma la volontà di eliminare l'elemento selezionato?"},
+            {"EN",  "Do you want to delete selected item?"}
+        };
+        Dictionary<string, string> _StrElimina = new Dictionary<string, string>
+        {
+            {"IT",  "Elimina"},
+            {"EN",  "Delete"}
+        };
+
 
         Dictionary<string, string> _StrOrdineCaricato = new Dictionary<string, string>
         {
@@ -213,90 +374,90 @@ namespace Omal.AppResources
         Dictionary<string, string> _StrCarrelloVuoto = new Dictionary<string, string>
         {
             {"IT",  "Carrello vuoto"},
-            {"EN",  "Carrello vuoto"}
+            {"EN",  "Empty cart"}
         };
         Dictionary<string, string> _StrCarrelloNrArticoli = new Dictionary<string, string>
         {
             {"IT",  "{0} articoli nel carrello"},
-            {"EN",  "{0} articoli nel carrello"}
+            {"EN",  "{0} items in chart"}
         };
 
         Dictionary<string, string> _StrValoreIso = new Dictionary<string, string>
         {
-            {"IT",  "Valore_iso"},
-            {"EN",  "Valore_iso"}
+            {"IT",  "ISO"},
+            {"EN",  "ISO"}
         };
         Dictionary<string, string> _StrValoreCoppia = new Dictionary<string, string>
         {
-            {"IT",  "Valore_coppia"},
-            {"EN",  "Valore_coppia"}
+            {"IT",  "Coppia [Nm]"},
+            {"EN",  "Torque [Nm]"}
         };
 
         Dictionary<string, string> _StrAzionamento = new Dictionary<string, string>
         {
-            {"IT",  "valore_azionamento"},
-            {"EN",  "valore_azionamento"}
+            {"IT",  "Azionamento"},
+            {"EN",  "Drive"}
         };
 
         Dictionary<string, string> _StrMateriale = new Dictionary<string, string>
         {
-            {"IT",  "valore_materiale"},
-            {"EN",  "valore_materiale"}
+            {"IT",  "Variante"},
+            {"EN",  "Variant"}
         };
         Dictionary<string, string> _StrDn = new Dictionary<string, string>
         {
-            {"IT",  "valore_dn"},
-            {"EN",  "valore_dn"}
+            {"IT",  "Misura"},
+            {"EN",  "Size"}
         };
         Dictionary<string, string> _StrInch = new Dictionary<string, string>
         {
-            {"IT",  "valore_inch"},
-            {"EN",  "valore_inch"}
+            {"IT",  "Misura"},
+            {"EN",  "Size"}
         };
         Dictionary<string, string> _StrPnasi = new Dictionary<string, string>
         {
-            {"IT",  "valore_pnansi"},
-            {"EN",  "valore_pnansi"}
+            {"IT",  "Pressione nominale"},
+            {"EN",  "Nominal pressure"}
         };
         Dictionary<string, string> _StrAttuatore = new Dictionary<string, string>
         {
-            {"IT",  "Codice_Attuatore"},
-            {"EN",  "Codice_Attuatore"}
+            {"IT",  "Attuatore"},
+            {"EN",  "Actuator"}
         };
         Dictionary<string, string> _StrKit = new Dictionary<string, string>
         {
-            {"IT",  "codice_kit"},
-            {"EN",  "codice_kit"}
+            {"IT",  "Kit di montaggio"},
+            {"EN",  "Mounting kit"}
         };
         Dictionary<string, string> _StrValvola = new Dictionary<string, string>
         {
-            {"IT",  "Codice_Valvola"},
-            {"EN",  "Codice_Valvola"}
+            {"IT",  "Valvola"},
+            {"EN",  "Valve"}
         };
         Dictionary<string, string> _StrNmm = new Dictionary<string, string>
         {
-            {"IT",  "valore_nmm"},
-            {"EN",  "valore_nmm"}
+            {"IT",  "N [mm]"},
+            {"EN",  "N [mm]"}
         };
         Dictionary<string, string> _StrHmm = new Dictionary<string, string>
         {
-            {"IT",  "valore_hmm"},
-            {"EN",  "valore_hmm"}
+            {"IT",  "H [mm]"},
+            {"EN",  "H [mm]"}
         };
-            Dictionary<string, string> _StrPesoKg = new Dictionary<string, string>
+        Dictionary<string, string> _StrPesoKg = new Dictionary<string, string>
         {
-                {"IT",  "valore_pesokg"},
-                {"EN",  "valore_pesokg"}
+                {"IT",  "Peso [kg]"},
+                {"EN",  "Weight [kg]"}
         };
 
 
 
-        
+
 
         Dictionary<string, string> _BtnMostra3D = new Dictionary<string, string>
         {
             {"IT",  "Mostra 3D"},
-            {"EN",  "Mostra 3D"}
+            {"EN",  "Show 3D"}
         };
         Dictionary<string, string> _BtnDownload = new Dictionary<string, string>
         {
@@ -306,44 +467,44 @@ namespace Omal.AppResources
         Dictionary<string, string> _BtnOrdina = new Dictionary<string, string>
         {
             {"IT",  "Ordina"},
-            {"EN",  "Ordina"}
+            {"EN",  "Order"}
         };
         Dictionary<string, string> _MsgRisultatoRicercaArticoli = new Dictionary<string, string>
         {
             {"IT",  "Risultato Ricerca: {0} articoli"},
-            {"EN",  "Risultato Ricerca: {0} articoli"}
+            {"EN",  "Search result: {0} items"}
         };
         Dictionary<string, string> _ErrPerPrezziNecessarioLogin = new Dictionary<string, string>
         {
             {"IT",  "Effettua il login per vedere prezzi e rendering 3D"},
-            {"EN",  "Effettua il login per vedere prezzi e rendering 3D"}
+            {"EN",  "Login to see prices and 3D rendering"}
         };
         Dictionary<string, string> _TitoloArticoli = new Dictionary<string, string>
         {
             {"IT",  "Articoli"},
-            {"EN",  "Articoli"}
+            {"EN",  "Items"}
         };
         Dictionary<string, string> _MsgArticoliAggiuntiAlCarrello = new Dictionary<string, string>
         {
             {"IT",  "Articoli aggiunti al carrello"},
-            {"EN",  "Articoli aggiunti al carrello"}
+            {"EN",  "Items added to the cart"}
         };
 
         Dictionary<string, string> _ErrQtaMaggiore0 = new Dictionary<string, string>
         {
-            {"IT",  "Qta nn valida.Il numero deve essere maggiore di 0"},
-            {"EN",  "Qta nn valida.Il numero deve essere maggiore di 0"}
+            {"IT",  "Qta non valida. Il numero deve essere maggiore di 0"},
+            {"EN",  "Qty invalid. Number must be greater than 0"}
         };
         Dictionary<string, string> _TitoloProdotto = new Dictionary<string, string>
         {
             {"IT",  "Prodotto"},
             {"EN",  "Product"}
         };
-       
+
         Dictionary<string, string> _ErrNumeroCarrello = new Dictionary<string, string>
         {
-            {"IT",  "Qta nn valida. Numero intero richiesto."},
-            {"EN",  "Qta nn valida. Numero intero richiesto."}
+            {"IT",  "Qta non valida. Numero intero richiesto."},
+            {"EN",  "Qty invalid. Required integer value."}
         };
         Dictionary<string, string> _BtnTrova = new Dictionary<string, string>
         {
@@ -404,7 +565,7 @@ namespace Omal.AppResources
         Dictionary<string, string> _StrBtnPulisci = new Dictionary<string, string>
         {
             {"IT", "Elimina"},
-            {"EN", "Elimina"}
+            {"EN", "Delete"}
         };
 
         Dictionary<string, string> _TitoloLogin = new Dictionary<string, string>
@@ -417,7 +578,7 @@ namespace Omal.AppResources
         Dictionary<string, string> _StrInfoProdottoPicker1Attuatore = new Dictionary<string, string>
         {
             {"IT", "Misura"},
-            {"EN", "Misura"}
+            {"EN", "Measure"}
         };
         Dictionary<string, string> _StrInfoProdottoPicker2Attuatore = new Dictionary<string, string>
         {
@@ -427,109 +588,109 @@ namespace Omal.AppResources
         Dictionary<string, string> _StrInfoProdottoPicker3Attuatore = new Dictionary<string, string>
         {
             {"IT", "Coppia"},
-            {"EN", "Coppia"}
+            {"EN", "Torque"}
         };
 
         Dictionary<string, string> _StrInfoProdottoPicker1Valvola = new Dictionary<string, string>
         {
             {"IT", "Azionamenti"},
-            {"EN", "Azionamenti"}
+            {"EN", "Drives"}
         };
         Dictionary<string, string> _StrInfoProdottoPicker2Valvola = new Dictionary<string, string>
         {
             {"IT", "Misure DN"},
-            {"EN", "Misure DN"}
+            {"EN", "DN Measures"}
         };
         Dictionary<string, string> _StrInfoProdottoPicker3Valvola = new Dictionary<string, string>
         {
             {"IT", "Pressione nominale"},
-            {"EN", "Pressione nominale"}
+            {"EN", "Nominal pressure"}
         };
         Dictionary<string, string> _StrInfoProdottoPicker4Valvola = new Dictionary<string, string>
         {
             {"IT", "Varianti"},
-            {"EN", "Varianti"}
+            {"EN", "Variants"}
         };
 
         Dictionary<string, string> _StrTrovaArticolo = new Dictionary<string, string>
         {
             {"IT", "Trova Articolo"},
-            {"EN", "Trova Articolo"}
+            {"EN", "Find Item"}
         };
         Dictionary<string, string> _TitoloDettaglioCliente = new Dictionary<string, string>
         {
             {"IT", "Dettaglio Cliente"},
-            {"EN", "Dettaglio Cliente"}
+            {"EN", "Customer detail"}
         };
         Dictionary<string, string> _StrRagioneSociale = new Dictionary<string, string>
         {
             {"IT", "Ragione Sociale"},
-            {"EN", "Sconto (%)"}
+            {"EN", "Business name"}
         };
         Dictionary<string, string> _StrPIva = new Dictionary<string, string>
         {
             {"IT", "P.Iva"},
-            {"EN", "Sconto (%)"}
+            {"EN", "Vat nr."}
         };
         Dictionary<string, string> _StrCFiscale = new Dictionary<string, string>
         {
             {"IT", "C.Fiscale"},
-            {"EN", "Sconto (%)"}
+            {"EN", "Nr. ID"}
         };
         Dictionary<string, string> _StrPosizione = new Dictionary<string, string>
         {
             {"IT", "Posizione"},
-            {"EN", "Sconto (%)"}
+            {"EN", "Position"}
         };
         Dictionary<string, string> _StrIndirizzo = new Dictionary<string, string>
         {
             {"IT", "Indirizzo"},
-            {"EN", "Sconto (%)"}
+            {"EN", "Address"}
         };
         Dictionary<string, string> _StrCitta = new Dictionary<string, string>
         {
             {"IT", "Città"},
-            {"EN", "Sconto (%)"}
+            {"EN", "City"}
         };
         Dictionary<string, string> _StrCap = new Dictionary<string, string>
         {
             {"IT", "Cap"},
-            {"EN", "Sconto (%)"}
+            {"EN", "Postal Code"}
         };
         Dictionary<string, string> _StrProvincia = new Dictionary<string, string>
         {
             {"IT", "Provincia"},
-            {"EN", "Sconto (%)"}
+            {"EN", "Region"}
         };
         Dictionary<string, string> _StrContatti = new Dictionary<string, string>
         {
             {"IT", "Contatti"},
-            {"EN", "Sconto (%)"}
+            {"EN", "Contacts"}
         };
         Dictionary<string, string> _StrEmail = new Dictionary<string, string>
         {
             {"IT", "Email"},
-            {"EN", "Sconto (%)"}
+            {"EN", "Email"}
         };
         Dictionary<string, string> _StrTelefono = new Dictionary<string, string>
         {
             {"IT", "Telefono"},
-            {"EN", "Sconto (%)"}
+            {"EN", "Telephone"}
         };
         Dictionary<string, string> _StrFax = new Dictionary<string, string>
         {
             {"IT", "Fax"},
-            {"EN", "Sconto (%)"}
+            {"EN", "Fax"}
         };
         Dictionary<string, string> _StrNazione = new Dictionary<string, string>
         {
             {"IT", "Nazione"},
-            {"EN", "Sconto (%)"}
+            {"EN", "Nation"}
         };
         Dictionary<string, string> _StrSconto = new Dictionary<string, string>
         {
             {"IT", "Sconto"},
-            {"EN", "Sconto"}
+            {"EN", "Discount"}
         };
 
 
@@ -551,36 +712,36 @@ namespace Omal.AppResources
         Dictionary<string, string> _TotaleOrdine = new Dictionary<string, string>
         {
             {"IT", "Totale Ordine"},
-            {"EN", "Totale Ordine"}
+            {"EN", "Total Order"}
         };
 
         Dictionary<string, string> _ProdottoPicker1 = new Dictionary<string, string>
         {
             {"IT", "Naviga il catalogo"},
-            {"EN", "Naviga il catalogo"}
+            {"EN", "Browse the catalog"}
         };
 
         Dictionary<string, string> _ProdottoPicker2 = new Dictionary<string, string>
         {
             {"IT", "Scegli una serie"},
-            {"EN", "Scegli una serie"}
+            {"EN", "Choose a series"}
         };
         Dictionary<string, string> _ProdottoPicker3 = new Dictionary<string, string>
         {
             {"IT", "Seleziona una famiglia"},
-            {"EN", "Seleziona una famiglia"}
+            {"EN", "Select a family"}
         };
 
         Dictionary<string, string> _LogonRichiesto = new Dictionary<string, string>
         {
             {"IT", "Effettua il login per creare e consultare l'elenco clienti e ordini"},
-            {"EN", "Effettua il login per creare e consultare l'elenco clienti e ordini"}
+            {"EN", "Login to create and view the customer and order list"}
         };
 
         Dictionary<string, string> _LogonTesto = new Dictionary<string, string>
         {
             {"IT", "Effettua il login per accedere all'elenco clienti e ordini, vedere prezzi e rendering 3D"},
-            {"EN", "Effettua il login per accedere all'elenco clienti e ordini, vedere prezzi e rendering 3D"}
+            {"EN", "Login to access the customer list and orders, see prices and 3D rendering"}
         };
 
 
@@ -588,7 +749,7 @@ namespace Omal.AppResources
         Dictionary<string, string> _TitoloContattiOmal = new Dictionary<string, string>
         {
             {"IT", "Contatti Omal"},
-            {"EN", "Contatti Omal"}
+            {"EN", "Omal Contacts"}
         };
 
         Dictionary<string, string> _UltimoAggiornamento = new Dictionary<string, string>
@@ -605,7 +766,7 @@ namespace Omal.AppResources
         Dictionary<string, string> _TitoloClienti = new Dictionary<string, string>
         {
             {"IT", "Clienti"},
-            {"EN", "Clients"}
+            {"EN", "Customers"}
         };
 
         Dictionary<string, string> _Note = new Dictionary<string, string>
@@ -644,13 +805,13 @@ namespace Omal.AppResources
         Dictionary<string, string> _ClienteRicercato = new Dictionary<string, string>
         {
             {"IT", "Inserisci il cliente ricercato"},
-            {"EN", "Find..."}
+            {"EN", "Enter the requested client"}
         };
 
         Dictionary<string, string> _ProdottoRicercato = new Dictionary<string, string>
         {
             {"IT", "Inserisci il prodotto ricercato"},
-            {"EN", "Find..."}
+            {"EN", "Enter the requested product"}
         };
 
     }

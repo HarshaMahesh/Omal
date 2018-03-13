@@ -28,6 +28,7 @@ namespace Omal.Services
         public async Task<Models.ResponseBase> AddItemAsync(Models.Cliente item)
         {
             var url = string.Format("{0}{1}?tabella=clienti", App.BackendUrl, "webservicei.php");
+            item.IDUtente = App.CurUser.IdUtente;
             if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
             var formContent = new FormUrlEncodedContent(new[]
            {
@@ -39,6 +40,7 @@ namespace Omal.Services
                 new KeyValuePair<string, string>("Email", item.Email),
                 new KeyValuePair<string, string>("Telefono", item.Telefono),
                 new KeyValuePair<string, string>("Fax", item.Fax),
+                new KeyValuePair<string, string>("IDUtente", item.IDUtente.ToString()),
                 new KeyValuePair<string, string>("Indirizzo", item.Indirizzo),
                 new KeyValuePair<string, string>("Cap", item.Cap),
                 new KeyValuePair<string, string>("Citta", item.Citta),
@@ -59,6 +61,7 @@ namespace Omal.Services
 
         public async Task<Models.ResponseBase> UpdateItemAsync(Models.Cliente item)
         {
+            item.IDUtente = App.CurUser.IdUtente;
             var url = string.Format("{0}{1}?tabella=clienti", App.BackendUrl, "webservicei.php");
             if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
             var formContent = new FormUrlEncodedContent(new[]
@@ -78,6 +81,8 @@ namespace Omal.Services
                 new KeyValuePair<string, string>("Provincia", item.Provincia),
                 new KeyValuePair<string, string>("Nazione", item.Nazione),
                 new KeyValuePair<string, string>("societapersona", "societa"),
+                new KeyValuePair<string, string>("IDUtente", item.IDUtente.ToString()),
+                new KeyValuePair<string, string>("annullato", item.annullato.ToString()),
             });
             var response = await client.PostAsync(url, formContent);
             var json = await response.Content.ReadAsStringAsync();
@@ -89,6 +94,7 @@ namespace Omal.Services
                 var _item = items.Where((Models.Cliente arg) => arg.IDCliente == item.IDCliente).FirstOrDefault();
                 items.Remove(_item);
                 items.Add(item);
+                Connection.InsertOrReplaceAsync(item);
             }
             return await Task.FromResult(risposta);
         }
