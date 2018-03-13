@@ -27,9 +27,28 @@ namespace Omal.ViewModels
             MessagingCenter.Subscribe<Models.Messages.BasketEditedMessage>(this, "", sender =>
             {
                 ClearItems();
+                OnPropertyChanged("NoteOrdine");
+                OnPropertyChanged("SelectedCliente");
                 OnPropertyChanged("Items");
                 OnPropertyChanged("NumeroCarrelli");
+                OnPropertyChanged("TotaleOrdine");
+                OnPropertyChanged("ScontoOrdine");
             });
+            MessagingCenter.Subscribe<Models.Messages.BasketLoadedMessage>(this, "", sender =>
+            {
+                selectedCliente = null;
+                ClearItems();
+                items = null;
+                OnPropertyChanged("NoteOrdine");
+                OnPropertyChanged("SelectedCliente");
+                OnPropertyChanged("Items");
+                OnPropertyChanged("NumeroCarrelli");
+                OnPropertyChanged("TotaleOrdine");
+                OnPropertyChanged("TotaleOrdineConSconto");
+                OnPropertyChanged("ScontoOrdine");
+
+            });
+
             MessagingCenter.Subscribe<Models.Messages.ClienteInsertedOrUpdatedMessage>(this, "", sender =>
             {
                 LoadClienti();
@@ -79,6 +98,8 @@ namespace Omal.ViewModels
                 App.CurOrdine.Totale = 0;
                 OnPropertyChanged("Items");
                 OnPropertyChanged("TotaleOrdine");
+                OnPropertyChanged("TotaleOrdineConSconto");
+                OnPropertyChanged("ScontoOrdine");
                 OnPropertyChanged("NumeroCarrelli");
                 SalvaCommand.ChangeCanExecute();
                 InviaCommand.ChangeCanExecute();
@@ -114,7 +135,7 @@ namespace Omal.ViewModels
             {
                 try
                 {
-                    var ritorno =  await DataStore.Ordini.AddItemAsync(App.CurOrdine);
+                    var ritorno =  await DataStore.Ordini.UpdateItemAsync(App.CurOrdine);
                 }
                 catch (Exception ex)
                 {
@@ -176,11 +197,31 @@ namespace Omal.ViewModels
             }
         }
 
+        public double ScontoOrdine
+        {
+            get
+            {
+                return App.CurOrdine == null ? 0 : App.CurOrdine.Sconto;
+            }
+            set
+            {
+                if (App.CurOrdine != null && App.CurOrdine.Sconto != value)
+                {
+                    App.CurOrdine.Sconto = value;
+                    OnPropertyChanged();
+                    RicalcolaTotale();
+                }
+
+            }
+        }
+
         Models.Cliente selectedCliente;
         public Models.Cliente SelectedCliente
         {
             get
             {
+                if (selectedCliente == null && App.CurOrdine != null && App.CurOrdine.IdCliente != 0)
+                    LoadCliente();
                 return selectedCliente;
             }
             set
@@ -194,6 +235,16 @@ namespace Omal.ViewModels
                     App.CurOrdine.IdCliente = selectedCliente.IDCliente;
                 OnPropertyChanged();
             }
+        }
+
+        private async void LoadCliente()
+        {
+            if (App.CurOrdine != null && App.CurOrdine.IdCliente != 0)
+            {
+                selectedCliente = Clienti.FirstOrDefault(x => x.IDCliente == App.CurOrdine.IdCliente);
+                OnPropertyChanged("SelectedCliente");
+            }
+
         }
 
         private void ClearItems()
@@ -238,9 +289,17 @@ namespace Omal.ViewModels
         private void ItemPropertyChanges(object sender, PropertyChangedEventArgs e)
         {
             if (App.CurOrdine == null) return;
-            App.CurOrdine.Totale = items.Sum(x => x.PrezzoTotale);
-            OnPropertyChanged("TotaleOrdine");
+            RicalcolaTotale();
             OnPropertyChanged("NumeroCarrelli");
+        }
+
+        private void RicalcolaTotale()
+        {
+            if (App.CurOrdine == null) return;
+            App.CurOrdine.Totale = items.Sum(x => x.PrezzoTotale);
+            App.CurOrdine.TotaleConSconto = App.CurOrdine.Totale - (App.CurOrdine.Totale * App.CurOrdine.Sconto / 100);
+            OnPropertyChanged("TotaleOrdine");
+            OnPropertyChanged("TotaleOrdineConSconto");
         }
 
         public double TotaleOrdine
@@ -251,6 +310,17 @@ namespace Omal.ViewModels
                 return App.CurOrdine.Totale;
             }
         }
+
+        public double TotaleOrdineConSconto
+        {
+            get
+            {
+                if (App.CurOrdine == null) return 0;
+                return App.CurOrdine.TotaleConSconto;
+            }
+        }
+
+
 
         public string NumeroCarrelli
         {

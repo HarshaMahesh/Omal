@@ -27,7 +27,7 @@ namespace Omal.Services
 
         public async Task<Models.ResponseBase> AddItemAsync(Models.Ordine item)
         {
-            if (String.IsNullOrWhiteSpace(item.CodiceOrdine)) throw new ArgumentNullException("CodiceOrdine vuoto");
+            item.CodiceOrdine = Guid.NewGuid().ToString("N");
             var url = string.Format("{0}{1}?tabella=ordinicarrelli", App.BackendUrl, "webservicei.php");
             if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
 
@@ -87,6 +87,8 @@ namespace Omal.Services
 
         public async Task<Models.ResponseBase> UpdateItemAsync(Models.Ordine item)
         {
+            if (item == null) throw new ArgumentNullException("item");
+            if (string.IsNullOrWhiteSpace(item.CodiceOrdine)) return await AddItemAsync(item);
             var url = string.Format("{0}{1}?tabella=ordinicarrelli", App.BackendUrl, "webservicei.php");
             if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
 
@@ -102,6 +104,7 @@ namespace Omal.Services
                 new KeyValuePair<string, string>("Sconto", item.Sconto.ToString("f2")),
                 new KeyValuePair<string, string>("Stato", ((int)item.Stato).ToString()),
             });
+            if (item.IdOrdine != 0) Kiavi.Add(new KeyValuePair<string, string>("IdOrdine", item.IdOrdine.ToString()));
             if (item.DataInizio.HasValue) Kiavi.Add(new KeyValuePair<string, string>("datainizio_ordine", item.DataInizio.Value.ToString("yyyyMMdd")));
             if (item.DataFine.HasValue) Kiavi.Add(new KeyValuePair<string, string>("datafine_ordine", item.DataFine.Value.ToString("yyyyMMdd")));
             if (item.DataEliminazione.HasValue) Kiavi.Add(new KeyValuePair<string, string>("dataeliminazione_ordine", item.DataEliminazione.Value.ToString("yyyyMMdd")));

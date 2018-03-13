@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace Omal.ViewModels
 {
-    public class OrdersVM: BaseVM
+    public class OrdersVM : BaseVM
     {
         public OrdersVM()
         {
@@ -42,6 +42,32 @@ namespace Omal.ViewModels
                     OnPropertyChanged("NumeroContatti");
                 }
 
+            }
+        }
+
+        public Models.Ordine OrdineSelected
+        {
+            get
+            {
+                return null;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    loadCurOrdine(value);
+                }
+            }
+        }
+
+        public async void loadCurOrdine(Models.Ordine curOrdine)
+        {
+            var risposta = await CurPage.DisplayAlert(TitoloOrdini, StrCaricaOrdineSelezionato, StrSi, StrNo);
+            if (risposta)
+            {
+                App.CurOrdine = curOrdine;
+                MessagingCenter.Send<Models.Messages.BasketLoadedMessage>(new Models.Messages.BasketLoadedMessage() { Ordine = curOrdine }, "");
+                CurPage.DisplayAlert(TitoloOrdini, StrOrdineCaricato, "ok");
             }
         }
 

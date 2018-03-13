@@ -11,7 +11,6 @@ namespace Omal.Models
         {
             Stato = Enums.EOrdineStato.bozza;
             carrelli = new List<Carrello>();
-            CodiceOrdine = Guid.NewGuid().ToString("N");
             DataInizio = DateTime.Now;
         }
 
@@ -64,7 +63,7 @@ namespace Omal.Models
         { 
             get
             {
-                if ((_carrelli == null) && (!string.IsNullOrWhiteSpace(jsonCarrelliSerialized))) _carrelli = JsonConvert.DeserializeObject<List<Carrello>>(jsonCarrelliSerialized);
+                if ((_carrelli == null || _carrelli.Count == 0) && (!string.IsNullOrWhiteSpace(jsonCarrelliSerialized))) _carrelli = JsonConvert.DeserializeObject<List<Carrello>>(jsonCarrelliSerialized);
                 return _carrelli;
             }
 

@@ -121,9 +121,20 @@ namespace Omal.AppResources
         public string StrSalvataggioCarrelloCompletato { get { return GetCurvalueLang(_StrSalvataggioCarrelloCompletato); } }
         public string StrSi { get { return GetCurvalueLang(_StrSi); } }
         public string StrNo { get { return GetCurvalueLang(_StrNo); } }
+        public string StrCaricaOrdineSelezionato { get { return GetCurvalueLang(_StrCaricaOrdineSelezionato); } }
+        public string StrOrdineCaricato { get { return GetCurvalueLang(_StrOrdineCaricato); } }
 
+        Dictionary<string, string> _StrOrdineCaricato = new Dictionary<string, string>
+        {
+            {"IT",  "L'ordine selezionato è stato ricaricato nel carrello"},
+            {"EN",  "Selected order was been loaded in the basket"}
+        };
 
-
+        Dictionary<string, string> _StrCaricaOrdineSelezionato = new Dictionary<string, string>
+        {
+            {"IT",  "Caricare l'ordine corrente?"},
+            {"EN",  "Do you want to load selected order?"}
+        };
         Dictionary<string, string> _TitoloOrdini = new Dictionary<string, string>
         {
             {"IT",  "Ordini"},
