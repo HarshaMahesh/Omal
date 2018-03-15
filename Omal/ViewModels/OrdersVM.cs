@@ -67,6 +67,7 @@ namespace Omal.ViewModels
 
         public async void loadCurOrdine(Models.Ordine curOrdine)
         {
+            if (curOrdine == null || curOrdine.Stato == Models.Enums.EOrdineStato.ordineAnnullato || curOrdine.Stato == Models.Enums.EOrdineStato.ordineEvaso || curOrdine.Stato == Models.Enums.EOrdineStato.ordineInviato) return;
             var risposta = await CurPage.DisplayAlert(TitoloOrdini, StrCaricaOrdineSelezionato, StrSi, StrNo);
             if (risposta)
             {

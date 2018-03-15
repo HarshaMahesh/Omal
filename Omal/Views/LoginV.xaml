@@ -23,8 +23,9 @@
                     <CControls:CualevaRoundedEntry BackgroundColor="Transparent"  Style="{StaticResource psw}" LeftPadding="10" BorderRadius="10" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#FFFFFF"   x:Name="Password" 
                     Placeholder="Password" IsPassword="true" Text="{Binding Password}" />
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                        <Button x:Name="LoginBtn" Style="{StaticResource Azzurro}"  Text="{Binding LoginButton, Converter={StaticResource UpperCaseConverter}}" Command="{Binding LoginCommand}" />
+                        <Button x:Name="LoginBtn" IsVisible="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}" Style="{StaticResource AzzurroNoBold}"  Text="{Binding LoginButton, Converter={StaticResource UpperCaseConverter}}" Command="{Binding LoginCommand}" />
                     </StackLayout>
+                    <ActivityIndicator IsRunning="{Binding IsRunning}" />
                     <Label Text="{Binding Errore}" TextColor="Red" />
             </StackLayout>
     </Grid>

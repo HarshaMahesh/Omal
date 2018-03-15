@@ -26,7 +26,7 @@
             </StackLayout>
             <Image Grid.Row="1"  Aspect="AspectFill" Source="IMG051428.png" Opacity="0.3" />
             <StackLayout  VerticalOptions="EndAndExpand" Grid.Row="1" Margin="0,0,0,0" BackgroundColor="Transparent"  Orientation="Vertical">
-            <CControls:CualevaRoundedEntry Style="{StaticResource cerca}" Margin="30,5,30,5" BorderRadius="25" HeightRequest="50"   TextColor="White"  BackgroundColor="Transparent" Placeholder="{Binding ProdottoRicercato}" Text="{Binding ProductNameFilter, Mode=TwoWay}" />
+            <CControls:CualevaRoundedEntry PlaceholderColor="White" Style="{StaticResource cerca}" Margin="30,5,30,5" BorderRadius="25" HeightRequest="50"   TextColor="White"  BackgroundColor="Transparent" Placeholder="{Binding ProdottoRicercato}" Text="{Binding ProductNameFilter, Mode=TwoWay}" />
                     
                 <Button HorizontalOptions="Center"  Margin="10" Command="{Binding SearchWithProductNameCommand, Mode=TwoWay}" Text="{Binding BtnCerca, Converter={StaticResource UpperCaseConverter}}" />
             </StackLayout>

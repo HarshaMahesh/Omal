@@ -10,6 +10,20 @@ namespace Omal.ViewModels
         public RelayCommand CanceLoginCommand { get; set; }
 
         public string CurTitle { get { return TitoloLogin; } }
+        bool isRunning = false;
+        public bool IsRunning
+        {
+            get { return isRunning; }
+            set
+            {
+
+                if (isRunning != value)
+                {
+                    isRunning = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
 
         string email;
@@ -77,18 +91,29 @@ namespace Omal.ViewModels
 
         private async void OnLoginCommand(object obj)
         {
-            var token = await DataStore.Utenti.Login(Email,Password);
-            if (token == null)
-                Errore = "Email o password errata";
-            else
+            IsRunning = true;
+            try
             {
-                App.CurToken = token;
-                App.CurUser = new Models.Utente { Email = token.email_utente, IdUtente = token.IDUtente, NomeUtente = token.NomeUtente, Password = Password };
-                Application.Current.Properties["Email"] = Email;
-                MessagingCenter.Send(new Models.Messages.LoginOrLogoutActionMessage(), "LoginOrLogout");
-                await Navigation.PopAsync();
+                var token = await DataStore.Utenti.Login(Email, Password);
+                if (token == null)
+                    throw new Exception("Email o password errata");
+                else
+                {
+                    App.CurToken = token;
+                    App.CurUser = new Models.Utente { Email = token.email_utente, IdUtente = token.IDUtente, NomeUtente = token.NomeUtente, Password = Password };
+                    Application.Current.Properties["Email"] = Email;
+                    MessagingCenter.Send(new Models.Messages.LoginOrLogoutActionMessage(), "LoginOrLogout");
+                    await Navigation.PopAsync();
+                }
             }
-
+            catch (Exception ex)
+            {
+                Errore = ex.Message;
+            }
+            finally
+            {
+                IsRunning = false;
+            }
         }
     }
 }

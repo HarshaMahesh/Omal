@@ -142,12 +142,27 @@ namespace Omal.ViewModels
                     {
                         MessagingCenter.Send(new Models.Messages.OrdineNewMessage() { Ordine = App.CurOrdine }, "");
                     }
+
                 }
                 catch (Exception ex)
                 {
                     CurPage.DisplayAlert("Error", ex.Message, "Ok");
                 }
-                await CurPage.DisplayAlert(TitoloCarrello, StrSalvataggioCarrelloCompletato, "Ok");
+                await CurPage.DisplayAlert(TitoloCarrello, string.Format(StrOrdineCompletatoCompletato,App.CurOrdine.IdOrdine), "Ok");
+                ClearItems();
+                App.CurOrdine = null;
+                App.CurOrdine = new Models.Ordine();
+                ClearItems();
+                App.CurOrdine.Totale = 0;
+                OnPropertyChanged("Items");
+                OnPropertyChanged("TotaleOrdine");
+                OnPropertyChanged("TotaleOrdineConSconto");
+                OnPropertyChanged("ScontoOrdine");
+                OnPropertyChanged("NumeroCarrelli");
+                SalvaCommand.ChangeCanExecute();
+                InviaCommand.ChangeCanExecute();
+                AnnullaCommand.ChangeCanExecute();
+
             }
         }
 

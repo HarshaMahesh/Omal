@@ -149,7 +149,28 @@ namespace Omal.AppResources
         public string StrKIT_VALVOLA_RIDUTTORE { get { return GetCurvalueLang(_StrKIT_VALVOLA_RIDUTTORE); } }
         public string Strcodice_KITMONTAGGIO { get { return GetCurvalueLang(_Strcodice_KITMONTAGGIO); } }
         public string Strcodice_KIT_RICAMBIO { get { return GetCurvalueLang(_Strcodice_KIT_RICAMBIO); } }
+        public string StrOrdineCompletatoCompletato { get { return GetCurvalueLang(_StrOrdineCompletatoCompletato); } }
+        public string ErrCampiOblCliente { get { return GetCurvalueLang(_ErrCampiOblCliente); } }
+        public string MsgClienteEliminato { get { return GetCurvalueLang(_MsgClienteEliminato); } }
 
+
+
+        Dictionary<string, string> _MsgClienteEliminato = new Dictionary<string, string>
+        {
+            {"IT",  "CLIENTE ELIMINATO. L'anagrafica non compartirà più nell'elenco clienti dell'archivio"},
+            {"EN",  "CUSTOMER DELETED"}
+        };
+
+        Dictionary<string, string> _ErrCampiOblCliente = new Dictionary<string, string>
+        {
+            {"IT",  "Risultano non compilatio i seguenti campi:"},
+            {"EN",  "Theese fields are empty, but are required:"}
+        };
+        Dictionary<string, string> _StrOrdineCompletatoCompletato = new Dictionary<string, string>
+        {
+            {"IT",  "L'ordine {0} è stato inviato a Omal. A breve riceverà una mail con tutti i dettagli."},
+            {"EN",  "L'ordine {0} è stato inviato a Omal. A breve riceverà una mail con tutti i dettagli."}
+        };
         Dictionary<string, string> _Strcodice_KIT_RICAMBIO = new Dictionary<string, string>
         {
             {"IT",  "Kit ricambio"},

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="15" android:versionName="1.14" package="com.Cualeva.Omal">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="19" android:versionName="1.18" package="com.Cualeva.Omal">
 	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="25" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -8,7 +8,7 @@
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
-	<application android:label="Omal" android:icon="@drawable/icona_76">
+	<application android:label="OMAL" android:icon="@drawable/icona_76">
 		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCnGaD_pg9H6t7R9VTPX3jE9CAOLwLSs3Q" />
 	</application>
 </manifest>

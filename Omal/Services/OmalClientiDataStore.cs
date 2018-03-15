@@ -82,7 +82,7 @@ namespace Omal.Services
                 new KeyValuePair<string, string>("Nazione", item.Nazione),
                 new KeyValuePair<string, string>("societapersona", "societa"),
                 new KeyValuePair<string, string>("IDUtente", item.IDUtente.ToString()),
-                new KeyValuePair<string, string>("annullato", item.annullato.ToString()),
+                new KeyValuePair<string, string>("Annullato", item.annullato.ToString()),
             });
             var response = await client.PostAsync(url, formContent);
             var json = await response.Content.ReadAsStringAsync();

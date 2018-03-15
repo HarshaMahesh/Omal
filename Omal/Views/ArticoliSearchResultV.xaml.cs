@@ -18,6 +18,12 @@ namespace Omal.Views
                 e.Cancel = true;
                 return;
             }
+            if (e.Url.Contains("info_"))
+            {
+                Navigation.PushAsync(new InfoProductV(viewModel.CurProdotto));    
+                e.Cancel = true;
+                return;
+            }
             if (e.Url.Contains("partcommunity"))
             {
                 if (!CrossShare.IsSupported)

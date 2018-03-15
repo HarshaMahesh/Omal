@@ -26,4 +26,6 @@
 	<!--	 <item name="colorAccent">#FF4081</item> -->
         <item name="colorAccent">#004899</item>
 	</style>
+    <color name="ListViewSelected">#000000</color>
+    <color name="ListViewHighlighted">#000000</color>
 </resources>

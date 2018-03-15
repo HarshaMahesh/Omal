@@ -205,6 +205,7 @@
     <Compile Include="CustomControls\BorderRender.cs" />
     <Compile Include="CustomControls\CualevaPickerRenderAndroid.cs" />
     <Compile Include="CustomControls\CualevaGradientContentPageRenderAndroid.cs" />
+    <Compile Include="CustomControls\CustomCellRender.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -240,9 +241,10 @@
     <AndroidResource Include="Resources\drawable\omalc12.png" />
     <AndroidResource Include="Resources\drawable\omalc13.png" />
     <AndroidResource Include="Resources\drawable\rightarrow.png" />
-    <AndroidResource Include="Resources\drawable\IMG074428.png" />
+    <AndroidResource Include="Resources\drawable\Info.png" />
     <AndroidResource Include="Resources\drawable\IMG06837.png" />
     <AndroidResource Include="Resources\drawable\IMG051428.png" />
+    <AndroidResource Include="Resources\drawable\IMG074428.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomControls\" />

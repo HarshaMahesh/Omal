@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Specialized;
 using Naxam.Controls.Forms;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
@@ -12,7 +13,7 @@ namespace Omal
         public MainPage()
         {
             var tmpTraduzioni = new AppResources.Traduzioni();
-            SearchPage = new NavigationPage(new Views.SearchV()) { Title = tmpTraduzioni.TitoloCerca, Icon="Cerca.png" };
+            SearchPage = new CustomControls.CualevaNavigationPage(new Views.SearchV()) { Title = tmpTraduzioni.TitoloCerca, Icon="Cerca.png"  };
             AnagrafichePage = new NavigationPage(new Views.AnagraficheV()) { Title = tmpTraduzioni.TitoloArchivio, Icon = "Archivio.png"  };
             BasketPage = new NavigationPage(new Views.BasketV()) { Title = tmpTraduzioni.TitoloCarrello, Icon ="Ordini.png" };
             ContactOmalPage = new NavigationPage(new Views.OmalContactPageV()) { Title = "Contatti Omal", Icon="Omal.png" };
@@ -52,7 +53,9 @@ namespace Omal
             });
         }
 
-        protected async override void OnAppearing()
+		
+
+		protected async override void OnAppearing()
         {
             base.OnAppearing();
             if (Device.RuntimePlatform == Device.Android)
@@ -77,10 +80,23 @@ namespace Omal
 
         bool requireUpdate = false;
 
+
+
         protected override void OnCurrentPageChanged()
         {
             base.OnCurrentPageChanged();
             Title = CurrentPage?.Title ?? string.Empty;
+            foreach (var page in Children)
+            {
+                if (page is CustomControls.CualevaNavigationPage)
+                {
+                    if (page == CurrentPage)
+                    {
+                        ((CustomControls.CualevaNavigationPage)page).SetIconActive();
+                    } else
+                        ((CustomControls.CualevaNavigationPage)page).SetIconNoActive();
+                }
+            }
             if (requireUpdate)
             {
                 requireUpdate = false;

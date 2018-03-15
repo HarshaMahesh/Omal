@@ -68,14 +68,9 @@ namespace Omal.Services
                 var tmp = await Task.Run(() => JsonConvert.DeserializeObject<List<Models.FkProdottoGruppiMetadati>>(json));
                 items = tmp.Where(x => x.idgruppometadato.HasValue).Select(x => new ProdottoGruppiMetadati
                 { dataora_modifica = x.dataora_modifica, gruppo_metadati_en = x.gruppo_metadati_en, gruppo_metadati_it = x.gruppo_metadati_it, idgruppometadato = x.idgruppometadato.Value, idprodotto = x.idprodotto.Value, ordine =x.ordine }).ToList();
-                if (forceRefresh)
-                {
-                    await Connection.DropTableAsync<Models.ProdottoGruppiMetadati>();
-                    await Connection.CreateTableAsync<Models.ProdottoGruppiMetadati>();
-                }
+               
                 foreach (var item in items)
-                    await Connection.InsertOrReplaceAsync(item);
-                return items;
+                    Connection.InsertOrReplaceAsync(item);
             }
             return items;
         }

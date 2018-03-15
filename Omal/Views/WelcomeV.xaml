@@ -24,7 +24,7 @@
                 <Button HorizontalOptions="Fill" Text="VERSIONE ITALIANA" Clicked="Handle_Clicked_IT" />
                 <Button HorizontalOptions="Fill" Text="ENGLISH VERSION"  Clicked="Handle_Clicked_EN" />
             </StackLayout>
-            <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="End" FontFamily="Montserrat-Regular" FontSize="10" TextColor="White" HorizontalOptions="Center" Text="2018 Omal" />
+            <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="End" FontFamily="Montserrat-Regular" FontSize="10" TextColor="White" HorizontalOptions="Center" Text="2018 OMAL" />
         </Grid>
 	</ContentPage.Content>
 </CControls:CualevaGradientContentPage>

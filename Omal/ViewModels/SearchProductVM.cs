@@ -37,7 +37,7 @@ namespace Omal.ViewModels
         {
             get
             {
-                return CurProdotto != null;
+                return CurProdotto != null && picker1!= null && picker1.Count>0;
             }
         }
 
@@ -45,7 +45,7 @@ namespace Omal.ViewModels
         {
             get
             {
-                return CurProdotto != null &&  !string.IsNullOrWhiteSpace(selectedPicker1.Key);
+                return CurProdotto != null &&  !string.IsNullOrWhiteSpace(selectedPicker1.Key) && (picker2 != null) && (picker2.Count > 0);
             }
         }
 
@@ -53,14 +53,14 @@ namespace Omal.ViewModels
         {
             get
             {
-                return CurProdotto != null && !string.IsNullOrWhiteSpace(selectedPicker2.Key);
+                return CurProdotto != null && ProdottoIsValvola && !string.IsNullOrWhiteSpace(selectedPicker2.Key)&& (picker3 != null) && (picker3.Count > 0);
             }
         }
         public bool Picker4IsVisible
         {
             get
             {
-                return CurProdotto != null && ProdottoIsValvola && !string.IsNullOrWhiteSpace(selectedPicker3.Key);
+                return CurProdotto != null && ProdottoIsValvola && !string.IsNullOrWhiteSpace(selectedPicker3.Key) && (picker4 != null) && (picker4.Count > 0);
             }
         }
 
@@ -69,7 +69,7 @@ namespace Omal.ViewModels
             get
             {
                 if (ProdottoIsValvola)
-                    return StrInfoProdottoPicker1Valvola;
+                    return StrAzionamento;
                 else
                     return StrInfoProdottoPicker1Attuatore;
             }
@@ -80,7 +80,7 @@ namespace Omal.ViewModels
             get
             {
                 if (ProdottoIsValvola)
-                    return StrInfoProdottoPicker2Valvola;
+                    return StrMateriale;
                 else
                     return StrInfoProdottoPicker2Attuatore;
             }
@@ -91,9 +91,9 @@ namespace Omal.ViewModels
             get
             {
                 if (ProdottoIsValvola)
-                    return StrInfoProdottoPicker3Valvola;
+                    return StrPnasi;
                 else
-                    return StrInfoProdottoPicker3Attuatore;
+                    return "";
             }
         }
 
@@ -102,7 +102,7 @@ namespace Omal.ViewModels
             get
             {
                 if (ProdottoIsValvola)
-                    return StrInfoProdottoPicker4Valvola;
+                    return StrDn;
                 else
                     return "";
             }
@@ -136,6 +136,21 @@ namespace Omal.ViewModels
             PropertyChanged += MyPropertyChanged;
         }
 
+        bool isRunning = false;
+        public bool IsRunning
+        {
+            get { return isRunning; }
+            set
+            {
+
+                if (isRunning != value)
+                {
+                    isRunning = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         private async void OnCercaArticoliCommand(object obj)
         {
             List<Models.Base> vettore;
@@ -143,9 +158,9 @@ namespace Omal.ViewModels
             {
                 var elenco = elencoCompletoValvole;
                 if (!String.IsNullOrWhiteSpace(selectedPicker1.Value)) elenco = elenco.Where(x => string.Equals(x.valore_azionamento, selectedPicker1.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                if (!String.IsNullOrWhiteSpace(selectedPicker2.Value)) elenco = elenco.Where(x => string.Equals(x.valore_dn, selectedPicker2.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                if (!String.IsNullOrWhiteSpace(selectedPicker2.Value)) elenco = elenco.Where(x => string.Equals(x.valore_materiale, selectedPicker2.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
                 if (!String.IsNullOrWhiteSpace(selectedPicker3.Value)) elenco = elenco.Where(x => string.Equals(x.valore_pnansi, selectedPicker3.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                if (!String.IsNullOrWhiteSpace(selectedPicker4.Value)) elenco = elenco.Where(x => string.Equals(x.valore_materiale, selectedPicker4.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                if (!String.IsNullOrWhiteSpace(selectedPicker4.Value)) elenco = elenco.Where(x => string.Equals(x.valore_dn, selectedPicker4.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
                 vettore = new List<Models.Base>(elenco);
             }
             else
@@ -153,7 +168,7 @@ namespace Omal.ViewModels
                 var elenco = elencoCompletoAttuatori;
                 if (!String.IsNullOrWhiteSpace(selectedPicker1.Value)) elenco = elenco.Where(x => string.Equals(x.valore_misura, selectedPicker1.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
                 if (!String.IsNullOrWhiteSpace(selectedPicker2.Value)) elenco = elenco.Where(x => string.Equals(x.valore_iso, selectedPicker2.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                if (!String.IsNullOrWhiteSpace(selectedPicker3.Value)) elenco = elenco.Where(x => string.Equals(x.valore_coppia, selectedPicker3.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
+
                 vettore = new List<Models.Base>(elenco);
             }
             await CurPage.Navigation.PushAsync(new Views.ArticoliSearchResultV(CurProdotto, ProdottoIsValvola, vettore));
@@ -178,6 +193,23 @@ namespace Omal.ViewModels
 
         private void MyPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            if (string.Equals(e.PropertyName, "Picker1", StringComparison.InvariantCultureIgnoreCase))
+            {
+                OnPropertyChanged("Picker1IsVisible");
+                OnPropertyChanged("TrovaIsVisible");
+            }
+            if (string.Equals(e.PropertyName, "Picker2", StringComparison.InvariantCultureIgnoreCase))
+            {
+                OnPropertyChanged("Picker2IsVisible");
+            }
+            if (string.Equals(e.PropertyName, "Picker3", StringComparison.InvariantCultureIgnoreCase))
+            {
+                OnPropertyChanged("Picker3IsVisible");
+            }
+            if (string.Equals(e.PropertyName, "Picker4", StringComparison.InvariantCultureIgnoreCase))
+            {
+                OnPropertyChanged("Picker4IsVisible");
+            }
             if (string.Equals(e.PropertyName, "CurProdotto", StringComparison.InvariantCultureIgnoreCase))
             {
                 OnPropertyChanged("ProdottoIsValvola");
@@ -356,39 +388,50 @@ namespace Omal.ViewModels
         {
             if (!loadvalvola && !loadValvole[indice-1])
             {
-                isFirstTry[indice - 1] = false;
-                loadvalvola = true;
-                loadValvole[indice - 1] = true;
-                if (elencoCompletoValvole == null)
+                IsRunning = true;
+                try
                 {
-                    elencoCompletoValvole = await DataStore.Valvole.GetItemsAsync(false);
-                    elencoCompletoValvole = elencoCompletoValvole.Where(x => x.idprodotto == CurProdotto.idprodotto);
+                    isFirstTry[indice - 1] = false;
+                    loadvalvola = true;
+                    loadValvole[indice - 1] = true;
+                    if (elencoCompletoValvole == null)
+                    {
+                        elencoCompletoValvole = await DataStore.Valvole.GetItemsAsync(false);
+                        elencoCompletoValvole = elencoCompletoValvole.Where(x => x.idprodotto == CurProdotto.idprodotto);
+                    }
+                    var elenco = elencoCompletoValvole;
+
+                    if (!String.IsNullOrWhiteSpace(selectedPicker1.Value)) elenco = elenco.Where(x => string.Equals(x.valore_azionamento, selectedPicker1.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                    if (!String.IsNullOrWhiteSpace(selectedPicker2.Value)) elenco = elenco.Where(x => string.Equals(x.valore_materiale, selectedPicker2.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                    if (!String.IsNullOrWhiteSpace(selectedPicker3.Value)) elenco = elenco.Where(x => string.Equals(x.valore_pnansi, selectedPicker3.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                    if (!String.IsNullOrWhiteSpace(selectedPicker4.Value)) elenco = elenco.Where(x => string.Equals(x.valore_dn, selectedPicker4.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                    switch (indice)
+                    {
+                        case 1:
+                            Picker1 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_azionamento, RemoveHtmlChar(x.valore_azionamento))).Distinct());
+                            break;
+                        case 2:
+
+                            Picker2 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_materiale, RemoveHtmlChar(x.valore_materiale))).Distinct());
+                            if (Picker2.Count() == 1) SelectedPicker2 = Picker2.First();
+                            break;
+                        case 3:
+                            Picker3 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_pnansi, RemoveHtmlChar(x.valore_pnansi))).Distinct());
+                            break;
+                        case 4:
+                            Picker4 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_dn, RemoveHtmlChar(x.valore_dn))).Distinct());
+                            break;
+                        default:
+                            break;
+                    }
+                    loadvalvola = false;
+                    loadValvole[indice - 1] = false;
                 }
-                var elenco = elencoCompletoValvole;
-                if (!String.IsNullOrWhiteSpace(selectedPicker1.Value)) elenco = elenco.Where(x => string.Equals(x.valore_azionamento, selectedPicker1.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                if (!String.IsNullOrWhiteSpace(selectedPicker2.Value)) elenco = elenco.Where(x => string.Equals(x.valore_dn, selectedPicker2.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                if (!String.IsNullOrWhiteSpace(selectedPicker3.Value)) elenco = elenco.Where(x => string.Equals(x.valore_pnansi, selectedPicker3.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                if (!String.IsNullOrWhiteSpace(selectedPicker4.Value)) elenco = elenco.Where(x => string.Equals(x.valore_materiale, selectedPicker4.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                switch (indice)
+                finally
                 {
-                    case 1:
-                        Picker1 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_azionamento,RemoveHtmlChar(x.valore_azionamento))).Distinct());
-                        break;
-                    case 2:
-                        Picker2 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_dn,RemoveHtmlChar(x.valore_dn))).Distinct());
-                        if (Picker2.Count() == 1) SelectedPicker2 = Picker2.First();
-                        break;
-                    case 3:
-                        Picker3 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_pnansi, RemoveHtmlChar(x.valore_pnansi))).Distinct());
-                        break;
-                    case 4:
-                        Picker4 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_materiale, RemoveHtmlChar(x.valore_materiale))).Distinct());
-                        break;
-                    default:
-                        break;
+                    IsRunning = false;
                 }
-                loadvalvola = false;
-                loadValvole[indice -1] = false;
+
             }
         }
 
@@ -405,35 +448,40 @@ namespace Omal.ViewModels
         {
             if (!loadattuatore && !loadAttuatore[indice - 1])
             {
-                isFirstTry[indice - 1] = false;
-                loadattuatore = true;
-                loadAttuatore[indice - 1] = true;
-                if (elencoCompletoAttuatori == null)
+                IsRunning = true;
+                try
                 {
-                    elencoCompletoAttuatori = await DataStore.Attuatori.GetItemsAsync(false);
-                    elencoCompletoAttuatori = elencoCompletoAttuatori.Where(x => x.idprodotto == CurProdotto.idprodotto);
+                    isFirstTry[indice - 1] = false;
+                    loadattuatore = true;
+                    loadAttuatore[indice - 1] = true;
+                    if (elencoCompletoAttuatori == null)
+                    {
+                        elencoCompletoAttuatori = await DataStore.Attuatori.GetItemsAsync(false);
+                        elencoCompletoAttuatori = elencoCompletoAttuatori.Where(x => x.idprodotto == CurProdotto.idprodotto);
+                    }
+                    var elenco = elencoCompletoAttuatori;
+                    if (!String.IsNullOrWhiteSpace(selectedPicker1.Value)) elenco = elenco.Where(x => string.Equals(x.valore_misura, selectedPicker1.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                    if (!String.IsNullOrWhiteSpace(selectedPicker2.Value)) elenco = elenco.Where(x => string.Equals(x.valore_iso, selectedPicker2.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                    switch (indice)
+                    {
+                        case 1:
+                            Picker1 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_misura, RemoveHtmlChar(x.valore_misura))).Distinct());
+                            break;
+                        case 2:
+                            Picker2 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_iso, RemoveHtmlChar(x.valore_iso))).Distinct());
+                            if (Picker2.Count() == 1) SelectedPicker2 = Picker2.First();
+                            break;
+                        default:
+                            break;
+                    }
+                    loadattuatore = false;
+                    loadAttuatore[indice - 1] = false;
                 }
-                var elenco = elencoCompletoAttuatori;
-                if (!String.IsNullOrWhiteSpace(selectedPicker1.Value)) elenco = elenco.Where(x => string.Equals(x.valore_misura, selectedPicker1.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                if (!String.IsNullOrWhiteSpace(selectedPicker2.Value)) elenco = elenco.Where(x => string.Equals(x.valore_iso, selectedPicker2.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                if (!String.IsNullOrWhiteSpace(selectedPicker3.Value)) elenco = elenco.Where(x => string.Equals(x.valore_coppia, selectedPicker3.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                switch (indice)
+                finally
                 {
-                    case 1:
-                        Picker1 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_misura, RemoveHtmlChar(x.valore_misura))).Distinct());
-                        break;
-                    case 2:
-                        Picker2 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_iso,RemoveHtmlChar(x.valore_iso))).Distinct());
-                        if (Picker2.Count() == 1) SelectedPicker2 = Picker2.First();
-                        break;
-                    case 3:
-                        Picker3 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_coppia, RemoveHtmlChar(x.valore_coppia))).Distinct());
-                        break;
-                    default:
-                        break;
+                    IsRunning = false;
                 }
-                loadattuatore = false;
-                loadAttuatore[indice - 1] = false;
+
             }
         }
 

@@ -160,6 +160,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\OrdineNewMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Enums\EPages.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\ChangeTabbedPageMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomControls\CualevaNavigationPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />

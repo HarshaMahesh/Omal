@@ -123,7 +123,7 @@ namespace Omal.ViewModels
     background-color: #60A5D1;
     border: 1px;
     color: white;
-    padding: 5px;
+    padding: 16px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -144,6 +144,9 @@ table tr:nth-child(even) td{
 .metadato-testo table tr:first-child td {color: #174288; font-weight: bold; text-align: center;}
 .metadato-testo table .fr-highlighted {color: #174288; font-weight: bold;}
 table .fr-highlighted {color: #174288; font-weight: bold;}
+img.middle {
+    vertical-align: middle;
+}
 
 
 .metadato-testo table {width: 100% ! important; margin: 0 auto !important;}
@@ -199,6 +202,7 @@ table .fr-highlighted {color: #174288; font-weight: bold;}
                 curAttuatore.Add("</TABLE>");
                 if (IsLoggedIn)
                 {
+                    if (attuatore.Prezzo>0)
                     curAttuatore.Add(
                         string.Format(
                             "<center><form method='GET'>" +
@@ -208,7 +212,7 @@ table .fr-highlighted {color: #174288; font-weight: bold;}
                                 "<input type='hidden' name='isvalvola' value='0' />" +
                             "<input type='hidden' name='idcodiceattuatore' value='{1}' />" +
                             "<input type='submit' class='button button4' value='{4}' />&emsp;<input type='submit' class='button button4' value='I' /></p></div></center>" +
-                            "</form>", curProdotto.idprodotto, attuatore.idcodiceattuatore, StrQta, attuatore.Prezzo.ToString("F"),BtnOrdina.ToUpper()));
+                            "</form></center>", curProdotto.idprodotto, attuatore.idcodiceattuatore, StrQta, attuatore.Prezzo.ToString("F"),BtnOrdina.ToUpper()));
                     if (!string.IsNullOrWhiteSpace(attuatore.url_3d)) curAttuatore.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", attuatore.url_3d, BtnMostra3D.ToUpper()));
                     if (!string.IsNullOrWhiteSpace(attuatore.url_download)) curAttuatore.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", attuatore.url_download, BtnDownload.ToUpper()));
                 }
@@ -216,7 +220,7 @@ table .fr-highlighted {color: #174288; font-weight: bold;}
                 {
                     curAttuatore.Add(string.Format("<br><b>{0}</b>", ErrPerPrezziNecessarioLogin));
                 }
-
+                curAttuatore.Add(string.Format(@"<p align='center'><a class='button button4' href=""info_"">{0}</a></p>", BtnMaggioriInfo.ToUpper()));
                 curAttuatore.Add("<hr/>");
                 ritorno += string.Join("", curAttuatore);
             }
@@ -232,7 +236,7 @@ table .fr-highlighted {color: #174288; font-weight: bold;}
                 string elemento = @"<center><span style=""color:#004899;font-size: 10px"">{0}</span><br /><b>{1}</b></center>";
                 List<string> curValvola = new List<string>();
                 if (!string.IsNullOrWhiteSpace(valvola.codice_articolo)) 
-                    curValvola.Add(string.Format(@"<p style=""color:#004899;font-size: 18px"" align='center'><b>{0}</b>{1}</p>", valvola.codice_articolo,!string.IsNullOrWhiteSpace(valvola.valore_ATEXopzione1)?"&emsp;<img src='http://demo.timmagine.com/omal/http/images/atex.png' />":""));
+                    curValvola.Add(string.Format(@"<p style=""color:#004899;font-size: 18px"" align='center'><b>{0}</b>{1}</p>", valvola.codice_articolo,!string.IsNullOrWhiteSpace(valvola.valore_ATEXopzione1)?"&emsp;<img class='middle' src='http://demo.timmagine.com/omal/http/images/atex.png' />":""));
                 if (!string.IsNullOrWhiteSpace(valvola.immagine_placeholder) && !String.IsNullOrWhiteSpace(valvola.immagine_placeholder_dt))
                 {
                     curValvola.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a>&emsp;<a href='{3}'><img Height='100' src='{2}' /></a></P>", valvola.immagine_placeholder, string.Format("local_{0}", valvola.immagine_placeholder),valvola.immagine_placeholder_dt, string.Format("local_{0}", valvola.immagine_placeholder_dt)));
@@ -280,6 +284,7 @@ table .fr-highlighted {color: #174288; font-weight: bold;}
                 curValvola.Add("<TABLE>");
                 if (IsLoggedIn)
                 {
+                    if (valvola.Prezzo > 0)
                     curValvola.Add(
                         string.Format(
                             "<center><form method='GET'>" +
@@ -289,13 +294,14 @@ table .fr-highlighted {color: #174288; font-weight: bold;}
                                 "<input type='hidden' name='isvalvola' value='1' />" +
                                 "<input type='hidden' name='idcodicevalvola' value='{1}' />" +
                             "<input type='submit' class='button button4' value='{4}' /></p></div>" +
-                            "</form></center>",curProdotto.idprodotto,  valvola.idcodicevalvola, StrQta,valvola.Prezzo.ToString("F"),BtnOrdina.ToUpper() ));
+                            "</form></center><br />",curProdotto.idprodotto,  valvola.idcodicevalvola, StrQta,valvola.Prezzo.ToString("F"),BtnOrdina.ToUpper() ));
                     if (!string.IsNullOrWhiteSpace(valvola.url_3d)) curValvola.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", valvola.url_3d, BtnMostra3D.ToUpper()));
                     if (!string.IsNullOrWhiteSpace(valvola.url_download)) curValvola.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", valvola.url_download, BtnDownload.ToUpper()));
                 } else
                 {
-                    curValvola.Add( string.Format("<br><b>{0}</b>", ErrPerPrezziNecessarioLogin));
+                    curValvola.Add( string.Format("<br><center><b>{0}</b></center>", ErrPerPrezziNecessarioLogin));
                 }
+                curValvola.Add(string.Format(@"<p align='center'><a class='button button4' href=""info_"">{0}</a></p>", BtnMaggioriInfo.ToUpper()));
                 curValvola.Add("<hr/>");
                 ritorno += string.Format("<p align='center'>{0}</p>", string.Join("", curValvola));
             }

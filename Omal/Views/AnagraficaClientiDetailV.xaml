@@ -9,11 +9,11 @@
         <ScrollView>
         <StackLayout Margin="5">
         <Label Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.RagioneSociale}"   />
-        <Label Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.PIva}"  />
-        <Label Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.CFiscale}"  />
+        <Label Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Piva}"  />
+        <Label Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.CodiceFiscale}"  />
         <Label Style="{StaticResource Titolo}" Text="{Binding StrPosizione}" BackgroundColor="#EAEAEA" />
         <Label Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Indirizzo}" />
-        <Label Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Città}" />
+        <Label Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Citta}" />
         <Label Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Cap}" />
         <Label Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Provincia}" />
         <Label Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Nazione}" />

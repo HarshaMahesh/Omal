@@ -38,7 +38,10 @@ namespace Omal.Droid.CustomControls
             border.SetPadding(10, 10, 10, 10);
             border.Paint.SetStyle(Paint.Style.Stroke);
             Drawable[] layers = { border, GetDrawable(imagePath,element.BorderRadius) };
-            LayerDrawable layerDrawable = new LayerDrawable(layers);
+            List<Drawable> L1 = new List<Drawable>();
+            foreach (var item in layers)
+                if (item != null) L1.Add(item);
+            LayerDrawable layerDrawable = new LayerDrawable(L1.ToArray());
             layerDrawable.SetLayerInset(0, 0, 0, 0, 0);
             return layerDrawable;
         }
