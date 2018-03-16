@@ -156,6 +156,11 @@
             <CControls:CualevaRoundedEntry x:Key="CualevaRoundedEntry" />
             <Converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
             <Converters:UpperCaseConverter x:Key="UpperCaseConverter" />
+            <Converters:OrderStatusConverter x:Key="OrderStatusConverter" />
+            <Converters:NomeProdottoConverter x:Key="NomeProdottoConverter" />
+            <Converters:GruppoMetadatiConverter x:Key="GruppoMetadatiConverter" />
+            <Converters:TraduzioniConverter x:Key="TraduzioniConverter" />
+
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

@@ -20,6 +20,7 @@ namespace Omal.AppResources
         }
 
 
+        public string StrOrdineAnnullato { get { return GetCurvalueLang(_StrOrdineAnnullato); } }
         public string StrTrovaArticolo { get { return GetCurvalueLang(_StrTrovaArticolo); } }
         public string LogonRichiesto { get { return GetCurvalueLang(_LogonRichiesto); } }
         public string Aggiungi { get { return GetCurvalueLang(_Aggiungi); } }
@@ -117,8 +118,21 @@ namespace Omal.AppResources
         public string StrVersioneInglese { get { return "English Version"; } }
         public string StrNessunContatto { get { return GetCurvalueLang(_StrNessunContatto); } }
         public string StrTrovatiNrContatti { get { return GetCurvalueLang(_StrTrovatiNrContatti); } }
+        public string StrTrovatoUnContatto { get { return GetCurvalueLang(_StrTrovatoUnContatto); } }
+
+        public string StrNessunProdottoTrovato { get { return GetCurvalueLang(_StrNessunProdottoTrovato); } }
+        public string StrTrovatounSoloProdotto { get { return GetCurvalueLang(_StrTrovatounSoloProdotto); } }
+        public string StrTrovatiNrProdotti { get { return GetCurvalueLang(_StrTrovatiNrProdotti); } }
+
+
+
+
+
         public string StrSicuroAnnullareCarrello { get { return GetCurvalueLang(_StrSicuroAnnullareCarrello); } }
-        public string StrOrdineAnnullato { get { return GetCurvalueLang(_StrOrdineAnnullato); } }
+        public string StrOrdineBozza { get { return GetCurvalueLang(_StrOrdineBozza); } }
+        public string StrOrdineStatoAnnullato { get { return GetCurvalueLang(_StrOrdineStatoAnnullato); } }
+        public string StrOrdineEvaso { get { return GetCurvalueLang(_StrOrdineEvaso); } }
+        public string StrOrdineInviato { get { return GetCurvalueLang(_StrOrdineInviato); } }
         public string StrSicuroInviareCarrello { get { return GetCurvalueLang(_StrSicuroInviareCarrello); } }
         public string StrSicuroSalvareCarrello { get { return GetCurvalueLang(_StrSicuroSalvareCarrello); } }
         public string StrSalvataggioCarrelloCompletato { get { return GetCurvalueLang(_StrSalvataggioCarrelloCompletato); } }
@@ -156,13 +170,57 @@ namespace Omal.AppResources
         public string ErrCampiOblCliente { get { return GetCurvalueLang(_ErrCampiOblCliente); } }
         public string MsgClienteEliminato { get { return GetCurvalueLang(_MsgClienteEliminato); } }
         public string StrPerdiModificheCarrello { get { return GetCurvalueLang(_MsgClienteEliminato); } }
+        public string StrConfermiLogout { get { return GetCurvalueLang(_StrConfermiLogout); } }
+        public string BtnInsert { get { return GetCurvalueLang(_BtnInsert); } }
+        public string BtnUpdate { get { return GetCurvalueLang(_BtnUpdate); } }
+        public string BtnEdit { get { return GetCurvalueLang(_BtnEdit); } }
 
+        Dictionary<string, string> _StrOrdineStatoAnnullato = new Dictionary<string, string>
+        {
+            {"IT",  "Annullato"},
+            {"EN",  "Cancelled"}
+        };
+        Dictionary<string, string> _StrOrdineEvaso = new Dictionary<string, string>
+        {
+            {"IT",  "Evaso"},
+            {"EN",  "escaped"}
+        };
+        Dictionary<string, string> _StrOrdineInviato = new Dictionary<string, string>
+        {
+            {"IT",  "Inviato"},
+            {"EN",  "Sended"}
+        };
 
+        Dictionary<string, string> _StrOrdineBozza = new Dictionary<string, string>
+        {
+            {"IT",  "Bozza"},
+            {"EN",  "Draft"}
+        };
+        Dictionary<string, string> _BtnEdit = new Dictionary<string, string>
+        {
+            {"IT",  "Modifica"},
+            {"EN",  "Edit"}
+        };
+        Dictionary<string, string> _BtnUpdate = new Dictionary<string, string>
+        {
+            {"IT",  "Aggiorna"},
+            {"EN",  "Update"}
+        };
+        Dictionary<string, string> _BtnInsert = new Dictionary<string, string>
+        {
+            {"IT",  "Inserisci"},
+            {"EN",  "Insert"}
+        };
+        Dictionary<string, string> _StrConfermiLogout = new Dictionary<string, string>
+        {
+            {"IT",  "Confermi il logout?"},
+            {"EN",  "Do you want to logout?"}
+        };
 
         Dictionary<string, string> _StrOrdineAnnullato = new Dictionary<string, string>
         {
             {"IT",  "ORDINE ANNULLATO. Per consultarlo vai nella sezione cestino."},
-            {"EN",  "ORDINE ANNULLATO. Per consultarlo vai nella sezione cestino."}
+            {"EN",  "ORDER DELETED. To see it, go to the trash bin."}
         };
         Dictionary<string, string> _StrOrdineCreato = new Dictionary<string, string>
         {
@@ -328,13 +386,13 @@ namespace Omal.AppResources
         Dictionary<string, string> _StrOrdineCaricato = new Dictionary<string, string>
         {
             {"IT",  "ORDINE RECUPERATO. Per completarlo vai nella sezione dedicata"},
-            {"EN",  "Selected order was been loaded in the basket"}
+            {"EN",  "ORDER RECOVERED. To complete it, go to the order page"}
         };
 
         Dictionary<string, string> _StrCaricaOrdineSelezionato = new Dictionary<string, string>
         {
             {"IT",  "RECUPERA ORDINE. Desideri recuperare l'ordine selezionato?"},
-            {"EN",  "Do you want to load selected order?"}
+            {"EN",  "RECOVER ORDER. Do you want to recover this order?"}
         };
         Dictionary<string, string> _TitoloOrdini = new Dictionary<string, string>
         {
@@ -344,7 +402,7 @@ namespace Omal.AppResources
         Dictionary<string, string> _StrSalvataggioCarrelloCompletato = new Dictionary<string, string>
         {
             {"IT",  "BOZZA SALVATA. Per recuperarla vai nella sezione archivio ordini."},
-            {"EN",  "BOZZA SALVATA. Per recuperarla vai nella sezione archivio ordini."}
+            {"EN",  "DRAFT SAVED. To recover it, go to the orders archive page."}
         };
 
 
@@ -356,8 +414,8 @@ namespace Omal.AppResources
 
         Dictionary<string, string> _StrSicuroSalvareCarrello = new Dictionary<string, string>
         {
-            {"IT",  "SALVA BOZZA. Desideri salvare in bozza l'ordine corrente?"},
-            {"EN",  "SALVA BOZZA. Desideri salvare in bozza l'ordine corrente?"}
+            {"IT",  "SALVA BOZZA. Desideri salvare in bozza l’ordine corrente?"},
+            {"EN",  "SAVE DRAFT. Do you want to save this order as draft??"}
         };
         Dictionary<string, string> _StrNo = new Dictionary<string, string>
         {
@@ -373,7 +431,7 @@ namespace Omal.AppResources
         Dictionary<string, string> _StrSicuroAnnullareCarrello = new Dictionary<string, string>
         {
             {"IT",  "ANNULLA ORDINE. Sei sicuro di voler eliminare l'ordine corrente?"},
-            {"EN",  "ANNULLA ORDINE. Sei sicuro di voler eliminare l'ordine corrente?"}
+            {"EN",  "DELETE ORDER. Are you sure to delete this order?"}
         };
         Dictionary<string, string> _StrNessunContatto = new Dictionary<string, string>
         {
@@ -384,8 +442,35 @@ namespace Omal.AppResources
         Dictionary<string, string> _StrTrovatiNrContatti = new Dictionary<string, string>
         {
             {"IT",  " Trovati {0} contatti"},
-            {"EN",  " Trovati {0} contatti"}
+            {"EN",  "{0} contacts found"}
         };
+
+        Dictionary<string, string> _StrTrovatoUnContatto = new Dictionary<string, string>
+        {
+            {"IT",  "Trovato 1 contatto"},
+            {"EN",  "1 contact found"}
+        };
+
+
+
+        Dictionary<string, string> _StrNessunProdottoTrovato = new Dictionary<string, string>
+        {
+            {"IT",  "Nessun prodotto"},
+            {"EN",  "no product found"}
+        };
+        Dictionary<string, string> _StrTrovatounSoloProdotto = new Dictionary<string, string>
+        {
+            {"IT",  "Trovato 1 prodotto"},
+            {"EN",  "1 product found"}
+        };
+        Dictionary<string, string> _StrTrovatiNrProdotti = new Dictionary<string, string>
+        {
+            {"IT",  "Trovati {0} prodotti"},
+            {"EN",  "{0} products found"}
+        };
+
+
+
 
         Dictionary<string, string> _BtnAggiungi = new Dictionary<string, string>
         {
@@ -417,7 +502,7 @@ namespace Omal.AppResources
         Dictionary<string, string> _TitoloAggiornaCatalogo = new Dictionary<string, string>
         {
             {"IT",  "Aggiorna Catalogo"},
-            {"EN",  "Update Caatalogue"}
+            {"EN",  "Update Catalogue"}
         };
         Dictionary<string, string> _StrCarrelloVuoto = new Dictionary<string, string>
         {
@@ -510,7 +595,7 @@ namespace Omal.AppResources
         Dictionary<string, string> _BtnDownload = new Dictionary<string, string>
         {
             {"IT",  "Download"},
-            {"EN",  "Download"}
+            {"EN",  "SEND 3D"}
         };
         Dictionary<string, string> _BtnOrdina = new Dictionary<string, string>
         {
@@ -535,7 +620,7 @@ namespace Omal.AppResources
         Dictionary<string, string> _MsgArticoliAggiuntiAlCarrello = new Dictionary<string, string>
         {
             {"IT",  "AGGIUNTO. Articolo aggiunto all'ordine. Per completarlo vai nella sezione dedicata"},
-            {"EN",  "AGGIUNTO. Articolo aggiunto all'ordine. Per completarlo vai nella sezione dedicata"}
+            {"EN",  "ADDED. Items added to the order. To complete it, go to the order page"}
         };
 
         Dictionary<string, string> _ErrQtaMaggiore0 = new Dictionary<string, string>

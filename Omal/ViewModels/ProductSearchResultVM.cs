@@ -138,9 +138,9 @@ namespace Omal.ViewModels
         public string NumeroProdotti { 
             get
             {
-                if (Prodotti == null || Prodotti.Count() == 0) return "Nessun prodotto trovato";
-                if (Prodotti.Count() == 1) return "Trovato un solo prodotto";
-                return string.Format("Trovati {0} prodotti", Prodotti.Count());
+                if (Prodotti == null || Prodotti.Count() == 0) return StrNessunProdottoTrovato;
+                if (Prodotti.Count() == 1) return StrTrovatounSoloProdotto;
+                return string.Format(StrTrovatiNrProdotti, Prodotti.Count());
 
             }
         }

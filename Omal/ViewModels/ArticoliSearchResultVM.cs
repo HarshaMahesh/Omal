@@ -133,6 +133,7 @@ namespace Omal.ViewModels
     font-size: 16px;
     margin: 2px 2px;
 }
+.button4 {border-radius: 18px;}
 table {width: 100% ! important; margin: 0 auto !important;}
 table td {border: 1px solid #ccc; padding: 5px; }
 
@@ -157,7 +158,7 @@ img.middle {
 .metadato-testo table tr:first-child td {color: #174288; font-weight: bold; text-align: center;}
 .metadato-testo table .fr-highlighted {color: #174288; font-weight: bold;}
 
-.button4 {border-radius: 18px;}
+
     </style>
 </head>
 <body>" + ritorno +

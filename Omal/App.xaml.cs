@@ -11,6 +11,7 @@ namespace Omal
     public partial class App : Application
     {
         public static bool UseMockDataStore = false;
+        public static AppResources.Traduzioni Traduzioni = new AppResources.Traduzioni(); 
         public static string BackendUrl = "http://demo.timmagine.com/omal/http/Admin/exe/";
         public static string CurLang
         {

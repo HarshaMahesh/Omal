@@ -218,7 +218,6 @@
     <AndroidResource Include="Resources\drawable\ICONA_76.png" />
     <AndroidResource Include="Resources\drawable\LogoOmal.png" />
     <AndroidResource Include="Resources\drawable\Archivio.png" />
-    <AndroidResource Include="Resources\drawable\Cerca.png" />
     <AndroidResource Include="Resources\drawable\Impostazioni.png" />
     <AndroidResource Include="Resources\drawable\Omal.png" />
     <AndroidResource Include="Resources\drawable\Ordini.png" />
@@ -246,6 +245,7 @@
     <AndroidResource Include="Resources\drawable\IMG06837.png" />
     <AndroidResource Include="Resources\drawable\IMG051428.png" />
     <AndroidResource Include="Resources\drawable\IMG074428.png" />
+    <AndroidResource Include="Resources\drawable\Cerca.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomControls\" />

@@ -161,6 +161,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Enums\EPages.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\ChangeTabbedPageMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomControls\CualevaNavigationPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\OrderStatusConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\NomeProdottoConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\GruppoMetadatiConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TraduzioniConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />

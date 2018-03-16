@@ -5,8 +5,8 @@
              xmlns:CControls="clr-namespace:Omal.CustomControls"
     x:Class="Omal.Views.AnagraficaClientiEditDetailV">
     <ContentPage.ToolbarItems>
-        <Common:BindableToolbarItem IsVisible="{Binding IsInsert}" Text="Inserisci" Command="{Binding InsertCommand}" />
-        <Common:BindableToolbarItem IsVisible="{Binding IsInsert, Converter={StaticResource InverseBooleanConverter}}}" Text="Aggiorna" Command="{Binding EditCommand}" />
+        <Common:BindableToolbarItem IsVisible="{Binding IsInsert}" Text="{Binding BtnInsert}" Command="{Binding InsertCommand}" />
+        <Common:BindableToolbarItem IsVisible="{Binding IsInsert, Converter={StaticResource InverseBooleanConverter}}}" Text="{Binding BtnUpdate}" Command="{Binding EditCommand}" />
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
         <ScrollView>

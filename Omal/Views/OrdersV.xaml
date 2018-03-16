@@ -35,7 +35,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Row="0" Style="{StaticResource Titolo}" Text="{Binding ClienteRagSoc}" />
                                 <Label Grid.Row="1" Style="{StaticResource Descrizione}" Text="{Binding DataInizio}" />
-                                <Label Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" VerticalOptions="Center" TextColor="Red" Text="{Binding Stato}" HorizontalOptions="End" />
+                                <Label Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" VerticalOptions="Center" TextColor="Red" Text="{Binding Stato, Converter={StaticResource OrderStatusConverter}}" HorizontalOptions="End" />
                                 </Grid>
                             
                         </ViewCell>

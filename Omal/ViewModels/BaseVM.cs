@@ -54,7 +54,7 @@ namespace Omal.ViewModels
                 bool action; 
                 if (CurPage != null) 
                 {
-                    action = await CurPage. DisplayAlert("LogOut","Confermi il logout?", "Si", "No");
+                    action = await CurPage. DisplayAlert("LogOut",StrConfermiLogout, StrSi, StrNo);
                     if (!action) return;
                 }
                 App.CurUser = null;

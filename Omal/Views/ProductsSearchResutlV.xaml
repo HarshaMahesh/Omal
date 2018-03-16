@@ -27,7 +27,7 @@
                                     CachingEnabled="true"/>
                                 </Image.Source>       
                                 </Image>
-                    <Label Text="{Binding nome}" VerticalOptions="CenterAndExpand" Margin="10" LineBreakMode="WordWrap"/>
+                    <Label Text="{Binding ., Converter={StaticResource NomeProdottoConverter}}" VerticalOptions="CenterAndExpand" Margin="10" LineBreakMode="WordWrap"/>
                 </StackLayout>
             </ViewCell>
         </DataTemplate>

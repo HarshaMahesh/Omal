@@ -16,9 +16,9 @@ namespace Omal
             SearchPage = new CustomControls.CualevaNavigationPage(new Views.SearchV()) { Title = tmpTraduzioni.TitoloCerca, Icon="Cerca.png"  };
             AnagrafichePage = new NavigationPage(new Views.AnagraficheV()) { Title = tmpTraduzioni.TitoloArchivio, Icon = "Archivio.png"  };
             BasketPage = new NavigationPage(new Views.BasketV()) { Title = tmpTraduzioni.TitoloCarrello, Icon ="Ordini.png" };
-            ContactOmalPage = new NavigationPage(new Views.OmalContactPageV()) { Title = "Contatti Omal", Icon="Omal.png" };
+            ContactOmalPage = new NavigationPage(new Views.OmalContactPageV()) { Title = tmpTraduzioni.TitoloContattiOmal, Icon="Omal.png" };
             ConfigurazioniPage = new Views.ConfigurationV();
-            ImpostazioniPage = new NavigationPage(ConfigurazioniPage) { Title = "Impostazioni", Icon = "Impostazioni.png" };
+            ImpostazioniPage = new NavigationPage(ConfigurazioniPage) { Title = tmpTraduzioni.TitoloImpostazioni, Icon = "Impostazioni.png" };
             switch (Device.RuntimePlatform)
             {
                 case Device.Android:

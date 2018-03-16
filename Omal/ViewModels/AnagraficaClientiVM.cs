@@ -111,6 +111,7 @@ namespace Omal.ViewModels
                 if (clienti == null)  return StrNessunContatto;
                 var ritorno =  clienti.Select(x => x.Count).Sum();
                 if (ritorno == 0) return StrNessunContatto;
+                if (ritorno == 1) return StrTrovatoUnContatto;
                 return string.Format(StrTrovatiNrContatti, ritorno);
             }
         }

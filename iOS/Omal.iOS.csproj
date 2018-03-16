@@ -194,7 +194,6 @@
     <BundleResource Include="Resources\fonts\fontawesome.ttf" />
     <BundleResource Include="Resources\fonts\materialicons.ttf" />
     <BundleResource Include="Resources\Archivio.png" />
-    <BundleResource Include="Resources\Cerca.png" />
     <BundleResource Include="Resources\Impostazioni.png" />
     <BundleResource Include="Resources\Omal.png" />
     <BundleResource Include="Resources\Ordini.png" />
@@ -219,6 +218,7 @@
     <BundleResource Include="Resources\IMG06837.png" />
     <BundleResource Include="Resources\IMG051428.png" />
     <BundleResource Include="Resources\Info.png" />
+    <BundleResource Include="Resources\Cerca.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />

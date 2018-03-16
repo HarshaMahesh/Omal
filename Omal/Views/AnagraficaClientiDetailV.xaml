@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Omal.Views.AnagraficaClientiDetailV" BackgroundColor="White">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Modifica" Command="{Binding EditCommand}" />
+        <ToolbarItem Text="{Binding BtnEdit}" Command="{Binding EditCommand}" />
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
         <ScrollView>
