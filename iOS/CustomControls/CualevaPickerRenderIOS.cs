@@ -104,6 +104,7 @@ namespace PickerWithIcon.iOS
                     UIFont uiFont;
                     uiFont = UIFont.FromName(view.FontFamily, (nfloat)fontSize);
                     Control.Font = uiFont;
+
                 }
 
             }

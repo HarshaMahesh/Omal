@@ -19,9 +19,18 @@ namespace Omal.ViewModels
 
         }
 
-        private void OnAddNewCommand(object obj)
+        private async void OnAddNewCommand(object obj)
         {
-            //throw new NotImplementedException();
+            if (App.CurOrdine != null && App.CurOrdine.carrelli != null && App.CurOrdine.carrelli.Count != 0)
+            {
+                var risposta = await CurPage.DisplayAlert(TitoloOrdini, StrPerdiModificheCarrello, StrSi, StrNo);
+                if (!risposta) return;
+                App.CurOrdine = new Models.Ordine();
+                MessagingCenter.Send<Models.Messages.BasketLoadedMessage>(new Models.Messages.BasketLoadedMessage() { Ordine = App.CurOrdine }, "");
+                CurPage.DisplayAlert(TitoloOrdini, StrOrdineCreato, "ok");
+                MessagingCenter.Send(new Models.Messages.ChangeTabbedPageMessage() { SetPage = Models.Enums.EPages.Search }, "");
+
+            }
         }
 
         private void OnLocalPropertyChanged(object sender, PropertyChangedEventArgs e)

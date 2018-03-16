@@ -106,6 +106,7 @@ namespace Omal.ViewModels
                 SalvaCommand.ChangeCanExecute();
                 InviaCommand.ChangeCanExecute();
                 AnnullaCommand.ChangeCanExecute();
+                CurPage.DisplayAlert(TitoloCarrello, StrOrdineAnnullato, StrSi, StrNo);
             }
         }
 
@@ -127,7 +128,7 @@ namespace Omal.ViewModels
 
         private async void  OnInviaCommand(object obj)
         {
-            var answer = await CurPage.DisplayAlert(TitoloCarrello, StrSicuroSalvareCarrello, StrSi, StrNo);
+            var answer = await CurPage.DisplayAlert(TitoloCarrello, StrSicuroInviareCarrello, StrSi, StrNo);
             if (answer)
             {
                 try
@@ -175,6 +176,7 @@ namespace Omal.ViewModels
                 {
                     bool isNew = string.IsNullOrWhiteSpace(App.CurOrdine.CodiceOrdine);
                     var ritorno =  await DataStore.Ordini.UpdateItemAsync(App.CurOrdine);
+
                     if (ritorno.HasError == 1) throw new Exception(App.CurLang == "IT" ? ritorno.ErrorDescription : ritorno.ErrorDescription_En);
                     if (isNew) 
                     {

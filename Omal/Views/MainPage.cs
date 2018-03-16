@@ -46,6 +46,9 @@ namespace Omal
                     case Models.Enums.EPages.Carrello:
                         CurrentPage = BasketPage;
                         break;
+                    case Models.Enums.EPages.Search:
+                        CurrentPage = SearchPage;
+                        break;
                                
                     default:
                         break;
@@ -86,17 +89,7 @@ namespace Omal
         {
             base.OnCurrentPageChanged();
             Title = CurrentPage?.Title ?? string.Empty;
-            foreach (var page in Children)
-            {
-                if (page is CustomControls.CualevaNavigationPage)
-                {
-                    if (page == CurrentPage)
-                    {
-                        ((CustomControls.CualevaNavigationPage)page).SetIconActive();
-                    } else
-                        ((CustomControls.CualevaNavigationPage)page).SetIconNoActive();
-                }
-            }
+          
             if (requireUpdate)
             {
                 requireUpdate = false;

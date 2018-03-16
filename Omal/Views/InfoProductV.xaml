@@ -9,12 +9,18 @@
             <Label Margin="5" Style="{StaticResource Titolo}" FontSize="18" Text="{Binding CurProdotto.nome}"  HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
         </StackLayout>
             <ListView Margin="5" x:Name="CurGruppo" SelectedItem="{Binding CurGruppoProdotto}" ItemsSource="{Binding GruppoMetadati}">
+                 <ListView.RowHeight>
+                <OnPlatform x:TypeArguments="x:Int32">
+                    <On Platform="Android">80</On>
+                </OnPlatform>
+            </ListView.RowHeight>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Margin="10">
                                  <Label IsVisible="{Binding LangIsIT}" Text="{Binding gruppo_metadati_it, Converter={StaticResource UpperCaseConverter}}" Margin="5" Style="{StaticResource Azzurra}"  VerticalOptions="Center" />
-                                 <Image Source="right-arrow" Margin="5" HorizontalOptions="EndAndExpand" VerticalOptions="Center"  />
+
+                                 <Image Source="rightarrow" Margin="5" HorizontalOptions="EndAndExpand"  />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

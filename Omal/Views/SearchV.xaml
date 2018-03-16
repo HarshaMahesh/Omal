@@ -19,7 +19,7 @@
             </Grid.RowDefinitions>
 
             <StackLayout  VerticalOptions="Fill" Grid.Row="0" BackgroundColor="#EAEAEA" Margin="0,0,0,0" Orientation="Vertical">
-                <CControls:CualevaPicker        Margin="8,50,10,10" Title="{Binding ProdottoPicker1}"  HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPrimoLivello}" ItemsSource="{Binding PrimoLivello}"  />
+                <CControls:CualevaPicker  Margin="8,50,10,10" Title="{Binding ProdottoPicker1}"  HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPrimoLivello}" ItemsSource="{Binding PrimoLivello}"  />
                 <CControls:CualevaPicker  Margin="8" Title="{Binding ProdottoPicker2}" IsVisible="{Binding Picker2IsVisible}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedSecondoLivello}" ItemsSource="{Binding SecondoLivello}" />
                 <CControls:CualevaPicker Margin="8" Title="{Binding ProdottoPicker3}" IsVisible="{Binding Picker3IsVisible}"  HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedTerzoLivello}" ItemsSource="{Binding TerzoLivello}" />
                 <Button Text="{Binding BtnCerca, Converter={StaticResource UpperCaseConverter}}" HorizontalOptions="Center"  Command="{Binding SearchWithCategoriesCommand }" Margin="0,10,0,50"/>

@@ -65,14 +65,14 @@ namespace Omal.Views
                 foreach (var position in approximateLocations)
                 {
                     MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200)));
-                    MyMap.Pins.Add(new Pin() { Type = PinType.Place, Address = address, Position = position, Label = "Omal Spa" });
+                    MyMap.Pins.Add(new Pin() { Type = PinType.Place, Address = address, Position = position, Label = "OMAL Spa" });
                 }
                 address = "Italia, Passirano, Via Brognolo, 12";
                 approximateLocations = await geoCoder.GetPositionsForAddressAsync(address);
                 foreach (var position in approximateLocations)
                 {
                     MyMap2.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200)));
-                    MyMap2.Pins.Add(new Pin() { Type = PinType.Place, Address = address, Position = position, Label = "Omal Spa" });
+                    MyMap2.Pins.Add(new Pin() { Type = PinType.Place, Address = address, Position = position, Label = "OMAL Spa" });
                 }
         }
     }

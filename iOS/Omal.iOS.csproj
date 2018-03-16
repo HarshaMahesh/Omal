@@ -228,6 +228,7 @@
     <Compile Include="CustomControls\HtmlFormattedLabelRender.cs" />
     <Compile Include="CustomControls\CualevaPickerRenderIOS.cs" />
     <Compile Include="CustomControls\CualevaGradientContentPageRenderIOS.cs" />
+    <Compile Include="CustomControls\CualevaNavigationPageRenderIOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

@@ -206,6 +206,7 @@
     <Compile Include="CustomControls\CualevaPickerRenderAndroid.cs" />
     <Compile Include="CustomControls\CualevaGradientContentPageRenderAndroid.cs" />
     <Compile Include="CustomControls\CustomCellRender.cs" />
+    <Compile Include="CustomControls\CualevaNavigationPageRenderAndroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />

@@ -62,7 +62,6 @@ namespace Omal.Views
             viewModel.prodottoIsValvola = prodottoIsValvola;
             viewModel.Articoli = articoli;
             viewModel.CurProdotto = prodotto;
-            Title = App.CurLang == "IT" ? "Acquista Articolo" : "Buy Articles";
         }
     }
 }

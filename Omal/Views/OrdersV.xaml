@@ -8,7 +8,7 @@
              >
  <ContentPage.ToolbarItems>
         <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
-        <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn}" Text="{Binding BtnAggiungi}" Command="{Binding AddNewCommand}" />
+        <Common:BindableToolbarItem IsVisible="{Binding IsLoggedIn}" Text="{Binding BtnNuovo}" Command="{Binding AddNewCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid HorizontalOptions="Fill">

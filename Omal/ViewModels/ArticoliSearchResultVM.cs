@@ -102,7 +102,7 @@ namespace Omal.ViewModels
             {
                 if (curProdotto == null) return string.Empty;
                 string ritorno = string.Empty;
-                ritorno += string.Format(@"<p style=""color:#004899;background-color:#EAEAEA"" align='center'><b>{0}</b></p>", App.CurLang == "IT"? curProdotto.nome:curProdotto.nome_en);
+                ritorno += string.Format(@"<p style=""font-family:Montserrat-Bold;color:#004899;background-color:#EAEAEA;font-size:18px;font-weight: bold"" align='center'>{0}</p>", App.CurLang == "IT"? curProdotto.nome:curProdotto.nome_en);
                 ritorno += string.Format("<p ALIGN='CENTER'>{0}</p>", string.Format(MsgRisultatoRicercaArticoli, Articoli.Count()));
                 if (prodottoIsValvola)
                     ritorno += HtmlPerValvole();
@@ -112,18 +112,21 @@ namespace Omal.ViewModels
                 var baseStr = @"<html><head><style type=""text/css"">" +
                 @" @font-face {
                     font-family: Montserrat-Regular;"
-                    + @"src: url(""file:///android_asset/fonts/Montserrat-Regular.ttf"")" +
-            
-           @"}
+                    + @"src: url(""file:///android_asset/fonts/Montserrat-Regular.ttf"")}" +
+                  
+                    @" @font-face {
+                    font-family: Montserrat-Bold;"
+                    + @"src: url(""file:///android_asset/fonts/Montserrat-Bold.ttf"")}" +
+           @"
         body {
                 font-family: Montserrat-Regular;
-                text - align: justify;
+                text-align: justify;
             }
 .button {
     background-color: #60A5D1;
     border: 1px;
     color: white;
-    padding: 16px;
+    padding: 14px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -132,7 +135,7 @@ namespace Omal.ViewModels
 }
 table {width: 100% ! important; margin: 0 auto !important;}
 table td {border: 1px solid #ccc; padding: 5px; }
-table tr:first-child td {color: #174288; font-weight: bold; text-align: center;}
+
 table tr:nth-child(odd) td{
            background:#EAEAEA;
 }
@@ -154,7 +157,7 @@ img.middle {
 .metadato-testo table tr:first-child td {color: #174288; font-weight: bold; text-align: center;}
 .metadato-testo table .fr-highlighted {color: #174288; font-weight: bold;}
 
-.button4 {border-radius: 12px;}
+.button4 {border-radius: 18px;}
     </style>
 </head>
 <body>" + ritorno +
@@ -211,7 +214,7 @@ img.middle {
                                 "<input type='hidden' name='idprodotto' value='{0}' />" +
                                 "<input type='hidden' name='isvalvola' value='0' />" +
                             "<input type='hidden' name='idcodiceattuatore' value='{1}' />" +
-                            "<input type='submit' class='button button4' value='{4}' />&emsp;<input type='submit' class='button button4' value='I' /></p></div></center>" +
+                            "<input type='submit' class='button button4' value='{4}' /></p></div></center><br />" +
                             "</form></center>", curProdotto.idprodotto, attuatore.idcodiceattuatore, StrQta, attuatore.Prezzo.ToString("F"),BtnOrdina.ToUpper()));
                     if (!string.IsNullOrWhiteSpace(attuatore.url_3d)) curAttuatore.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", attuatore.url_3d, BtnMostra3D.ToUpper()));
                     if (!string.IsNullOrWhiteSpace(attuatore.url_download)) curAttuatore.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", attuatore.url_download, BtnDownload.ToUpper()));
@@ -293,8 +296,9 @@ img.middle {
                                 "<input type='hidden' name='idprodotto' value='{0}' />" +
                                 "<input type='hidden' name='isvalvola' value='1' />" +
                                 "<input type='hidden' name='idcodicevalvola' value='{1}' />" +
-                            "<input type='submit' class='button button4' value='{4}' /></p></div>" +
+                            "<input type='submit' class='button button4' value='{4}' /></p></div></br>" +
                             "</form></center><br />",curProdotto.idprodotto,  valvola.idcodicevalvola, StrQta,valvola.Prezzo.ToString("F"),BtnOrdina.ToUpper() ));
+                    
                     if (!string.IsNullOrWhiteSpace(valvola.url_3d)) curValvola.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", valvola.url_3d, BtnMostra3D.ToUpper()));
                     if (!string.IsNullOrWhiteSpace(valvola.url_download)) curValvola.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", valvola.url_download, BtnDownload.ToUpper()));
                 } else
