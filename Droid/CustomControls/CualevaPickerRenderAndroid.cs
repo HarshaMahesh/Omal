@@ -27,7 +27,8 @@ namespace Omal.Droid.CustomControls
             if (Control != null && this.Element != null && !string.IsNullOrEmpty(element.Image))
                 Control.Background = AddPickerStyles(element.Image);
             UpdateBackground(element);
-
+            var spaceFont = Typeface.CreateFromAsset(Xamarin.Forms.Forms.Context.ApplicationContext.Assets, "fonts/Montserrat-Regular.ttf");
+            Control.Typeface = spaceFont;
         }
 
         public LayerDrawable AddPickerStyles(string imagePath)

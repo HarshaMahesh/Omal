@@ -16,15 +16,15 @@ namespace Omal.iOS.CustomControls
             if (e.NewElement != null)
             {
                 var att = new UITextAttributes();
-                att.Font = UIFont.FromName("Montserrat-Bold", 22);
+                att.Font = UIFont.FromName("Montserrat-Regular", 22);
                 att.TextColor = UIColor.White;
                 UINavigationBar.Appearance.TintColor = UIColor.White;
                 UINavigationBar.Appearance.SetTitleTextAttributes(att);
                 UINavigationBar.Appearance.BarTintColor = Color.FromHex("#60A5D1").ToUIColor();
 
                 var att2 = new UITextAttributes();
-                att2.Font = UIFont.FromName("Montserrat-Bold", 14);
-                att2.TextColor = UIColor.White;
+                att2.Font = UIFont.FromName("Montserrat-Regular", 14);
+                att2.TextColor = UIColor.Blue;
                 UIBarButtonItem.Appearance.SetTitleTextAttributes(att2,
                 UIControlState.Normal);
                 UIBarButtonItem.Appearance.SetTitleTextAttributes(att2,

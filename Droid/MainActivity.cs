@@ -25,7 +25,7 @@ namespace Omal.Droid
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
             {
                 Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
-                Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#004899"));
+                Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#60A5D1"));
             }
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
@@ -42,7 +42,7 @@ namespace Omal.Droid
         void SetupBottomTabs()
         {
             BottomTabbedRenderer.BottomBarHeight = 50;
-            BottomTabbedRenderer.Typeface = Typeface.CreateFromAsset(Assets, "fonts/Montserrat-Bold.ttf");
+            BottomTabbedRenderer.Typeface = Typeface.CreateFromAsset(Assets, "fonts/Montserrat-Regular.ttf");
             BottomTabbedRenderer.FontSize = 8f;
             var stateList = new Android.Content.Res.ColorStateList(
                 new int[][] {

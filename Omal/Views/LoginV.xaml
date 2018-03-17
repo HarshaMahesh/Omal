@@ -19,14 +19,14 @@
               "{ConstraintExpression Type=RelativeToParent, Property=Height}">
           <StackLayout VerticalOptions="Center" Padding="6" Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
                     <Label Margin="5" HorizontalTextAlignment="Center" Style="{StaticResource Descrizione}" VerticalOptions="Start" Text="{Binding LogonTesto}" />
-                    <CControls:CualevaRoundedEntry BackgroundColor="Transparent"  Style="{StaticResource email}" LeftPadding="10"  BorderRadius="10" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#FFFFFF"  x:Name="UserName"  Placeholder="Indirizzo Email" Text="{Binding Email}" />
-                    <CControls:CualevaRoundedEntry BackgroundColor="Transparent"  Style="{StaticResource psw}" LeftPadding="10" BorderRadius="10" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#FFFFFF"   x:Name="Password" 
+                    <CControls:CualevaRoundedEntry IsEnabled="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}" BackgroundColor="Transparent"  Style="{StaticResource email}" LeftPadding="10"  BorderRadius="10" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#FFFFFF"  x:Name="UserName"  Placeholder="Indirizzo Email" Text="{Binding Email}" />
+                    <CControls:CualevaRoundedEntry IsEnabled="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}" BackgroundColor="Transparent"  Style="{StaticResource psw}" LeftPadding="10" BorderRadius="10" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#FFFFFF"   x:Name="Password" 
                     Placeholder="Password" IsPassword="true" Text="{Binding Password}" />
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                         <Button x:Name="LoginBtn" IsVisible="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}" Style="{StaticResource AzzurroNoBold}"  Text="{Binding LoginButton, Converter={StaticResource UpperCaseConverter}}" Command="{Binding LoginCommand}" />
                     </StackLayout>
                     <ActivityIndicator IsRunning="{Binding IsRunning}" />
-                    <Label Text="{Binding Errore}" TextColor="Red" />
+                    <Label Text="{Binding Errore}" HorizontalOptions="Center" TextColor="Red" />
             </StackLayout>
     </Grid>
        </RelativeLayout>

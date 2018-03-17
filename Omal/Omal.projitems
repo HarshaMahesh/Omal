@@ -165,6 +165,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NomeProdottoConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GruppoMetadatiConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TraduzioniConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\OmalContactPageVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />

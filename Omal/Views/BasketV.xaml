@@ -43,9 +43,9 @@
                     <Label  FontSize="14" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"  VerticalOptions="Center" Text="{Binding TotaleOrdineConSconto, Mode=TwoWay, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
                 
                 <StackLayout Grid.Row="5" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalOptions="Center">
-                    <Button  Text="Salva" Command="{Binding SalvaCommand}" Style="{StaticResource Azzurro}" /> 
-                    <Button  Text="Invia" Command="{Binding InviaCommand}" Style="{StaticResource Azzurro}"  />
-                    <Button  Text="Annulla" Command="{Binding AnnullaCommand}" />
+                    <Button  Text="{Binding BtnSalva}" Command="{Binding SalvaCommand}" Style="{StaticResource Azzurro}" /> 
+                    <Button  Text="{Binding BtnInvia}" Command="{Binding InviaCommand}" Style="{StaticResource Azzurro}"  />
+                    <Button  Text="{Binding BtnAnnulla}" Command="{Binding AnnullaCommand}" />
                 </StackLayout>
                     </Grid>
                 
@@ -69,14 +69,14 @@
                         <Label Grid.Row="0" Grid.ColumnSpan="4" VerticalTextAlignment="Center" Text="{Binding CodiceArticolo}" HorizontalTextAlignment="Start" Style="{StaticResource Descrizione}" />
 
                         <StackLayout Grid.Row="1" Orientation="Horizontal"   Grid.ColumnSpan="2"  >
-                            <Label HorizontalOptions="Start" Text="QTA"  VerticalOptions="Center" Style="{StaticResource Descrizione}" />
+                            <Label HorizontalOptions="Start" Text="{Binding QtaStr}"   VerticalOptions="Center" Style="{StaticResource Descrizione}" />
                             <CControls:CualevaRoundedEntry  CualevaRoundedEntryBackgroundColor="#EAEAEA"  WidthRequest="70" HeightRequest="40" TextColor="#004899"   Keyboard="Numeric"   VerticalOptions="Center" HorizontalOptions="EndAndExpand" Placeholder="{Binding StrQta}" Text="{Binding Qta}"/>
                         </StackLayout>
                         <Label Grid.Column="2"  Grid.Row="1" FontSize="14" TextColor="{Binding ColorePrezzoTotale}"   VerticalOptions="Center" Text="{Binding PrezzoUnitario, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
                         <Label Grid.Column="3"  Grid.Row="1" FontSize="14" TextColor="{Binding ColorePrezzoTotale}"  VerticalOptions="Center" Text="{Binding PrezzoTotale, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
 
                        <StackLayout Grid.Row="2" Orientation="Horizontal"   Grid.ColumnSpan="2"  >
-                            <Label HorizontalOptions="Start" Text="Sconto"  VerticalOptions="Center" Style="{StaticResource Descrizione}" />
+                            <Label HorizontalOptions="Start" Text="{Binding ScontoStr}"  VerticalOptions="Center" Style="{StaticResource Descrizione}" />
                             <CControls:CualevaRoundedEntry  CualevaRoundedEntryBackgroundColor="#EAEAEA"  WidthRequest="70" HeightRequest="40" TextColor="#004899"   Keyboard="Numeric"   VerticalOptions="Center" HorizontalOptions="EndAndExpand" Placeholder="{Binding StrSconto}" Text="{Binding Sconto}"/>
                         </StackLayout>
                         <Label Grid.Column="2"  Grid.Row="2" FontSize="14" TextColor="{Binding ColorePrezzoScontato}"   VerticalOptions="Center" Text="{Binding PrezzoUnitarioScontato, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />

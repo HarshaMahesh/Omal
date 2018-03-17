@@ -11,6 +11,7 @@ namespace Omal.Views
     public partial class OmalContactPageV : ContentPage
     {
         Geocoder geoCoder;
+        ViewModels.OmalContactPageVM viewModel;
 
         public OmalContactPageV()
         {
@@ -23,6 +24,10 @@ namespace Omal.Views
                     CrossShare.Current.OpenBrowser("http://www.omal.it");
                 })
             });
+            NavigationPage.SetBackButtonTitle(this, "");
+            BindingContext = viewModel = new ViewModels.OmalContactPageVM();
+            viewModel.Navigation = Navigation;
+            viewModel.CurPage = this;
             NavigationPage.SetBackButtonTitle(this, "");
         }
 
@@ -37,28 +42,30 @@ namespace Omal.Views
             base.OnAppearing();
             bool mostra = true;
             base.OnAppearing();
-            if (Device.RuntimePlatform == Device.Android)
+            try
             {
-                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
-                if (status != PermissionStatus.Granted)
+                if (Device.RuntimePlatform == Device.Android)
                 {
-                    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
+                    var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+                    if (status != PermissionStatus.Granted)
                     {
-                        await DisplayAlert("Need location", "Gunna need that location", "OK");
+                        if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
+                        {
+                            await DisplayAlert("Need location", "Gunna need that location", "OK");
+                        }
+
+                        var results = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
+
+                        if (results.ContainsKey(Permission.Location))
+                            status = results[Permission.Location];
+                        else
+                            return;
                     }
-
-                    var results = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
-
-                    if (results.ContainsKey(Permission.Location))
-                        status = results[Permission.Location];
-                    else
-                        return;
+                    mostra = status == PermissionStatus.Granted;
                 }
-                mostra = status == PermissionStatus.Granted;
-            }
-            MyMap.IsVisible = mostra;
-            MyMap2.IsVisible = mostra;
-           
+                MyMap.IsVisible = mostra;
+                MyMap2.IsVisible = mostra;
+
                 geoCoder = new Geocoder();
                 var address = "Italia, Rodengo Saiano, Via Ponte Nuovo, 11";
                 var approximateLocations = await geoCoder.GetPositionsForAddressAsync(address);
@@ -74,6 +81,12 @@ namespace Omal.Views
                     MyMap2.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200)));
                     MyMap2.Pins.Add(new Pin() { Type = PinType.Place, Address = address, Position = position, Label = "OMAL Spa" });
                 }
+            
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert(viewModel.TitoloContattiOmal, ex.Message, "ok");
+            }
         }
     }
 }

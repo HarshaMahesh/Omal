@@ -14,11 +14,11 @@ namespace Omal
         {
             var tmpTraduzioni = new AppResources.Traduzioni();
             SearchPage = new CustomControls.CualevaNavigationPage(new Views.SearchV()) { Title = tmpTraduzioni.TitoloCerca, Icon="Cerca.png"  };
-            AnagrafichePage = new NavigationPage(new Views.AnagraficheV()) { Title = tmpTraduzioni.TitoloArchivio, Icon = "Archivio.png"  };
-            BasketPage = new NavigationPage(new Views.BasketV()) { Title = tmpTraduzioni.TitoloCarrello, Icon ="Ordini.png" };
-            ContactOmalPage = new NavigationPage(new Views.OmalContactPageV()) { Title = tmpTraduzioni.TitoloContattiOmal, Icon="Omal.png" };
+            AnagrafichePage = new CustomControls.CualevaNavigationPage(new Views.AnagraficheV()) { Title = tmpTraduzioni.TitoloArchivio, Icon = "Archivio.png"  };
+            BasketPage = new CustomControls.CualevaNavigationPage(new Views.BasketV()) { Title = tmpTraduzioni.TitoloCarrello, Icon ="Ordini.png" };
+            ContactOmalPage = new CustomControls.CualevaNavigationPage(new Views.OmalContactPageV()) { Title = tmpTraduzioni.TitoloContattiOmal, Icon="Omal.png" };
             ConfigurazioniPage = new Views.ConfigurationV();
-            ImpostazioniPage = new NavigationPage(ConfigurazioniPage) { Title = tmpTraduzioni.TitoloImpostazioni, Icon = "Impostazioni.png" };
+            ImpostazioniPage = new CustomControls.CualevaNavigationPage(ConfigurazioniPage) { Title = tmpTraduzioni.TitoloImpostazioni, Icon = "Impostazioni.png" };
             switch (Device.RuntimePlatform)
             {
                 case Device.Android:

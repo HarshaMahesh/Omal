@@ -26,12 +26,10 @@ namespace Omal.ViewModels
         }
 
 
-        string email;
+        string email = Application.Current.Properties.ContainsKey("Email")?Application.Current.Properties["Email"].ToString():"";
         public string Email { 
             get
             {
-                if (string.IsNullOrWhiteSpace(email) && Application.Current.Properties.ContainsKey("Email"))
-                    email = Application.Current.Properties["Email"].ToString();
                 return email;
             }
             set

@@ -97,6 +97,25 @@ namespace Omal.Models
                 return (PrezzoUnitario * Qta) - ScontoTotale;
             }
         }
+
+        [Ignore]
+        public string QtaStr
+        {
+            get
+            {
+                return App.Traduzioni.StrQta;
+            }
+        }
+
+        [Ignore]
+        public string ScontoStr
+        {
+            get
+            {
+                return App.Traduzioni.StrSconto;
+            }
+        }
+
         [Ignore]
         public string PrezzoTotaleStr
         {
