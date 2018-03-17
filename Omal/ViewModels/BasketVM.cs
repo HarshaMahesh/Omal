@@ -342,7 +342,7 @@ namespace Omal.ViewModels
         private void RicalcolaTotale()
         {
             if (App.CurOrdine == null) return;
-            App.CurOrdine.Totale = items.Sum(x => x.PrezzoTotale);
+            App.CurOrdine.Totale = items.Sum(x => x.PrezzoTotaleScontato);
             App.CurOrdine.TotaleConSconto = App.CurOrdine.Totale - (App.CurOrdine.Totale * App.CurOrdine.Sconto / 100);
             OnPropertyChanged("TotaleOrdine");
             OnPropertyChanged("TotaleOrdineConSconto");

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using SQLite;
+using Xamarin.Forms;
 
 namespace Omal.Models
 {
@@ -27,37 +28,7 @@ namespace Omal.Models
                 OnPropertyChanged();
             }
         }
-        [Ignore]
-        public double PrezzoUnitarioScontato
-        {
-            get
-            {
-                return PrezzoUnitario  - ((PrezzoUnitario * Sconto) / 100);
-            }
-        }
-        [Ignore]
-        public double PrezzoTotale
-        {
-            get
-            {
-                return (PrezzoUnitario * Qta) - (((PrezzoUnitario * Qta) * Sconto) / 100);
-            }
-        }
-        [Ignore]
-        public string PrezzoTotaleStr
-        {
-            get
-            {
-                if (Sconto != 0)
-                {
-                    return string.Format("€ {1} * {0}  = € {2} - € {3} = € {4}", Qta, PrezzoUnitario.ToString("n2"), (PrezzoUnitario * Qta).ToString("n2"), ((PrezzoUnitario * Qta) * (Sconto / 100)).ToString("n2"), PrezzoTotale.ToString("n2"));
-                }
-                else
-                    return string.Format("€ {1} * {0}  = € {2}", Qta, PrezzoUnitario.ToString("n2"), (PrezzoUnitario * Qta).ToString("n2"), PrezzoTotale.ToString("n2"));
-            }
-        }
 
-        public int IdProdotto { get; set; }
         int qta;
         public int Qta
         {
@@ -73,6 +44,76 @@ namespace Omal.Models
             }
         }
 
+        [Ignore]
+        public Color ColorePrezzoScontato
+        {
+            get
+            {
+                if (Sconto == 0) return Color.Transparent;
+                return Color.FromHex("#004899");
+            }
+
+        }
+        [Ignore]
+        public Color ColorePrezzoTotale
+        {
+            get
+            {
+                if (Sconto == 0) return Color.FromHex("#004899");
+                return Color.FromHex("#EAEAEA");
+            }
+
+        }
+
+
+        [Ignore]
+        public double PrezzoUnitarioScontato => PrezzoUnitario - ScontoUnitario;
+        [Ignore]
+        public double ScontoUnitario => (PrezzoUnitario * Sconto)/100;
+
+        [Ignore]
+        public double ScontoTotale
+        {
+            get
+            {
+                return ScontoUnitario * qta;
+            }
+        }
+
+        [Ignore]
+        public double PrezzoTotale
+        {
+            get
+            {
+                return (PrezzoUnitario * Qta);
+            }
+        }
+
+        [Ignore]
+        public double PrezzoTotaleScontato
+        {
+            get
+            {
+                return (PrezzoUnitario * Qta) - ScontoTotale;
+            }
+        }
+        [Ignore]
+        public string PrezzoTotaleStr
+        {
+            get
+            {
+                if (Sconto != 0)
+                {
+                    return string.Format("€ {1} * {0}  = € {2} - € {3} = € {4}", Qta, PrezzoUnitario.ToString("n2"), PrezzoTotale.ToString("n2"), ScontoTotale.ToString("n2"), PrezzoTotaleScontato.ToString("n2"));
+                }
+                else
+                    return string.Format("€ {1} * {0}  = € {2}", Qta, PrezzoUnitario.ToString("n2"), PrezzoTotale.ToString("n2"));
+            }
+        }
+
+        public int IdProdotto { get; set; }
+       
+
 
         public Carrello()
         {
@@ -85,7 +126,11 @@ namespace Omal.Models
                 (string.Equals("Qta", e.PropertyName, StringComparison.InvariantCultureIgnoreCase) ||
                 string.Equals("Sconto", e.PropertyName, StringComparison.InvariantCultureIgnoreCase))
             {
+                OnPropertyChanged("ColorePrezzoTotale");
+                OnPropertyChanged("ColorePrezzoScontato");
                 OnPropertyChanged("PrezzoUnitarioScontato");
+                OnPropertyChanged("ScontoUnitario");
+                OnPropertyChanged("PrezzoTotaleScontato");
                 OnPropertyChanged("PrezzoTotale");
                 OnPropertyChanged("PrezzoTotaleStr");
             }
