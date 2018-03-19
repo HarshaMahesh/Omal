@@ -14,7 +14,13 @@ namespace Omal.ViewModels
             AddNewCommand = new Command(OnAddNewCommand);
             MessagingCenter.Subscribe<Models.Messages.OrdineNewMessage>(this, "", sender =>
             {
-                Ordini.Add(sender.Ordine);
+                ordini = null;
+                LoadOrdini();
+            });
+            MessagingCenter.Subscribe<Models.Messages.ClienteInsertedOrUpdatedMessage>(this, "", sender =>
+            {
+                ordini = null;
+                LoadOrdini();
             });
 
         }

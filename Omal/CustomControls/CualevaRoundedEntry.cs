@@ -19,6 +19,23 @@ namespace Omal.CustomControls
             set { SetValue(ImageProperty, value); }
         }
 
+        public static readonly BindableProperty ImageHeightProperty =
+            BindableProperty.Create(nameof(ImageHeight), typeof(int), typeof(CualevaRoundedEntry), 40);
+        public int ImageHeight
+        {
+            get { return (int)GetValue(ImageHeightProperty); }
+            set { SetValue(ImageHeightProperty, value); }
+        }
+
+        public static readonly BindableProperty ImageWidthProperty =
+            BindableProperty.Create(nameof(ImageWidth), typeof(int), typeof(CualevaRoundedEntry), 40);
+        public int ImageWidth
+        {
+            get { return (int)GetValue(ImageWidthProperty); }
+            set { SetValue(ImageWidthProperty, value); }
+        }
+
+
 
 
         public static BindableProperty BorderColorProperty = BindableProperty.Create<CualevaRoundedEntry, Color>(o => o.BorderColor, Color.Transparent);

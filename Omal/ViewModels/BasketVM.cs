@@ -34,6 +34,8 @@ namespace Omal.ViewModels
                 OnPropertyChanged("NumeroCarrelli");
                 OnPropertyChanged("TotaleOrdine");
                 OnPropertyChanged("ScontoOrdine");
+                OnPropertyChanged("ColorePrezzoScontato");
+                OnPropertyChanged("ColorePrezzoTotale");
             });
             MessagingCenter.Subscribe<Models.Messages.BasketLoadedMessage>(this, "", sender =>
             {
@@ -47,7 +49,8 @@ namespace Omal.ViewModels
                 OnPropertyChanged("TotaleOrdine");
                 OnPropertyChanged("TotaleOrdineConSconto");
                 OnPropertyChanged("ScontoOrdine");
-
+                OnPropertyChanged("ColorePrezzoScontato");
+                OnPropertyChanged("ColorePrezzoTotale");
             });
 
             MessagingCenter.Subscribe<Models.Messages.ClienteInsertedOrUpdatedMessage>(this, "", sender =>
@@ -60,6 +63,28 @@ namespace Omal.ViewModels
             InviaCommand = new RelayCommand(OnInviaCommand, CanInviaCommand);
             AnnullaCommand = new RelayCommand(OnAnnullaCommand, CanAnnullaCommand);
             PropertyChanged += LocalPropertyChanged;
+        }
+
+
+        public Color ColorePrezzoScontato
+        {
+            get
+            {
+                if (App.CurOrdine ==  null || App.CurOrdine.Sconto == 0) return Color.Transparent;
+                return Color.FromHex("#004899");
+            }
+
+        }
+
+
+        public Color ColorePrezzoTotale
+        {
+            get
+            {
+                if (App.CurOrdine == null || App.CurOrdine.Sconto == 0) return Color.FromHex("#004899");
+                return Color.FromHex("#5E5B5B");
+            }
+
         }
 
         private bool CanAnnullaCommand(object arg)
@@ -103,6 +128,9 @@ namespace Omal.ViewModels
                 OnPropertyChanged("TotaleOrdineConSconto");
                 OnPropertyChanged("ScontoOrdine");
                 OnPropertyChanged("NumeroCarrelli");
+                OnPropertyChanged("ColorePrezzoScontato");
+                OnPropertyChanged("ColorePrezzoTotale");
+
                 SalvaCommand.ChangeCanExecute();
                 InviaCommand.ChangeCanExecute();
                 AnnullaCommand.ChangeCanExecute();
@@ -160,6 +188,9 @@ namespace Omal.ViewModels
                 OnPropertyChanged("TotaleOrdineConSconto");
                 OnPropertyChanged("ScontoOrdine");
                 OnPropertyChanged("NumeroCarrelli");
+                OnPropertyChanged("ColorePrezzoScontato");
+                OnPropertyChanged("ColorePrezzoTotale");
+
                 SalvaCommand.ChangeCanExecute();
                 InviaCommand.ChangeCanExecute();
                 AnnullaCommand.ChangeCanExecute();
@@ -346,6 +377,9 @@ namespace Omal.ViewModels
             App.CurOrdine.TotaleConSconto = App.CurOrdine.Totale - (App.CurOrdine.Totale * App.CurOrdine.Sconto / 100);
             OnPropertyChanged("TotaleOrdine");
             OnPropertyChanged("TotaleOrdineConSconto");
+            OnPropertyChanged("ColorePrezzoScontato");
+            OnPropertyChanged("ColorePrezzoTotale");
+
         }
 
         public double TotaleOrdine

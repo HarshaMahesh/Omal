@@ -19,7 +19,7 @@ namespace Omal.Droid.CustomControls
         public class CualevaRoundedEntryRendererAndroid : Xamarin.Forms.Platform.Android.EntryRenderer
     {
         #region Private fields and properties
-
+        CualevaRoundedEntry ELEMENT;
         private BorderRenderer _renderer;
         private const GravityFlags DefaultGravity = GravityFlags.CenterVertical;
 
@@ -34,10 +34,36 @@ namespace Omal.Droid.CustomControls
                 return;
             Control.Gravity = DefaultGravity;
             var entryEx = Element as CualevaRoundedEntry;
+            ELEMENT = Element as CualevaRoundedEntry;
             UpdateBackground(entryEx);
             UpdatePadding(entryEx);
             UpdateTextAlighnment(entryEx);
+            var editText = this.Control;
+            if (!string.IsNullOrEmpty(entryEx.Image))
+            {
+                editText.SetCompoundDrawablesWithIntrinsicBounds(GetDrawable(entryEx.Image), null, null, null);
+            }
+            editText.CompoundDrawablePadding = 25;
+          
         }
+
+        private BitmapDrawable GetDrawable(string imageEntryImage)
+        {
+            try
+            {
+                int resID = Resources.GetIdentifier(imageEntryImage, "drawable", this.Context.PackageName);
+                var drawable = ContextCompat.GetDrawable(this.Context, resID);
+                var bitmap = ((BitmapDrawable)drawable).Bitmap;
+
+                return new BitmapDrawable(Resources, Bitmap.CreateScaledBitmap(bitmap, ELEMENT.ImageHeight * 2, ELEMENT.ImageWidth * 2, true));
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -95,9 +121,7 @@ namespace Omal.Droid.CustomControls
             {
                 List<Drawable> layers = new List<Drawable>();
                 layers.Add(gradientDrawable);
-                var ly = GetDrawable(entryEx.Image, entryEx.BorderRadius);
-                if (ly != null)
-                    layers.Add(ly);
+
                 LayerDrawable layerDrawable = new LayerDrawable(layers.ToArray());
                 layerDrawable.SetLayerInset(0, 0, 0, 0, 0);
                 Control.SetBackground(layerDrawable);
@@ -107,60 +131,14 @@ namespace Omal.Droid.CustomControls
 
        
 
-        private BitmapDrawable GetDrawable(string imagePath, double borderRadius)
-        {
-            BitmapDrawable result=null;
-            int resID = Resources.GetIdentifier(imagePath, "drawable", this.Context.PackageName);
-            try
-            {
-                var drawable = ContextCompat.GetDrawable(this.Context, resID);
-                var bitmap = ((BitmapDrawable)drawable).Bitmap;
+       
 
-                result = new BitmapDrawable(Resources, padBitmap(Bitmap.CreateScaledBitmap(bitmap, 70, 70, true), borderRadius));
-                result.Gravity = Android.Views.GravityFlags.Left;
-                return result;
-            }
-            catch (Exception ex)
-            {
-                // eccezione silente
-            }
-            return result;
-        }
-
-        public  Bitmap padBitmap(Bitmap bitmap, double borderRadius)
-        {
-            int paddingX = Convert.ToInt32(borderRadius);
-            int paddingY=0;
-
-
-            Bitmap paddedBitmap = Bitmap.CreateBitmap(
-                bitmap.Width + paddingX,
-                bitmap.Height + paddingY,Bitmap.Config.Argb8888);
-
-            Canvas canvas = new Canvas(paddedBitmap);
-            canvas.DrawColor(Android.Graphics.Color.Transparent);
-            canvas.DrawBitmap(
-                bitmap,
-                paddingX / 2,
-                paddingY / 2, new Paint(PaintFlags.FilterBitmap));
-
-            return paddedBitmap;
-        }
+       
 
         private void UpdatePadding(CualevaRoundedEntry entryEx)
         {
             int paddingToAdd = 0;
-            if (!string.IsNullOrWhiteSpace(entryEx.Image))
-            {
-                var image = GetDrawable(entryEx.Image, entryEx.BorderRadius);
-                if (image != null)
-                {
-                    var pixel = 70;
-                    paddingToAdd =(int) dpFromPx(Forms.Context, pixel);
-
-                }
-                    
-            }
+           
             Control.SetPadding((int)Forms.Context.ToPixels(entryEx.LeftPadding + paddingToAdd), 0,
                 (int)Forms.Context.ToPixels(entryEx.RightPadding), 0);
         }

@@ -97,10 +97,12 @@ namespace Omal.ViewModels
 
             set
             {
+                OnPropertyChanged();
                 if (value != null)
                 {
                     CurPage.Navigation.PushAsync(new Views.AnagraficaClientiDetailV(value));
                 }
+
             }
         }
 
