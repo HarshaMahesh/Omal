@@ -77,6 +77,11 @@ namespace Omal.Services
                     idProdotto = x.idProdotto.Value,
                     ordine = x.ordine
                 }).ToList();
+                if (forceRefresh)
+                {
+                    await Connection.DropTableAsync<Models.ProdottoMetadati>();
+                    await Connection.CreateTableAsync<Models.ProdottoMetadati>();
+                }
                 foreach (var item in items)
                     Connection.InsertOrReplaceAsync(item);
                 return items;

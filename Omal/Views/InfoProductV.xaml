@@ -5,7 +5,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-        <StackLayout BackgroundColor="#EAEAEA">
+        <StackLayout BackgroundColor="#EAEAEA" IsVisible="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}">
             <Label Margin="5" Style="{StaticResource Titolo}" FontSize="18" Text="{Binding CurProdotto, Converter={StaticResource NomeProdottoConverter}}"  HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
         </StackLayout>
             <ListView Margin="5" x:Name="CurGruppo" SelectedItem="{Binding CurGruppoProdotto}" ItemsSource="{Binding GruppoMetadati}">
@@ -19,8 +19,6 @@
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Margin="10">
                                  <Label IsVisible="{Binding LangIsIT}" Text="{Binding ., Converter={StaticResource GruppoMetadatiConverter}}" Margin="5" Style="{StaticResource Azzurra}"  VerticalOptions="Center" />
-
-                                 <Image Source="rightarrow" Margin="5" HorizontalOptions="EndAndExpand"  />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

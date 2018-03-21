@@ -18,10 +18,10 @@
             </FormattedString>
           </Label.FormattedText>
         </Label>
+        <Label Margin="5,30,5,5" Style="{StaticResource Titolo}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="HEADQUARTERS"/>
           <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center">
           <Label.FormattedText>
             <FormattedString>
-              <Span Text="&#10;HEADQUARTERS" FontAttributes="Bold"/>
               <Span Text="&#10;Via Ponte Nuovo 11"  />
               <Span Text="&#10;Rodengo Saiano" />
                 <Span Text="&#10;Brescia, Italia"  />
@@ -33,10 +33,10 @@
             IsShowingUser="true"
             MapType="Hybrid"
         />
-            <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center">
+          <Label Margin="5,30,5,5" Style="{StaticResource Titolo}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="{Binding StrSedeProduttiva, Converter={StaticResource UpperCaseConverter}}"/>
+          <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center">
           <Label.FormattedText>
             <FormattedString>
-              <Span Text="aaa" FontAttributes="Bold"/>
               <Span Text="&#10;Via Brognolo 12"  />
               <Span Text="&#10;Passirano" />
                 <Span Text="&#10;Brescia, Italia"  />

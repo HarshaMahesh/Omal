@@ -35,7 +35,7 @@ namespace Omal.ViewModels
         {
             get
             {
-                return !string.IsNullOrWhiteSpace(SelectedPrimoLivello.Value);
+                return !string.IsNullOrWhiteSpace(SelectedPrimoLivello.Value) && SecondoLivello != null && SecondoLivello.Count > 0;
             }
         }
 
@@ -43,7 +43,7 @@ namespace Omal.ViewModels
         {
             get
             {
-                return !string.IsNullOrWhiteSpace(SelectedSecondoLivello.Value);
+                return !string.IsNullOrWhiteSpace(SelectedSecondoLivello.Value) && TerzoLivello != null && TerzoLivello.Count > 0;;
             }
         }
 

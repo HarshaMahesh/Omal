@@ -31,6 +31,7 @@ namespace Omal.Models
 
         public string valore_coppiabar { get; set; }
         public string valore_voltaggio { get; set; }
+        public string valore_pesokg { get; set; }
         public string valore_pesokgbar { get; set; }
         public string valore_aria { get; set; }
         public string codice_guarnizioni { get; set; }

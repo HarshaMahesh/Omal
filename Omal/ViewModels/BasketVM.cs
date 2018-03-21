@@ -121,6 +121,7 @@ namespace Omal.ViewModels
                 ClearItems();
                 App.CurOrdine = null;
                 App.CurOrdine = new Models.Ordine();
+                SelectedItem = null;
                 ClearItems();
                 App.CurOrdine.Totale = 0;
                 OnPropertyChanged("Items");
@@ -181,6 +182,7 @@ namespace Omal.ViewModels
                 ClearItems();
                 App.CurOrdine = null;
                 App.CurOrdine = new Models.Ordine();
+                SelectedItem = null;
                 ClearItems();
                 App.CurOrdine.Totale = 0;
                 OnPropertyChanged("Items");
@@ -190,7 +192,8 @@ namespace Omal.ViewModels
                 OnPropertyChanged("NumeroCarrelli");
                 OnPropertyChanged("ColorePrezzoScontato");
                 OnPropertyChanged("ColorePrezzoTotale");
-
+                OnPropertyChanged("SelectedCliente");
+                OnPropertyChanged("NoteOrdine");
                 SalvaCommand.ChangeCanExecute();
                 InviaCommand.ChangeCanExecute();
                 AnnullaCommand.ChangeCanExecute();
@@ -219,6 +222,24 @@ namespace Omal.ViewModels
                     CurPage.DisplayAlert("Error",ex.Message,"Ok");
                 }
                 await CurPage.DisplayAlert(TitoloCarrello, StrSalvataggioCarrelloCompletato,"Ok");
+                ClearItems();
+                App.CurOrdine = null;
+                App.CurOrdine = new Models.Ordine();
+                SelectedItem = null;
+                ClearItems();
+                App.CurOrdine.Totale = 0;
+                OnPropertyChanged("Items");
+                OnPropertyChanged("TotaleOrdine");
+                OnPropertyChanged("TotaleOrdineConSconto");
+                OnPropertyChanged("ScontoOrdine");
+                OnPropertyChanged("NumeroCarrelli");
+                OnPropertyChanged("ColorePrezzoScontato");
+                OnPropertyChanged("ColorePrezzoTotale");
+                OnPropertyChanged("SelectedCliente");
+                OnPropertyChanged("NoteOrdine");
+                SalvaCommand.ChangeCanExecute();
+                InviaCommand.ChangeCanExecute();
+                AnnullaCommand.ChangeCanExecute();
             }
         }
 

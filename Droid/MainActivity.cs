@@ -25,7 +25,7 @@ namespace Omal.Droid
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
             {
                 Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
-                Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#60A5D1"));
+                Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#004899"));
             }
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;

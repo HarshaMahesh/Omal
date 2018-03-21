@@ -20,11 +20,11 @@ namespace Omal.iOS.CustomControls
                 att.TextColor = UIColor.White;
                 UINavigationBar.Appearance.TintColor = UIColor.White;
                 UINavigationBar.Appearance.SetTitleTextAttributes(att);
-                UINavigationBar.Appearance.BarTintColor = Color.FromHex("#60A5D1").ToUIColor();
+                UINavigationBar.Appearance.BarTintColor = Color.FromHex("#004899").ToUIColor();
 
                 var att2 = new UITextAttributes();
                 att2.Font = UIFont.FromName("Montserrat-Regular", 14);
-                att2.TextColor = UIColor.Blue;
+                att2.TextColor = Color.FromHex("#60A5D1").ToUIColor();
                 UIBarButtonItem.Appearance.SetTitleTextAttributes(att2,
                 UIControlState.Normal);
                 UIBarButtonItem.Appearance.SetTitleTextAttributes(att2,

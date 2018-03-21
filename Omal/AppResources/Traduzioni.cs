@@ -49,6 +49,7 @@ namespace Omal.AppResources
         public string BtnAnnulla { get { return GetCurvalueLang(_BtnAnnulla); } }
         public string BtnSalva { get { return GetCurvalueLang(_BtnSalva); } }
         public string BtnInvia { get { return GetCurvalueLang(_BtnInvia); } }
+        public string BtnNuovo { get { return GetCurvalueLang(_BtnNuovo); } }
 
         public string Cliente { get { return GetCurvalueLang(_Cliente); } }
         public string Note { get { return GetCurvalueLang(_Note); } }
@@ -173,13 +174,19 @@ namespace Omal.AppResources
         public string StrOrdineCompletatoCompletato { get { return GetCurvalueLang(_StrOrdineCompletatoCompletato); } }
         public string ErrCampiOblCliente { get { return GetCurvalueLang(_ErrCampiOblCliente); } }
         public string MsgClienteEliminato { get { return GetCurvalueLang(_MsgClienteEliminato); } }
-        public string StrPerdiModificheCarrello { get { return GetCurvalueLang(_MsgClienteEliminato); } }
+        public string StrPerdiModificheCarrello { get { return GetCurvalueLang(_StrPerdiModificheCarrello); } }
         public string StrConfermiLogout { get { return GetCurvalueLang(_StrConfermiLogout); } }
         public string BtnInsert { get { return GetCurvalueLang(_BtnInsert); } }
         public string BtnUpdate { get { return GetCurvalueLang(_BtnUpdate); } }
         public string BtnEdit { get { return GetCurvalueLang(_BtnEdit); } }
 
 
+
+        Dictionary<string, string> _BtnNuovo = new Dictionary<string, string>
+        {
+            {"IT",  "Nuovo"},
+            {"EN",  "New"}
+        };
 
         Dictionary<string, string> _StrOrdineStatoAnnullato = new Dictionary<string, string>
         {
@@ -189,8 +196,8 @@ namespace Omal.AppResources
 
         Dictionary<string, string> _StrSedeProduttiva = new Dictionary<string, string>
         {
-            {"IT",  "&#10;Sede produttiva"},
-            {"EN",  "&#10;Production site"}
+            {"IT",  "Sede produttiva"},
+            {"EN",  "Production site"}
         };
 
         Dictionary<string, string> _BtnAnnulla = new Dictionary<string, string>
@@ -471,7 +478,7 @@ namespace Omal.AppResources
 
         Dictionary<string, string> _StrTrovatiNrContatti = new Dictionary<string, string>
         {
-            {"IT",  " Trovati {0} contatti"},
+            {"IT",  "Trovati {0} contatti"},
             {"EN",  "{0} contacts found"}
         };
 
@@ -777,8 +784,8 @@ namespace Omal.AppResources
 
         Dictionary<string, string> _StrTrovaArticolo = new Dictionary<string, string>
         {
-            {"IT", "Trova Articolo"},
-            {"EN", "Find Item"}
+            {"IT", "Configura azionamento"},
+            {"EN", "Drives set up"}
         };
         Dictionary<string, string> _TitoloDettaglioCliente = new Dictionary<string, string>
         {
@@ -973,8 +980,8 @@ namespace Omal.AppResources
 
         Dictionary<string, string> _ProdottoRicercato = new Dictionary<string, string>
         {
-            {"IT", "Inserisci il prodotto ricercato"},
-            {"EN", "Enter the requested product"}
+            {"IT", "Cerca per nome o codice prodotto"},
+            {"EN", "Search product name or code"}
         };
 
     }

@@ -66,6 +66,11 @@ namespace Omal.Services
                 if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
                 var json = await client.GetStringAsync(url);
                 items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { Data = new List<Models.Valvola>() }).Data);
+                if (forceRefresh)
+                {
+                    await Connection.DropTableAsync<Models.Valvola>();
+                    await Connection.CreateTableAsync<Models.Valvola>();
+                }
                 foreach (var item in items)
                     Connection.InsertOrReplaceAsync(item);
                 return items;

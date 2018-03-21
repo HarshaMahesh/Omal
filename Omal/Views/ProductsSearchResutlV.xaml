@@ -8,7 +8,7 @@
     </ContentPage.ToolbarItems>
 	<ContentPage.Content>
         <StackLayout Padding="10">
-           <ListView  BackgroundColor="#ebebeb" RowHeight="90" SelectedItem="{Binding SelectedProduct}" x:Name="ElencoProdotti" ItemsSource="{Binding Prodotti}">
+           <ListView IsVisible="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}" BackgroundColor="#ebebeb" RowHeight="90" SelectedItem="{Binding SelectedProduct}" x:Name="ElencoProdotti" ItemsSource="{Binding Prodotti}">
             <ListView.Header>
                     <Grid BackgroundColor="#ebebeb" HeightRequest="60">
                         <Label VerticalOptions="Center" Margin="5" HorizontalTextAlignment="Center"  Style="{StaticResource Titolo}" Text="{Binding NumeroProdotti}"  />
@@ -35,6 +35,7 @@
             </ListView.ItemTemplate>
 
             </ListView>
+            <ActivityIndicator IsVisible="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}"  />
         </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

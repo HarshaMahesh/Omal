@@ -137,6 +137,7 @@ namespace Omal.Services
             var jsonSerializerSettings = new JsonSerializerSettings();
             jsonSerializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
             var risposta = JsonConvert.DeserializeAnonymousType(json, new { data = new List<ResponseOrdini>() }, jsonSerializerSettings).data.FirstOrDefault();
+           
             if (risposta.HasError == 0)
             {
                 item.jsonCarrelliSerialized = Newtonsoft.Json.JsonConvert.SerializeObject(item.carrelli);
@@ -177,6 +178,11 @@ namespace Omal.Services
                     Converters = new List<JsonConverter> { new DecimalConverter() }
                 };
                 items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { Data = new List<Models.Ordine>() }).Data);
+                if (forceRefresh)
+                {
+                    await Connection.DropTableAsync<Models.Ordine>();
+                    await Connection.CreateTableAsync<Models.Ordine>();
+                }
                 foreach (var item in items)
                     Connection.InsertOrReplaceAsync(item);
             }

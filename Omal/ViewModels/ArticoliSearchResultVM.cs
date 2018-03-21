@@ -177,6 +177,8 @@ img.middle {
             {    
                 string elemento = @"<center><span style=""color:#004899;font-size: 10px"">{0}</span><br /><b>{1}</b></center>";
                 List<string> curAttuatore = new List<string>();
+                if (!string.IsNullOrWhiteSpace(attuatore.codice_articolo))
+                    curAttuatore.Add(string.Format(@"<p style=""color:#004899;font-size: 18px"" align='center'><b>{0}</b></p>", attuatore.codice_articolo));
                 if (!string.IsNullOrWhiteSpace(attuatore.immagine_placeholder) &&  !string.IsNullOrWhiteSpace(attuatore.immagine_placeholder_dt))
                 {
                     curAttuatore.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a>&emsp;<a href='{3}'><img Height='100' src='{2}' /></a></P>", attuatore.immagine_placeholder, string.Format("local_{0}", attuatore.immagine_placeholder),attuatore.immagine_placeholder_dt, string.Format("local_{0}", attuatore.immagine_placeholder_dt)));
@@ -190,6 +192,7 @@ img.middle {
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_coppiabar)) curAttuatore.Add(string.Format(elemento, Strvalore_coppiabar, attuatore.valore_coppiabar));
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_voltaggio)) curAttuatore.Add(string.Format(elemento, Strvalore_voltaggio, attuatore.valore_voltaggio));
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_pesokgbar)) curAttuatore.Add(string.Format(elemento, Strvalore_pesokgbar, attuatore.valore_pesokgbar));
+                if (!string.IsNullOrWhiteSpace(attuatore.valore_pesokg)) curAttuatore.Add(string.Format(elemento, Strvalore_pesokgbar, attuatore.valore_pesokg));
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_aria)) curAttuatore.Add(string.Format(elemento, Strvalore_aria, attuatore.valore_aria));
                 if (!string.IsNullOrWhiteSpace(attuatore.codice_guarnizioni)) curAttuatore.Add(string.Format(elemento, Strcodice_guarnizioni, attuatore.codice_guarnizioni));
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_ch)) curAttuatore.Add(string.Format(elemento, Strvalore_ch, attuatore.valore_ch));

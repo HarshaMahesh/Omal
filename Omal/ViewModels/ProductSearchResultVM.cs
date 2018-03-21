@@ -92,11 +92,31 @@ namespace Omal.ViewModels
         }
 
         bool prodottiLoading = false;
+
+        bool isRunning = false;
+        public bool IsRunning
+        {
+            get { return isRunning; }
+            set
+            {
+
+                if (isRunning != value)
+                {
+                    isRunning = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
         async void LoadProdotti()
         {
             if (_prodotti == null && !prodottiLoading)
             {
+                IsRunning = true;
                 prodottiLoading = true;
+                try
+                {
                 var originalProdotti = await DataStore.Prodotti.GetItemsAsync();
                 var tmpProdotti = new List<Models.Prodotto>(originalProdotti);
                 if (!string.IsNullOrWhiteSpace(ProductFilter))
@@ -111,7 +131,7 @@ namespace Omal.ViewModels
                         var valvole = await DataStore.Valvole.GetItemsAsync();
                         var prodotti = valvole.Where(x => x.codice_articolo.ToLower().Contains(productFilter.ToLower())).Select(x => x.idprodotto).Distinct().ToList();
                         // cerco degli attuatori
-                        var attuatori = await DataStore.Valvole.GetItemsAsync();
+                        var attuatori = await DataStore.Attuatori.GetItemsAsync();
                         var prodotti2 = attuatori.Where(x => x.codice_articolo.ToLower().Contains(productFilter.ToLower())).Select(x => x.idprodotto).Distinct().ToList();
                         prodotti.AddRange(prodotti2);
                         prodotti = prodotti.Distinct().ToList();
@@ -131,16 +151,24 @@ namespace Omal.ViewModels
                     if (!Uri.IsWellFormedUriString(prodotto.immagine_placeholder, UriKind.Absolute)) prodotto.immagine_placeholder = "http://wordpress.docsmarshal.it/wp-content/uploads/2018/02/Logo_DM_Docsmarshal.png"; 
                 }
                 Prodotti = new ObservableCollection<Models.Prodotto>(tmpProdotti);
-                prodottiLoading = false;
+                
+                }
+                finally
+                {
+                    prodottiLoading = false;
+                    IsRunning = false;
+                }
+
             }
         }
 
-        public string NumeroProdotti { 
+        public string NumeroProdotti 
+        { 
             get
             {
-                if (Prodotti == null || Prodotti.Count() == 0) return StrNessunProdottoTrovato;
-                if (Prodotti.Count() == 1) return StrTrovatounSoloProdotto;
-                return string.Format(StrTrovatiNrProdotti, Prodotti.Count());
+                if (_prodotti == null || _prodotti.Count() == 0) return StrNessunProdottoTrovato;
+                if (_prodotti.Count() == 1) return StrTrovatounSoloProdotto;
+                return string.Format(StrTrovatiNrProdotti, _prodotti.Count());
 
             }
         }

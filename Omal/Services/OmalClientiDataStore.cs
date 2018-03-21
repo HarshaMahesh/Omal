@@ -82,7 +82,7 @@ namespace Omal.Services
                 new KeyValuePair<string, string>("Nazione", item.Nazione),
                 new KeyValuePair<string, string>("societapersona", "societa"),
                 new KeyValuePair<string, string>("IDUtente", item.IDUtente.ToString()),
-                new KeyValuePair<string, string>("Annullato", item.annullato.ToString()),
+                new KeyValuePair<string, string>("annullato", item.annullato.ToString()),
             });
             var response = await client.PostAsync(url, formContent);
             var json = await response.Content.ReadAsStringAsync();
@@ -124,6 +124,11 @@ namespace Omal.Services
                 if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
                 var json = await client.GetStringAsync(url);
                 items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { data = new List<Models.Cliente>() }).data);
+                if (forceRefresh)
+                {
+                    await Connection.DropTableAsync<Models.Cliente>();
+                    await Connection.CreateTableAsync<Models.Cliente>();
+                }
                 foreach (var item in items)
                     Connection.InsertOrReplaceAsync(item);
             }
