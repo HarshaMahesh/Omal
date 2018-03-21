@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Plugin.Share;
 using Xamarin.Forms;
 
 namespace Omal.Views
@@ -27,8 +27,15 @@ namespace Omal.Views
         {
             base.OnAppearing();
             CurGruppo.SelectedItem = null;
+            ElencoPdf.SelectedItem = null;
         }
 
+        public void OpenB(string url)
+        {
+            if (!CrossShare.IsSupported) return;
+            CrossShare.Current.OpenBrowser(url);
+
+        }
 
     }
 }

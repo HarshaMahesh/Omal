@@ -15,6 +15,7 @@ namespace Omal.Services
         Omal.IDataStore<Models.Attuatore> Attuatori { get; set; }
         Omal.IUtentiDataStore Utenti { get; set; }
         List<Models.Carrello>  Carrello { get; set; }
+        Omal.Services.OmalPDFDataStore Pdf { get; set; }
 
     }
 }

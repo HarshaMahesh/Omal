@@ -169,6 +169,45 @@ img.middle {
         }
 
 
+        string TraduzioneAzionamento(string azionamento)
+        {
+            try
+            {
+
+            if (!string.Equals(App.CurLang, "IT", StringComparison.InvariantCultureIgnoreCase))
+            {
+                var valori = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Models.Descrizioni>>(CurProdotto.DescrizioniAzionamentiSerialized);
+                var valore = valori.FirstOrDefault(x => string.Equals(x.valore, azionamento, StringComparison.InvariantCultureIgnoreCase));
+                if (valore != null && (!string.IsNullOrWhiteSpace(valore.valore_en))) return valore.valore_en;
+            }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return azionamento;
+        }
+
+        string TraduzioneMateriali(string materiale)
+        {
+            try
+            {
+            if (!string.Equals(App.CurLang, "IT", StringComparison.InvariantCultureIgnoreCase))
+            {
+                var valori = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Models.Descrizioni>>(CurProdotto.DescrizioniMaterialiSerialized);
+                var valore = valori.FirstOrDefault(x => string.Equals(x.valore, materiale, StringComparison.InvariantCultureIgnoreCase));
+                if (valore != null && (!string.IsNullOrWhiteSpace(valore.valore_en))) return valore.valore_en;
+            }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return materiale;
+        }
+
+
         private string HtmlPerAttuatori()
         {
             //var attuatori = (IEnumerable<Models.Attuatore>)Articoli;
@@ -252,8 +291,8 @@ img.middle {
                     curValvola.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a></P>", valvola.immagine_placeholder, string.Format("local_{0}", valvola.immagine_placeholder)));
                 curValvola.Add("<TABLE>");
                 elemento = @"<TR><TD><center><span style=""color:#004899;font-size: 10px"">{0}</span><br /><b>{1}</b></center></TD></TR>";
-                if (!string.IsNullOrWhiteSpace(valvola.valore_azionamento)) curValvola.Add(string.Format(elemento, StrAzionamento, valvola.valore_azionamento));
-                if (!string.IsNullOrWhiteSpace(valvola.valore_materiale)) curValvola.Add(string.Format(elemento, StrMateriale, valvola.valore_materiale));
+                if (!string.IsNullOrWhiteSpace(valvola.valore_azionamento)) curValvola.Add(string.Format(elemento, StrAzionamento, TraduzioneAzionamento(valvola.valore_azionamento)));
+                if (!string.IsNullOrWhiteSpace(valvola.valore_materiale)) curValvola.Add(string.Format(elemento, StrMateriale, TraduzioneMateriali( valvola.valore_materiale)));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_dn)) curValvola.Add(string.Format(elemento,StrDn, valvola.valore_dn));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_inch)) curValvola.Add(string.Format(elemento, StrInch, valvola.valore_inch));
                 if (!string.IsNullOrWhiteSpace(valvola.valore_pnansi)) curValvola.Add(string.Format(elemento, StrPnasi, valvola.valore_pnansi));

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SQLite;
 
 namespace Omal.Models
@@ -19,6 +20,14 @@ namespace Omal.Models
         public string immagine_placeholder { get; set; }
         public DateTime dataora_modifica { get; set; }
         public int annullato { get; set; }
+        [Ignore]
+        public List<Descrizioni> descrizioniAzionamenti { get; set; }
+        [Ignore]
+        public List<Descrizioni> descrizioniMateriali { get; set; }
+
+        public string DescrizioniAzionamentiSerialized { get; set; }
+        public string DescrizioniMaterialiSerialized { get; set; }
+
     }
 }
 

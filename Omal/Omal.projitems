@@ -169,6 +169,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\WelcomeVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\GotoWelcomeMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Persistence\ICustomNavigationManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Descrizioni.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\OmalPDFDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\PDF.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GruppoPdf.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />

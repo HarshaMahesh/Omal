@@ -18,6 +18,7 @@ namespace Omal.Services
             Attuatori = new OmalAttuatoriDataStore();
             Ordini = new OmalOrdiniDataStore();
             Carrello = new List<Models.Carrello>();
+            Pdf = new OmalPDFDataStore();
         }
 
         public IDataStore<Prodotto> Prodotti{ get;  set; }
@@ -30,5 +31,6 @@ namespace Omal.Services
         public IDataStore<Attuatore> Attuatori { get; set; }
         public IDataStore<Ordine> Ordini { get; set; }
         public List<Carrello> Carrello { get; set; }
+        public Omal.Services.OmalPDFDataStore Pdf { get; set; }
     }
 }

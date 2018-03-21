@@ -20,7 +20,7 @@ namespace Omal.AppResources
         }
 
 
-
+        public string StrUpdateDb { get { return GetCurvalueLang(_StrUpdateDb); }}
         public string StrSedeProduttiva { get { return GetCurvalueLang(_StrSedeProduttiva); } }
         public string StrOrdineAnnullato { get { return GetCurvalueLang(_StrOrdineAnnullato); } }
         public string StrTrovaArticolo { get { return GetCurvalueLang(_StrTrovaArticolo); } }
@@ -181,6 +181,11 @@ namespace Omal.AppResources
         public string BtnEdit { get { return GetCurvalueLang(_BtnEdit); } }
 
 
+        Dictionary<string, string> _StrUpdateDb = new Dictionary<string, string>
+        {
+            {"IT",  "Aggiornamento catalogo in corso..."},
+            {"EN",  "Updating catalogue in progress..."}
+        };
 
         Dictionary<string, string> _BtnNuovo = new Dictionary<string, string>
         {

@@ -18,12 +18,25 @@ namespace Omal.Views
             InitializeComponent();
             MyMap.IsVisible = false;
             MyMap2.IsVisible = false;
-            Links.GestureRecognizers.Add(new TapGestureRecognizer
+            Sito.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(() => {
                     CrossShare.Current.OpenBrowser("http://www.omal.it");
                 })
             });
+            Email.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => {
+                    Device.OpenUri(new Uri("mailto:info@omal.it"));
+                })
+            });
+            Tel.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => {
+                    Device.OpenUri(new Uri("tel:+390308900145"));
+                })
+            });
+           
             NavigationPage.SetBackButtonTitle(this, "");
             BindingContext = viewModel = new ViewModels.OmalContactPageVM();
             viewModel.Navigation = Navigation;
@@ -66,9 +79,20 @@ namespace Omal.Views
                 MyMap.IsVisible = mostra;
                 MyMap2.IsVisible = mostra;
 
-                geoCoder = new Geocoder();
                 var address = "Italia, Rodengo Saiano, Via Ponte Nuovo, 11";
-                var approximateLocations = await geoCoder.GetPositionsForAddressAsync(address);
+                Pin p = new Pin() { Position = new Position(45.598083, 10.090149), Address = address, Label = "OMAL Spa", Type = PinType.Place };
+                MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(p.Position, Distance.FromMeters(200)));
+                MyMap.Pins.Add(p);
+
+                var address2 = "Italia, Rodengo Saiano, Via Ponte Nuovo, 11";
+                Pin p2 = new Pin() { Position = new Position(45.597212, 10.088550), Address = address2, Label = "OMAL Spa", Type = PinType.Place };
+                MyMap2.MoveToRegion(MapSpan.FromCenterAndRadius(p2.Position, Distance.FromMeters(200)));
+                MyMap2.Pins.Add(p2);
+
+
+                /*geoCoder = new Geocoder();
+
+                var approximateLocations = await geoCoder. GetPositionsForAddressAsync(address);
                 foreach (var position in approximateLocations)
                 {
                     MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200)));
@@ -81,7 +105,7 @@ namespace Omal.Views
                     MyMap2.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200)));
                     MyMap2.Pins.Add(new Pin() { Type = PinType.Place, Address = address, Position = position, Label = "OMAL Spa" });
                 }
-            
+                */
             }
             catch (Exception ex)
             {

@@ -9,41 +9,27 @@
 	<ContentPage.Content>
         <ScrollView>
         <StackLayout HorizontalOptions="Center" VerticalOptions="StartAndExpand" Padding="30">
-        <Label x:Name="Links" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center">
-          <Label.FormattedText>
-            <FormattedString>
-              <Span Text="T. 030.8900145" FontAttributes="Bold"/>
-              <Span Text="&#10;@. info@omal.it" />
-              <Span Text="&#10;W. www.omal.it" ForegroundColor="Blue" />
-            </FormattedString>
-          </Label.FormattedText>
-        </Label>
+                <StackLayout BackgroundColor="#EAEAEA"> 
+         <Label Text="030.8900145"  x:Name="Tel" HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
+         <Label Text="info@omal.it" x:Name="Email" HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
+         <Label Text="www.omal.it" x:Name="Sito" TextColor="Blue" HorizontalOptions="Fill" HorizontalTextAlignment="Center" />       
+         </StackLayout>
         <Label Margin="5,30,5,5" Style="{StaticResource Titolo}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="HEADQUARTERS"/>
-          <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center">
-          <Label.FormattedText>
-            <FormattedString>
-              <Span Text="&#10;Via Ponte Nuovo 11"  />
-              <Span Text="&#10;Rodengo Saiano" />
-                <Span Text="&#10;Brescia, Italia"  />
-            </FormattedString>
-          </Label.FormattedText>
-        </Label>
-        <maps:Map WidthRequest="320" HeightRequest="200"
+                
+        <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Via Ponte Nuovo 11" />
+        <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Rodengo Saiano" />
+        <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Brescia, Italia" />
+          
+        <maps:Map Margin="10" HorizontalOptions="Fill" WidthRequest="400" HeightRequest="400"
             x:Name="MyMap"
             IsShowingUser="true"
             MapType="Hybrid"
         />
           <Label Margin="5,30,5,5" Style="{StaticResource Titolo}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="{Binding StrSedeProduttiva, Converter={StaticResource UpperCaseConverter}}"/>
-          <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center">
-          <Label.FormattedText>
-            <FormattedString>
-              <Span Text="&#10;Via Brognolo 12"  />
-              <Span Text="&#10;Passirano" />
-                <Span Text="&#10;Brescia, Italia"  />
-            </FormattedString>
-          </Label.FormattedText>
-        </Label>
-            <maps:Map HorizontalOptions="Fill" HeightRequest="200"
+          <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Via Brognolo 12" />
+            <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Passirano" />
+            <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Brescia, Italia" />
+            <maps:Map HorizontalOptions="FillAndExpand" HeightRequest="400" WidthRequest="400"
             x:Name="MyMap2"
             IsShowingUser="true"
             MapType="Hybrid"

@@ -60,7 +60,7 @@ namespace Omal.ViewModels
         {
             get
             {
-                return CurProdotto != null && ProdottoIsValvola && !string.IsNullOrWhiteSpace(selectedPicker3.Key) && (picker4 != null) && (picker4.Count > 0);
+                return CurProdotto != null && ProdottoIsValvola && !string.IsNullOrWhiteSpace(selectedPicker3.Key) && (picker4 != null) && (picker4.Count > 0) &&  (!(CurProdotto.codice == "089" || CurProdotto.codice == "090" || CurProdotto.codice == "096"));
             }
         }
 
@@ -80,7 +80,12 @@ namespace Omal.ViewModels
             get
             {
                 if (ProdottoIsValvola)
-                    return StrMateriale;
+                {
+                    if (CurProdotto.codice == "89" || CurProdotto.codice == "90" || CurProdotto.codice == "96")
+                        return Strvalore_KITGUARNIZIONIopzione3;
+                    else
+                        return StrMateriale;
+                }
                 else
                     return StrInfoProdottoPicker2Attuatore;
             }
@@ -91,7 +96,12 @@ namespace Omal.ViewModels
             get
             {
                 if (ProdottoIsValvola)
-                    return StrPnasi;
+                {
+                    if (CurProdotto.codice == "89" || CurProdotto.codice == "90" || CurProdotto.codice == "96")
+                        return StrDn;
+                    else
+                        return StrPnasi;
+                }
                 else
                     return "";
             }
@@ -334,6 +344,7 @@ namespace Omal.ViewModels
 
 
         ObservableCollection<KeyValuePair<string, string>> picker1 = new ObservableCollection<KeyValuePair<string, string>>();
+
         public ObservableCollection<KeyValuePair<string, string>> Picker1
         {
             get
@@ -381,6 +392,38 @@ namespace Omal.ViewModels
             }
         }
 
+        string TraduzioneAzionamento( string azionamento)
+        {
+            try
+            {
+                if (!string.Equals(App.CurLang, "IT", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    var valori = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Models.Descrizioni>>(CurProdotto.DescrizioniAzionamentiSerialized);
+                    var valore = valori.FirstOrDefault(x => string.Equals(x.valore, azionamento, StringComparison.InvariantCultureIgnoreCase));
+                    if (valore != null && (!string.IsNullOrWhiteSpace(valore.valore_en))) return valore.valore_en;
+                }
+            }
+            catch
+            {}
+            return azionamento;
+        }
+
+        string TraduzioneMateriali(string materiale)
+        {
+            try
+            {
+            if (!string.Equals(App.CurLang, "IT", StringComparison.InvariantCultureIgnoreCase))
+            {
+                var valori = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Models.Descrizioni>>(CurProdotto.DescrizioniMaterialiSerialized);
+                var valore = valori.FirstOrDefault(x => string.Equals(x.valore, materiale, StringComparison.InvariantCultureIgnoreCase));
+                if (valore != null && (!string.IsNullOrWhiteSpace(valore.valore_en))) return valore.valore_en;
+            }
+            }
+            catch
+            { }
+            return materiale;
+        }
+
         bool[] loadValvole = new bool[] { false, false, false, false };
         bool[] isFirstTry = new bool[] { true, true, true, true };
         bool loadvalvola = false;
@@ -401,25 +444,44 @@ namespace Omal.ViewModels
                     }
                     var elenco = elencoCompletoValvole;
 
-                    if (!String.IsNullOrWhiteSpace(selectedPicker1.Value)) elenco = elenco.Where(x => string.Equals(x.valore_azionamento, selectedPicker1.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                    if (!String.IsNullOrWhiteSpace(selectedPicker2.Value)) elenco = elenco.Where(x => string.Equals(x.valore_materiale, selectedPicker2.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                    if (!String.IsNullOrWhiteSpace(selectedPicker3.Value)) elenco = elenco.Where(x => string.Equals(x.valore_pnansi, selectedPicker3.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                    if (!String.IsNullOrWhiteSpace(selectedPicker4.Value)) elenco = elenco.Where(x => string.Equals(x.valore_dn, selectedPicker4.Value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                    if (!String.IsNullOrWhiteSpace(selectedPicker1.Key)) elenco = elenco.Where(x => string.Equals(x.valore_azionamento, selectedPicker1.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                    if (!String.IsNullOrWhiteSpace(selectedPicker2.Key))
+                    {
+                        if (CurProdotto.codice == "89" || CurProdotto.codice == "90" || CurProdotto.codice == "96")
+                            elenco = elenco.Where(x => string.Equals(x.valore_KITGUARNIZIONIopzione3, selectedPicker2.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                        else
+                            elenco = elenco.Where(x => string.Equals(x.valore_materiale, selectedPicker2.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                    }
+                    if (!String.IsNullOrWhiteSpace(selectedPicker3.Key))
+                    {
+                        if (CurProdotto.codice == "89" || CurProdotto.codice == "90" || CurProdotto.codice == "96")
+                            elenco = elenco.Where(x => string.Equals(x.valore_dn, selectedPicker3.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                        else
+                            elenco = elenco.Where(x => string.Equals(x.valore_pnansi, selectedPicker3.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                    }
+                    if (!String.IsNullOrWhiteSpace(selectedPicker4.Value)) elenco = elenco.Where(x => string.Equals(x.valore_dn, selectedPicker4.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
                     switch (indice)
                     {
                         case 1:
-                            Picker1 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_azionamento, RemoveHtmlChar(x.valore_azionamento))).Distinct());
+                            Picker1 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_azionamento, RemoveHtmlChar(TraduzioneAzionamento(x.valore_azionamento)))).Distinct());
                             break;
                         case 2:
-
-                            Picker2 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_materiale, RemoveHtmlChar(x.valore_materiale))).Distinct());
+                            if (CurProdotto.codice == "89" || CurProdotto.codice == "90" || CurProdotto.codice == "96")
+                                Picker2 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_KITGUARNIZIONIopzione3, RemoveHtmlChar(x.valore_KITGUARNIZIONIopzione3))).Distinct());
+                             else
+                                Picker2 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_materiale, RemoveHtmlChar(TraduzioneMateriali(x.valore_materiale)))).Distinct());
                             if (Picker2.Count() == 1) SelectedPicker2 = Picker2.First();
                             break;
                         case 3:
-                            Picker3 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_pnansi, RemoveHtmlChar(x.valore_pnansi))).Distinct());
+                            if (CurProdotto.codice == "89" || CurProdotto.codice == "90" || CurProdotto.codice == "96")
+                                Picker3= new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_dn, RemoveHtmlChar(x.valore_dn))).Distinct());
+                            else
+                                Picker3 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_pnansi, RemoveHtmlChar(x.valore_pnansi))).Distinct());
+                            if (Picker3.Count() == 1) SelectedPicker3 = Picker3.First();
                             break;
                         case 4:
                             Picker4 = new ObservableCollection<KeyValuePair<string, string>>(elenco.OrderBy(x => x.ordine).Select(x => new KeyValuePair<string, string>(x.valore_dn, RemoveHtmlChar(x.valore_dn))).Distinct());
+                            if (Picker4.Count() == 1) SelectedPicker4 = Picker3.First();
                             break;
                         default:
                             break;

@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Omal.Models;
 using Omal.Persistence;
 using Plugin.Connectivity;
+using SQLite;
 using Xamarin.Forms;
 
 namespace Omal.Services
@@ -53,6 +54,7 @@ namespace Omal.Services
             return await Task.FromResult(items.FirstOrDefault(s => s.idprodotto == id));
         }
 
+
         public async Task<IEnumerable<Models.Prodotto>> GetItemsAsync(bool forceRefresh = false)
         {
             if (items == null || items.Count == 0)
@@ -71,7 +73,11 @@ namespace Omal.Services
                     await Connection.CreateTableAsync<Models.Prodotto>();
                 }
                 foreach (var item in items)
+                {
+                    item.DescrizioniMaterialiSerialized = Newtonsoft.Json.JsonConvert.SerializeObject(item.descrizioniMateriali);
+                    item.DescrizioniAzionamentiSerialized = Newtonsoft.Json.JsonConvert.SerializeObject(item.descrizioniAzionamenti);
                     Connection.InsertOrReplaceAsync(item);
+                }
             }
             return items;
 
@@ -86,7 +92,11 @@ namespace Omal.Services
             var json = await client.GetStringAsync(url);
             items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { Data = new List<Models.Prodotto>() }).Data);
             foreach (var item in items)
+            {
+                item.DescrizioniMaterialiSerialized = Newtonsoft.Json.JsonConvert.SerializeObject(item.descrizioniMateriali);
+                item.DescrizioniAzionamentiSerialized = Newtonsoft.Json.JsonConvert.SerializeObject(item.descrizioniAzionamenti);
                 Connection.InsertOrReplaceAsync(item);
+            }
             return items;
         }
     }

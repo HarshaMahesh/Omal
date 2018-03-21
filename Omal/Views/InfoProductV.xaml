@@ -24,6 +24,21 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+             <ListView HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="3" 
+                      SelectedItem="{Binding PdfSelected}" 
+                       x:Name="ElencoPdf"
+                      IsGroupingEnabled="true" 
+                      ItemsSource="{Binding ListaDocumenti}" 
+                      GroupDisplayBinding="{Binding Categoria}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding nomeFile}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <Label Margin="10" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroPdf}"  />
+            </ListView.Footer>
+        </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

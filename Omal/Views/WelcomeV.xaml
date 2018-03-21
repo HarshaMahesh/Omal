@@ -24,10 +24,10 @@
                 <Button HorizontalOptions="Fill" Text="VERSIONE ITALIANA"   Command="{Binding LangItCommand}"  />
                 <Button HorizontalOptions="Fill" Text="ENGLISH VERSION"  Command="{Binding LangEnCommand}"  />
             </StackLayout>
-
-            <StackLayout Margin="5"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" HorizontalOptions="Fill">
+           <StackLayout Margin="5"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" HorizontalOptions="Fill">
                 <ActivityIndicator IsVisible="{Binding IsRunning}" IsRunning="{Binding IsRunning}" />
-                <ProgressBar x:Name="PBar" IsVisible="{Binding IsRunning}" Progress="{Binding ProgressB}" />
+                <Label IsVisible="{Binding IsRunning}" HorizontalOptions="Center" TextColor="White" Text="{Binding StrUpdateDb}" />
+                <ProgressBar Margin="10,5,10,5" x:Name="PBar" IsVisible="{Binding IsRunning}" Progress="{Binding ProgressB}" />
                 <Label HorizontalOptions="Center" TextColor="Red" Text="{Binding ErroreTxt}" />
                 <Button HorizontalOptions="Center" IsEnabled="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding BtnRiprova, Converter={StaticResource UpperCaseConverter}}" Style="{StaticResource Azzurro}" Command="{Binding UpdateDbCommand}" IsVisible="{Binding Errore}" />
             </StackLayout>

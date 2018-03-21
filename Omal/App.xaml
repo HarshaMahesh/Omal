@@ -47,6 +47,8 @@
                 <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
             </Style>
 
+           
+
         
             <Style x:Key="Titolo" TargetType="Label">
                 <Setter Property="TextColor" Value="#004899" />
