@@ -15,5 +15,8 @@ namespace Omal.Models
         public DateTime dataora_server { get; set; }
         public string email_utente { get; set; }
         public string NomeUtente { get; set; }
+        public string email_per_backoffice { get; set; }
+        public TimeSpan DifferenzaOrarioServerDispositivo { get; set; }
+
     }
 }

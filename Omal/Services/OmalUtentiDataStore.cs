@@ -74,6 +74,7 @@ NomeUtente  "OMAL SpA"
             try
             {
                 var utente = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { data = new List<tok>() }).data[0].tokens[0]);
+                utente.DifferenzaOrarioServerDispositivo = (utente.dataora_server - DateTime.Now);
                 return utente;
             }
             catch (Exception ex)
@@ -81,6 +82,11 @@ NomeUtente  "OMAL SpA"
                 
             }
             return null;
+        }
+
+        public Task<IEnumerable<Utente>> GetLastItemsUpdatesAsync()
+        {
+            throw new NotImplementedException();
         }
 
         class tok

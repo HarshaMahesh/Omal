@@ -89,6 +89,30 @@ namespace Omal.Services
             return items;
         }
 
-
+        public async Task<IEnumerable<ProdottoMetadati>> GetLastItemsUpdatesAsync()
+        {
+            if (!(App.LastUpdate.HasValue)) return await GetItemsAsync(true);
+            var url = string.Format("{0}{1}?tabella=metadati", App.BackendUrl, "webservice.php");
+            if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
+            url += string.Format("&dataora_modifica={0}", App.LastUpdate.Value.ToString("yyyy-MM-dd 00:00:00"));
+            var json = await client.GetStringAsync(url);
+            if (string.Equals(json, "null", StringComparison.InvariantCultureIgnoreCase)) return new List<Models.ProdottoMetadati>();
+            var tmpiItems = await Task.Run(() => JsonConvert.DeserializeObject<List<Models.FkProdottoMetadati>>(json));
+            items = tmpiItems.Where(x => x.idgruppometadato.HasValue && x.idmetadato.HasValue).Select(x => new ProdottoMetadati
+            {
+                dataora_modifica = x.dataora_modifica,
+                idgruppometadato = x.idgruppometadato.Value,
+                idmetadato = x.idmetadato.Value,
+                immagine_metadati_en = x.immagine_metadati_en,
+                immagine_metadati_it = x.immagine_metadati_it,
+                testo_esteso_metadati_en = x.testo_esteso_metadati_en,
+                testo_esteso_metadati_it = x.testo_esteso_metadati_it,
+                idProdotto = x.idProdotto.Value,
+                ordine = x.ordine
+            }).ToList();
+            foreach (var item in items)
+                Connection.InsertOrReplaceAsync(item);
+            return items;
+        }
     }
 }

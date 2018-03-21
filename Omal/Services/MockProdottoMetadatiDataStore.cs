@@ -65,6 +65,9 @@ namespace Omal.Services
             return await Task.FromResult(items);
         }
 
-
+        public Task<IEnumerable<ProdottoMetadati>> GetLastItemsUpdatesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

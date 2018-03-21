@@ -61,5 +61,10 @@ namespace Omal
         {
             return await Task.FromResult(items);
         }
+
+        public Task<IEnumerable<Item>> GetLastItemsUpdatesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

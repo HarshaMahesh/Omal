@@ -79,6 +79,20 @@ namespace Omal.Services
             return items;
         }
 
-
+        public async Task<IEnumerable<ProdottoGruppiMetadati>> GetLastItemsUpdatesAsync()
+        {
+            if (!(App.LastUpdate.HasValue)) return await GetItemsAsync(true);
+            var url = string.Format("{0}{1}?tabella=gruppi_metadati", App.BackendUrl, "webservice.php");
+            if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
+            url += string.Format("&dataora_modifica={0}", App.LastUpdate.Value.ToString("yyyy-MM-dd 00:00:00"));
+            var json = await client.GetStringAsync(url);
+            if (string.Equals(json, "null", StringComparison.InvariantCultureIgnoreCase)) return new List<ProdottoGruppiMetadati>();
+            var tmp = await Task.Run(() => JsonConvert.DeserializeObject<List<Models.FkProdottoGruppiMetadati>>(json));
+            items = tmp.Where(x => x.idgruppometadato.HasValue).Select(x => new ProdottoGruppiMetadati
+            { dataora_modifica = x.dataora_modifica, gruppo_metadati_en = x.gruppo_metadati_en, gruppo_metadati_it = x.gruppo_metadati_it, idgruppometadato = x.idgruppometadato.Value, idprodotto = x.idprodotto.Value, ordine = x.ordine }).ToList();
+            foreach (var item in items)
+                Connection.InsertOrReplaceAsync(item);
+            return items;
+        }
     }
 }

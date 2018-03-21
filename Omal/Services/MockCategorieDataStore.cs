@@ -75,6 +75,9 @@ new Models.Categoria () { codice="Codice21", descrizione ="Descrizione attuatori
             return await Task.FromResult(items);
         }
 
-
+        public Task<IEnumerable<Categoria>> GetLastItemsUpdatesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

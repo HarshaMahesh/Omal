@@ -64,5 +64,10 @@ namespace Omal.Services
         {
             throw new NotImplementedException();
         }
+
+        public Task<IEnumerable<Utente>> GetLastItemsUpdatesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

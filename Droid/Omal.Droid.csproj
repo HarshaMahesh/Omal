@@ -208,6 +208,7 @@
     <Compile Include="CustomControls\CustomCellRender.cs" />
     <Compile Include="CustomControls\CualevaNavigationPageRenderAndroid.cs" />
     <Compile Include="CustomControls\TextCellCellRender.cs" />
+    <Compile Include="Persistence\CustomNavigationManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />

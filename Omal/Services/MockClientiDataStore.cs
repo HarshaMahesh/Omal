@@ -65,6 +65,9 @@ namespace Omal.Services
             return await Task.FromResult(items);
         }
 
-
+        public Task<IEnumerable<Cliente>> GetLastItemsUpdatesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -166,6 +166,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GruppoMetadatiConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TraduzioniConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\OmalContactPageVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\WelcomeVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\GotoWelcomeMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Persistence\ICustomNavigationManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />

@@ -195,6 +195,30 @@ namespace Omal.Services
             return items;
         }
 
+        public async Task<IEnumerable<Ordine>> GetLastItemsUpdatesAsync()
+        {
+            if (!(App.LastUpdate.HasValue)) return await GetItemsAsync(true);
+
+            var url = string.Format("{0}{1}?tabella=ordini", App.BackendUrl, "webservice.php");
+            if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
+            url += string.Format("&dataora_modifica={0}", App.LastUpdate.Value.ToString("yyyy-MM-dd 00:00:00"));
+            var json = await client.GetStringAsync(url);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                MissingMemberHandling = MissingMemberHandling.Ignore,
+                Formatting = Formatting.None,
+                DateFormatHandling = DateFormatHandling.IsoDateFormat,
+                Converters = new List<JsonConverter> { new DecimalConverter() }
+            };
+            items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { Data = new List<Models.Ordine>() }).Data);
+           
+            foreach (var item in items)
+                Connection.InsertOrReplaceAsync(item);
+
+            return items;
+        }
+
         class DecimalConverter : JsonConverter
         {
             public override bool CanConvert(Type objectType)

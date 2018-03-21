@@ -50,8 +50,10 @@ namespace Omal.ViewModels
 
         public async void OnUpdateDbCommand(object messaggio)
         {
-            await CurPage.Navigation.PushModalAsync(new NavigationPage(new Views.DbUpdateV(true)));
-            OnPropertyChanged("LastUpdate");
+            App.LastUpdate = null;
+            MessagingCenter.Send<Models.Messages.GotoWelcomeMessage>(new Models.Messages.GotoWelcomeMessage() , "");
+           // await CurPage.Navigation.PushAsync(new Views.WelcomeV());
+
         }
 
         public string CurTitle

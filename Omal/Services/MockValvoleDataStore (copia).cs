@@ -73,6 +73,9 @@ new Valvola(){ codice_articolo ="", codice_attuatore="CodiceAttuatore_05", codic
             return await Task.FromResult(items);
         }
 
-
+        public Task<IEnumerable<Valvola>> GetLastItemsUpdatesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

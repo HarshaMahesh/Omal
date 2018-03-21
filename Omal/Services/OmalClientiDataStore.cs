@@ -89,7 +89,7 @@ namespace Omal.Services
             var jsonSerializerSettings = new JsonSerializerSettings();
             jsonSerializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
             var risposta = JsonConvert.DeserializeAnonymousType(json, new { data = new List<ResponseClienti>() }, jsonSerializerSettings).data.FirstOrDefault();
-            if (risposta.HasError ==0)
+            if (risposta.HasError == 0)
             {
                 var _item = items.Where((Models.Cliente arg) => arg.IDCliente == item.IDCliente).FirstOrDefault();
                 items.Remove(_item);
@@ -135,6 +135,17 @@ namespace Omal.Services
             return items;
         }
 
-
+        public async Task<IEnumerable<Cliente>> GetLastItemsUpdatesAsync()
+        {
+            if (!(App.LastUpdate.HasValue)) return await GetItemsAsync(true);
+            var url = string.Format("{0}{1}?tabella=clienti", App.BackendUrl, "webservice.php");
+            if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
+            url += string.Format("&dataora_modifica={0}", App.LastUpdate.Value.ToString("yyyy-MM-dd 00:00:00"));
+            var json = await client.GetStringAsync(url);
+            items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { data = new List<Models.Cliente>() }).data);
+            foreach (var item in items)
+                Connection.InsertOrReplaceAsync(item);
+            return items;
+        }
     }
 }

@@ -35,10 +35,15 @@ namespace Omal
             get
             {
                 if (Application.Current.Properties.ContainsKey("LASTDBUPDATE"))
-                    return new DateTime(
-                        Convert.ToInt32(Application.Current.Properties["LASTDBUPDATE"].ToString().Substring(0,4)),
-                        Convert.ToInt32(Application.Current.Properties["LASTDBUPDATE"].ToString().Substring(4, 2)),
-                        Convert.ToInt32(Application.Current.Properties["LASTDBUPDATE"].ToString().Substring(6, 2)));
+                {
+                    if (!string.IsNullOrWhiteSpace(Application.Current.Properties["LASTDBUPDATE"].ToString()))
+                        return new DateTime(
+                            Convert.ToInt32(Application.Current.Properties["LASTDBUPDATE"].ToString().Substring(0, 4)),
+                            Convert.ToInt32(Application.Current.Properties["LASTDBUPDATE"].ToString().Substring(4, 2)),
+                            Convert.ToInt32(Application.Current.Properties["LASTDBUPDATE"].ToString().Substring(6, 2)));
+                    else
+                        return null;
+                }
                 return null;
             }
 
@@ -47,11 +52,13 @@ namespace Omal
                 if (value.HasValue)
                     Application.Current.Properties["LASTDBUPDATE"] = value.Value.ToString("yyyyMMdd");
                 else
-                    Application.Current.Properties["LASTUPDATE"] = string.Empty;
+                    Application.Current.Properties["LASTDBUPDATE"] = string.Empty;
                 Application.Current.SavePropertiesAsync();
             }
 
         }
+
+
 
 
 
@@ -64,18 +71,13 @@ namespace Omal
                 DependencyService.Register<Services.MockOmalDataStore>();
             else
                 DependencyService.Register<Services.OmalDataStore>();
-            if (string.IsNullOrWhiteSpace(App.CurLang))
-            {
-                MainPage = new Views.WelcomeV();
-            }
-            else
-            {
-                MainPage = new MainPage();
-            }
+            
+            MainPage = new Views.WelcomeV();
         }
 
         private void ConnectAndCreateSqlDb()
         {
+
             var _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
             _connection.CreateTableAsync<Models.Attuatore>();
             _connection.CreateTableAsync<Models.Categoria>();

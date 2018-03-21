@@ -77,6 +77,17 @@ namespace Omal.Services
 
         }
 
-
+        public async Task<IEnumerable<Prodotto>> GetLastItemsUpdatesAsync()
+        {
+            if (!(App.LastUpdate.HasValue)) return await GetItemsAsync(true);
+            var url = string.Format("{0}{1}?tabella=prodotti", App.BackendUrl, "webservice.php");
+            if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
+            url += string.Format("&dataora_modifica={0}", App.LastUpdate.Value.ToString("yyyy-MM-dd 00:00:00"));
+            var json = await client.GetStringAsync(url);
+            items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { Data = new List<Models.Prodotto>() }).Data);
+            foreach (var item in items)
+                Connection.InsertOrReplaceAsync(item);
+            return items;
+        }
     }
 }

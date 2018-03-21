@@ -63,6 +63,9 @@ namespace Omal.Services
             return await Task.FromResult(items);
         }
 
-
+        public Task<IEnumerable<Ordine>> GetLastItemsUpdatesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

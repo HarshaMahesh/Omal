@@ -9,7 +9,8 @@ namespace Omal.Views
     {
         void Handle_Tapped(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new WelcomeV());
+            MessagingCenter.Send<Models.Messages.GotoWelcomeMessage>(new Models.Messages.GotoWelcomeMessage() { ChangeLanguage = true }, "");
+            //Navigation.PushAsync(new WelcomeV(true));
         }
 
         ViewModels.ConfigurationVM Vm;

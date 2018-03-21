@@ -229,6 +229,7 @@
     <Compile Include="CustomControls\CualevaPickerRenderIOS.cs" />
     <Compile Include="CustomControls\CualevaGradientContentPageRenderIOS.cs" />
     <Compile Include="CustomControls\CualevaNavigationPageRenderIOS.cs" />
+    <Compile Include="Persistence\CustomNavigationManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

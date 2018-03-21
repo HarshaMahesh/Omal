@@ -73,6 +73,9 @@ new Attuatore(){ codice_articolo="CodiceArticolo_03", giacenza=0, idcodiceattuat
             return await Task.FromResult(items);
         }
 
-
+        public Task<IEnumerable<Attuatore>> GetLastItemsUpdatesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
