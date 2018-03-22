@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage BackgroundColor="White" Title="{Binding CurTitle}" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.InfoProductV">
+<ContentPage BackgroundColor="White" Title="{Binding CurTitle, Converter={StaticResource UpperCaseConverter}}" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.InfoProductV">
 	<ContentPage.ToolbarItems>
         <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
@@ -17,24 +17,36 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" Margin="10">
-                                 <Label IsVisible="{Binding LangIsIT}" Text="{Binding ., Converter={StaticResource GruppoMetadatiConverter}}" Margin="5" Style="{StaticResource Azzurra}"  VerticalOptions="Center" />
-                            </StackLayout>
+                                 <Label  IsVisible="{Binding LangIsIT}" Text="{Binding ., Converter={StaticResource GruppoMetadatiConverter}}" Margin="5" Style="{StaticResource Azzurra}"  VerticalOptions="Center" />
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-             <ListView HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="3" 
+             <ListView Margin="5" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="3" 
                       SelectedItem="{Binding PdfSelected}" 
                        x:Name="ElencoPdf"
+
                       IsGroupingEnabled="true" 
                       ItemsSource="{Binding ListaDocumenti}" 
                       GroupDisplayBinding="{Binding Categoria}">
+                
+           <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                <ViewCell Height="40">
+                    <Label Text="{Binding Categoria}" Margin="5" Style="{StaticResource Titolo}"  VerticalOptions="Center" />
+                   
+                </ViewCell>
+            </DataTemplate>
+                        
+                </ListView.GroupHeaderTemplate>
+                
             <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding nomeFile}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                                 <Label Text="{Binding nomeFile}" Margin="5" Style="{StaticResource Azzurra}"  VerticalOptions="Center" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             <ListView.Footer>
                 <Label Margin="10" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroPdf}"  />
             </ListView.Footer>

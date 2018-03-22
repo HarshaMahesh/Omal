@@ -31,12 +31,12 @@ namespace Omal.ViewModels
             {
                 var risposta = await CurPage.DisplayAlert(TitoloOrdini, StrPerdiModificheCarrello, StrSi, StrNo);
                 if (!risposta) return;
-                App.CurOrdine = new Models.Ordine();
-                MessagingCenter.Send<Models.Messages.BasketLoadedMessage>(new Models.Messages.BasketLoadedMessage() { Ordine = App.CurOrdine }, "");
-                CurPage.DisplayAlert(TitoloOrdini, StrOrdineCreato, "ok");
-                MessagingCenter.Send(new Models.Messages.ChangeTabbedPageMessage() { SetPage = Models.Enums.EPages.Search }, "");
-
             }
+            App.CurOrdine = new Models.Ordine();
+            MessagingCenter.Send<Models.Messages.BasketLoadedMessage>(new Models.Messages.BasketLoadedMessage() { Ordine = App.CurOrdine }, "");
+            CurPage.DisplayAlert(TitoloOrdini, StrOrdineCreato, "ok");
+            MessagingCenter.Send(new Models.Messages.ChangeTabbedPageMessage() { SetPage = Models.Enums.EPages.Search }, "");
+
         }
 
         private void OnLocalPropertyChanged(object sender, PropertyChangedEventArgs e)

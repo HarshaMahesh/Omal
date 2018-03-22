@@ -239,23 +239,33 @@ namespace Omal.ViewModels
                 selectedPicker2 = new KeyValuePair<string, string>("","");
                 selectedPicker3 = new KeyValuePair<string, string>("", "");
                 selectedPicker4 = new KeyValuePair<string, string>("", "");
+                OnPropertyChanged("SelectedPicker4");
+                OnPropertyChanged("SelectedPicker3");
+                isFirstTry[1] = true;
                 OnPropertyChanged("Picker2");
+                OnPropertyChanged("SelectedPicker2");
                 OnPropertyChanged("Picker2IsVisible");
                 OnPropertyChanged("Picker3IsVisible");
                 OnPropertyChanged("Picker4IsVisible");
+
             }
             if (string.Equals(e.PropertyName, "SelectedPicker2", StringComparison.InvariantCultureIgnoreCase))
             {
                 selectedPicker3 = new KeyValuePair<string, string>("", "");
                 selectedPicker4 = new KeyValuePair<string, string>("", "");
+                OnPropertyChanged("SelectedPicker4");
+                isFirstTry[2] = true;
                 OnPropertyChanged("Picker3");
+                OnPropertyChanged("SelectedPicker3");
                 OnPropertyChanged("Picker3IsVisible");
                 OnPropertyChanged("Picker4IsVisible");
             }
             if (string.Equals(e.PropertyName, "SelectedPicker3", StringComparison.InvariantCultureIgnoreCase))
             {
                 selectedPicker4 = new KeyValuePair<string, string>("", "");
+                isFirstTry[3] = true;
                 OnPropertyChanged("Picker4");
+                OnPropertyChanged("SelectedPicker4");
                 OnPropertyChanged("Picker4IsVisible");
             }
                     
@@ -352,11 +362,11 @@ namespace Omal.ViewModels
                 if (CurProdotto == null) return new ObservableCollection<KeyValuePair<string, string>>();
                 if (ProdottoIsValvola)
                 {
-                    if (picker1.Count()  == 0 && !loadValvole[0] && isFirstTry[0]) 
+                    if ( !loadValvole[0] && isFirstTry[0]) 
                         LoadValvole(1);
                 }
                 else
-                    if (picker1.Count() == 0 && !loadAttuatore[0] && isFirstTry[0])
+                    if (!loadAttuatore[0] && isFirstTry[0])
                         LoadAttuatori(1);
                 if (picker1.Count() == 1) SelectedPicker1 = picker1.First();
                 return picker1;
@@ -376,11 +386,11 @@ namespace Omal.ViewModels
                 if (CurProdotto == null) return new ObservableCollection<KeyValuePair<string, string>>();
                 if (ProdottoIsValvola)
                     {
-                    if (picker2.Count() == 0 && !loadValvole[1] && isFirstTry[1] && !string.IsNullOrWhiteSpace(SelectedPicker1.Value)) 
+                    if (!loadValvole[1] && isFirstTry[1] && !string.IsNullOrWhiteSpace(SelectedPicker1.Value)) 
                         LoadValvole(2);
                     }
                 else
-                    if (picker2.Count() == 0 && !loadAttuatore[1] && isFirstTry[1] && !string.IsNullOrWhiteSpace(SelectedPicker1.Value))
+                    if (!loadAttuatore[1] && isFirstTry[1] && !string.IsNullOrWhiteSpace(SelectedPicker1.Value))
                         LoadAttuatori(2);
                 
                 return picker2;
@@ -560,11 +570,11 @@ namespace Omal.ViewModels
                 if (CurProdotto == null) return new ObservableCollection<KeyValuePair<string, string>>();
                 if (ProdottoIsValvola)
                 {
-                    if (picker3.Count() == 0 && !loadValvole[2] && isFirstTry[2] && !string.IsNullOrWhiteSpace(SelectedPicker2.Value))
+                    if ( !loadValvole[2] && isFirstTry[2] && !string.IsNullOrWhiteSpace(SelectedPicker2.Value))
                         LoadValvole(3);
                 }
                 else
-                    if (picker3.Count() == 0 && !loadAttuatore[2] && isFirstTry[2] && !string.IsNullOrWhiteSpace(SelectedPicker2.Value))
+                    if ( !loadAttuatore[2] && isFirstTry[2] && !string.IsNullOrWhiteSpace(SelectedPicker2.Value))
                        LoadAttuatori(3);
                 if (picker3.Count() == 1) SelectedPicker3 = picker3.First();
                 return picker3;
@@ -584,7 +594,7 @@ namespace Omal.ViewModels
                 if (CurProdotto == null || !ProdottoIsValvola) return new ObservableCollection<KeyValuePair<string, string>>();
                 if (ProdottoIsValvola)
                 {
-                    if (picker4.Count() == 0 && !loadValvole[3] && isFirstTry[3] && !string.IsNullOrWhiteSpace(SelectedPicker3.Value)) 
+                    if (!loadValvole[3] && isFirstTry[3] && !string.IsNullOrWhiteSpace(SelectedPicker3.Value)) 
                         LoadValvole(4);
                 }
                 return picker4;

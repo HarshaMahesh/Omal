@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage 
-    Title="{Binding TitoloContattiOmal}"
+    Title="{Binding TitoloContattiOmal, Converter={StaticResource UpperCaseConverter}}"
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
@@ -9,12 +9,12 @@
 	<ContentPage.Content>
         <ScrollView>
         <StackLayout HorizontalOptions="Center" VerticalOptions="StartAndExpand" Padding="30">
-                <StackLayout BackgroundColor="#EAEAEA"> 
-         <Label Text="030.8900145"  x:Name="Tel" HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
-         <Label Text="info@omal.it" x:Name="Email" HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
-         <Label Text="www.omal.it" x:Name="Sito" TextColor="Blue" HorizontalOptions="Fill" HorizontalTextAlignment="Center" />       
-         </StackLayout>
-        <Label Margin="5,30,5,5" Style="{StaticResource Titolo}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="HEADQUARTERS"/>
+            <StackLayout BackgroundColor="#EAEAEA" Margin="-30,-30,-30,0"> 
+                 <Label Margin="0,5,0,0" Text="030.8900145"  x:Name="Tel" HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
+                 <Label Text="info@omal.it" x:Name="Email" HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
+                 <Label Text="www.omal.it" x:Name="Sito" TextColor="Blue" HorizontalOptions="Fill" HorizontalTextAlignment="Center" />       
+            </StackLayout>
+        <Label Margin="5" Style="{StaticResource Titolo}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="HEADQUARTERS"/>
                 
         <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Via Ponte Nuovo 11" />
         <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Rodengo Saiano" />

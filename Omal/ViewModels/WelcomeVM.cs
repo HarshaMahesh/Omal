@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using Omal.Common;
+using Plugin.Connectivity;
 using Xamarin.Forms;
 
 namespace Omal.ViewModels
@@ -23,9 +24,8 @@ namespace Omal.ViewModels
             MessagingCenter.Subscribe<Models.Messages.GotoWelcomeMessage>(this, "", sender =>
             {
                 ChangeLanguage = sender.ChangeLanguage;
-               Navigation.PopModalAsync();
-               
-
+                NoShow = false;
+                Navigation.PopModalAsync();
             });
 
         }
@@ -34,6 +34,7 @@ namespace Omal.ViewModels
         {
             if (string.Equals(e.PropertyName, "IsRunning", StringComparison.InvariantCultureIgnoreCase)) OnPropertyChanged("IsRunningOrError");
             if (string.Equals(e.PropertyName, "Errore", StringComparison.InvariantCultureIgnoreCase)) OnPropertyChanged("IsRunningOrError");
+            if (string.Equals(e.PropertyName, "NoShow", StringComparison.InvariantCultureIgnoreCase)) OnPropertyChanged("IsRunningOrError");
         }
 
 
@@ -91,6 +92,20 @@ namespace Omal.ViewModels
             }
         }
 
+        bool noShow = false;
+        public bool NoShow
+        {
+            get
+            {
+                return noShow;
+            }
+            set
+            {
+                noShow = value;
+                OnPropertyChanged();
+            }
+        }
+
         bool _Errore = false;
         public bool Errore
         {
@@ -110,7 +125,7 @@ namespace Omal.ViewModels
         {
             get
             {
-                return Errore || IsRunning;
+            return Errore || IsRunning || NoShow;
             }
            
         }
@@ -140,29 +155,40 @@ namespace Omal.ViewModels
             IsRunning = true;
             Errore = false;
             ErroreTxt = string.Empty;
+           
             try
             {
-                var attuatori = await DataStore.Attuatori.GetLastItemsUpdatesAsync();
-                ProgressB = 0.1;
-                var categorie = await DataStore.Categorie.GetLastItemsUpdatesAsync();
-                ProgressB = 0.2;
-                if (App.CurUser != null)
+                NoShow = true;
+                if (!CrossConnectivity.Current.IsConnected)
                 {
-                    var clienti = await DataStore.Clienti.GetLastItemsUpdatesAsync();
-                    ProgressB = 0.3;
-                    var ordini = await DataStore.Ordini.GetLastItemsUpdatesAsync();
-                    ProgressB = 0.4;
+                    if (!App.LastUpdate.HasValue) throw new Exception(SrtConnessioneAssente);
+                    ErroreTxt = SrtConnessioneAssente;
+
                 }
-                var prodotti = await DataStore.Prodotti.GetLastItemsUpdatesAsync();
-                ProgressB = 0.5;
-                var prodottiGruppiMetadati = await DataStore.ProdottoGruppiMetadati.GetLastItemsUpdatesAsync();
-                ProgressB = 0.6;
-                var ProdottoMetadati = await DataStore.ProdottoMetadati.GetLastItemsUpdatesAsync();
-                ProgressB = 0.7;
-                var Valvole = await DataStore.Valvole.GetLastItemsUpdatesAsync();
-                ProgressB = 1;
-                App.LastUpdate = start;
-                OnPropertyChanged("LastUpdate");
+                else
+                {
+                    var attuatori = await DataStore.Attuatori.GetLastItemsUpdatesAsync();
+                    ProgressB = 0.1;
+                    var categorie = await DataStore.Categorie.GetLastItemsUpdatesAsync();
+                    ProgressB = 0.2;
+                    if (App.CurUser != null)
+                    {
+                        var clienti = await DataStore.Clienti.GetLastItemsUpdatesAsync();
+                        ProgressB = 0.3;
+                        var ordini = await DataStore.Ordini.GetLastItemsUpdatesAsync();
+                        ProgressB = 0.4;
+                    }
+                    var prodotti = await DataStore.Prodotti.GetLastItemsUpdatesAsync();
+                    ProgressB = 0.5;
+                    var prodottiGruppiMetadati = await DataStore.ProdottoGruppiMetadati.GetLastItemsUpdatesAsync();
+                    ProgressB = 0.6;
+                    var ProdottoMetadati = await DataStore.ProdottoMetadati.GetLastItemsUpdatesAsync();
+                    ProgressB = 0.7;
+                    var Valvole = await DataStore.Valvole.GetLastItemsUpdatesAsync();
+                    ProgressB = 1;
+                    App.LastUpdate = start;
+                    OnPropertyChanged("LastUpdate");
+                }
             }
             catch (Exception ex)
             {

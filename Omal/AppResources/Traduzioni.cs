@@ -128,7 +128,7 @@ namespace Omal.AppResources
         public string StrNessunProdottoTrovato { get { return GetCurvalueLang(_StrNessunProdottoTrovato); } }
         public string StrTrovatounSoloProdotto { get { return GetCurvalueLang(_StrTrovatounSoloProdotto); } }
         public string StrTrovatiNrProdotti { get { return GetCurvalueLang(_StrTrovatiNrProdotti); } }
-
+        public string SrtConnessioneAssente { get { return GetCurvalueLang(_SrtConnessioneAssente); } }
 
 
 
@@ -181,6 +181,11 @@ namespace Omal.AppResources
         public string BtnEdit { get { return GetCurvalueLang(_BtnEdit); } }
 
 
+        Dictionary<string, string> _SrtConnessioneAssente = new Dictionary<string, string>
+        {
+            {"IT",  "Connessione assente"},
+            {"EN",  "No Connecttion.."}
+        };
         Dictionary<string, string> _StrUpdateDb = new Dictionary<string, string>
         {
             {"IT",  "Aggiornamento catalogo in corso..."},
