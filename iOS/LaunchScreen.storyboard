@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="ipad12_9" orientation="landscape">
+    <device id="ipad10_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,17 +17,17 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleAspectFit" id="Ze5-6b-2t3" semanticContentAttribute="spatial" userInteractionEnabled="NO">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="197" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="LogoOmal.png" opaque="NO" preservesSuperviewLayoutMargins="YES">
-                                <rect key="frame" x="560" y="424" width="245" height="176"/>
+                                <rect key="frame" x="260" y="524" width="314" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinX="YES" flexibleMaxY="YES" flexibleMinY="YES"/>
                                 <rect key="contentStretch" x="0.0" y="0" width="1" height="1"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="395" fixedFrame="YES">
-                                <rect key="frame" x="664" y="790" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="398.5" y="2140" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinX="YES" flexibleMaxY="YES" flexibleMinY="YES"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" colorSpace="calibratedRGB" red="0.30980392156862746" green="0.57647058823529407" blue="0.77647058823529413" alpha="1"/>
@@ -39,7 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LogoOmal.png" width="1028" height="689"/>
+        <image name="LogoOmal.png" width="600" height="171"/>
         <image name="Archivio.png" width="32" height="30"/>
         <image name="Cerca.png" width="32" height="30"/>
         <image name="Impostazioni.png" width="32" height="30"/>
@@ -61,5 +61,10 @@
         <image name="omalc12.png" width="1251" height="1251"/>
         <image name="omalc13.png" width="1251" height="1251"/>
         <image name="omalc14.png" width="1250" height="1251"/>
+        <image name="rightarrow.png" width="32" height="32"/>
+        <image name="IMG074428.png" width="1536" height="2048"/>
+        <image name="IMG06837.png" width="1075" height="1433"/>
+        <image name="IMG051428.png" width="1075" height="1433"/>
+        <image name="Info.png" width="32" height="32"/>
     </resources>
 </document>

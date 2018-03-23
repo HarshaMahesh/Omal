@@ -190,7 +190,6 @@
     <BundleResource Include="Resources\fonts\Montserrat-Bold.ttf" />
     <BundleResource Include="Resources\fonts\Montserrat-Medium.ttf" />
     <BundleResource Include="Resources\fonts\Montserrat-Regular.ttf" />
-    <BundleResource Include="Resources\LogoOmal.png" />
     <BundleResource Include="Resources\fonts\fontawesome.ttf" />
     <BundleResource Include="Resources\fonts\materialicons.ttf" />
     <BundleResource Include="Resources\Archivio.png" />
@@ -219,6 +218,7 @@
     <BundleResource Include="Resources\IMG051428.png" />
     <BundleResource Include="Resources\Info.png" />
     <BundleResource Include="Resources\Cerca.png" />
+    <BundleResource Include="Resources\LogoOmal.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />
