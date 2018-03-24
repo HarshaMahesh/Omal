@@ -60,6 +60,7 @@ namespace Omal.ViewModels
         async void GoToMainPage()
         {
             await Navigation.PushModalAsync(new MainPage());
+            NoShow = false;
         }
 
         bool _IsRunning = false;

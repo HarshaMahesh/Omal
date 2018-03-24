@@ -54,8 +54,11 @@ namespace Omal.Services
             jsonSerializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
             var risposta = JsonConvert.DeserializeAnonymousType(json, new { data = new List<ResponseClienti>() }, jsonSerializerSettings).data.FirstOrDefault();
             if (risposta.HasError == 0 && risposta.IDCliente.HasValue)
+            {
                 item.IDCliente = risposta.IDCliente.Value;
-            items.Add(item);
+                items.Add(item);
+                Connection.InsertOrReplaceAsync(item);
+            }
             return await Task.FromResult(risposta);
         }
 

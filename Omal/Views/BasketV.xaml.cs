@@ -18,5 +18,15 @@ namespace Omal.Views
             NavigationPage.SetBackButtonTitle(this, "");
 
         }
-    }
+
+        public void SetClienteIndex(int index)
+        {
+            ComboClienti.SelectedIndex = index;
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
+	}
 }

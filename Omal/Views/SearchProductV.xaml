@@ -40,7 +40,7 @@
         </StackLayout>
         <StackLayout Grid.Row="2" Orientation="Vertical" BackgroundColor="#EAEAEA">
             <ActivityIndicator IsRunning="{Binding IsRunning}" IsVisible="{Binding IsRunning}" />
-            <Label IsVisible="{Binding Picker1IsVisible}" Margin="0,10,0,0" HorizontalTextAlignment="Center" Style="{StaticResource Titolo}" Text="{Binding StrTrovaArticolo}" />
+            <Label IsVisible="{Binding Picker1IsVisible}" Margin="0,10,0,0" HorizontalTextAlignment="Center" Style="{StaticResource Titolo}" Text="{Binding LocalStrTrovaArticolo}" />
             <CControls:CualevaPicker  Margin="5,0,5,0" Title="{Binding DescrizionePicker1}" IsVisible="{Binding Picker1IsVisible}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPicker1}" ItemsSource="{Binding Picker1}"  />
             <CControls:CualevaPicker  Margin="5,0,5,0" Title="{Binding DescrizionePicker2}" IsVisible="{Binding Picker2IsVisible}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPicker2}" ItemsSource="{Binding Picker2}"  />
             <CControls:CualevaPicker  Margin="5,0,5,0" Title="{Binding DescrizionePicker3}" IsVisible="{Binding Picker3IsVisible}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPicker3}" ItemsSource="{Binding Picker3}"  />

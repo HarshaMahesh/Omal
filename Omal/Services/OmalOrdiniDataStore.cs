@@ -160,10 +160,8 @@ namespace Omal.Services
 
         public async Task<IEnumerable<Models.Ordine>> GetItemsAsync(bool forceRefresh = false)
         {
-            if (items == null || items.Count == 0)
-            {
-                items = await Connection.Table<Models.Ordine>().OrderBy(x => x.CodiceOrdine).ToListAsync();
-            }
+           
+            items = await Connection.Table<Models.Ordine>().OrderBy(x => x.CodiceOrdine).ToListAsync();
             if ((items.Count == 0 || forceRefresh) && CrossConnectivity.Current.IsConnected)
             {
                 var url = string.Format("{0}{1}?tabella=ordini", App.BackendUrl, "webservice.php");
@@ -184,7 +182,15 @@ namespace Omal.Services
                     await Connection.CreateTableAsync<Models.Ordine>();
                 }
                 foreach (var item in items)
+                {
+                    try
+                    {
+                        item.jsonCarrelliSerialized = Newtonsoft.Json.JsonConvert.SerializeObject(item.carrelli);
+                    }
+                    catch  {}
+
                     Connection.InsertOrReplaceAsync(item);
+                }
             }
             var clienti = await Connection.Table<Models.Cliente>().ToListAsync();
             foreach (var item in items)
@@ -212,10 +218,16 @@ namespace Omal.Services
                 Converters = new List<JsonConverter> { new DecimalConverter() }
             };
             items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { Data = new List<Models.Ordine>() }).Data);
-           
-            foreach (var item in items)
-                Connection.InsertOrReplaceAsync(item);
 
+            foreach (var item in items)
+            {
+                try
+                {
+                    item.jsonCarrelliSerialized = Newtonsoft.Json.JsonConvert.SerializeObject(item.carrelli);
+                }
+                catch { }
+                Connection.InsertOrReplaceAsync(item);
+            }
             return items;
         }
 

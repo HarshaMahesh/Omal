@@ -179,8 +179,13 @@ namespace Omal.AppResources
         public string BtnInsert { get { return GetCurvalueLang(_BtnInsert); } }
         public string BtnUpdate { get { return GetCurvalueLang(_BtnUpdate); } }
         public string BtnEdit { get { return GetCurvalueLang(_BtnEdit); } }
+        public string StrSelezionaMisura { get { return GetCurvalueLang(_StrSelezionaMisura); } }
 
-
+        Dictionary<string, string> _StrSelezionaMisura = new Dictionary<string, string>
+        {
+            {"IT",  "Seleziona misura"},
+            {"EN",  "Size select"}
+        };
         Dictionary<string, string> _SrtConnessioneAssente = new Dictionary<string, string>
         {
             {"IT",  "Connessione assente"},
@@ -455,8 +460,8 @@ namespace Omal.AppResources
 
         Dictionary<string, string> _StrSicuroInviareCarrello = new Dictionary<string, string>
         {
-            {"IT",  "INVIO ORDINE. Confermi l'invio dell'ordine sarà inviato ai seguenti destinatari?"},
-            {"EN",  "INVIO ORDINE. Confermi l'invio dell'ordine sarà inviato ai seguenti destinatari?"}
+            {"IT",  "INVIO ORDINE. Confermi l'invio dell'ordine ai seguenti destinatari {0} ?"},
+            {"EN",  "SEND ORDER. Do you confirm the order sending to the following recipients {0}?"}
         };
 
         Dictionary<string, string> _StrSicuroSalvareCarrello = new Dictionary<string, string>
@@ -641,7 +646,7 @@ namespace Omal.AppResources
         };
         Dictionary<string, string> _BtnDownload = new Dictionary<string, string>
         {
-            {"IT",  "Download"},
+            {"IT",  "INVIA 3D"},
             {"EN",  "SEND 3D"}
         };
         Dictionary<string, string> _BtnOrdina = new Dictionary<string, string>

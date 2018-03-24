@@ -71,7 +71,6 @@ namespace Omal
                 DependencyService.Register<Services.MockOmalDataStore>();
             else
                 DependencyService.Register<Services.OmalDataStore>();
-            
             MainPage = new Views.WelcomeV();
         }
 

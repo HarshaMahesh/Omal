@@ -18,5 +18,10 @@ namespace Omal.Views
             viewModel.Navigation = Navigation;
             NavigationPage.SetBackButtonTitle(this, "");
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }

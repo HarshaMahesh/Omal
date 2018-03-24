@@ -28,8 +28,12 @@ namespace Omal.Models
             get { return totale; }
             set 
             {
-                totale = value;
-                OnPropertyChanged();
+                if (totale != value)
+                {
+                    totale = value;
+                    OnPropertyChanged();
+                }
+
             }
         }
         double totaleConSconto = 0;
@@ -38,8 +42,11 @@ namespace Omal.Models
             get { return totaleConSconto; }
             set
             {
-                totaleConSconto = value;
-                OnPropertyChanged();
+                if (totaleConSconto != value)
+                {
+                    totaleConSconto = value;
+                    OnPropertyChanged();
+                }
             }
         }
         double sconto;

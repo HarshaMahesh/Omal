@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using Xamarin.Forms;
-
+using Plugin.Share;
 namespace Omal.ViewModels
 {
     public class OrdersVM : BaseVM
@@ -82,7 +82,13 @@ namespace Omal.ViewModels
 
         public async void loadCurOrdine(Models.Ordine curOrdine)
         {
-            if (curOrdine == null || curOrdine.Stato == Models.Enums.EOrdineStato.ordineAnnullato || curOrdine.Stato == Models.Enums.EOrdineStato.ordineEvaso || curOrdine.Stato == Models.Enums.EOrdineStato.ordineInviato) return;
+            if (curOrdine == null) return;
+            if (curOrdine.Stato == Models.Enums.EOrdineStato.ordineAnnullato || curOrdine.Stato == Models.Enums.EOrdineStato.ordineEvaso || curOrdine.Stato == Models.Enums.EOrdineStato.ordineInviato)
+            {
+                if (!CrossShare.IsSupported) return;
+                await CrossShare.Current.OpenBrowser(App.CurToken.PathOrdine+curOrdine.CodiceOrdine + ".html") ;
+                return;
+            }
             var risposta = await CurPage.DisplayAlert(TitoloOrdini, StrCaricaOrdineSelezionato, StrSi, StrNo);
             if (risposta)
             {

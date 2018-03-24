@@ -100,6 +100,8 @@ namespace Omal.ViewModels
                     App.CurToken = token;
                     App.CurUser = new Models.Utente { Email = token.email_utente, IdUtente = token.IDUtente, NomeUtente = token.NomeUtente, Password = Password };
                     Application.Current.Properties["Email"] = Email;
+                    await DataStore.Ordini.GetItemsAsync(true);
+                    await DataStore.Clienti.GetItemsAsync(true);
                     MessagingCenter.Send(new Models.Messages.LoginOrLogoutActionMessage(), "LoginOrLogout");
                     await Navigation.PopAsync();
                 }
