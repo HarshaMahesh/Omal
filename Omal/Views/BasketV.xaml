@@ -33,14 +33,14 @@
                     <CControls:CualevaRoundedEntry  Placeholder="{Binding Note}"  Text="{Binding NoteOrdine, Mode=TwoWay}" TextColor="Black" Grid.Row="1" HeightRequest="40" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" FontSize="13" BackgroundColor="Transparent"  LeftPadding="10"  BorderRadius="10"  CualevaRoundedEntryBackgroundColor="#FFFFFF"  />
                     <Label VerticalOptions="Center" Grid.Row="2" Grid.ColumnSpan="5" Margin="10" HorizontalOptions="StartAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroCarrelli}"  />
                     <Label FontSize="14" Grid.Row="3"  VerticalOptions="Center" Style="{StaticResource Titolo}"  Text="{Binding StrTotaleOrdine}"  TextColor="#004899" />    
-                    <Label FontSize="14" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"  VerticalOptions="Center" Text="{Binding TotaleOrdine, Mode=TwoWay, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  TextColor="{Binding ColorePrezzoTotale}" />
+                    <Label FontSize="14" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"  VerticalOptions="Center" Text="{Binding TotaleOrdine, Mode=TwoWay, StringFormat='€ {0:N}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  TextColor="{Binding ColorePrezzoTotale}" />
                     <Label Margin="0,0,30,0" FontSize="14" Grid.Row="4" VerticalOptions="Center" Style="{StaticResource Titolo}"  Text="{Binding StrTotaleOrdineSconto, Mode=TwoWay}"  TextColor="#004899" />            
                     <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3">
                         <Label  VerticalOptions="Center" Style="{StaticResource Descrizione}"  Text="{Binding StrSconto}"  />    
                         <CControls:CualevaRoundedEntry  CualevaRoundedEntryBackgroundColor="White" TextColor="Black"  HeightRequest="40" Text="{Binding ScontoOrdine}" Keyboard="Numeric" WidthRequest="50" />            
                     </StackLayout>
 
-                    <Label  FontSize="14" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"  VerticalOptions="Center" Text="{Binding TotaleOrdineConSconto, Mode=TwoWay, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}" TextColor="{Binding ColorePrezzoScontato}"  />
+                    <Label  FontSize="14" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"  VerticalOptions="Center" Text="{Binding TotaleOrdineConSconto, Mode=TwoWay, StringFormat='€ {0:N}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}" TextColor="{Binding ColorePrezzoScontato}"  />
                 
                 <StackLayout Grid.Row="5" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalOptions="Center">
                     <Button  Text="{Binding BtnSalva}" Command="{Binding SalvaCommand}" Style="{StaticResource Azzurro}" /> 
@@ -72,15 +72,15 @@
                             <Label HorizontalOptions="Start" Text="{Binding QtaStr}"   VerticalOptions="Center" Style="{StaticResource Descrizione}" />
                             <CControls:CualevaRoundedEntry  CualevaRoundedEntryBackgroundColor="#EAEAEA"  WidthRequest="70" HeightRequest="40" TextColor="#004899"   Keyboard="Numeric"   VerticalOptions="Center" HorizontalOptions="EndAndExpand" Placeholder="{Binding StrQta}" Text="{Binding Qta}"/>
                         </StackLayout>
-                        <Label Grid.Column="2"  Grid.Row="1" FontSize="14" TextColor="{Binding ColorePrezzoTotale}"   VerticalOptions="Center" Text="{Binding PrezzoUnitario, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
-                        <Label Grid.Column="3"  Grid.Row="1" FontSize="14" TextColor="{Binding ColorePrezzoTotale}"  VerticalOptions="Center" Text="{Binding PrezzoTotale, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
+                        <Label Grid.Column="2"  Grid.Row="1" FontSize="14" TextColor="{Binding ColorePrezzoTotale}"   VerticalOptions="Center" Text="{Binding PrezzoUnitario, StringFormat='€ {0:N}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
+                        <Label Grid.Column="3"  Grid.Row="1" FontSize="14" TextColor="{Binding ColorePrezzoTotale}"  VerticalOptions="Center" Text="{Binding PrezzoTotale, StringFormat='€ {0:N}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
 
                        <StackLayout Grid.Row="2" Orientation="Horizontal"   Grid.ColumnSpan="2"  >
                             <Label HorizontalOptions="Start" Text="{Binding ScontoStr}"  VerticalOptions="Center" Style="{StaticResource Descrizione}" />
                             <CControls:CualevaRoundedEntry   CualevaRoundedEntryBackgroundColor="#EAEAEA"  WidthRequest="70" HeightRequest="40" TextColor="#004899"   Keyboard="Numeric"   VerticalOptions="Center" HorizontalOptions="EndAndExpand" Placeholder="{Binding StrSconto}" Text="{Binding Sconto}"/>
                         </StackLayout>
-                        <Label Grid.Column="2"  Grid.Row="2" FontSize="14" TextColor="{Binding ColorePrezzoScontato}"   VerticalOptions="Center" Text="{Binding PrezzoUnitarioScontato, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
-                        <Label Grid.Column="3"  Grid.Row="2" FontSize="14" TextColor="{Binding ColorePrezzoScontato}"  VerticalOptions="Center" Text="{Binding PrezzoTotaleScontato, StringFormat='€ {0:F}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
+                        <Label Grid.Column="2"  Grid.Row="2" FontSize="14" TextColor="{Binding ColorePrezzoScontato}"   VerticalOptions="Center" Text="{Binding PrezzoUnitarioScontato, StringFormat='€ {0:N}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
+                        <Label Grid.Column="3"  Grid.Row="2" FontSize="14" TextColor="{Binding ColorePrezzoScontato}"  VerticalOptions="Center" Text="{Binding PrezzoTotaleScontato, StringFormat='€ {0:N}'}" HorizontalOptions="EndAndExpand" Style="{StaticResource Titolo}"  />
 
                         <Label FontSize="11" Grid.Row="3"   Grid.ColumnSpan="4" HorizontalOptions="Center"  VerticalOptions="Center" Text="{Binding PrezzoTotaleStr}" />
                     </Grid>

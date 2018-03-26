@@ -19,7 +19,8 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
              <Image Grid.Row="0" Grid.RowSpan="3"  Aspect="AspectFill" Source="IMG06837.png" Opacity="0.3" />
-            <CControls:CualevaRoundedEntry PlaceholderColor="White" Margin="5" HeightRequest="50"  VerticalOptions="Center" Style="{StaticResource cerca}" 
+            <CControls:CualevaRoundedEntry PlaceholderColor="White" Margin="5" HeightRequest="50" 
+                                           VerticalOptions="Center" Style="{StaticResource cerca}" 
                                            Grid.Row="1"  TextColor="White"   
                                            Placeholder="{Binding ClienteRicercato}" Text="{Binding SearchText}"  />   
             <ListView x:Name="ListaOrdini" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="3" 
@@ -29,15 +30,14 @@
                 <DataTemplate>
                         <ViewCell>
                                 <Grid Margin="5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource Titolo}" Text="{Binding ClienteRagSoc}" HorizontalOptions="Fill" />
-                                <Label Grid.Row="1" Style="{StaticResource Descrizione}" Text="{Binding DataInizio, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" />
-                                <Label Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" VerticalOptions="Center" TextColor="#5E5B5B" Text="{Binding Stato, Converter={StaticResource OrderStatusConverter}}" HorizontalOptions="End" />
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource Titolo}" Text="{Binding ClienteRagSoc}" HorizontalOptions="Fill" />
+                                    <Label Grid.Row="1" Style="{StaticResource Descrizione}" Text="{Binding DataInizio, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" />
+                                    <Label Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" VerticalOptions="Center" TextColor="#004899" Text="{Binding Stato, Converter={StaticResource OrderStatusConverter}}" HorizontalOptions="End" />
                                 </Grid>
-                            
                         </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

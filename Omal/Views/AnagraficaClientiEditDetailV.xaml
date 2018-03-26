@@ -24,8 +24,16 @@
         <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Email}" Placeholder="{Binding StrEmail}"/>
         <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Telefono}" Placeholder="{Binding StrTelefono}"/>
         <CControls:CualevaRoundedEntry Style="{StaticResource WhiteEntry}" Text="{Binding CurCliente.Fax}" Placeholder="{Binding StrFax}"/>
-                <Button HorizontalOptions="Fill" Margin="30,5,30,5" IsVisible="{Binding IsInsert, Converter={StaticResource InverseBooleanConverter}}" Style="{StaticResource RossoNoBold}"  Text="{Binding StrElimina, Converter={StaticResource UpperCaseConverter}}" Command="{Binding EliminaCommand}" CommandParameter="{Binding CurCliente}" />
+        <Grid>
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Grid.ColumnSpan="2" WidthRequest="240" HorizontalOptions="Fill" Margin="30,5,30,5" IsVisible="{Binding IsInsert, Converter={StaticResource InverseBooleanConverter}}" Style="{StaticResource RossoNoBold}"  Text="{Binding StrElimina, Converter={StaticResource UpperCaseConverter}}" Command="{Binding EliminaCommand}" CommandParameter="{Binding CurCliente}" />
+        </Grid>
         </StackLayout>
-            </ScrollView>
+        </ScrollView>
 	</ContentPage.Content>
 </ContentPage>

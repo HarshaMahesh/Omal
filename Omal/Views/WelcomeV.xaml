@@ -6,7 +6,7 @@
     x:Class="Omal.Views.WelcomeV">
 	<ContentPage.Content>
     <RelativeLayout>
-    <Image IsVisible="{Binding IsLoggedIn}" Aspect="AspectFill" Source="IMG074428.png" Opacity="0.3"
+    <Image Aspect="AspectFill" Source="IMG074428.png" Opacity="0.3"
                 RelativeLayout.WidthConstraint=
                   "{ConstraintExpression Type=RelativeToParent, Property=Width}"
                 RelativeLayout.HeightConstraint=
