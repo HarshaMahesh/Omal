@@ -31,11 +31,8 @@
                 </StackLayout>
             </ViewCell>
         </DataTemplate>
-                
             </ListView.ItemTemplate>
-
             </ListView>
-            <ActivityIndicator IsVisible="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}"  />
         </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

@@ -37,6 +37,14 @@ namespace Omal.ViewModels
             var risposta = await CurPage.DisplayAlert(TitoloClienti, StrConfermaEliminazione, StrSi, StrNo);
             if (risposta)
             {
+                // verifico che il cliente non abbia un ordine in bozza.
+                var ordini = await DataStore.Ordini.GetItemsAsync();
+                int tot = ordini.Count(x => x.Stato == Models.Enums.EOrdineStato.bozza && x.IdCliente == cli.IDCliente);
+                if (tot > 0)
+                {
+                    risposta = await CurPage.DisplayAlert(TitoloClienti, AlertClienteInBozza , StrSi, StrNo);
+                    if (!risposta) return;
+                }
                 cli.annullato = 1;
                 try
                 {

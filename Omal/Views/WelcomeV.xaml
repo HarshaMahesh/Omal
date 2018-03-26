@@ -5,21 +5,24 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="Omal.Views.WelcomeV">
 	<ContentPage.Content>
-        <Grid VerticalOptions="EndAndExpand">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="20" />
-                <RowDefinition Height="30" />
-        </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions >
+    <RelativeLayout>
+    <Image IsVisible="{Binding IsLoggedIn}" Aspect="AspectFill" Source="IMG074428.png" Opacity="0.3"
+                RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+    <Grid RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="120" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Image VerticalOptions="StartAndExpand" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="Center"  HeightRequest="90"  Source="LogoOmal" Margin="10"  />
+          <StackLayout Grid.Column="1" Grid.ColumnSpan="2" WidthRequest="400" VerticalOptions="Center" Padding="6" Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+                  <Image VerticalOptions="StartAndExpand" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="Center"  HeightRequest="90"  Source="LogoOmal" Margin="10"  />
             <StackLayout x:Name="luca" IsVisible="{Binding IsRunningOrError, Converter={StaticResource InverseBooleanConverter}}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Fill" Orientation="Vertical" HorizontalOptions="Fill">
                 <Button HorizontalOptions="Fill" Text="VERSIONE ITALIANA"   Command="{Binding LangItCommand}"  />
                 <Button HorizontalOptions="Fill" Text="ENGLISH VERSION"  Command="{Binding LangEnCommand}"  />
@@ -32,6 +35,9 @@
                 <Button HorizontalOptions="Center" IsEnabled="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding BtnRiprova, Converter={StaticResource UpperCaseConverter}}" Style="{StaticResource Azzurro}" Command="{Binding UpdateDbCommand}" IsVisible="{Binding Errore}" />
             </StackLayout>
             <Label HorizontalTextAlignment="Center" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="End" FontFamily="Montserrat-Regular" FontSize="10" TextColor="White" HorizontalOptions="Center" Text="2018 OMAL" />
-        </Grid>
+                    </StackLayout>
+                    
+    </Grid>
+  </RelativeLayout>
 	</ContentPage.Content>
 </CControls:CualevaGradientContentPage>

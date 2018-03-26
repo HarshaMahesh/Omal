@@ -161,7 +161,7 @@ namespace Omal.ViewModels
                         }
                         else
                             sclienti= elencoClienti.Where(x => !string.IsNullOrWhiteSpace(x.RagioneSociale) && x.RagioneSociale.StartsWith(item, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                        if (!string.IsNullOrWhiteSpace(SearchText)) sclienti = sclienti.Where(x => x.RagioneSociale.Contains(SearchText)).ToList();
+                        if (!string.IsNullOrWhiteSpace(SearchText)) sclienti = sclienti.Where(x => x.RagioneSociale.ToUpper().Contains(SearchText.ToUpper())).ToList();
                         if (sclienti != null && sclienti.Count > 0)
                         {
                             elemento.AddRange(sclienti);

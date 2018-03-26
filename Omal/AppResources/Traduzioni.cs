@@ -51,6 +51,7 @@ namespace Omal.AppResources
         public string BtnInvia { get { return GetCurvalueLang(_BtnInvia); } }
         public string BtnNuovo { get { return GetCurvalueLang(_BtnNuovo); } }
 
+        public string LogonRichiestoOrdini { get { return GetCurvalueLang(_LogonRichiestoOrdini); } }
         public string Cliente { get { return GetCurvalueLang(_Cliente); } }
         public string Note { get { return GetCurvalueLang(_Note); } }
         public string StrTotaleOrdine { get { return GetCurvalueLang(_TotaleOrdine); } }
@@ -180,7 +181,19 @@ namespace Omal.AppResources
         public string BtnUpdate { get { return GetCurvalueLang(_BtnUpdate); } }
         public string BtnEdit { get { return GetCurvalueLang(_BtnEdit); } }
         public string StrSelezionaMisura { get { return GetCurvalueLang(_StrSelezionaMisura); } }
+        public string AlertClienteInBozza { get { return GetCurvalueLang(_AlertClienteInBozza); } }
 
+
+        Dictionary<string, string> _AlertClienteInBozza = new Dictionary<string, string>
+        {
+            {"IT",  "ATTENZIONE Nel tuo archivio c’è una bozza ordine intestata a questo cliente. Sei sicuro di eliminarlo?"},
+            {"EN",  "Attention: in your archive there is a draft order registered to this customer. Are you sure to delete it?"}
+        };
+        Dictionary<string, string> _LogonRichiestoOrdini = new Dictionary<string, string>
+        {
+            {"IT",  "Effettua il login e naviga il catalogo per creare il tuo prossimo ordine"},
+            {"EN",  "Login and browse the catalog, to create your next order"}
+        };
         Dictionary<string, string> _StrSelezionaMisura = new Dictionary<string, string>
         {
             {"IT",  "Seleziona misura"},
