@@ -690,7 +690,7 @@ namespace Omal.AppResources
 
         Dictionary<string, string> _ErrQtaMaggiore0 = new Dictionary<string, string>
         {
-            {"IT",  "Qta non valida. Il numero deve essere maggiore di 0"},
+            {"IT",  "Qtà non valida. Il numero deve essere maggiore di 0"},
             {"EN",  "Qty invalid. Number must be greater than 0"}
         };
         Dictionary<string, string> _TitoloProdotto = new Dictionary<string, string>
@@ -701,7 +701,7 @@ namespace Omal.AppResources
 
         Dictionary<string, string> _ErrNumeroCarrello = new Dictionary<string, string>
         {
-            {"IT",  "Qta non valida. Numero intero richiesto."},
+            {"IT",  "Qtà non valida. Numero intero richiesto."},
             {"EN",  "Qty invalid. Required integer value."}
         };
         Dictionary<string, string> _BtnTrova = new Dictionary<string, string>
@@ -895,7 +895,7 @@ namespace Omal.AppResources
 
         Dictionary<string, string> _StrQta = new Dictionary<string, string>
         {
-            {"IT", "Qta"},
+            {"IT", "Qtà"},
             {"EN", "Qty"}
         };
 
