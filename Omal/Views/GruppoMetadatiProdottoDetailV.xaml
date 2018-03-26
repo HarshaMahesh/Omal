@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage Title="{Binding CurTitle}" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.GruppoMetadatiProdottoDetailV">
+<ContentPage BackgroundColor="White" Title="{Binding CurTitle}" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.GruppoMetadatiProdottoDetailV">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
@@ -9,7 +9,7 @@
                 <StackLayout BackgroundColor="#EAEAEA">
                     <Label Margin="5" Style="{StaticResource Titolo}" FontSize="18" Text="{Binding CurProdotto, Converter={StaticResource NomeProdottoConverter}}"  HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
                 </StackLayout>
-            <WebView Margin="-5" VerticalOptions="FillAndExpand" Navigating="Handle_Navigating" >
+            <WebView Margin="5,-5,5,5" VerticalOptions="FillAndExpand" Navigating="Handle_Navigating" >
                 <WebView.Source>
                     <HtmlWebViewSource Html="{Binding ContentHtml}" />
                 </WebView.Source>

@@ -133,8 +133,24 @@ namespace Omal.ViewModels
     font-size: 16px;
     margin: 2px 2px;
 }
+.buttongrigio {
+    background-color: #EAEAEA;
+    border: 1px;
+    color: #5E5B5B;
+    padding: 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 2px;
+}
 .button4 {border-radius: 18px;}
+.NoBorder {border: 0px}
+.WhiteBackGround {background:#FFFFFF;}
+
+
 table {width: 100% ! important; margin: 0 auto !important;}
+table td {border: 1px solid #ccc; padding: 5px; }
 table td {border: 1px solid #ccc; padding: 5px; }
 
 table tr:nth-child(odd) td{
@@ -152,11 +168,27 @@ img.middle {
     vertical-align: middle;
 }
 
+.columns {
+    float: left;
+    width: 20%;
+}
+.column {
+    float: left;
+    width: 40%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
 .metadato-testo table {width: 100% ! important; margin: 0 auto !important;}
 .metadato-testo table td {border: 1px solid #ccc;}
 .metadato-testo table tr:first-child td {color: #174288; font-weight: bold; text-align: center;}
 .metadato-testo table .fr-highlighted {color: #174288; font-weight: bold;}
+
 
 
     </style>
@@ -260,8 +292,19 @@ img.middle {
                             "<input type='hidden' name='idcodiceattuatore' value='{1}' />" +
                             "<input type='submit' class='button button4' value='{4}' /></p></div></center><br />" +
                             "</form></center>", curProdotto.idprodotto, attuatore.idcodiceattuatore, StrQta, attuatore.Prezzo.ToString("F"),BtnOrdina.ToUpper()));
-                    if (!string.IsNullOrWhiteSpace(attuatore.url_3d)) curAttuatore.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", attuatore.url_3d, BtnMostra3D.ToUpper()));
-                    if (!string.IsNullOrWhiteSpace(attuatore.url_download)) curAttuatore.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", attuatore.url_download+ "&email=" + App.CurToken.email_utente, BtnDownload.ToUpper()));
+                    if (!string.IsNullOrWhiteSpace(attuatore.url_3d) || !string.IsNullOrWhiteSpace(attuatore.url_download))
+                    {
+                        var str = "<div class='row'><div class='columns'><image alt='3D LOGO' height='42' width='42' src='https://static1.squarespace.com/static/51079a32e4b01053eeeaca5e/5209903ce4b08d9753c7de2f/52099890e4b08b89e5d86625/1376360593352/3d-logo.jpg?format=1000w' /></div><div class='column'>";
+                        if (!string.IsNullOrWhiteSpace(attuatore.url_3d))
+                                str += string.Format("<center><a class='button buttongrigio button4' href='{0}'>{1}</a></center>", attuatore.url_3d, BtnMostra3D.ToUpper());
+                        str += "</div><div class='column'>";
+                        if (!string.IsNullOrWhiteSpace(attuatore.url_download)) 
+                            str += 
+                                string.Format("<center><a class='button buttongrigio button4' href='{0}'>{1}</a></center>", 
+                                              attuatore.url_download + "&email=" + App.CurToken.email_utente, BtnDownload.ToUpper());
+                        str += "</div></div>";
+                        curAttuatore.Add(str);
+                    }
                 }
                 else
                 {
@@ -342,9 +385,16 @@ img.middle {
                                 "<input type='hidden' name='idcodicevalvola' value='{1}' />" +
                             "<input type='submit' class='button button4' value='{4}' /></p></div></br>" +
                             "</form></center><br />",curProdotto.idprodotto,  valvola.idcodicevalvola, StrQta,valvola.Prezzo.ToString("F"),BtnOrdina.ToUpper() ));
-                    
-                    if (!string.IsNullOrWhiteSpace(valvola.url_3d)) curValvola.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", valvola.url_3d, BtnMostra3D.ToUpper()));
-                    if (!string.IsNullOrWhiteSpace(valvola.url_download)) curValvola.Add(string.Format("<a class='button button4' href='{0}'>{1}</a>", valvola.url_download +"&email=" + App.CurToken.email_utente, BtnDownload.ToUpper()));
+                    if (!string.IsNullOrWhiteSpace(valvola.url_3d) || !string.IsNullOrWhiteSpace(valvola.url_download))
+                    {
+                        var str = "<table><tr><td>";
+                        if (!string.IsNullOrWhiteSpace(valvola.url_3d)) 
+                            str += string.Format("<center><a class='button buttongrigio button4' href='{0}'>{1}</a></center>", valvola.url_3d, BtnMostra3D.ToUpper());
+                        str += "</td><td>";
+                        if (!string.IsNullOrWhiteSpace(valvola.url_download)) str += string.Format("<center><a class='button buttongrigio button4' href='{0}'>{1}</a></center>", valvola.url_download + "&email=" + App.CurToken.email_utente, BtnDownload.ToUpper());
+                        str += "</td><td></tr></table>";
+                        curValvola.Add(str);
+                    }
                 } else
                 {
                     curValvola.Add( string.Format("<br><center><b>{0}</b></center>", ErrPerPrezziNecessarioLogin));

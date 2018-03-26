@@ -19,13 +19,19 @@
               "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint=
               "{ConstraintExpression Type=RelativeToParent, Property=Height}">
-          <StackLayout WidthRequest="240" VerticalOptions="Center" Padding="6" Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
-                <Label IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Margin="10" HorizontalTextAlignment="Center"  Text="{Binding LogonRichiesto}" />
+             <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+          <Label  Grid.ColumnSpan="4" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional" IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Margin="10" HorizontalTextAlignment="Center" VerticalOptions="Center"  Text="{Binding LogonRichiestoOrdini}" />  
+          <StackLayout Grid.Column="1" Grid.ColumnSpan="2" WidthRequest="240" VerticalOptions="Center" Padding="6" Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
                 <Button IsVisible="{Binding IsLoggedIn}" HorizontalOptions="Fill" Style="{StaticResource AzzurroNoBold}" Text="{Binding BtnClienti, Converter={StaticResource UpperCaseConverter}}" Command="{Binding GoToAnagraficaClientiCommand}" />
                 <Button IsVisible="{Binding IsLoggedIn}" HorizontalOptions="Fill" Style="{StaticResource AzzurroNoBold}" Text="{Binding BtnOrdini, Converter={StaticResource UpperCaseConverter}}" Command="{Binding GoToAnagraficaOrdiniCommand}" />
             </StackLayout>
     </Grid>
   </RelativeLayout>
 
-	
+    
 </ContentPage>
