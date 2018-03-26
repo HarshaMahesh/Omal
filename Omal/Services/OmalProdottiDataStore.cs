@@ -76,7 +76,7 @@ namespace Omal.Services
                 {
                     item.DescrizioniMaterialiSerialized = Newtonsoft.Json.JsonConvert.SerializeObject(item.descrizioniMateriali);
                     item.DescrizioniAzionamentiSerialized = Newtonsoft.Json.JsonConvert.SerializeObject(item.descrizioniAzionamenti);
-                    Connection.InsertOrReplaceAsync(item);
+                    await  Connection.InsertOrReplaceAsync(item);
                 }
             }
             return items;
@@ -95,7 +95,7 @@ namespace Omal.Services
             {
                 item.DescrizioniMaterialiSerialized = Newtonsoft.Json.JsonConvert.SerializeObject(item.descrizioniMateriali);
                 item.DescrizioniAzionamentiSerialized = Newtonsoft.Json.JsonConvert.SerializeObject(item.descrizioniAzionamenti);
-                Connection.InsertOrReplaceAsync(item);
+                await Connection.InsertOrReplaceAsync(item);
             }
             return items;
         }

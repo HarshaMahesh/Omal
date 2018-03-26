@@ -225,7 +225,6 @@
     <AndroidResource Include="Resources\drawable\home.png" />
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
-    <AndroidResource Include="Resources\drawable\valvolaOMAL.png" />
     <AndroidResource Include="Resources\drawable\ic_arrow_drop_down.png" />
     <AndroidResource Include="Resources\drawable\omalc1.png" />
     <AndroidResource Include="Resources\drawable\omalc3.png" />

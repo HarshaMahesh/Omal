@@ -74,7 +74,7 @@ namespace Omal.Services
                     await Connection.CreateTableAsync<Models.ProdottoGruppiMetadati>();
                 }
                 foreach (var item in items)
-                    Connection.InsertOrReplaceAsync(item);
+                    await  Connection.InsertOrReplaceAsync(item);
             }
             return items;
         }
@@ -91,7 +91,7 @@ namespace Omal.Services
             items = tmp.Where(x => x.idgruppometadato.HasValue).Select(x => new ProdottoGruppiMetadati
             { dataora_modifica = x.dataora_modifica, gruppo_metadati_en = x.gruppo_metadati_en, gruppo_metadati_it = x.gruppo_metadati_it, idgruppometadato = x.idgruppometadato.Value, idprodotto = x.idprodotto.Value, ordine = x.ordine }).ToList();
             foreach (var item in items)
-                Connection.InsertOrReplaceAsync(item);
+                await  Connection.InsertOrReplaceAsync(item);
             return items;
         }
     }

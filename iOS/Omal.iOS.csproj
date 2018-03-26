@@ -153,7 +153,6 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_20.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_29.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_58.png" />
@@ -164,21 +163,6 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_120.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_60.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_87.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_320x480.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_640x960.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_640x1136.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_750x1334.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_1242x2208.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_1920x1080.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_2208x1242.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_2048x2732.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_768x1024.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_1536x2048.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_1024x768.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_2048x1536.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_768x1004.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_1536x2008.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Home_2048x1496.png" />
     <ImageAsset Include="Assets.xcassets\Prova.launchimage\Contents.json" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_152.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ICONA_40.png" />
@@ -196,7 +180,6 @@
     <BundleResource Include="Resources\Impostazioni.png" />
     <BundleResource Include="Resources\Omal.png" />
     <BundleResource Include="Resources\Ordini.png" />
-    <BundleResource Include="Resources\valvolaOMAL.png" />
     <BundleResource Include="Resources\ic_arrow_drop_down.png" />
     <BundleResource Include="Resources\omalc1.png" />
     <BundleResource Include="Resources\omalc2.png" />

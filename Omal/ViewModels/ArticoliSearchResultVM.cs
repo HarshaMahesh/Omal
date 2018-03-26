@@ -226,6 +226,7 @@ img.middle {
                     curAttuatore.Add(string.Format("<P ALIGN='CENTER'><a href='{1}'><img Height='100' src='{0}' /></a></P>", attuatore.immagine_placeholder, string.Format("local_{0}", attuatore.immagine_placeholder)));
                 curAttuatore.Add("<TABLE>");
                 elemento = @"<TR><TD><center><span style=""color:#004899;font-size: 10px"">{0}</span><br /><b>{1}</b></center></TD></TR>";
+                if (!string.IsNullOrWhiteSpace(attuatore.valore_misura)) curAttuatore.Add(string.Format(elemento, StrInfoProdottoPicker1Attuatore, attuatore.valore_misura));
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_iso)) curAttuatore.Add(string.Format(elemento, StrValoreIso, attuatore.valore_iso));
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_coppia)) curAttuatore.Add(string.Format(elemento, StrValoreCoppia, attuatore.valore_coppia));
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_coppiabar)) curAttuatore.Add(string.Format(elemento, Strvalore_coppiabar, attuatore.valore_coppiabar));

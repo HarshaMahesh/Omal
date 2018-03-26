@@ -8,11 +8,7 @@
     </ContentPage.Padding>
 	<ContentPage.Content>
           <RelativeLayout>
-    <Image IsVisible="{Binding IsLoggedIn}"  Aspect="AspectFill" Source="valvolaOMAL.png" Opacity="0.3"
-                RelativeLayout.WidthConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-                RelativeLayout.HeightConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+    
      <Grid RelativeLayout.WidthConstraint=
               "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint=

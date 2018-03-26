@@ -189,7 +189,7 @@ namespace Omal.Services
                     }
                     catch  {}
 
-                    Connection.InsertOrReplaceAsync(item);
+                    await  Connection.InsertOrReplaceAsync(item);
                 }
             }
             var clienti = await Connection.Table<Models.Cliente>().ToListAsync();
@@ -226,7 +226,7 @@ namespace Omal.Services
                     item.jsonCarrelliSerialized = Newtonsoft.Json.JsonConvert.SerializeObject(item.carrelli);
                 }
                 catch { }
-                Connection.InsertOrReplaceAsync(item);
+                await  Connection.InsertOrReplaceAsync(item);
             }
             return items;
         }

@@ -73,7 +73,7 @@ namespace Omal.Services
                     await Connection.CreateTableAsync<Models.Attuatore>();
                 }
                 foreach (var item in items)
-                    Connection.InsertOrReplaceAsync(item);
+                    await Connection.InsertOrReplaceAsync(item);
             }
             return items;
         }
@@ -87,7 +87,7 @@ namespace Omal.Services
             var json = await client.GetStringAsync(url);
             items = await Task.Run(() => JsonConvert.DeserializeAnonymousType(json, new { Data = new List<Models.Attuatore>() }).Data);
             foreach (var item in items)
-                Connection.InsertOrReplaceAsync(item);
+                await Connection.InsertOrReplaceAsync(item);
             return items;
         }
     }
