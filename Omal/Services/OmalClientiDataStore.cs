@@ -57,7 +57,7 @@ namespace Omal.Services
             {
                 item.IDCliente = risposta.IDCliente.Value;
                 items.Add(item);
-                Connection.InsertOrReplaceAsync(item);
+                await Connection.InsertOrReplaceAsync(item);
             }
             return await Task.FromResult(risposta);
         }

@@ -10,7 +10,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Margin="5">
-        <Label Margin="5" IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding LogonRichiesto}" HorizontalTextAlignment="Center"/>
+        <Label Margin="5" IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBooleanConverter}}" Text="{Binding LogonRichiestoOrdini}" HorizontalTextAlignment="Center"/>
         <ListView SeparatorVisibility="Default" RowHeight="180"   VerticalOptions="FillAndExpand" IsVisible="{Binding IsLoggedIn}" ItemsSource="{Binding Items, Mode=TwoWay}" SelectedItem="{Binding SelectedItem,Mode=TwoWay}">
         <ListView.Header>
             <StackLayout BackgroundColor="#EAEAEA">

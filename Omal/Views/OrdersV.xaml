@@ -26,6 +26,9 @@
             <ListView x:Name="ListaOrdini" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="3" 
                       SelectedItem="{Binding OrdineSelected}" 
                       ItemsSource="{Binding Ordini}"  RowHeight="70" >
+                <ListView.Header>
+                    <ActivityIndicator IsRunning="{Binding IsRunning}" IsVisible="{Binding IsRunning}" />
+                </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
                         <ViewCell>

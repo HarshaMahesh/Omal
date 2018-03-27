@@ -24,7 +24,7 @@
                 <Label Grid.ColumnSpan="3" Grid.Row="1"  LineBreakMode="WordWrap" Text="{Binding LastUpdate}" Grid.Column="0" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand"/>
                 <Button Grid.Row="2" VerticalOptions="Center" Style="{StaticResource Azzurro}" Grid.Column="1" IsVisible="{Binding IsRunning, {Converter InverseBooleanConverter}" Command="{Binding UpdateDbCommand}" HorizontalOptions="Fill" Text="{Binding Aggiorna, Converter={StaticResource UpperCaseConverter}}" />
             </Grid>
-<TableView Intent="Settings">
+<TableView Intent="Settings" Margin="5">
     <TableRoot>
         <TableSection>
             <ViewCell Tapped="Handle_Tapped">

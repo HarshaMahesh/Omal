@@ -185,10 +185,17 @@ namespace Omal.AppResources
         public string BtnDocumenti { get { return GetCurvalueLang(_BtnDocumenti); } }
         public string TitoloDocumenti { get { return GetCurvalueLang(_TitoloDocumenti); } }
 
+        public string OrdineClienteEliminato { get { return GetCurvalueLang(_OrdineClienteEliminato); } }
+
         Dictionary<string, string> _TitoloDocumenti = new Dictionary<string, string>
         {
             {"IT",  "Documenti"},
             {"EN",  "Documents"}
+        };
+        Dictionary<string, string> _OrdineClienteEliminato = new Dictionary<string, string>
+        {
+            {"IT",  "ATTENZIONE Stai recuperando un ordine intestato ad un cliente eliminato. Per intestarlo ad un nuovo cliente e completarlo vai nella sezione dedicata"},
+            {"EN",  "Attention: you are recovering an order for a deleted customer. To make it to a new customer and complete it, go to the order page"}
         };
 
         Dictionary<string, string> _BtnDocumenti = new Dictionary<string, string>

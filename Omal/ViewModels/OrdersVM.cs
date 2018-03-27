@@ -25,6 +25,21 @@ namespace Omal.ViewModels
 
         }
 
+        bool isRunning = false;
+        public bool IsRunning
+        {
+            get { return isRunning; }
+            set
+            {
+
+                if (isRunning != value)
+                {
+                    isRunning = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         private async void OnAddNewCommand(object obj)
         {
             if (App.CurOrdine != null && App.CurOrdine.carrelli != null && App.CurOrdine.carrelli.Count != 0)
@@ -94,6 +109,9 @@ namespace Omal.ViewModels
             {
                 App.CurOrdine = curOrdine;
                 MessagingCenter.Send<Models.Messages.BasketLoadedMessage>(new Models.Messages.BasketLoadedMessage() { Ordine = curOrdine }, "");
+                // verifico se l'ordine appena caricato appartiene ad un cliente inesistente.
+                var clienti = await DataStore.Clienti.GetItemsAsync(false);
+                if (clienti.Count(x => x.annullato == 0 && x.IDCliente == curOrdine.IdCliente) == 0) await CurPage.DisplayAlert(TitoloOrdini.ToUpper(), OrdineClienteEliminato, "Ok");
                 CurPage.DisplayAlert(TitoloOrdini, StrOrdineCaricato, "ok");
                 MessagingCenter.Send(new Models.Messages.ChangeTabbedPageMessage() { SetPage =  Models.Enums.EPages.Carrello }, "");
             }
@@ -122,6 +140,7 @@ namespace Omal.ViewModels
         {
             if (!ordiniIsLoading && App.CurUser != null)
             {
+                IsRunning = true;
                 ordiniIsLoading = true;
                 try
                 {
@@ -132,8 +151,13 @@ namespace Omal.ViewModels
                     tuttOrdini = tuttOrdini.OrderByDescending(x => x.DataInizio);
                     Ordini = new ObservableCollection<Models.Ordine>(tuttOrdini);
                 }
+                catch
+                {
+                    
+                }
                 finally
                 {
+                    IsRunning = false;
                     ordiniIsLoading = false;
                 }
             }

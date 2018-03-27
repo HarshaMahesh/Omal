@@ -167,21 +167,21 @@ border-radius: 18px;
 .WhiteBackGround {background:#FFFFFF;}
 
 
-table {width: 100% ! important; margin: 0 auto !important;}
-table td {border: 1px solid #ccc; padding: 5px; }
-table td {border: 1px solid #ccc; padding: 5px; }
+table:not(.nostile) {width: 100% ! important; margin: 0 auto !important;}
+table:not(.nostile) td {border: 1px solid #ccc; padding: 5px; }
+table:not(.nostile) td {border: 1px solid #ccc; padding: 5px; }
 
-table tr:nth-child(odd) td{
+table:not(.nostile) tr:nth-child(odd) td{
            background:#EAEAEA;
 }
-table tr:nth-child(even) td{
+table:not(.nostile) tr:nth-child(even) td{
             background:#FFFFFF;
 }
-.metadato-testo table {width: 100% ! important; margin: 0 auto !important;}
-.metadato-testo table td {border: 0px solid #ccc;}
-.metadato-testo table tr:first-child td {color: #174288; font-weight: bold; text-align: center;}
-.metadato-testo table .fr-highlighted {color: #174288; font-weight: bold;}
-table .fr-highlighted {color: #174288; font-weight: bold;}
+.metadato-testo table:not(.nostile) {width: 100% ! important; margin: 0 auto !important;}
+.metadato-testo table:not(.nostile) td {border: 0px solid #ccc;}
+.metadato-testo table:not(.nostile) tr:first-child td {color: #174288; font-weight: bold; text-align: center;}
+.metadato-testo table:not(.nostile) .fr-highlighted {color: #174288; font-weight: bold;}
+table:not(.nostile) .fr-highlighted {color: #174288; font-weight: bold;}
 img.middle {
     vertical-align: middle;
 }
@@ -312,26 +312,18 @@ img.middle {
                             "</form></center>", curProdotto.idprodotto, attuatore.idcodiceattuatore, StrQta, attuatore.Prezzo.ToString("F"),BtnOrdina.ToUpper()));
                     if (!string.IsNullOrWhiteSpace(attuatore.url_3d) || !string.IsNullOrWhiteSpace(attuatore.url_download))
                     {
-                      /* 
-                        var str = "<div class='row'><div class='columns'><image alt='3D LOGO' height='42' width='42' src='https://static1.squarespace.com/static/51079a32e4b01053eeeaca5e/5209903ce4b08d9753c7de2f/52099890e4b08b89e5d86625/1376360593352/3d-logo.jpg?format=1000w' /></div><div class='column'>";
+                        var str = "<table class='nostile' align='center'><tbody><tr>";
+
+                        if (!string.IsNullOrWhiteSpace(attuatore.url_3d) || !string.IsNullOrWhiteSpace(attuatore.url_download))
+                            str += "<td class='NoBorder WhiteBackGround' valign='middle'><image alt='3D LOGO' height='60' width='60' src='http://demo.timmagine.com/omal/http/images/rendering_3d.png' /></td>";
+
                         if (!string.IsNullOrWhiteSpace(attuatore.url_3d))
-                                str += string.Format("<center><a class='button buttongrigio button4' href='{0}'>{1}</a></center>", attuatore.url_3d, BtnMostra3D.ToUpper());
-                        str += "</div><div class='column'>";
-                        if (!string.IsNullOrWhiteSpace(attuatore.url_download)) 
-                            str += 
-                                string.Format("<center><a class='button buttongrigio button4' href='{0}'>{1}</a></center>", 
-                                              attuatore.url_download + "&email=" + App.CurToken.email_utente, BtnDownload.ToUpper());
-                        str += "</div></div>";
-                        curAttuatore.Add(str);
-                        */
-                        var str = "<center>";
-                        if (!string.IsNullOrWhiteSpace(attuatore.url_3d))
-                            str += string.Format("<a class='button buttongrigio button4' href='{0}'>{1}</a>", attuatore.url_3d, BtnMostra3D.ToUpper());
+                            str += string.Format("<td class='NoBorder WhiteBackGround' valign='middle'><a class='button buttongrigio button4' href='{0}'>{1}</a></td>", attuatore.url_3d, BtnMostra3D.ToUpper());
                         if (!string.IsNullOrWhiteSpace(attuatore.url_download))
                             str +=
-                                string.Format("<a class='button buttongrigio button4' href='{0}'>{1}</a>",
+                                string.Format("<td class='NoBorder WhiteBackGround' valign='middle'><a class='button buttongrigio button4' href='{0}'>{1}</a></td>",
                                               attuatore.url_download + "&email=" + App.CurToken.email_utente, BtnDownload.ToUpper());
-                        str += "</center>";
+                        str += "</tr></tbody></table>";
                         curAttuatore.Add(str);
                     }
                 }
@@ -416,7 +408,7 @@ img.middle {
                             "</form></center><br />",curProdotto.idprodotto,  valvola.idcodicevalvola, StrQta,valvola.Prezzo.ToString("F"),BtnOrdina.ToUpper() ));
                     if (!string.IsNullOrWhiteSpace(valvola.url_3d) || !string.IsNullOrWhiteSpace(valvola.url_download))
                     {
-                        var str = "<div class='row'><div class='columns'><image alt='3D LOGO' height='42' width='42' src='https://static1.squarespace.com/static/51079a32e4b01053eeeaca5e/5209903ce4b08d9753c7de2f/52099890e4b08b89e5d86625/1376360593352/3d-logo.jpg?format=1000w' /></div><div class='column'>";
+                        var str = "<div class='row'><div class='columns'><image alt='3D LOGO' height='42' width='42' src='http://demo.timmagine.com/omal/http/images/rendering_3d.png' /></div><div class='column'>";
                         if (!string.IsNullOrWhiteSpace(valvola.url_3d))
                             str += string.Format("<center><a class='button buttongrigio button4' href='{0}'>{1}</a></center>", valvola.url_3d, BtnMostra3D.ToUpper());
                         str += "</div><div class='column'>";
