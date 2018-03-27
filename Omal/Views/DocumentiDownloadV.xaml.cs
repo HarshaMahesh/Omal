@@ -1,33 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using Plugin.Share;
+
 using Xamarin.Forms;
 
 namespace Omal.Views
 {
-    public partial class InfoProductV : ContentPage
+    public partial class DocumentiDownloadV : ContentPage
     {
-        ViewModels.InfoProductVM viewModel;
-
-        public InfoProductV()
+        ViewModels.DocumentiDownloadVM viewModel;
+        public DocumentiDownloadV()
         {
-            BindingContext = viewModel = new ViewModels.InfoProductVM();
+            BindingContext = viewModel = new ViewModels.DocumentiDownloadVM();
             InitializeComponent();
             viewModel.CurPage = this;
             viewModel.Navigation = Navigation;
             NavigationPage.SetBackButtonTitle(this, "");
         }
 
-        public InfoProductV(Models.Prodotto curProdotto) : this()
+        public DocumentiDownloadV(Models.Prodotto curProdotto):this()
         {
             viewModel.CurProdotto = curProdotto;
+
         }
 
-        protected override void OnAppearing()
-        {
+
+		protected override void OnAppearing()
+		{
             base.OnAppearing();
-            CurGruppo.SelectedItem = null;
-        }
+            ElencoPdf.SelectedItem = null;
+		}
 
         public void OpenB(string url)
         {
@@ -35,6 +37,5 @@ namespace Omal.Views
             CrossShare.Current.OpenBrowser(url);
 
         }
-
-    }
+	}
 }

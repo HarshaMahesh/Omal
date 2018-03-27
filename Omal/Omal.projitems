@@ -173,6 +173,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\OmalPDFDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\PDF.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\GruppoPdf.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\DocumentiDownloadV.xaml.cs">
+      <DependentUpon>DocumentiDownloadV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DocumentiDownloadVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -249,6 +253,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\OrdersV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\DocumentiDownloadV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

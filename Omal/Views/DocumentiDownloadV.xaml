@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding TitoloDocumenti, Converter={StaticResource UpperCaseConverter}}"
+             x:Class="Omal.Views.DocumentiDownloadV">
+    <ContentPage.Content>
+    </ContentPage.Content>
+    <StackLayout Orientation="Vertical">
+        <StackLayout BackgroundColor="#EAEAEA" IsVisible="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}">
+            <Label Margin="5" Style="{StaticResource Titolo}" FontSize="18" Text="{Binding CurProdotto, Converter={StaticResource NomeProdottoConverter}}"  HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
+        </StackLayout>
+     <ListView Margin="5" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="3" 
+                      SelectedItem="{Binding PdfSelected}" 
+                       x:Name="ElencoPdf"
+
+                      IsGroupingEnabled="true" 
+                      ItemsSource="{Binding ListaDocumenti}" 
+                      GroupDisplayBinding="{Binding Categoria}">
+                
+           <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                <ViewCell Height="40">
+                    <Label Text="{Binding Categoria}" Margin="5" Style="{StaticResource Titolo}"  VerticalOptions="Center" />
+                   
+                </ViewCell>
+            </DataTemplate>
+                        
+                </ListView.GroupHeaderTemplate>
+                
+            <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                                 <Label Text="{Binding nomeFile}" Margin="5" Style="{StaticResource Azzurra}"  VerticalOptions="Center" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            <ListView.Footer>
+                <Label Margin="10" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroPdf}"  />
+            </ListView.Footer>
+        </ListView>
+    </StackLayout>
+</ContentPage>

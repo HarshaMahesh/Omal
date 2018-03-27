@@ -182,7 +182,20 @@ namespace Omal.AppResources
         public string BtnEdit { get { return GetCurvalueLang(_BtnEdit); } }
         public string StrSelezionaMisura { get { return GetCurvalueLang(_StrSelezionaMisura); } }
         public string AlertClienteInBozza { get { return GetCurvalueLang(_AlertClienteInBozza); } }
+        public string BtnDocumenti { get { return GetCurvalueLang(_BtnDocumenti); } }
+        public string TitoloDocumenti { get { return GetCurvalueLang(_TitoloDocumenti); } }
 
+        Dictionary<string, string> _TitoloDocumenti = new Dictionary<string, string>
+        {
+            {"IT",  "Documenti"},
+            {"EN",  "Documents"}
+        };
+
+        Dictionary<string, string> _BtnDocumenti = new Dictionary<string, string>
+        {
+            {"IT",  "Documenti"},
+            {"EN",  "Documents"}
+        };
 
         Dictionary<string, string> _AlertClienteInBozza = new Dictionary<string, string>
         {
@@ -890,6 +903,7 @@ namespace Omal.AppResources
             {"IT", "Sconto"},
             {"EN", "Discount"}
         };
+
 
 
 

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Plugin.Share;
 namespace Omal.ViewModels
 {
-    public class InfoProductVM : BaseVM
+    public class DocumentiDownloadVM : BaseVM
     {
 
 
         public string CurTitle
         {
-            get { return "Info"; }
+            get { return TitoloDocumenti; }
         }
 
 
@@ -32,75 +32,19 @@ namespace Omal.ViewModels
                 {
                     _CurProdotto = value;
                     OnPropertyChanged();
-                    OnPropertyChanged("GruppoMetadati");
                 }
             }
         }
 
-        Models.ProdottoGruppiMetadati _CurGruppoProdotto;
-        public Models.ProdottoGruppiMetadati CurGruppoProdotto
-        {
-            get
-            {
-                return _CurGruppoProdotto;
-            }
-            set
-            {
-                if (_CurGruppoProdotto != value)
-                {
-                    _CurGruppoProdotto = value;
-                    if (_CurGruppoProdotto != null)
-                        CurPage.Navigation.PushAsync(new Views.GruppoMetadatiProdottoDetailV(_CurGruppoProdotto));
-                }
 
-            }
-        }
 
-        ObservableCollection<Models.ProdottoGruppiMetadati> _GruppoMetadati = null;
-        public ObservableCollection<Models.ProdottoGruppiMetadati> GruppoMetadati
-        {
-            get
-            {
-                if (_GruppoMetadati == null && CurPage != null && !loadGruppoMetadati && _GruppoMetadati == null)
-                    LoadGruppoMetadati();
-                return _GruppoMetadati;
-            }
-            set
-            {
-                _GruppoMetadati = value;
-                OnPropertyChanged();
-            }
-        }
 
-        bool loadGruppoMetadati = false;
-        async void LoadGruppoMetadati()
-        {
-            if (_CurProdotto == null) return;
-            if (!loadGruppoMetadati)
-            {
-                loadGruppoMetadati = true;
-                var tmpG = await DataStore.ProdottoGruppiMetadati.GetItemsAsync();
-                tmpG = tmpG.Where(x => x.idprodotto == CurProdotto.idprodotto).Distinct().OrderBy(x => x.ordine);
-                GruppoMetadati = new ObservableCollection<Models.ProdottoGruppiMetadati>(tmpG);
-                loadGruppoMetadati = false;
-            }
-        }
-
-        public ICommand DocumentiCommand { get; set; }
-
-        public InfoProductVM()
+        public DocumentiDownloadVM()
         {
             PropertyChanged += OnLocalPropertyChanged;
-            DocumentiCommand = new Command(OnDocumentiCommand);
 
         }
 
-        private async void OnDocumentiCommand(object obj)
-        {
-            if (CurProdotto == null) return;
-            await Navigation.PushAsync(new Views.DocumentiDownloadV(CurProdotto));
-                      
-        }
 
         public Models.PDF PdfSelected
         {
@@ -112,7 +56,7 @@ namespace Omal.ViewModels
             {
                 if (value != null)
                 {
-                    ((Views.InfoProductV)CurPage).OpenB(value.urlFile.Replace(" ","%20"));
+                    ((Views.DocumentiDownloadV)CurPage).OpenB(value.urlFile.Replace(" ","%20"));
                 }
             }
         }
@@ -174,6 +118,10 @@ namespace Omal.ViewModels
                         }
                     }
                     ListaDocumenti = new ObservableCollection<Models.GruppoPdf>(elenco.OrderBy(x => x.Categoria));
+                }
+                catch
+                {
+                    // eccezione silente
                 }
                 finally
                 {

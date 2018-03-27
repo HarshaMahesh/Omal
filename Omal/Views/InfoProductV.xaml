@@ -4,7 +4,18 @@
         <ToolbarItem Text="{Binding LoginOrLogOutActionText}" Command="{Binding LoginOrLogoutCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
+        <Grid>
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0" Grid.ColumnSpan="4" Orientation="Vertical">
         <StackLayout BackgroundColor="#EAEAEA" IsVisible="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}">
             <Label Margin="5" Style="{StaticResource Titolo}" FontSize="18" Text="{Binding CurProdotto, Converter={StaticResource NomeProdottoConverter}}"  HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
         </StackLayout>
@@ -21,36 +32,11 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                    <ListView.Footer>
+                        <Button HeightRequest="40" Grid.Column="1" Grid.ColumnSpan="2" WidthRequest="240" HorizontalOptions="Fill" Margin="40,80,40,5"  Style="{StaticResource Azzurro}"  Text="{Binding BtnDocumenti, Converter={StaticResource UpperCaseConverter}}" Command="{Binding DocumentiCommand}" />
+                    </ListView.Footer>
             </ListView>
-             <ListView Margin="5" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="3" 
-                      SelectedItem="{Binding PdfSelected}" 
-                       x:Name="ElencoPdf"
-
-                      IsGroupingEnabled="true" 
-                      ItemsSource="{Binding ListaDocumenti}" 
-                      GroupDisplayBinding="{Binding Categoria}">
-                
-           <ListView.GroupHeaderTemplate>
-                    <DataTemplate>
-                <ViewCell Height="40">
-                    <Label Text="{Binding Categoria}" Margin="5" Style="{StaticResource Titolo}"  VerticalOptions="Center" />
-                   
-                </ViewCell>
-            </DataTemplate>
-                        
-                </ListView.GroupHeaderTemplate>
-                
-            <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                                 <Label Text="{Binding nomeFile}" Margin="5" Style="{StaticResource Azzurra}"  VerticalOptions="Center" />
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            <ListView.Footer>
-                <Label Margin="10" HorizontalOptions="CenterAndExpand" Style="{StaticResource Descrizione}" Text="{Binding NumeroPdf}"  />
-            </ListView.Footer>
-        </ListView>
-        </StackLayout>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
