@@ -15,7 +15,12 @@ namespace Omal.Views
             InitializeComponent();
             BindingContext = viewModel = new ViewModels.LoginVM();
             viewModel.Navigation = Navigation;
+            viewModel.CurPage = this;
             NavigationPage.SetBackButtonTitle(this, "");
+            lblPasswordDimenticata.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = viewModel.PswDimenticataCommand
+            });
         }
     }
 }

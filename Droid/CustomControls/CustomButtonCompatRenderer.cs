@@ -12,7 +12,7 @@ using Omal.Droid.CustomControls;
 [assembly: ExportRenderer(typeof(Xamarin.Forms.Button), typeof(CustomButtonCompatRenderer))]
 namespace Omal.Droid.CustomControls
 {
-    public class CustomButtonCompatRenderer: Xamarin.Forms.Platform.Android.AppCompat.ButtonRenderer
+    public class CustomButtonCompatRenderer: Xamarin.Forms.Platform.Android.ButtonRenderer
     {
         public CustomButtonCompatRenderer() : base()
         {

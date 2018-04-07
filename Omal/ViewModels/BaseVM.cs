@@ -54,9 +54,10 @@ namespace Omal.ViewModels
                 bool action; 
                 if (CurPage != null) 
                 {
-                    action = await CurPage. DisplayAlert("logout",StrConfermiLogout, StrSi, StrNo);
+                    action = await CurPage.DisplayAlert("logout",StrConfermiLogout, StrSi, StrNo);
                     if (!action) return;
                 }
+                App.CurToken = null;
                 App.CurUser = null;
                 MessagingCenter.Send(new Models.Messages.LoginOrLogoutActionMessage(), "LoginOrLogout");
             }

@@ -15,8 +15,8 @@ namespace Omal.Services
             items = new List<Models.Utente>();
             var mockItems = new List<Models.Utente>
             {
-                new Models.Utente(){  Email="luca.cavedaghi@cualeva.com", IdUtente=1, NomeUtente="Luca", Password="Luca" },
-                new Models.Utente(){  NomeUtente="Elio", Email="elio.cattozzo@docsmarshal.com", IdUtente=2, Password="elio" },
+                new Models.Utente(){  Email="luca.cavedaghi@cualeva.com", IdUtente=1, NomeUtente="Luca"},
+                new Models.Utente(){  NomeUtente="Elio", Email="elio.cattozzo@docsmarshal.com", IdUtente=2},
             };
 
             foreach (var item in mockItems)
@@ -66,6 +66,11 @@ namespace Omal.Services
         }
 
         public Task<IEnumerable<Utente>> GetLastItemsUpdatesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ResponseBase> RecoverPassword(string email)
         {
             throw new NotImplementedException();
         }

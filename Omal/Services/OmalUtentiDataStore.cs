@@ -89,6 +89,26 @@ NomeUtente  "OMAL SpA"
             throw new NotImplementedException();
         }
 
+        public async Task<ResponseBase> RecoverPassword(string email)
+        {
+            var ritorno = new ResponseBase();
+            var url = string.Format("{0}{1}?emailPassLost={2}", App.BackendUrl, "pass-lost.php", email);
+            try
+            {
+                var json = await client.GetStringAsync(url);
+                ritorno = JsonConvert.DeserializeAnonymousType(json, new { data = new List<ResponseBase>() }).data.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                ritorno.HasError = 1;
+                if (App.LangIsIT)
+                    ritorno.ErrorDescription = ex.Message;
+                else
+                    ritorno.ErrorDescription_En = ex.Message;
+            }
+            return ritorno;
+        }
+
         class tok
         {
             public List<Models.Token> tokens { get; set; }

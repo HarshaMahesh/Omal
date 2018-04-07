@@ -63,6 +63,11 @@
                 <Setter Property="FontSize" Value="15" /> 
                 <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
             </Style>
+            <Style x:Key="Link" TargetType="Label">
+                <Setter Property="TextColor" Value="#004899" />
+                <Setter Property="FontSize" Value="15" /> 
+                <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
+            </Style>
             <Style TargetType="Entry">
                 <Setter Property="TextColor" Value="#FFFFFF" />
                 <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
@@ -140,6 +145,10 @@
                 <Setter Property="Margin" Value="5" />
                 <Setter Property="HorizontalOptions" Value="End" />
                 <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
+            </Style>
+            <Style TargetType="CControls:UnderlineLabel">
+                <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
+                <Setter Property="TextColor" Value="#60A5D1" />
             </Style>
 
             <Style x:Key="RossoNoBold" TargetType="Button">

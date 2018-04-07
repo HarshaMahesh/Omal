@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using Omal.Persistence;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -27,8 +28,65 @@ namespace Omal
             }
         
         }
-        public static Models.Utente CurUser = null;
-        public static Models.Token CurToken = null;
+        static Models.Utente _CurUser = null;
+        public static Models.Utente CurUser
+        {
+            get
+            {
+                if (_CurUser == null)
+                    if (CurToken != null)  
+                        _CurUser = new Models.Utente() { Email = CurToken.email_utente, IdUtente = CurToken.IDUtente, NomeUtente = CurToken.NomeUtente };
+                return _CurUser;
+            }
+            set
+            {
+                _CurUser = value;
+            }
+        }
+
+
+
+        static Models.Token _CurToken;
+        public static Models.Token CurToken {
+            get
+            {
+                try
+                {
+                    if (_CurToken == null)
+                    {
+                        if (Application.Current.Properties.ContainsKey("CurTokenSerialized"))
+                        {
+                            if (!string.IsNullOrWhiteSpace(Application.Current.Properties["CurTokenSerialized"].ToString()))
+                                _CurToken = JsonConvert.DeserializeObject<Models.Token>(Application.Current.Properties["CurTokenSerialized"].ToString());
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    // eccezione silente
+                }
+                return _CurToken;
+            }
+
+            set
+            {
+                _CurToken = value;
+                if (value == null) 
+                    Application.Current.Properties["CurTokenSerialized"] = string.Empty;
+                else
+                    Application.Current.Properties["CurTokenSerialized"] = Newtonsoft.Json.JsonConvert.SerializeObject(value);
+                Application.Current.SavePropertiesAsync();
+            }
+
+        }
+        public static bool LangIsIT
+        {
+            get
+            {
+                return !String.IsNullOrWhiteSpace(CurLang) && string.Equals(CurLang.ToUpper(), "IT");
+            }
+        }
+
         public static Models.Ordine CurOrdine = new Models.Ordine();
         public static DateTime? LastUpdate 
         {

@@ -20,6 +20,8 @@ namespace Omal.AppResources
         }
 
 
+
+        public string StrPasswordDimenticata { get { return GetCurvalueLang(_StrPasswordDimenticata); } }
         public string StrUpdateDb { get { return GetCurvalueLang(_StrUpdateDb); }}
         public string StrSedeProduttiva { get { return GetCurvalueLang(_StrSedeProduttiva); } }
         public string StrOrdineAnnullato { get { return GetCurvalueLang(_StrOrdineAnnullato); } }
@@ -184,9 +186,29 @@ namespace Omal.AppResources
         public string AlertClienteInBozza { get { return GetCurvalueLang(_AlertClienteInBozza); } }
         public string BtnDocumenti { get { return GetCurvalueLang(_BtnDocumenti); } }
         public string TitoloDocumenti { get { return GetCurvalueLang(_TitoloDocumenti); } }
+        public string StrEmailVuota { get { return GetCurvalueLang(_StrEmailVuota); } }
+        public string StrConfermaInvioMailRecuperoPassword { get { return GetCurvalueLang(_StrConfermaInvioMailRecuperoPassword); } }
 
         public string OrdineClienteEliminato { get { return GetCurvalueLang(_OrdineClienteEliminato); } }
 
+
+
+        Dictionary<string, string> _StrConfermaInvioMailRecuperoPassword = new Dictionary<string, string>
+        {
+            {"IT",  "Abbiamo inviato una email al tuo indirizzo.Controlla la posta per terminare la procedura di recupero"},
+            {"EN",  "We have sent an email to your address. Check your mailbox to complete the recovery process"}
+        };
+
+        Dictionary<string, string> _StrEmailVuota = new Dictionary<string, string>
+        {
+            {"IT",  "Campo email non valorizzato"},
+            {"EN",  "Field email cannot be empty"}
+        };
+        Dictionary<string, string> _StrPasswordDimenticata = new Dictionary<string, string>
+        {
+            {"IT",  "Password dimenticata?"},
+            {"EN",  "Forgot password?"}
+        };
         Dictionary<string, string> _TitoloDocumenti = new Dictionary<string, string>
         {
             {"IT",  "Documenti"},

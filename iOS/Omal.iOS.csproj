@@ -213,6 +213,7 @@
     <Compile Include="CustomControls\CualevaGradientContentPageRenderIOS.cs" />
     <Compile Include="CustomControls\CualevaNavigationPageRenderIOS.cs" />
     <Compile Include="Persistence\CustomNavigationManager.cs" />
+    <Compile Include="CustomControls\UnderlineLabelRenderIOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

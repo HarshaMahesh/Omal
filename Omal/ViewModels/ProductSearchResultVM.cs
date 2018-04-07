@@ -121,10 +121,25 @@ namespace Omal.ViewModels
                 var tmpProdotti = new List<Models.Prodotto>(originalProdotti);
                 if (!string.IsNullOrWhiteSpace(ProductFilter))
                 {
-                    if (App.CurLang == "IT")
-                        tmpProdotti = tmpProdotti.Where(x => x.nome.ToLower().Contains(ProductFilter.ToLower())).ToList();
-                    else
-                        tmpProdotti = tmpProdotti.Where(x => x.nome_en.ToLower().Contains(ProductFilter.ToLower())).ToList();
+                        var elementi = productFilter.Split(' ');
+
+                        if (App.CurLang == "IT")
+                        {
+                            foreach (var filtro in elementi)
+                            {
+                                if (string.IsNullOrWhiteSpace(filtro)) continue;
+                                tmpProdotti = tmpProdotti.Where(x => x.nome.ToLower().Contains(filtro.ToLower())).ToList();
+                            }
+                        }
+                        else
+                        {
+                            foreach (var filtro in elementi)
+                            {
+                                if (string.IsNullOrWhiteSpace(filtro)) continue;
+                                tmpProdotti = tmpProdotti.Where(x => x.nome_en.ToLower().Contains(filtro.ToLower())).ToList();
+                            }
+
+                        }
                     if (tmpProdotti == null || tmpProdotti.Count() == 0)
                     {
                         // nn ho prodotti, quindi cerco eventuali codici articoli che siano coerenti con la stringa.

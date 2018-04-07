@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns:CControls="clr-namespace:Omal.CustomControls"
-    Title="{Binding CurTitle, Converter={StaticResource UpperCaseConverter}}"  xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.LoginV">
+    Title="{Binding CurTitle, Converter={StaticResource UpperCaseConverter}}"  
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+     x:Class="Omal.Views.LoginV">
     <ContentPage.ToolbarItems>
     </ContentPage.ToolbarItems>
     <ContentPage.Padding>
@@ -21,6 +24,8 @@
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                         <Button x:Name="LoginBtn" IsVisible="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}" Style="{StaticResource AzzurroNoBold}"  Text="{Binding LoginButton, Converter={StaticResource UpperCaseConverter}}" Command="{Binding LoginCommand}" />
                     </StackLayout>
+                    <CControls:UnderlineLabel HorizontalTextAlignment="Center" Text="{Binding StrPasswordDimenticata}" x:Name="lblPasswordDimenticata"  />
+
                     <ActivityIndicator IsRunning="{Binding IsRunning}" />
                     <Label Text="{Binding Errore}" HorizontalOptions="Center" TextColor="Red" />
             </StackLayout>

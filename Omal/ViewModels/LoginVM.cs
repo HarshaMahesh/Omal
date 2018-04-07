@@ -8,6 +8,8 @@ namespace Omal.ViewModels
     {
         public RelayCommand LoginCommand { get; set; }
         public RelayCommand CanceLoginCommand { get; set; }
+        public RelayCommand PswDimenticataCommand { get; set; }
+
 
         public string CurTitle { get { return TitoloLogin; } }
         bool isRunning = false;
@@ -75,6 +77,26 @@ namespace Omal.ViewModels
         {
             LoginCommand = new RelayCommand(OnLoginCommand, CanExecuteLoginCommand);
             CanceLoginCommand = new RelayCommand(OnCanceLoginCommand);
+            PswDimenticataCommand = new RelayCommand(OnPswDimenticataCommand);
+        }
+
+        private async void OnPswDimenticataCommand(object obj)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                await CurPage.DisplayAlert(TitoloLogin, StrEmailVuota, "Ok");
+                return;
+            }
+            var ritorno = await DataStore.Utenti.RecoverPassword(Email);
+            if (ritorno.HasError == 1)
+            {
+                await CurPage.DisplayAlert(TitoloLogin, LangIsIT ? ritorno.ErrorDescription : ritorno.ErrorDescription_En, "Ok");
+            }
+            else
+            {
+                await CurPage.DisplayAlert(TitoloLogin, StrConfermaInvioMailRecuperoPassword, "Ok");
+                CanceLoginCommand.Execute(null);
+            }
         }
 
         private bool CanExecuteLoginCommand(object arg)
@@ -98,7 +120,7 @@ namespace Omal.ViewModels
                 else
                 {
                     App.CurToken = token;
-                    App.CurUser = new Models.Utente { Email = token.email_utente, IdUtente = token.IDUtente, NomeUtente = token.NomeUtente, Password = Password };
+                    App.CurUser = new Models.Utente { Email = token.email_utente, IdUtente = token.IDUtente, NomeUtente = token.NomeUtente };
                     Application.Current.Properties["Email"] = Email;
                     await DataStore.Ordini.GetItemsAsync(true);
                     await DataStore.Clienti.GetItemsAsync(true);
