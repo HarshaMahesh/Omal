@@ -178,6 +178,10 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DocumentiDownloadVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomControls\UnderlineLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\InformazioniAccount.xaml.cs">
+      <DependentUpon>InformazioniAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\InformazioniAccountVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -258,6 +262,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\DocumentiDownloadV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\InformazioniAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

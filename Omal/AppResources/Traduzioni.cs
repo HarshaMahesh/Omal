@@ -48,6 +48,8 @@ namespace Omal.AppResources
         public string TitoloArticoli { get { return GetCurvalueLang(_TitoloArticoli); } }
         public string TitoloAggiornaCatalogo { get { return GetCurvalueLang(_TitoloAggiornaCatalogo); } }
         public string TitoloOrdini { get { return GetCurvalueLang(_TitoloOrdini); } }
+        public string TitoloModificaAccount { get { return GetCurvalueLang(_TitoloModificaAccount); } }
+
         public string BtnAnnulla { get { return GetCurvalueLang(_BtnAnnulla); } }
         public string BtnSalva { get { return GetCurvalueLang(_BtnSalva); } }
         public string BtnInvia { get { return GetCurvalueLang(_BtnInvia); } }
@@ -188,11 +190,43 @@ namespace Omal.AppResources
         public string TitoloDocumenti { get { return GetCurvalueLang(_TitoloDocumenti); } }
         public string StrEmailVuota { get { return GetCurvalueLang(_StrEmailVuota); } }
         public string StrConfermaInvioMailRecuperoPassword { get { return GetCurvalueLang(_StrConfermaInvioMailRecuperoPassword); } }
-
+        public string StrModificaAccount { get { return GetCurvalueLang(_StrModificaAccount); } }
+        public string StrNomeUtente { get { return GetCurvalueLang(_StrNomeUtente); } }
+        public string StrEmailBackOffice { get { return GetCurvalueLang(_StrEmailBackOffice); } }
         public string OrdineClienteEliminato { get { return GetCurvalueLang(_OrdineClienteEliminato); } }
+        public string StrConfermaPassword { get { return GetCurvalueLang(_StrConfermaPassword); } }
 
 
+        Dictionary<string, string> _TitoloModificaAccount = new Dictionary<string, string>
+        {
+            {"IT",  "Modifica Account"},
+            {"EN",  "Update Account"}
+        };
 
+
+        Dictionary<string, string> _StrConfermaPassword = new Dictionary<string, string>
+        {
+            {"IT",  "Conferma password"},
+            {"EN",  "Password confirm"}
+        };
+
+        Dictionary<string, string> _StrNomeUtente = new Dictionary<string, string>
+        {
+            {"IT",  "Nome Utente"},
+            {"EN",  "User Name"}
+        };
+
+        Dictionary<string, string> _StrEmailBackOffice = new Dictionary<string, string>
+        {
+            {"IT",  "Email BackOffice"},
+            {"EN",  "BackOffice Email"}
+        };
+
+        Dictionary<string, string> _StrModificaAccount = new Dictionary<string, string>
+        {
+            {"IT",  "Modifica Account"},
+            {"EN",  "Edit Account"}
+        };
         Dictionary<string, string> _StrConfermaInvioMailRecuperoPassword = new Dictionary<string, string>
         {
             {"IT",  "Abbiamo inviato una email al tuo indirizzo.Controlla la posta per terminare la procedura di recupero"},

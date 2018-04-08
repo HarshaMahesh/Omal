@@ -13,6 +13,12 @@ namespace Omal.Views
             //Navigation.PushAsync(new WelcomeV(true));
         }
 
+        void Handle_Tapped_ModificaAccount(object sender, System.EventArgs e)
+        {
+           // MessagingCenter.Send<Models.Messages.GotoWelcomeMessage>(new Models.Messages.GotoWelcomeMessage() { ChangeLanguage = true }, "");
+            Navigation.PushAsync(new InformazioniAccount());
+        }
+
         ViewModels.ConfigurationVM Vm;
 
         public ConfigurationV()
@@ -21,9 +27,23 @@ namespace Omal.Views
             Vm.CurPage = this;
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
+
         }
 
-        protected override bool OnBackButtonPressed()
+		protected override void OnAppearing()
+		{
+            base.OnAppearing();
+            if (App.CurUser == null) 
+                LocT.Remove(ModificaAccount);
+            else
+            {
+                if (!LocT.Contains(ModificaAccount))
+                    LocT.Add(ModificaAccount);
+
+            }
+		}
+
+		protected override bool OnBackButtonPressed()
         {
             return true;
         }
