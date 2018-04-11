@@ -54,6 +54,8 @@ namespace Omal.AppResources
         public string BtnSalva { get { return GetCurvalueLang(_BtnSalva); } }
         public string BtnInvia { get { return GetCurvalueLang(_BtnInvia); } }
         public string BtnNuovo { get { return GetCurvalueLang(_BtnNuovo); } }
+        public string StrAggiungiNuovoCliente { get { return GetCurvalueLang(_StrAggiungiNuovoCliente); } }
+
 
         public string LogonRichiestoOrdini { get { return GetCurvalueLang(_LogonRichiestoOrdini); } }
         public string Cliente { get { return GetCurvalueLang(_Cliente); } }
@@ -195,7 +197,46 @@ namespace Omal.AppResources
         public string StrEmailBackOffice { get { return GetCurvalueLang(_StrEmailBackOffice); } }
         public string OrdineClienteEliminato { get { return GetCurvalueLang(_OrdineClienteEliminato); } }
         public string StrConfermaPassword { get { return GetCurvalueLang(_StrConfermaPassword); } }
+        public string StrPasswordNonCoincide { get { return GetCurvalueLang(_StrPasswordNonCoincide); } }
+        public string StrModificaAccountConSuccesso { get { return GetCurvalueLang(_StrModificaAccountConSuccesso); } }
+        public string StrCercaPerNomeProdotto { get { return GetCurvalueLang(_StrCercaPerNomeProdotto); } }
+        public string StrCercaPerCodiceProdotto { get { return GetCurvalueLang(_StrCercaPerCodiceProdotto); } }
 
+
+
+
+        Dictionary<string, string> _StrCercaPerNomeProdotto = new Dictionary<string, string>
+        {
+            {"IT",  "Cerca per nome prodotto"},
+            {"EN",  "Cerca per nome prodotto"}
+        };
+
+        Dictionary<string, string> _StrCercaPerCodiceProdotto = new Dictionary<string, string>
+        {
+            {"IT",  "Cerca per codice prodotto"},
+            {"EN",  "Cerca per codice prodotto"}
+        };
+
+
+
+
+        Dictionary<string, string> _StrAggiungiNuovoCliente = new Dictionary<string, string>
+        {
+            {"IT",  "AGGIUNGI NUOVO CLIENTE"},
+            {"EN",  "ADD A NEW CUSTOMER"}
+        };
+
+        Dictionary<string, string> _StrModificaAccountConSuccesso = new Dictionary<string, string>
+        {
+            {"IT",  "Modifica account avvenuta con successo"},
+            {"EN",  "Modifica account avvenuta con successo"}
+        };
+
+        Dictionary<string, string> _StrPasswordNonCoincide = new Dictionary<string, string>
+        {
+            {"IT",  "Password non coincide"},
+            {"EN",  "Password non coincide"}
+        };
 
         Dictionary<string, string> _TitoloModificaAccount = new Dictionary<string, string>
         {

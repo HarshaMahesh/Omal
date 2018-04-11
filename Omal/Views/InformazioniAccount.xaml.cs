@@ -10,13 +10,15 @@ namespace Omal.Views
         public InformazioniAccount()
         {
             InitializeComponent();
-            BindingContext = viewModel = new ViewModels.InformazioniAccountVM();
-            viewModel.NomeUtente = App.CurUser.NomeUtente;
+            NavigationPage.SetBackButtonTitle(this, "");
+            viewModel = new ViewModels.InformazioniAccountVM();
+            viewModel.NomeUtente = App.CurToken.NomeUtente;
             viewModel.EmailBackOffice = App.CurToken.email_per_backoffice;
             viewModel.Email = App.CurToken.email_utente;
             viewModel.CurPage = this;
             viewModel.Navigation = Navigation;
-            NavigationPage.SetBackButtonTitle(this, "");
+            BindingContext = viewModel;
+
         }
 
         ViewModels.InformazioniAccountVM viewModel;

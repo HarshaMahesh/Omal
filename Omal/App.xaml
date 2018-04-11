@@ -147,6 +147,18 @@
                 <Setter Property="HorizontalOptions" Value="End" />
                 <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
             </Style>
+
+            <Style x:Key="GrigioBold" TargetType="Button">
+                <Setter Property="BorderWidth" Value="0" />
+                <Setter Property="TextColor" Value="{StaticResource BluOmal}" />
+                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="BorderRadius" Value="20" />
+                <Setter Property="BackgroundColor" Value="#EAEAEA" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
+            </Style>
+            
             <Style TargetType="CControls:UnderlineLabel">
                 <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
                 <Setter Property="TextColor" Value="{StaticResource Primary}" />

@@ -8,5 +8,7 @@ namespace Omal
     {
         Task<Models.Token> Login(string email, string password);
         Task<ResponseBase> RecoverPassword(string email);
+        Task<ResponseBase> UpdateCurUtente(string userName, string emailBackOffice, string password, string passwordConfirm);
+                   
     }
 }

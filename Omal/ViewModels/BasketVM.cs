@@ -293,7 +293,9 @@ namespace Omal.ViewModels
                 {
                     var tmpC = await DataStore.Clienti.GetItemsAsync(false);
                     tmpC = tmpC.Where(x => x.annullato == 0 && x.IDUtente == App.CurUser.IdUtente);
-                    Clienti = new ObservableCollection<Models.Cliente>(tmpC);
+                    List<Models.Cliente> clientiTmp = tmpC.ToList();
+                    clientiTmp.Insert(0, new Models.Cliente() { RagioneSociale = StrAggiungiNuovoCliente, IDCliente = -1 });
+                    Clienti = new ObservableCollection<Models.Cliente>(clientiTmp);
                 }
                 finally
                 {
@@ -348,6 +350,12 @@ namespace Omal.ViewModels
             }
             set
             {
+                if (value != null && value.IDCliente == -1)
+                {
+                    // devo permettere l'aggiunta di un nuovo cliente
+                    AggiungiNuovoCliente();
+                    return;
+                }
                 if (App.CurOrdine == null) return;
                 selectedCliente = value;
                 if (selectedCliente == null)
@@ -359,6 +367,13 @@ namespace Omal.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private async void AggiungiNuovoCliente()
+        {
+            await CurPage.Navigation.PushAsync(new Views.AnagraficaClientiEditDetailV(new Models.Cliente() ,  true));
+        }
+
+
 
         private async void LoadCliente()
         {

@@ -20,4 +20,4 @@ namespace Omal.Droid.CustomControls
 
         }
     }
-}}
+}

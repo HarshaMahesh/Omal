@@ -23,5 +23,8 @@ namespace Omal.Views
             viewModel.CurCliente = curCliente;
         }
 
+
+
+
     }
 }

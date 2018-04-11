@@ -10,28 +10,27 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
     </ContentPage.Resources>
-	   <ContentPage.Content>
+       <ContentPage.Content>
         <ScrollView>
         <Grid>
             <Grid.RowDefinitions >
-                <RowDefinition Height="*" />
-                <RowDefinition Height="150" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="130" />
             </Grid.RowDefinitions>
                 
-
-            <StackLayout  VerticalOptions="Fill" Grid.Row="0" BackgroundColor="#EAEAEA" Margin="0,0,0,0" Orientation="Vertical">
+            <Image Grid.Row="0"  Aspect="AspectFill" Source="IMG051428.png" Opacity="0.3" />
+            <StackLayout BackgroundColor="Transparent" VerticalOptions="Fill" Grid.Row="0"  Margin="0,0,0,0" Orientation="Vertical">
                 <CControls:CualevaPicker  Margin="8,50,10,10" Title="{Binding ProdottoPicker1}"  HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPrimoLivello}" ItemsSource="{Binding PrimoLivello}"  />
                 <CControls:CualevaPicker  Margin="8" Title="{Binding ProdottoPicker2}" IsVisible="{Binding Picker2IsVisible}" HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedSecondoLivello}" ItemsSource="{Binding SecondoLivello}" />
                 <CControls:CualevaPicker Margin="8" Title="{Binding ProdottoPicker3}" IsVisible="{Binding Picker3IsVisible}"  HorizontalOptions="Fill" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedTerzoLivello}" ItemsSource="{Binding TerzoLivello}" />
                 <Button Text="{Binding BtnCerca, Converter={StaticResource UpperCaseConverter}}" HorizontalOptions="Center"  Command="{Binding SearchWithCategoriesCommand }" Margin="0,10,0,50"/>
             </StackLayout>
-            <Image Grid.Row="1"  Aspect="AspectFill" Source="IMG051428.png" Opacity="0.3" />
-            <StackLayout  VerticalOptions="EndAndExpand" Grid.Row="1" Margin="0,0,0,0" BackgroundColor="Transparent"  Orientation="Vertical">
-            <CControls:CualevaRoundedEntry PlaceholderColor="White" Style="{StaticResource cerca}" Margin="30,5,30,5" BorderRadius="25" HeightRequest="50"   TextColor="White"  BackgroundColor="Transparent" Placeholder="{Binding ProdottoRicercato}" Text="{Binding ProductNameFilter, Mode=TwoWay}" />
-            <Button HorizontalOptions="Center" Margin="10" Command="{Binding SearchWithProductNameCommand, Mode=TwoWay}" Text="{Binding BtnCerca, Converter={StaticResource UpperCaseConverter}}" />
+
+            <StackLayout  VerticalOptions="EndAndExpand" BackgroundColor="#EAEAEA" Grid.Row="1" Margin="0,0,0,0"   Orientation="Vertical">
+            <CControls:CualevaRoundedEntry Completed="OnCompletedNameProdotto" PlaceholderColor="White" Style="{StaticResource cerca}" Margin="30,5,30,5" BorderRadius="25" HeightRequest="50"   TextColor="White"  BackgroundColor="Transparent" Placeholder="{Binding StrCercaPerNomeProdotto}" Text="{Binding ProductNameFilter, Mode=TwoWay}" />
+            <CControls:CualevaRoundedEntry Completed="OnCompletedCodiceProdotto" PlaceholderColor="White" Style="{StaticResource cerca}" Margin="30,5,30,5" BorderRadius="25" HeightRequest="50"   TextColor="White"  BackgroundColor="Transparent" Placeholder="{Binding StrCercaPerCodiceProdotto}" Text="{Binding ProductCodeFilter, Mode=TwoWay}" />
             </StackLayout>
         </Grid>
         </ScrollView>
-
     </ContentPage.Content>
 </ContentPage>

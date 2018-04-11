@@ -26,17 +26,12 @@ namespace Omal.Services
         public async Task<Models.ResponseBase> AddItemAsync(Models.Utente item)
         {
             items.Add(item);
-
             return await Task.FromResult(new Models.ResponseBase());
         }
 
         public async Task<Models.ResponseBase> UpdateItemAsync(Models.Utente item)
         {
-            var _item = items.Where((Models.Utente arg) => arg.IdUtente == item.IdUtente).FirstOrDefault();
-            items.Remove(_item);
-            items.Add(item);
-
-            return await Task.FromResult(new Models.ResponseBase());
+            throw new NotImplementedException("");
         }
 
         public async Task<bool> DeleteItemAsync(int id)
@@ -95,6 +90,37 @@ NomeUtente  "OMAL SpA"
             var url = string.Format("{0}{1}?emailPassLost={2}", App.BackendUrl, "pass-lost.php", email);
             try
             {
+                var json = await client.GetStringAsync(url);
+                ritorno = JsonConvert.DeserializeAnonymousType(json, new { data = new List<ResponseBase>() }).data.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                ritorno.HasError = 1;
+                if (App.LangIsIT)
+                    ritorno.ErrorDescription = ex.Message;
+                else
+                    ritorno.ErrorDescription_En = ex.Message;
+            }
+            return ritorno;
+        }
+
+        public async Task<Models.ResponseBase> UpdateCurUtente(string userName, string emailBackOffice, string password, string passwordConfirm)
+        {
+            var ritorno = new ResponseBase();
+            var url = string.Format("{0}{1}?tabella={2}", App.BackendUrl, "webservicei.php", "utenti");
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(password) && (!string.Equals(password,passwordConfirm, StringComparison.CurrentCulture)))
+                {
+                    throw new Exception(App.Traduzioni.StrPasswordNonCoincide);
+                }
+                if (App.CurUser == null) throw new NullReferenceException("App.CurUser cannot be null");
+                if (App.CurUser != null) url += string.Format("&IDUtente={0}", App.CurUser.IdUtente);
+                if (App.CurToken != null) url += string.Format("&token={0}", App.CurToken.token);
+                if (!string.IsNullOrWhiteSpace(userName)) url += string.Format("&NomeUtente={0}",userName);
+                if (!string.IsNullOrWhiteSpace(App.CurUser.Email)) url += string.Format("&Email={0}", App.CurUser.Email);
+                if (!string.IsNullOrWhiteSpace(emailBackOffice)) url += string.Format("&Email_aggiuntiva={0}", emailBackOffice);
+                if (!string.IsNullOrWhiteSpace(password)) url += string.Format("&Password={0}", password);
                 var json = await client.GetStringAsync(url);
                 ritorno = JsonConvert.DeserializeAnonymousType(json, new { data = new List<ResponseBase>() }).data.FirstOrDefault();
             }

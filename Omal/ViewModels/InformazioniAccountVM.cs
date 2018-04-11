@@ -7,17 +7,25 @@ namespace Omal.ViewModels
     public class InformazioniAccountVM: BaseVM
     {
 
-        public ICommand EditCommand { get; set; }
+        public ICommand SaveCommand { get; set; }
 
 
         public InformazioniAccountVM()
         {
-            EditCommand = new Command(OnEditCommand);
+            SaveCommand = new Command(OnSaveCommand);
         }
 
-        private void OnEditCommand(object obj)
+        private async void OnSaveCommand(object obj)
         {
-            throw new NotImplementedException();
+            var ritorno = await DataStore.Utenti.UpdateCurUtente(NomeUtente, EmailBackOffice, Password, PasswordRepeat);
+            if (ritorno.HasError != 1)
+            {
+                App.CurToken.email_per_backoffice = EmailBackOffice;
+                App.CurToken.NomeUtente = NomeUtente;
+                App.CurUser.NomeUtente = NomeUtente;
+                App.CurToken = App.CurToken;
+            }
+            CurPage.DisplayAlert(TitoloModificaAccount, LangIsIT ? ritorno.ErrorDescription : ritorno.ErrorDescription_En, "ok");
         }
 
         public string Email

@@ -12,6 +12,7 @@ namespace Omal.ViewModels
 
         public RelayCommand SearchWithCategoriesCommand{get;set;}
         public RelayCommand SearchWithProductNameCommand { get; set; }
+        public RelayCommand SearchWithProductCodeCommand { get; set; }
 
         public string CurTitle { get { return TitoloCerca; }}
 
@@ -28,7 +29,21 @@ namespace Omal.ViewModels
                 OnPropertyChanged();
                 SearchWithProductNameCommand.ChangeCanExecute();
             }
+        }
 
+        string productCodeFilter;
+        public string ProductCodeFilter
+        {
+            get
+            {
+                return productCodeFilter;
+            }
+            set
+            {
+                productCodeFilter = value;
+                OnPropertyChanged();
+                SearchWithProductCodeCommand.ChangeCanExecute();
+            }
         }
 
         public bool Picker2IsVisible
@@ -52,6 +67,7 @@ namespace Omal.ViewModels
             PropertyChanged += OnLocalPropertyChanged;
             SearchWithCategoriesCommand = new RelayCommand(OnSearchWithCategoriesCommand, CanExecuteSearchWithCategoriesCommand);
             SearchWithProductNameCommand = new RelayCommand(OnSearchWithProductNameCommand, CanExecuteSearchWithProductNameCommand);
+            SearchWithProductCodeCommand = new RelayCommand(OnSearchWithProductCodeCommand, CanExecuteSearchWithProductCodeCommand);
         }
 
         private bool CanExecuteSearchWithCategoriesCommand(object arg)
@@ -64,9 +80,19 @@ namespace Omal.ViewModels
             return !string.IsNullOrWhiteSpace(ProductNameFilter);
         }
 
+        private bool CanExecuteSearchWithProductCodeCommand(object arg)
+        {
+            return !string.IsNullOrWhiteSpace(ProductCodeFilter);
+        }
+
         private async void OnSearchWithProductNameCommand(object obj)
         {
             await Navigation.PushAsync(new Views.ProductsSearchResutlV(ProductNameFilter));
+        }
+
+        private async void OnSearchWithProductCodeCommand(object obj)
+        {
+            await Navigation.PushAsync(new Views.ProductsSearchResutlV(ProductCodeFilter));
         }
 
         private async void OnSearchWithCategoriesCommand(object obj)

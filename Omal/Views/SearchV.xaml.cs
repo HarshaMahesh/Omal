@@ -23,6 +23,17 @@ namespace Omal.Views
             NavigationPage.SetBackButtonTitle(this, "");
         }
 
+        async void OnCompletedCodiceProdotto(object sender, System.EventArgs e)
+        {
+            viewModel.SearchWithProductCodeCommand.Execute(null);
+        }
+
+        async void OnCompletedNameProdotto(object sender, System.EventArgs e)
+        {
+            viewModel.SearchWithProductNameCommand.Execute(null);
+        }
+
+
         protected override bool OnBackButtonPressed()
         {
             return true;

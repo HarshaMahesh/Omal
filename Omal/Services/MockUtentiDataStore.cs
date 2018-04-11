@@ -74,5 +74,10 @@ namespace Omal.Services
         {
             throw new NotImplementedException();
         }
+
+        public Task<ResponseBase> UpdateCurUtente(string userName, string emailBackOffice, string password, string passwordConfirm)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

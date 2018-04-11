@@ -13,6 +13,7 @@ namespace Omal.ViewModels
         public ICommand InsertCommand { get; set; }
         public ICommand EliminaCommand { get; set; }
         public Page PrevDetailPage { get; set; }
+        public bool IsModal { get; set; }
 
         public bool IsInsert
         {
@@ -125,10 +126,8 @@ namespace Omal.ViewModels
                 CurPage.DisplayAlert(TitoloClienti, ex.Message, "OK");
             }
             if (errore) return;
-
-
-            await CurPage.Navigation.PopAsync();
             MessagingCenter.Send(new Models.Messages.ClienteInsertedOrUpdatedMessage() { Cliente = CurCliente }, "");
+            await CurPage.Navigation.PopAsync();
         }
 
         public string CurTitle

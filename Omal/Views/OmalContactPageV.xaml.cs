@@ -10,6 +10,11 @@ namespace Omal.Views
 {
     public partial class OmalContactPageV : ContentPage
     {
+        void TelClicked(object sender, System.EventArgs e)
+        {
+            Device.OpenUri(new Uri("tel:+390308900145"));
+        }
+
         Geocoder geoCoder;
         ViewModels.OmalContactPageVM viewModel;
 
@@ -30,13 +35,6 @@ namespace Omal.Views
                     Device.OpenUri(new Uri("mailto:info@omal.it"));
                 })
             });
-            Tel.GestureRecognizers.Add(new TapGestureRecognizer
-            {
-                Command = new Command(() => {
-                    Device.OpenUri(new Uri("tel:+390308900145"));
-                })
-            });
-           
             NavigationPage.SetBackButtonTitle(this, "");
             BindingContext = viewModel = new ViewModels.OmalContactPageVM();
             viewModel.Navigation = Navigation;
@@ -54,7 +52,6 @@ namespace Omal.Views
         {
             base.OnAppearing();
             bool mostra = true;
-            base.OnAppearing();
             try
             {
                 if (Device.RuntimePlatform == Device.Android)
@@ -81,14 +78,14 @@ namespace Omal.Views
 
                 var address = "Italia, Rodengo Saiano, Via Ponte Nuovo, 11";
                 Pin p = new Pin() { Position = new Position(45.598083, 10.090149), Address = address, Label = "OMAL Spa", Type = PinType.Place };
-                MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(p.Position, Distance.FromMeters(200)));
+                MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(p.Position, Distance.FromKilometers(2)));
                 MyMap.Pins.Add(p);
 
-                var address2 = "Italia, Rodengo Saiano, Via Ponte Nuovo, 11";
-                Pin p2 = new Pin() { Position = new Position(45.597212, 10.088550), Address = address2, Label = "OMAL Spa", Type = PinType.Place };
-                MyMap2.MoveToRegion(MapSpan.FromCenterAndRadius(p2.Position, Distance.FromMeters(200)));
-                MyMap2.Pins.Add(p2);
 
+                var address2 = "Italia, Rodengo Saiano, Via Ponte Nuovo, 11";
+                Pin p2 = new Pin() { Position = new Position(45.597212, 10.088550), Address = address2, Label = "OMAL Spa", Type = PinType.SearchResult };
+                MyMap2.MoveToRegion(MapSpan.FromCenterAndRadius(p2.Position, Distance.FromKilometers(2)));
+                MyMap2.Pins.Add(p2);
 
                 /*geoCoder = new Geocoder();
 

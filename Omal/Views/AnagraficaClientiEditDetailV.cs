@@ -26,10 +26,12 @@ namespace Omal.Views
         public AnagraficaClientiEditDetailV(Models.Cliente curCliente, Page ClientiDetailV) : this(curCliente)
         {
             BindingContext = viewModel = new ViewModels.AnagraficaClientiEditDetailVM();
-            viewModel.CurCliente = curCliente;
             viewModel.PrevDetailPage = ClientiDetailV;
-            viewModel.CurPage = this;
-            viewModel.Navigation = Navigation;
+        }
+
+        public AnagraficaClientiEditDetailV(Models.Cliente curCliente, bool isModal) : this(curCliente)
+        {
+            viewModel.IsModal = true;
         }
 
     }

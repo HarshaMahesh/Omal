@@ -95,7 +95,6 @@ namespace Omal.ViewModels
             else
             {
                 await CurPage.DisplayAlert(TitoloLogin, StrConfermaInvioMailRecuperoPassword, "Ok");
-                CanceLoginCommand.Execute(null);
             }
         }
 
