@@ -370,7 +370,8 @@ namespace Omal.ViewModels
 
         private async void AggiungiNuovoCliente()
         {
-            await CurPage.Navigation.PushAsync(new Views.AnagraficaClientiEditDetailV(new Models.Cliente() ,  true));
+            var cliente = new Models.Cliente();
+            await CurPage.Navigation.PushAsync(new Views.AnagraficaClientiEditDetailV(cliente ,  true));
         }
 
 

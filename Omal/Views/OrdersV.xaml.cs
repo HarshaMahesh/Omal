@@ -17,5 +17,11 @@ namespace Omal.Views
             viewModel.CurPage = this;
             NavigationPage.SetBackButtonTitle(this, "");
         }
-    }
+
+		protected override void OnAppearing()
+		{
+            base.OnAppearing();
+            ListaOrdini.SelectedItem = null;
+		}
+	}
 }
