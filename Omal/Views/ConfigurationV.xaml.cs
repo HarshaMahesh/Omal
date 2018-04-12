@@ -16,7 +16,7 @@ namespace Omal.Views
         void Handle_Tapped_ModificaAccount(object sender, System.EventArgs e)
         {
            // MessagingCenter.Send<Models.Messages.GotoWelcomeMessage>(new Models.Messages.GotoWelcomeMessage() { ChangeLanguage = true }, "");
-            Navigation.PushAsync(new InformazioniAccount());
+            Navigation.PushAsync(new InformazioniAccountV());
         }
 
         ViewModels.ConfigurationVM Vm;

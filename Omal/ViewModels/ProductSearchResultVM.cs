@@ -151,6 +151,19 @@ namespace Omal.ViewModels
                         prodotti.AddRange(prodotti2);
                         prodotti = prodotti.Distinct().ToList();
                         tmpProdotti = originalProdotti.Where(x => prodotti.Count(y => y == x.idprodotto) > 0).ToList();
+                        if (tmpProdotti.Count == 1)
+                        {
+                            var curP = tmpProdotti.First();
+                            bool isValvola = prodotti2.Count(x => x == curP.idprodotto) == 0;
+                            // porto la navigazione dell'utente direttamente sulla pagina di risultato degli articoli
+                            List<Models.Base> Articoli;
+                            if (isValvola)
+                                Articoli = valvole.Where(x => x.codice_articolo.ToLower().Contains(productFilter.ToLower())).ToList<Models.Base>();
+                            else
+                                Articoli = attuatori.Where(x => x.codice_articolo.ToLower().Contains(productFilter.ToLower())).ToList<Models.Base>();
+                            CurPage.Navigation.PushAsync(new Views.ArticoliSearchResultV(curP, isValvola, Articoli));
+                        }
+
                     }
                 }
                 else

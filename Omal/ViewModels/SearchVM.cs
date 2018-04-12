@@ -26,6 +26,7 @@ namespace Omal.ViewModels
             set
             {
                 productNameFilter = value;
+                if (!string.IsNullOrWhiteSpace(productNameFilter)) ProductCodeFilter = "";
                 OnPropertyChanged();
                 SearchWithProductNameCommand.ChangeCanExecute();
             }
@@ -41,6 +42,7 @@ namespace Omal.ViewModels
             set
             {
                 productCodeFilter = value;
+                if (!string.IsNullOrWhiteSpace(productCodeFilter)) ProductNameFilter = "";
                 OnPropertyChanged();
                 SearchWithProductCodeCommand.ChangeCanExecute();
             }

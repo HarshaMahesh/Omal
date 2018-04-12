@@ -89,7 +89,10 @@ namespace Omal
         {
             base.OnCurrentPageChanged();
             Title = CurrentPage?.Title ?? string.Empty;
-          
+            if (CurrentPage == ImpostazioniPage)
+            {
+                ImpostazioniPage.Navigation.PopToRootAsync();
+            }
             if (requireUpdate)
             {
                 requireUpdate = false;

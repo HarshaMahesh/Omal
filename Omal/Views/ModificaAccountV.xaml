@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage 
 xmlns:CControls = "clr-namespace:Omal.CustomControls"
-    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.InformazioniAccount"
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Omal.Views.ModificaAccountV"
         Title="{Binding TitoloModificaAccount, Converter={StaticResource UpperCaseConverter}}"
 
     >
      <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{Binding BtnEdit}" Command="{Binding SaveCommand}" />
+        <ToolbarItem Text="{Binding BtnUpdate}" Command="{Binding SaveCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
         <StackLayout Margin="5">
+            <Label TextColor="{StaticResource BluOmal}" Style="{StaticResource WhiteEntry}" Text="{Binding StrEmail}"  />
+            <Label TextColor="Black"  Text="{Binding Email}" Margin="0,0,0,20"  />
            <Label TextColor="{StaticResource BluOmal}" Style="{StaticResource WhiteEntry}" Text="{Binding StrNomeUtente}"   />
            <CControls:CualevaRoundedEntry IsEnabled="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}" BackgroundColor="Transparent"   LeftPadding="10" BorderRadius="10" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#FFFFFF"    
                     Placeholder="{Binding StrNomeUtente}" Text="{Binding NomeUtente, Mode=TwoWay}" TextColor="Black" />
            <Label TextColor="{StaticResource BluOmal}" Style="{StaticResource WhiteEntry}" Text="{Binding StrEmailBackOffice}"  />
             <CControls:CualevaRoundedEntry TextColor="Black"  IsEnabled="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}" BackgroundColor="Transparent"  Style="{StaticResource email}" LeftPadding="10" BorderRadius="10" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#FFFFFF"    
                     Placeholder="{Binding StrEmailBackOffice}" Text="{Binding EmailBackOffice, Mode=TwoWay}" />
-           <Label TextColor="{StaticResource BluOmal}" Style="{StaticResource WhiteEntry}" Text="{Binding StrEmail}"  />
-           <CControls:CualevaRoundedEntry IsEnabled="false" BackgroundColor="Transparent"  Style="{StaticResource email}" LeftPadding="10"  BorderRadius="10" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#FFFFFF"  x:Name="UserName"  Placeholder="Indirizzo Email" Text="{Binding Email}" />
+            
            <Label TextColor="{StaticResource BluOmal}" Style="{StaticResource WhiteEntry}" Text="Password"  />
            <CControls:CualevaRoundedEntry TextColor="Black" IsEnabled="{Binding IsRunning, Converter={StaticResource InverseBooleanConverter}}" BackgroundColor="Transparent"  Style="{StaticResource psw}" LeftPadding="10" BorderRadius="10" HeightRequest="50" CualevaRoundedEntryBackgroundColor="#FFFFFF"   x:Name="Password" 
                     Placeholder="Password" IsPassword="true" Text="{Binding Password}" />

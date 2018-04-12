@@ -4,15 +4,17 @@ using Xamarin.Forms;
 
 namespace Omal.ViewModels
 {
-    public class InformazioniAccountVM: BaseVM
+    public class ModificaAccountVM: BaseVM
     {
 
         public ICommand SaveCommand { get; set; }
+        public ICommand EditCommand { get; set; }
 
 
-        public InformazioniAccountVM()
+        public ModificaAccountVM()
         {
             SaveCommand = new Command(OnSaveCommand);
+            EditCommand = new Command(OnEditCommand);
         }
 
         private async void OnSaveCommand(object obj)
@@ -26,6 +28,14 @@ namespace Omal.ViewModels
                 App.CurToken = App.CurToken;
             }
             CurPage.DisplayAlert(TitoloModificaAccount, LangIsIT ? ritorno.ErrorDescription : ritorno.ErrorDescription_En, "ok");
+            if (ritorno.HasError != 1)
+            {
+                CurPage.Navigation.PushAsync(new Views.InformazioniAccountV());
+            }
+        }
+        private async void OnEditCommand(object obj)
+        {
+            CurPage.Navigation.PushAsync(new Views.ModificaAccountV());
         }
 
         public string Email

@@ -170,6 +170,7 @@ namespace Omal.AppResources
         public string Strvalore_coppiabar { get { return GetCurvalueLang(_Strvalore_coppiabar); } }
         public string Strvalore_voltaggio { get { return GetCurvalueLang(_Strvalore_voltaggio); } }
         public string Strvalore_pesokgbar { get { return GetCurvalueLang(_Strvalore_pesokgbar); } }
+        public string Strvalore_pesokg { get { return GetCurvalueLang(_Strvalore_pesokg); } }
         public string Strvalore_aria { get { return GetCurvalueLang(_Strvalore_aria); } }
         public string Strcodice_guarnizioni { get { return GetCurvalueLang(_Strcodice_guarnizioni); } }
         public string Strvalore_ch { get { return GetCurvalueLang(_Strvalore_ch); } }
@@ -204,6 +205,12 @@ namespace Omal.AppResources
 
 
 
+
+        Dictionary<string, string> _Strvalore_pesokg = new Dictionary<string, string>
+        {
+            {"IT",  "Peso [kg]"},
+            {"EN",  "Weight [kg]"}
+        };
 
         Dictionary<string, string> _StrCercaPerNomeProdotto = new Dictionary<string, string>
         {
@@ -265,8 +272,8 @@ namespace Omal.AppResources
 
         Dictionary<string, string> _StrModificaAccount = new Dictionary<string, string>
         {
-            {"IT",  "Modifica Account"},
-            {"EN",  "Edit Account"}
+            {"IT",  "Account"},
+            {"EN",  "Account"}
         };
         Dictionary<string, string> _StrConfermaInvioMailRecuperoPassword = new Dictionary<string, string>
         {
@@ -276,8 +283,8 @@ namespace Omal.AppResources
 
         Dictionary<string, string> _StrEmailVuota = new Dictionary<string, string>
         {
-            {"IT",  "Campo email non valorizzato"},
-            {"EN",  "Field email cannot be empty"}
+            {"IT",  "Per recuperare la password è necessario inserire l'indirizzo email abinato al tuo account"},
+            {"EN",  "To recovery the pasword, insert the email address of your account"}
         };
         Dictionary<string, string> _StrPasswordDimenticata = new Dictionary<string, string>
         {

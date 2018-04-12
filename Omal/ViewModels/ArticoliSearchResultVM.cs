@@ -282,7 +282,7 @@ img.middle {
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_coppiabar)) curAttuatore.Add(string.Format(elemento, Strvalore_coppiabar, attuatore.valore_coppiabar));
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_voltaggio)) curAttuatore.Add(string.Format(elemento, Strvalore_voltaggio, attuatore.valore_voltaggio));
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_pesokgbar)) curAttuatore.Add(string.Format(elemento, Strvalore_pesokgbar, attuatore.valore_pesokgbar));
-                if (!string.IsNullOrWhiteSpace(attuatore.valore_pesokg)) curAttuatore.Add(string.Format(elemento, Strvalore_pesokgbar, attuatore.valore_pesokg));
+                if (!string.IsNullOrWhiteSpace(attuatore.valore_pesokg)) curAttuatore.Add(string.Format(elemento, Strvalore_pesokg, attuatore.valore_pesokg));
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_aria)) curAttuatore.Add(string.Format(elemento, Strvalore_aria, attuatore.valore_aria));
                 if (!string.IsNullOrWhiteSpace(attuatore.codice_guarnizioni)) curAttuatore.Add(string.Format(elemento, Strcodice_guarnizioni, attuatore.codice_guarnizioni));
                 if (!string.IsNullOrWhiteSpace(attuatore.valore_ch)) curAttuatore.Add(string.Format(elemento, Strvalore_ch, attuatore.valore_ch));
