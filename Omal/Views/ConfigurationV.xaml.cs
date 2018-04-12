@@ -32,15 +32,27 @@ namespace Omal.Views
 
 		protected override void OnAppearing()
 		{
-            base.OnAppearing();
-            if (App.CurUser == null) 
-                LocT.Remove(ModificaAccount);
-            else
+          
+            try
             {
-                if (!LocT.Contains(ModificaAccount))
-                    LocT.Add(ModificaAccount);
+                base.OnAppearing();
+                if (App.CurUser == null)
+                    LocT.Remove(ModificaAccount);
+                else
+                {
+                    if (!LocT.Contains(ModificaAccount))
+                    {
+                        ModificaAccount.Height = 100;
+                        LocT.Add(ModificaAccount);
+                    }
 
+                }
             }
+            catch (Exception )
+            {
+                // Silente
+            }
+
 		}
 
 		protected override bool OnBackButtonPressed()

@@ -195,7 +195,8 @@ namespace Omal.ViewModels
                     else
                         elenco = elenco.Where(x => string.Equals(x.valore_pnansi, selectedPicker3.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
                 }
-                if (!String.IsNullOrWhiteSpace(selectedPicker4.Value)) elenco = elenco.Where(x => string.Equals(x.valore_dn, selectedPicker4.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                if ((!String.IsNullOrWhiteSpace(selectedPicker4.Value)) && (!((CurProdotto.codice == "89" || CurProdotto.codice == "90" || CurProdotto.codice == "96"))))
+                    elenco = elenco.Where(x => string.Equals(x.valore_dn, selectedPicker4.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
                 vettore = new List<Models.Base>(elenco);
             }
             else
@@ -495,7 +496,8 @@ namespace Omal.ViewModels
                         else
                             elenco = elenco.Where(x => string.Equals(x.valore_pnansi, selectedPicker3.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
                     }
-                    if (!String.IsNullOrWhiteSpace(selectedPicker4.Value)) elenco = elenco.Where(x => string.Equals(x.valore_dn, selectedPicker4.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                    if (!String.IsNullOrWhiteSpace(selectedPicker4.Value)) 
+                        elenco = elenco.Where(x => string.Equals(x.valore_dn, selectedPicker4.Key, StringComparison.InvariantCultureIgnoreCase)).ToList();
                     switch (indice)
                     {
                         case 1:

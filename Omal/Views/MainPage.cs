@@ -87,17 +87,24 @@ namespace Omal
 
         protected override void OnCurrentPageChanged()
         {
-            base.OnCurrentPageChanged();
-            Title = CurrentPage?.Title ?? string.Empty;
-            if (CurrentPage == ImpostazioniPage)
+            try
             {
-                ImpostazioniPage.Navigation.PopToRootAsync();
+                base.OnCurrentPageChanged();
+                Title = CurrentPage?.Title ?? string.Empty;
+                if (CurrentPage == ImpostazioniPage)
+                {
+                    ImpostazioniPage.Navigation.PopToRootAsync();
+                }
+                if (requireUpdate)
+                {
+                    requireUpdate = false;
+                    var Vm = (ViewModels.ConfigurationVM)ConfigurazioniPage.BindingContext;
+                    Vm.OnUpdateDbCommand("Il sistema effettuerà l'importazione delle informazioni in loco prima di procedeere con l'utilizzo della App");
+                }
             }
-            if (requireUpdate)
+            catch (Exception ex)
             {
-                requireUpdate = false;
-                var Vm = (ViewModels.ConfigurationVM) ConfigurazioniPage.BindingContext;
-                Vm.OnUpdateDbCommand("Il sistema effettuerà l'importazione delle informazioni in loco prima di procedeere con l'utilizzo della App");
+
             }
         }
     }

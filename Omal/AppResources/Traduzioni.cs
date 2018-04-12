@@ -283,8 +283,8 @@ namespace Omal.AppResources
 
         Dictionary<string, string> _StrEmailVuota = new Dictionary<string, string>
         {
-            {"IT",  "Per recuperare la password è necessario inserire l'indirizzo email abinato al tuo account"},
-            {"EN",  "To recovery the pasword, insert the email address of your account"}
+            {"IT",  "Per recuperare la password è necessario inserire l'indirizzo email abbinato al tuo account"},
+            {"EN",  "To recovery the password, insert the email address of your account"}
         };
         Dictionary<string, string> _StrPasswordDimenticata = new Dictionary<string, string>
         {
