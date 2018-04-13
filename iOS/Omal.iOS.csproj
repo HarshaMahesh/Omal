@@ -202,6 +202,7 @@
     <BundleResource Include="Resources\Info.png" />
     <BundleResource Include="Resources\Cerca.png" />
     <BundleResource Include="Resources\LogoOmal.png" />
+    <BundleResource Include="Resources\contatti_30.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />

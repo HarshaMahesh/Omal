@@ -7,6 +7,7 @@
     Title="{Binding TitoloImpostazioni, Converter={StaticResource UpperCaseConverter}}"
     x:Class="Omal.Views.ConfigurationV" BackgroundColor="White">
 	<ContentPage.Content>
+        <ScrollView>
     <StackLayout Margin="5">
             <ActivityIndicator IsRunning="{Binding IsRunning}" />
             <Grid BackgroundColor="White">
@@ -43,5 +44,6 @@
     </TableRoot>
 </TableView>
     </StackLayout>
+            </ScrollView>
 	</ContentPage.Content>
 </ContentPage>

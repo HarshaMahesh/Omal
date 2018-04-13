@@ -17,6 +17,10 @@
                 <On Platform="Android" Value="fonts/Montserrat-Regular.ttf#Montserrat Regular" />
                 <On Platform="iOS" Value="Montserrat-Regular" />
             </OnPlatform>
+            <OnPlatform x:TypeArguments="x:Int32" x:Key="BorderRadius">
+                <On Platform="Android" Value="10" />
+                <On Platform="iOS" Value="20" />
+            </OnPlatform>
 			<Color x:Key="Primary">#004899</Color>
             <Color x:Key="BluOmal">#004899</Color>
 			<Color x:Key="PrimaryDark">Red</Color>
@@ -116,10 +120,9 @@
             </Style>
 
             <Style  TargetType="Button">
-                <Setter Property="BorderWidth" Value="0" />
                 <Setter Property="TextColor" Value="#60A5D1" />
                 <Setter Property="WidthRequest" Value="100" />
-                <Setter Property="BorderRadius" Value="20" />
+                <Setter Property="BorderRadius" Value="{StaticResource BorderRadius}" />
                 <Setter Property="BackgroundColor" Value="#FFFFFF" />
                 <Setter Property="Margin" Value="5" />
                 <Setter Property="HorizontalOptions" Value="End" />

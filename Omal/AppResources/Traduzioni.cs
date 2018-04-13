@@ -101,6 +101,8 @@ namespace Omal.AppResources
         public string BtnMostra3D{ get { return GetCurvalueLang(_BtnMostra3D); } }
         public string BtnDownload { get { return GetCurvalueLang(_BtnDownload); } }
         public string BtnAggiungi { get { return GetCurvalueLang(_BtnAggiungi); } }
+        public string StrDettaglioCliente { get { return GetCurvalueLang(_StrDettaglioCliente); } }
+      
         public string ErrNumeroCarrello { get { return GetCurvalueLang(_ErrNumeroCarrello); } }
         public string ErrQtaMaggiore0 { get { return GetCurvalueLang(_ErrQtaMaggiore0); } }
 
@@ -206,6 +208,12 @@ namespace Omal.AppResources
 
 
 
+        Dictionary<string, string> _StrDettaglioCliente = new Dictionary<string, string>
+        {
+            {"IT",  "Dettaglio Cliente"},
+            {"EN",  "Customer detail"}
+        };
+
         Dictionary<string, string> _Strvalore_pesokg = new Dictionary<string, string>
         {
             {"IT",  "Peso [kg]"},
@@ -215,13 +223,13 @@ namespace Omal.AppResources
         Dictionary<string, string> _StrCercaPerNomeProdotto = new Dictionary<string, string>
         {
             {"IT",  "Cerca per nome prodotto"},
-            {"EN",  "Cerca per nome prodotto"}
+            {"EN",  "Search product name"}
         };
 
         Dictionary<string, string> _StrCercaPerCodiceProdotto = new Dictionary<string, string>
         {
             {"IT",  "Cerca per codice prodotto"},
-            {"EN",  "Cerca per codice prodotto"}
+            {"EN",  "Search item code"}
         };
 
 
@@ -241,14 +249,14 @@ namespace Omal.AppResources
 
         Dictionary<string, string> _StrPasswordNonCoincide = new Dictionary<string, string>
         {
-            {"IT",  "Password non coincide"},
-            {"EN",  "Password non coincide"}
+            {"IT",  "La password di conferma non corrisponde"},
+            {"EN",  "Your password confirm doesn’t match"}
         };
 
         Dictionary<string, string> _TitoloModificaAccount = new Dictionary<string, string>
         {
-            {"IT",  "Modifica Account"},
-            {"EN",  "Update Account"}
+            {"IT",  "Account"},
+            {"EN",  "Account"}
         };
 
 

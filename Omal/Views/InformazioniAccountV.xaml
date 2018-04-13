@@ -8,7 +8,7 @@
         <ScrollView>
         <StackLayout Margin="5">
             <Label TextColor="{StaticResource BluOmal}" Style="{StaticResource WhiteEntry}" Text="{Binding StrEmail}"  />
-            <Label TextColor="Black"  Text="{Binding Email}" Margin="0,0,0,20"  />
+            <Label TextColor="Black"  Text="{Binding Email}"  />
            <Label TextColor="{StaticResource BluOmal}" Style="{StaticResource WhiteEntry}" Text="{Binding StrNomeUtente}"   />
            <Label Text="{Binding NomeUtente}" TextColor="Black" />
            <Label TextColor="{StaticResource BluOmal}" Style="{StaticResource WhiteEntry}" Text="{Binding StrEmailBackOffice}"  />

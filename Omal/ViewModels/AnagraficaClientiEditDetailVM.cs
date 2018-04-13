@@ -136,7 +136,7 @@ namespace Omal.ViewModels
                 if (CurCliente != null && !IsInsert)
                     return CurCliente.RagioneSociale;
                 else
-                    return "Dettaglio Cliente";
+                    return StrDettaglioCliente;
             }
         }
 

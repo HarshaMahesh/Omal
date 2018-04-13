@@ -248,6 +248,7 @@
     <AndroidResource Include="Resources\drawable\IMG074428.png" />
     <AndroidResource Include="Resources\drawable\Cerca.png" />
     <AndroidResource Include="Resources\drawable\LogoOmal.png" />
+    <AndroidResource Include="Resources\drawable\contatti_30.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomControls\" />
