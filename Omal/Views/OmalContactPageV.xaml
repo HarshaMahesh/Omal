@@ -8,7 +8,7 @@
 	<ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="5">
-                 <Button Image="contatti_30.png" HeightRequest="40"  HorizontalOptions="Fill" Style="{StaticResource GrigioBold}"  Text="030 8900145" Clicked="TelClicked" Margin="40,5,40,5" />
+                 <Button Image="contatti_30.png" HorizontalOptions="Fill" Style="{StaticResource GrigioBold}"  Text="030 8900145" Clicked="TelClicked" Margin="40,5,40,5" />
                  <Label Text="info@omal.it" FontFamily="{StaticResource BoldFont}" x:Name="Email" HorizontalOptions="Fill" HorizontalTextAlignment="Center" />
                  <Label Text="www.omal.it"  FontFamily="{StaticResource BoldFont}" Margin="0" x:Name="Sito" TextColor="{StaticResource BluOmal}" HorizontalOptions="Fill" HorizontalTextAlignment="Center" />       
                 <Label Margin="5,5,5,0" FontFamily="{StaticResource NormalFont}" Style="{StaticResource Titolo}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="HEADQUARTERS"/>
