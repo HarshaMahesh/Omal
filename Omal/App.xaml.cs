@@ -13,7 +13,7 @@ namespace Omal
     {
         public static bool UseMockDataStore = false;
         public static AppResources.Traduzioni Traduzioni = new AppResources.Traduzioni(); 
-        public static string BackendUrl = "http://demo.timmagine.com/omal/http/Admin/exe/";
+        public static string BackendUrl = "https://app.omal.it/Admin/exe/";
         public static string CurLang
         {
             get
