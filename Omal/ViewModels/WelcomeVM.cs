@@ -156,7 +156,7 @@ namespace Omal.ViewModels
             IsRunning = true;
             Errore = false;
             ErroreTxt = string.Empty;
-           
+            string call = string.Empty;
             try
             {
                 NoShow = true;
@@ -193,7 +193,7 @@ namespace Omal.ViewModels
             }
             catch (Exception ex)
             {
-                ErroreTxt = ex.Message;
+                ErroreTxt = string.Format("{0}:{1}",ProgressB, ex.Message);
                 Errore = true;
             }
             finally

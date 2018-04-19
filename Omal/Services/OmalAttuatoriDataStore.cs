@@ -23,7 +23,6 @@ namespace Omal.Services
         {
             items = new List<Models.Attuatore>();
             client = new HttpClient();
-
         }
 
         public async Task<Models.ResponseBase> AddItemAsync(Models.Attuatore item)

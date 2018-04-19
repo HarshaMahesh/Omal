@@ -11,6 +11,10 @@ namespace Omal
 {
     public partial class App : Application
     {
+        
+
+
+
         public static bool UseMockDataStore = false;
         public static AppResources.Traduzioni Traduzioni = new AppResources.Traduzioni(); 
         public static string BackendUrl = "https://app.omal.it/Admin/exe/";
@@ -125,12 +129,15 @@ namespace Omal
         {
             InitializeComponent();
             ConnectAndCreateSqlDb();
-            if (UseMockDataStore)
+
+             if (UseMockDataStore)
                 DependencyService.Register<Services.MockOmalDataStore>();
             else
                 DependencyService.Register<Services.OmalDataStore>();
             MainPage = new Views.WelcomeV();
         }
+
+       
 
         private void ConnectAndCreateSqlDb()
         {

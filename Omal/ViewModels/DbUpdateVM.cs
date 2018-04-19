@@ -123,7 +123,7 @@ namespace Omal.ViewModels
             }
             catch (Exception ex)
             {
-                ErroreTxt = ex.Message;
+                ErroreTxt = string.Format("{0}{1}{2}", UpdateDbText, Environment.NewLine, ex.Message);
                 Errore = true;
 
             }
