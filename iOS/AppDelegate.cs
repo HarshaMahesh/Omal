@@ -4,8 +4,6 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-
-
 namespace Omal.iOS
 {
     [Register("AppDelegate")]
@@ -19,5 +17,7 @@ namespace Omal.iOS
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
         }
+
+
     }
 }

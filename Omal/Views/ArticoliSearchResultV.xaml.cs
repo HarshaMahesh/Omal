@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using Plugin.Share;
 using Xamarin.Forms;
 
@@ -54,7 +55,6 @@ namespace Omal.Views
             viewModel.CurPage = this;
             viewModel.Navigation = Navigation;
             NavigationPage.SetBackButtonTitle(this, "");
-
         }
 
         public ArticoliSearchResultV (Models.Prodotto prodotto, bool prodottoIsValvola, IEnumerable<Models.Base> articoli):this()

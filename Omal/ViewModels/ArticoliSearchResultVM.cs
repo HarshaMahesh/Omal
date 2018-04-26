@@ -151,7 +151,8 @@ background: #EAEAEA;
     border-radius: 10px;
 }
 input[type=submit] {
-    background-color: #60A5D1;
+  -webkit-appearance: none;   
+ background-color: #60A5D1;
     border: 1px;
     color: white;
     padding: 14px;

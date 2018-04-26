@@ -7,9 +7,9 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.Cualeva.Omal</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.19</string>
+	<string>1.21</string>
 	<key>CFBundleVersion</key>
-	<string>1.19</string>
+	<string>1.21</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -91,5 +91,9 @@
 	</array>
 	<key>CFBundleName</key>
 	<string>OMAL</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Questa app richiede l&apos;accesso alle funzionalità di descrizione della destinazione su mappe quando la app non è in uso</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Questa app richiede l&apos;accesso alle funzionalità di descrizione della destinazione su mappe quando la app è in uso</string>
 </dict>
 </plist>

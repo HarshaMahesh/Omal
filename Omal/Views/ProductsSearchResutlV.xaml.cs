@@ -21,7 +21,6 @@ namespace Omal.Views
         public ProductsSearchResutlV(int idCategoria):this()
         {
             viewModel.IdCategoria = idCategoria;
-
         }
 
         public ProductsSearchResutlV(string productNameFilter) : this()
