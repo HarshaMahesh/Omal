@@ -175,6 +175,11 @@ namespace Omal.ViewModels
 
         private async void OnCercaArticoliCommand(object obj)
         {
+            if (string.IsNullOrWhiteSpace(selectedPicker1.Key))
+            {
+                await CurPage.DisplayAlert(CurTitle, string.Format(StrValorizzarePicker1, DescrizionePicker1), "Ok");
+                return;
+            }
             List<Models.Base> vettore;
             if (ProdottoIsValvola)
             {

@@ -21,6 +21,7 @@ namespace Omal.AppResources
 
 
 
+
         public string StrPasswordDimenticata { get { return GetCurvalueLang(_StrPasswordDimenticata); } }
         public string StrUpdateDb { get { return GetCurvalueLang(_StrUpdateDb); }}
         public string StrSedeProduttiva { get { return GetCurvalueLang(_StrSedeProduttiva); } }
@@ -205,8 +206,13 @@ namespace Omal.AppResources
         public string StrCercaPerNomeProdotto { get { return GetCurvalueLang(_StrCercaPerNomeProdotto); } }
         public string StrCercaPerCodiceProdotto { get { return GetCurvalueLang(_StrCercaPerCodiceProdotto); } }
 
+        public string StrValorizzarePicker1 { get { return GetCurvalueLang(_StrValorizzarePicker1); } }
 
-
+        Dictionary<string, string> _StrValorizzarePicker1 = new Dictionary<string, string>
+        {
+            {"IT",  "Scegli '{0}'"},
+            {"EN",  "Choose '{0}'"}
+        };
 
         Dictionary<string, string> _StrDettaglioCliente = new Dictionary<string, string>
         {
